@@ -1,0 +1,26 @@
+---
+import PageMetaTags from "../components/PageMetaTags.astro";
+import NavBar from "../components/NavBar.astro";
+
+const { title, description, image = "/assets/img/favicon.svg" } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <PageMetaTags title={title} description={description} image={image} />
+  </head>
+  <body class="bg-gray-50">
+    <NavBar />
+    <div class="container flex flex-wrap items-center justify-between mx-auto pt-16 ">
+      <slot />
+    </div>
+    <script>
+      import "flowbite";
+    </script>
+  </body>
+</html>
