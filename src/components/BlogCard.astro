@@ -4,27 +4,63 @@ export interface Props {
   title: string;
   body: string;
   href: string;
+  image: string;
 }
 
-const { href, title, body } = Astro.props;
+const { href, title, body, image } = Astro.props;
+
+let BannerSyle = "background-image: url(" + image + ")";
 ---
 
 <div class="bg-white border border-gray-200 rounded-lg mb-5 dark:bg-gray-800 dark:border-gray-700 w-full">
   <a href="#">
-    <img
-      class="rounded-t-lg"
-      src="https://user-images.githubusercontent.com/53962116/211159681-f1700806-8fa9-41d0-90c2-eb4ebdd6fec4.png"
-      alt=""
-    />
+    <div class="bg-cover bg-center h-[20rem] rounded-t-lg" style={BannerSyle}></div>
   </a>
 
   <div class="p-5">
-    <div class="mb-3">
+    <div class="mb-3 flex justify-between">
       <div class="flex items-center space-x-4">
         <img class="w-10 h-10 rounded-full" src="https://avatars.githubusercontent.com/u/53962116?v=4" alt="" />
         <div class="font-medium dark:text-white">
           <div>Manuel Ernesto Garcia</div>
           <div class="text-sm text-gray-500 dark:text-gray-400">Ingeniero de Software</div>
+        </div>
+      </div>
+
+      <button
+        id="dropdownMenuIconHorizontalButton"
+        data-dropdown-toggle="dropdownDotsHorizontal"
+        class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+        type="button"
+      >
+        <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"
+          ><path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"
+          ></path></svg
+        >
+      </button>
+
+      <!-- Dropdown menu -->
+      <div
+        id="dropdownDotsHorizontal"
+        class="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
+      >
+        <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownMenuIconHorizontalButton">
+          <li>
+            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+          </li>
+          <li>
+            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
+          </li>
+          <li>
+            <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
+          </li>
+        </ul>
+        <div class="py-1">
+          <a
+            href="#"
+            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+            >Separated link</a
+          >
         </div>
       </div>
     </div>
@@ -34,25 +70,33 @@ const { href, title, body } = Astro.props;
         Noteworthy technology acquisitions 2021
       </h5>
     </a>
-    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+    <p class="mb-5 font-normal text-gray-700 dark:text-gray-400">
       Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
     </p>
-    <a
-      href="#"
-      class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-    >
-      Read more
-      <svg
-        aria-hidden="true"
-        class="w-4 h-4 ml-2 -mr-1"
-        fill="currentColor"
-        viewBox="0 0 20 20"
-        xmlns="http://www.w3.org/2000/svg"
-        ><path
-          fill-rule="evenodd"
-          d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-          clip-rule="evenodd"></path></svg
-      >
-    </a>
+    <div class="my-2 flex justify-between">
+      <div>
+        <a
+          href="#"
+          class="text-gray-600 bg-white my-1 border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-normal rounded text-sm px-1 py-1.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+        >
+          #BaseDeDatos
+        </a>
+        <a
+          href="#"
+          class="text-gray-600 bg-white my-1 border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-normal rounded text-sm px-1 py-1.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+        >
+          #Mobile
+        </a>
+        <a
+          href="#"
+          class="text-gray-600 bg-white my-1 border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-normal rounded text-sm px-1 py-1.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+        >
+          #IA
+        </a>
+      </div>
+      <div>
+        5 min lectura
+      </div>
+    </div>
   </div>
 </div>

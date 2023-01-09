@@ -1,21 +1,19 @@
-<div class="">
-    <div class="border-solid border-b-[1px] my-3 py-3">
-        <div class="font-medium dark:text-white">
-            <div class="text-gray-700">Próximos Eventos</div>
-            <div class="text-sm text-gray-500 dark:text-gray-400">Ingeniero de Software</div>
-        </div>
-    </div>
-    <div class="border-solid border-b-[1px] my-3 py-3">
-        <div class="font-medium dark:text-white">
-            <div class="text-gray-700">Próximos Eventos</div>
-            <div class="text-sm text-gray-500 dark:text-gray-400">Ingeniero de Software</div>
-        </div>
-    </div>
-    <div class="border-solid my-3 py-3">
-        <div class="font-medium dark:text-white">
-            <div class="text-gray-700">Próximos Eventos</div>
-            <div class="text-sm text-gray-500 dark:text-gray-400">Ingeniero de Software</div>
-        </div>
-    </div>
-</div>
+---
+import EventsTimeLine from "./RightSideBar/eventsTimeLine.astro";
+import FeaturedMembers from "./RightSideBar/featuredMembers.astro";
+---
 
+<div class="">
+  <div class="border-solid border-b-[1px] mb-3 pb-3">
+    <EventsTimeLine />
+  </div>
+  <div class="border-solid border-b-[1px] mb-3 pb-3">
+    <FeaturedMembers />
+  </div>
+  <div class="border-solid mb-3 pb-3">
+    <div class="font-medium dark:text-white">
+      <div class="text-gray-800">Próximos Eventos</div>
+      <div class="text-sm text-gray-500 dark:text-gray-400">Ingeniero de Software</div>
+    </div>
+  </div>
+</div>
