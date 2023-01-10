@@ -10,6 +10,10 @@ export interface Props {
 const { href, title, body, image } = Astro.props;
 
 let BannerSyle = "background-image: url(" + image + ")";
+
+if (!image) {
+  BannerSyle = "display: none";
+}
 ---
 
 <div class="bg-white border border-gray-200 rounded-lg mb-5 dark:bg-gray-800 dark:border-gray-700 w-full">
@@ -22,7 +26,11 @@ let BannerSyle = "background-image: url(" + image + ")";
       <div class="flex items-center space-x-4">
         <img class="w-10 h-10 rounded-full" src="https://avatars.githubusercontent.com/u/53962116?v=4" alt="" />
         <div class="font-medium dark:text-white">
-          <div>Manuel Ernesto Garcia</div>
+          <div>
+            Manuel Ernesto Garcia
+            <spam class="mx-2 text-gray-700">•</spam>
+            <spam class="text-gray-500 font-normal"> 5d</spam>
+          </div>
           <div class="text-sm text-gray-500 dark:text-gray-400">Ingeniero de Software</div>
         </div>
       </div>
@@ -94,9 +102,7 @@ let BannerSyle = "background-image: url(" + image + ")";
           #IA
         </a>
       </div>
-      <div class="text-sm text-gray-500">
-        5 min lectura
-      </div>
+      <div class="text-sm text-gray-500">5 min lectura</div>
     </div>
   </div>
 </div>

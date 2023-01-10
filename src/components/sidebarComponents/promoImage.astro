@@ -1,0 +1,17 @@
+---
+const { url = "#", img, text } = Astro.props;
+
+const promoStyle = `background-image: url(${img})`;
+---
+
+<a
+  href={url}
+  class="flex group p-8 mb-8 h-36 bg-gray-500 hover:bg-blend-multiply text-left bg-local bg-center bg-no-repeat bg-cover rounded-lg transition-all duration-300"
+  style={promoStyle}
+>
+  <p
+    class="px-2 font-extrabold leading-tight tracking-tight opacity-0 text-white group-hover:opacity-100 transition-all duration-300"
+  >
+    {text}
+  </p>
+</a>
