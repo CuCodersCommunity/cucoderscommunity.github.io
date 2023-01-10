@@ -1,0 +1,11 @@
+---
+const { img, category, name } = Astro.props;
+---
+
+<a class="flex items-center space-x-4 my-4" href="#">
+  <img class="w-11 h-11 rounded-md bg-white" src={img} alt="" />
+  <div class="font-medium dark:text-white">
+    <div class="text-gray-700 font-medium">{name}</div>
+    <div class="ttext-sm font-normal text-gray-600">{category}</div>
+  </div>
+</a>
