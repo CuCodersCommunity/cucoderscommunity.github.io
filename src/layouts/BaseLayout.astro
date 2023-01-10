@@ -1,6 +1,7 @@
 ---
 import PageMetaTags from "../components/PageMetaTags.astro";
 import NavBar from "../components/NavBar.astro";
+import Footer from "../components/Footer.astro";
 
 const { title, description, image = "/assets/img/favicon.svg" } = Astro.props;
 ---
@@ -16,9 +17,10 @@ const { title, description, image = "/assets/img/favicon.svg" } = Astro.props;
   </head>
   <body class="bg-gray-50">
     <NavBar />
-    <div class="container flex flex-wrap items-center justify-between mx-auto pt-16 ">
+    <div class="container flex flex-wrap items-center justify-between mx-auto pt-16">
       <slot />
     </div>
+    <Footer />
     <script>
       import "flowbite";
     </script>
