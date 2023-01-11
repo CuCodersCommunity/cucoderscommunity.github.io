@@ -3,6 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import SideBar from "../components/SideBar.astro";
 import BlogCard from "../components/BlogCard.astro";
 import RightSideBar from "../components/RightSideBar.astro";
+import RightDrawer from "../components/rightDrawer.astro";
 ---
 
 <BaseLayout title="Welcome to CuCoders." description="CuCoders description">
@@ -46,3 +47,7 @@ import RightSideBar from "../components/RightSideBar.astro";
     </div>
   </div>
 </BaseLayout>
+
+<RightDrawer title="Categorías">
+  <SideBar isSideMenu = true/>
+</RightDrawer>
