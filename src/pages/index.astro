@@ -1,8 +1,8 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import SideBar from "../components/SideBar.astro";
-import BlogCard from "../components/BlogCard.astro";
-import RightSideBar from "../components/RightSideBar.astro";
+import BaseLayout from "../layouts/baseLayout.astro";
+import SideBar from "../components/sideBar.astro";
+import BlogCard from "../components/blogCard.astro";
+import RightSideBar from "../components/rightSideBar.astro";
 import RightDrawer from "../components/rightDrawer.astro";
 ---
 
@@ -49,5 +49,5 @@ import RightDrawer from "../components/rightDrawer.astro";
 </BaseLayout>
 
 <RightDrawer title="Categorías">
-  <SideBar isSideMenu = true/>
+  <SideBar isSideMenu={true} />
 </RightDrawer>
