@@ -11,28 +11,26 @@ if (!image) {
 
 <BaseLayout title={title} description={description} image={image}>
   <div
-    class="bg-white border lg:max-w-[58rem] mx-auto border-gray-200 rounded-lg mb-5 mt-12 dark:bg-gray-800 dark:border-gray-700 w-full"
+    class="bg-white border mx-5 md:mx-auto lg:max-w-[58rem] border-gray-200 rounded-lg mb-5 mt-6 md:mt-12 dark:bg-gray-800 dark:border-gray-700 w-full"
   >
-    <a href="#">
-      <div class="bg-cover bg-center h-[13rem] md:h-[14rem] lg:h-[28rem] rounded-t-lg" style={BannerSyle}></div>
-    </a>
+    <div class="bg-cover bg-center h-[15rem] md:h-[22rem] lg:h-[28rem] rounded-t-lg" style={BannerSyle}></div>
 
-    <div class="p-8 px-20">
+    <div class="p-8 md:px-15 lg:px-20">
       <div class="mb-5 flex justify-between">
         <div class="flex items-center space-x-4">
-          <img class="w-10 h-10 rounded-full" src="https://avatars.githubusercontent.com/u/53962116?v=4" alt="" />
+          <img class="w-12 h-12 rounded-full" src="https://avatars.githubusercontent.com/u/53962116?v=4" alt="" />
           <div class="font-medium dark:text-white">
             <div>
               Manuel Ernesto Garcia
               <spam class="mx-2 text-gray-700">•</spam>
-              <spam class="text-gray-500 font-normal"> 5d</spam>
+              <spam class="text-gray-500 font-normal"> {pubDate}</spam>
             </div>
             <div class="text-sm text-gray-500 dark:text-gray-400">Ingeniero de Software</div>
           </div>
         </div>
 
-        <div class="flex content-center">
-          <div class="text-sm text-gray-500">5 min lectura</div>
+        <div class="flex items-center">
+          <div class="text-sm hidden md:block text-gray-500 mr-4">5 min lectura</div>
           <button
             id="dropdownMenuIconHorizontalButton"
             data-dropdown-toggle="dropdownDotsHorizontal"
@@ -69,7 +67,7 @@ if (!image) {
           </div>
         </div>
       </div>
-      <h1 class="mb-2 text-4xl font-bold tracking-tight text-gray-900 dark:text-white">
+      <h1 class="mb-5 text-3xl md:text-4xl font-bold tracking-tight text-gray-900 dark:text-white">
         {title}
       </h1>
       <div class="my-2 flex justify-between">
@@ -78,7 +76,7 @@ if (!image) {
             tags.map((tag) => (
               <a
                 href="#"
-                class="text-gray-600 bg-white my-1 border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-normal rounded text-base px-1 py-1.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+                class="text-gray-600 bg-white my-1 border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-normal rounded md:text-base text-sm px-1 py-1.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
               >
                 {"#" + tag}
               </a>
@@ -86,9 +84,9 @@ if (!image) {
           }
         </div>
       </div>
-      <p class="mb-5 mt-5 font-normal text-gray-700 dark:text-gray-400">
+      <section class="mb-5 mt-5 prose lg:prose-lg">
         <slot />
-      </p>
+      </section>
     </div>
   </div>
 </BaseLayout>
