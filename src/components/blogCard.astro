@@ -11,6 +11,9 @@ const response = await octokit.request("GET /users/" + author, { username: autho
 const user_data = await response.data;
 const stats = readingTime(post.rawContent());
 const read_time = stats.text.replace("read", "");
+const description = post.frontmatter.description
+  ? post.frontmatter.description
+  : post.rawContent().slice(0, 160) + "...";
 
 const display_date = dayjs(post.frontmatter.pubDate).format("D MMM");
 
@@ -81,7 +84,7 @@ if (!post.frontmatter.image) {
       </h5>
     </a>
     <p class="mb-5 font-normal text-gray-700 dark:text-gray-400">
-      Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
+      {description}
     </p>
     <div class="my-2 flex justify-between">
       <div>

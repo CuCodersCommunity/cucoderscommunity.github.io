@@ -2,6 +2,7 @@
 layout: "../../../../layouts/postLayout.astro"
 title: "CuCoders | Propuesta inicial para una Comunidad de Desarrolladores Cubanos"
 pubDate: "Jan 13 2023"
+description: "Hace unos días salí buscando opiniones sobre que tan beneficioso sería tener una comunidad de desarrolladores cubanos y qué características debería tener."
 image: "https://user-images.githubusercontent.com/53962116/211159681-f1700806-8fa9-41d0-90c2-eb4ebdd6fec4.png"
 tags: ["BaseDeDatos","Mobile","IA"]
 ---

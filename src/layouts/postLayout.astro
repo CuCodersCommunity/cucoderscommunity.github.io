@@ -7,7 +7,7 @@ import { Octokit } from "octokit";
 
 dayjs.locale("es");
 
-const { title, description, pubDate, image, tags } = Astro.props.frontmatter;
+const { title, pubDate, image, tags } = Astro.props.frontmatter;
 const display_date = dayjs(pubDate).format("D MMM");
 const stats = readingTime(Astro.props.rawContent());
 const read_time = stats.text.replace("read", "");
@@ -16,6 +16,10 @@ const author = Astro.props.url.split("/")[2];
 const octokit = new Octokit({ auth: import.meta.env.SECRET_GITHUB_TOKEN });
 const response = await octokit.request("GET /users/" + author, { username: author });
 const user_data = await response.data;
+
+const description = Astro.props.frontmatter.description
+  ? Astro.props.frontmatter.description
+  : Astro.props.rawContent().slice(0, 160) + "...";
 
 if (!image) {
   banner_syle = "display: none";
