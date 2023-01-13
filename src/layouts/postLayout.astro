@@ -16,8 +16,6 @@ const author = Astro.props.url.split("/")[2];
 const response = await fetch("https://api.github.com/users/" + author);
 const user_data = await response.json();
 
-console.log(user_data);
-
 if (!image) {
   banner_syle = "display: none";
 }

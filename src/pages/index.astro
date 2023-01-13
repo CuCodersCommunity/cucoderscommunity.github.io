@@ -4,6 +4,12 @@ import SideBar from "../components/sideBar.astro";
 import BlogCard from "../components/blogCard.astro";
 import RightSideBar from "../components/rightSideBar.astro";
 import RightDrawer from "../components/rightDrawer.astro";
+
+const allPosts = await Astro.glob("../pages/dev/**/blog/*.md");
+
+allPosts.map((post) => {
+  console.log(post.frontmatter.title);
+});
 ---
 
 <BaseLayout title="CuCoders | La comunidad de los programadores cubanos" description="CuCoders description">

@@ -4,7 +4,7 @@ import NavBar from "../components/navBar.astro";
 import Footer from "../components/footer.astro";
 import MainDrawer from "../components/mainDrawer.astro";
 
-const { title, description, image = "/assets/img/favicon.svg" } = Astro.props;
+const { title, description, image = "/assets/img/favicon.png" } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -12,7 +12,7 @@ const { title, description, image = "/assets/img/favicon.svg" } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.png" />
     <meta name="generator" content={Astro.generator} />
     <PageMetaTags title={title} description={description} image={image} />
   </head>
