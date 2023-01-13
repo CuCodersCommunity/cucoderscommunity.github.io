@@ -4,37 +4,39 @@ import dayjs from "dayjs";
 import "dayjs/locale/es";
 import readingTime from "reading-time";
 
-const { title, description, pubDate, image, tags } = Astro.props.frontmatter;
+dayjs.locale("es");
 
-let BannerSyle = "background-image: url(" + image + ")";
+const { title, description, pubDate, image, tags } = Astro.props.frontmatter;
+const display_date = dayjs(pubDate).format("D MMM");
+const stats = readingTime(Astro.props.rawContent());
+const read_time = stats.text.replace("read", "");
+let banner_syle = "background-image: url(" + image + ")";
+
+const author = Astro.props.url.split("/")[2];
+const response = await fetch("https://api.github.com/users/" + author);
+const user_data = await response.json();
 
 if (!image) {
-  BannerSyle = "display: none";
+  banner_syle = "display: none";
 }
-
-dayjs.locale("es");
-const displayDate = dayjs(pubDate).format("D MMM");
-
-const stats = readingTime(Astro.props.rawContent());
-const readTime = stats.text.replace("read", "");
 ---
 
 <BaseLayout title={title} description={description} image={image}>
   <div
     class="bg-white border mx-5 md:mx-auto lg:max-w-[58rem] border-gray-200 rounded-lg mb-5 mt-6 md:mt-12 dark:bg-gray-800 dark:border-gray-700 w-full"
   >
-    <div class="bg-cover bg-center h-[15rem] md:h-[22rem] lg:h-[28rem] rounded-t-lg" style={BannerSyle}></div>
+    <div class="bg-cover bg-center h-[15rem] md:h-[22rem] lg:h-[28rem] rounded-t-lg" style={banner_syle}></div>
 
     <div class="p-8 md:px-15 lg:px-20">
       <div class="mb-5 flex justify-between">
         <div class="flex items-center space-x-4">
-          <img class="w-12 h-12 rounded-full" src="https://avatars.githubusercontent.com/u/53962116?v=4" alt="" />
+          <img class="w-12 h-12 rounded-full" src={user_data.avatar_url} alt={user_data.name + " avatar"} />
           <div class="font-medium dark:text-white">
             <div>
-              Manuel Ernesto Garcia
+              {user_data.name}
               <spam class="mx-2 text-gray-700">•</spam>
               <spam class="text-gray-500 font-normal capitalize" time-from-date>
-                {displayDate}
+                {display_date}
               </spam>
             </div>
             <div class="text-sm text-gray-500 dark:text-gray-400">Ingeniero de Software</div>
@@ -42,7 +44,7 @@ const readTime = stats.text.replace("read", "");
         </div>
 
         <div class="flex items-center">
-          <div class="text-sm hidden md:block text-gray-500 mr-3">{readTime} lectura</div>
+          <div class="text-sm hidden md:block text-gray-500 mr-3">{read_time} lectura</div>
           <button
             id="dropdownMenuIconHorizontalButton"
             data-dropdown-toggle="dropdownDotsHorizontal"
