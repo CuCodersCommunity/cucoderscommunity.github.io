@@ -1,38 +1,43 @@
 ---
-export interface Props {
-  title: string;
-  body: string;
-  href: string;
-  image: string;
-}
+import dayjs from "dayjs";
+import "dayjs/locale/es";
+import readingTime from "reading-time";
 
-const { href, title, body, image } = Astro.props;
+const { post } = Astro.props;
+const author = post.url.split("/")[2];
+const response = await fetch("https://api.github.com/users/" + author);
+const user_data = await response.json();
 
-let BannerSyle = "background-image: url(" + image + ")";
+const stats = readingTime(post.rawContent());
+const read_time = stats.text.replace("read", "");
 
-if (!image) {
+const display_date = dayjs(post.frontmatter.pubDate).format("D MMM");
+
+let BannerSyle = "background-image: url(" + post.frontmatter.image + ")";
+
+if (!post.frontmatter.image) {
   BannerSyle = "display: none";
 }
 ---
 
 <div class="bg-white border border-gray-200 rounded-lg mb-5 dark:bg-gray-800 dark:border-gray-700 w-full">
-  <a href="#">
+  <a href={post.url}>
     <div class="bg-cover bg-center h-[13rem] md:h-[14rem] lg:h-[20rem] rounded-t-lg" style={BannerSyle}></div>
   </a>
 
   <div class="p-5">
     <div class="mb-3 flex justify-between">
-      <div class="flex items-center space-x-4">
-        <img class="w-10 h-10 rounded-full" src="https://avatars.githubusercontent.com/u/53962116?v=4" alt="" />
+      <a href={user_data.html_url} class="flex items-center space-x-4">
+        <img class="w-10 h-10 rounded-full" src={user_data.avatar_url} alt={user_data.name + " avatar"} />
         <div class="font-medium dark:text-white">
           <div>
-            Manuel Ernesto Garcia
+            {user_data.name}
             <spam class="mx-2 text-gray-700">•</spam>
             <spam class="text-gray-500 font-normal"> 5d</spam>
           </div>
-          <div class="text-sm text-gray-500 dark:text-gray-400">Ingeniero de Software</div>
+          <div class="text-sm text-gray-500 dark:text-gray-400">Software Developer</div>
         </div>
-      </div>
+      </a>
 
       <button
         id="dropdownMenuIconHorizontalButton"
@@ -40,7 +45,7 @@ if (!image) {
         class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
         type="button"
       >
-      <img src="/assets/img/icons/menu-vertical-black.svg" class="h-6 w-6" />
+        <img src="/assets/img/icons/menu-vertical-black.svg" class="h-6 w-6" />
       </button>
 
       <!-- Dropdown menu -->
@@ -69,9 +74,9 @@ if (!image) {
       </div>
     </div>
 
-    <a href="#">
+    <a href={post.url}>
       <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-        Noteworthy technology acquisitions 2021
+        {post.frontmatter.title}
       </h5>
     </a>
     <p class="mb-5 font-normal text-gray-700 dark:text-gray-400">
@@ -79,26 +84,18 @@ if (!image) {
     </p>
     <div class="my-2 flex justify-between">
       <div>
-        <a
-          href="#"
-          class="text-gray-600 bg-white my-1 border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-normal rounded text-sm px-1 py-1.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
-        >
-          #BaseDeDatos
-        </a>
-        <a
-          href="#"
-          class="text-gray-600 bg-white my-1 border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-normal rounded text-sm px-1 py-1.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
-        >
-          #Mobile
-        </a>
-        <a
-          href="#"
-          class="text-gray-600 bg-white my-1 border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-normal rounded text-sm px-1 py-1.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
-        >
-          #IA
-        </a>
+        {
+          post.frontmatter.tags.map((tag) => (
+            <a
+              href="#"
+              class="text-gray-600 bg-white my-1 border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-normal rounded md:text-base text-sm px-1 py-1.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+            >
+              {"#" + tag}
+            </a>
+          ))
+        }
       </div>
-      <div class="text-sm text-gray-500">5 min lectura</div>
+      <div class="text-sm text-gray-500">{read_time + " lectura"}</div>
     </div>
   </div>
 </div>

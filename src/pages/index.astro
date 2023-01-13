@@ -6,10 +6,6 @@ import RightSideBar from "../components/rightSideBar.astro";
 import RightDrawer from "../components/rightDrawer.astro";
 
 const allPosts = await Astro.glob("../pages/dev/**/blog/*.md");
-
-allPosts.map((post) => {
-  console.log(post.frontmatter.title);
-});
 ---
 
 <BaseLayout title="CuCoders | La comunidad de los programadores cubanos" description="CuCoders description">
@@ -18,19 +14,7 @@ allPosts.map((post) => {
       <SideBar />
     </div>
     <div class="px-5 md:px-0">
-      <BlogCard
-        image="https://user-images.githubusercontent.com/53962116/211159681-f1700806-8fa9-41d0-90c2-eb4ebdd6fec4.png"
-      />
-      <BlogCard />
-
-      <BlogCard
-        image="https://user-images.githubusercontent.com/53962116/204863123-e37bb190-234d-4824-aed0-0b10cd7da102.png"
-      />
-      <BlogCard image="https://pbs.twimg.com/media/Fc49GEdXkAM9-yE?format=jpg&name=large" />
-      <BlogCard
-        image="https://user-images.githubusercontent.com/53962116/208708365-7fa46022-c9d9-4820-8a57-3f5756c04850.png"
-      />
-      <BlogCard image="https://images.ecency.com/DQmXtpVp9WyribREUviCm7VBs1AYzFvQ32jYZyzVCrbJGCp/asd.jpg" />
+      {allPosts.map((post) => <BlogCard post={post} />)}
 
       <div class="flex justify-center">
         <a
