@@ -1,5 +1,7 @@
 ---
 import BaseLayout from "./baseLayout.astro";
+import dayjs from "dayjs";
+import "dayjs/locale/es";
 const { title, description, pubDate, image, tags } = Astro.props.frontmatter;
 
 let BannerSyle = "background-image: url(" + image + ")";
@@ -7,6 +9,9 @@ let BannerSyle = "background-image: url(" + image + ")";
 if (!image) {
   BannerSyle = "display: none";
 }
+
+dayjs.locale("es");
+const displayDate = dayjs(pubDate).format("D MMM");
 ---
 
 <BaseLayout title={title} description={description} image={image}>
@@ -23,7 +28,9 @@ if (!image) {
             <div>
               Manuel Ernesto Garcia
               <spam class="mx-2 text-gray-700">•</spam>
-              <spam class="text-gray-500 font-normal"> {pubDate}</spam>
+              <spam class="text-gray-500 font-normal capitalize" time-from-date>
+                {displayDate}
+              </spam>
             </div>
             <div class="text-sm text-gray-500 dark:text-gray-400">Ingeniero de Software</div>
           </div>
