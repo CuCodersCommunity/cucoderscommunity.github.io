@@ -5,7 +5,7 @@ import BlogCard from "../components/blogCard.astro";
 import RightSideBar from "../components/rightSideBar.astro";
 import RightDrawer from "../components/rightDrawer.astro";
 
-const allPosts = await Astro.glob("../pages/dev/**/blog/*.md");
+const allPosts = (await Astro.glob("../pages/dev/**/blog/*.md")).sort((a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf());
 ---
 
 <BaseLayout title="CuCoders | La comunidad de los programadores cubanos" description="CuCoders description">
