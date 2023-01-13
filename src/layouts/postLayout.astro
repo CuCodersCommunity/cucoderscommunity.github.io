@@ -1,0 +1,94 @@
+---
+import BaseLayout from "./baseLayout.astro";
+const { title, description, pubDate, image, tags } = Astro.props.frontmatter;
+
+let BannerSyle = "background-image: url(" + image + ")";
+
+if (!image) {
+  BannerSyle = "display: none";
+}
+---
+
+<BaseLayout title={title} description={description} image={image}>
+  <div
+    class="bg-white border lg:max-w-[58rem] mx-auto border-gray-200 rounded-lg mb-5 mt-12 dark:bg-gray-800 dark:border-gray-700 w-full"
+  >
+    <a href="#">
+      <div class="bg-cover bg-center h-[13rem] md:h-[14rem] lg:h-[28rem] rounded-t-lg" style={BannerSyle}></div>
+    </a>
+
+    <div class="p-8 px-20">
+      <div class="mb-5 flex justify-between">
+        <div class="flex items-center space-x-4">
+          <img class="w-10 h-10 rounded-full" src="https://avatars.githubusercontent.com/u/53962116?v=4" alt="" />
+          <div class="font-medium dark:text-white">
+            <div>
+              Manuel Ernesto Garcia
+              <spam class="mx-2 text-gray-700">•</spam>
+              <spam class="text-gray-500 font-normal"> 5d</spam>
+            </div>
+            <div class="text-sm text-gray-500 dark:text-gray-400">Ingeniero de Software</div>
+          </div>
+        </div>
+
+        <div class="flex content-center">
+          <div class="text-sm text-gray-500">5 min lectura</div>
+          <button
+            id="dropdownMenuIconHorizontalButton"
+            data-dropdown-toggle="dropdownDotsHorizontal"
+            class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            type="button"
+          >
+            <img src="/assets/img/icons/menu-vertical-black.svg" class="h-6 w-6" />
+          </button>
+        </div>
+
+        <!-- Dropdown menu -->
+        <div
+          id="dropdownDotsHorizontal"
+          class="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
+        >
+          <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownMenuIconHorizontalButton">
+            <li>
+              <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a
+              >
+            </li>
+            <li>
+              <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
+            </li>
+            <li>
+              <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
+            </li>
+          </ul>
+          <div class="py-1">
+            <a
+              href="#"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+              >Separated link</a
+            >
+          </div>
+        </div>
+      </div>
+      <h1 class="mb-2 text-4xl font-bold tracking-tight text-gray-900 dark:text-white">
+        {title}
+      </h1>
+      <div class="my-2 flex justify-between">
+        <div>
+          {
+            tags.map((tag) => (
+              <a
+                href="#"
+                class="text-gray-600 bg-white my-1 border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-normal rounded text-base px-1 py-1.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+              >
+                {"#" + tag}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+      <p class="mb-5 mt-5 font-normal text-gray-700 dark:text-gray-400">
+        <slot />
+      </p>
+    </div>
+  </div>
+</BaseLayout>
