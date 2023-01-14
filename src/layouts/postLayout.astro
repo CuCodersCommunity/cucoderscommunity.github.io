@@ -28,7 +28,7 @@ if (!image) {
 
 <BaseLayout title={title} description={description} image={image}>
   <div
-    class="bg-white border mx-5 md:mx-auto lg:max-w-[58rem] border-gray-200 rounded-lg mb-5 mt-6 md:mt-12 dark:bg-gray-800 dark:border-gray-700 w-full"
+    class="bg-white border md:mx-auto mb-5 -mt-6 md:mt-12 lg:max-w-[58rem] border-gray-200 rounded-lg  dark:bg-gray-800 dark:border-gray-700 w-full"
   >
     <div class="bg-cover bg-center h-[15rem] md:h-[22rem] lg:h-[28rem] rounded-t-lg" style={banner_syle}></div>
 
@@ -103,7 +103,7 @@ if (!image) {
           }
         </div>
       </div>
-      <article class="my-5 prose lg:prose-lg prose-img:mx-auto max-w-none">
+      <article class="my-5 prose lg:prose-lg prose-img:mx-auto max-w-none break-words">
         <slot />
       </article>
     </div>
