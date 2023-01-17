@@ -59,12 +59,19 @@ import NewPostModal from "../components/modals/newPostModal.astro";
         <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Categorias*</label>
         <select id="tags" name="state[]" multiple placeholder="Categorias de la publicación (Max 3)" autocomplete="off">
           <option value="">Select a state...</option>
-          <option value="AL">Noticias</option>
-          <option value="AK">Startups</option>
-          <option value="AZ">Web</option>
-          <option value="AR">Ui/UX</option>
-          <option value="CA">Hardware</option>
-          <option value="CO">Base de Datos</option>
+          <option value="Noticias">Noticias</option>
+          <option value="Startups">Startups</option>
+          <option value="Web">Web</option>
+          <option value="UiUx">UI/UX</option>
+          <option value="Hardware">Hardware</option>
+          <option value="BaseDeDatos">Base de Datos</option>
+          <option value="NoCode">No-Code</option>
+          <option value="Blockchain">Blockchain</option>
+          <option value="Videojuegos">Videojuegos</option>
+          <option value="Mobile">Mobile</option>
+          <option value="Desktop">Desktop</option>
+          <option value="DevOps">DevOps</option>
+          <option value="IA">IA</option>
         </select>
       </div>
 
@@ -118,9 +125,9 @@ import NewPostModal from "../components/modals/newPostModal.astro";
 
   function validateSubmission() {
     const title = getValue("title");
-    const thumbnail = getValue("thumbnail-url");
+    const image = getValue("thumbnail-url");
     const username = getValue("username");
-    const pubName = Date.now();
+    const pubDate = Date.now();
     const tags = getValue("tags");
     const description = getValue("description");
 
@@ -129,10 +136,11 @@ import NewPostModal from "../components/modals/newPostModal.astro";
     const formattedTags = '["' + tags.replace(/,/g, '","') + '"]';
 
     let fileText = `---
+    layout: "../../../../layouts/postLayout.astro"    
 title: "${title}"
-thumbnail: "${thumbnail}"
+pubDate: "${pubDate}"
+image: "${image}"
 username: "${username}"
-pubName: "${pubName}"
 tags: ${formattedTags}
 description: "${description}"
 ---
