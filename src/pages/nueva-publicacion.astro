@@ -1,0 +1,176 @@
+---
+import BaseLayout from "../layouts/baseLayout.astro";
+import NewPostModal from "../components/modals/newPostModal.astro";
+---
+
+<BaseLayout title="Crear Nueva Publicación" description="Crea una nueva publicación en CuCoders">
+  <div
+    class="bg-white border md:mx-auto mb-5 -mt-6 md:mt-12 p-8 lg:max-w-[58rem] border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 w-full"
+  >
+    <div class="flex justify-between">
+      <h1 class="text-3xl font-bold">Nueva Publicación</h1>
+
+      <img
+        src="/assets/img/icons/sharp-help-outline.svg"
+        alt="Ayuda"
+        class="w-8 h-8 cursor-pointer mx-3"
+        data-modal-target="newPostModal"
+        data-modal-toggle="newPostModal"
+      />
+    </div>
+
+    <hr class="my-4" />
+
+    <div>
+      <div class="mb-4">
+        <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Titulo*</label>
+        <input
+          type="text"
+          id="title"
+          maxlength="120"
+          autocomplete="off"
+          placeholder="Titulo de de la publicación."
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
+        />
+      </div>
+
+      <div class="mb-4">
+        <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Descripción</label>
+        <textarea
+          id="description"
+          maxlength="250"
+          rows="2"
+          class="block p-2.5 w-full text-sm bg-gray-50 text-gray-900 rounded-lg border border-gray-300 focus:ring-gray-500 focus:border-gray-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
+          placeholder="Breve descripcion de la publicación."></textarea>
+      </div>
+
+      <div class="mb-4">
+        <label for="thumbnail-url" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Miniatura</label>
+        <input
+          id="thumbnail-url"
+          type="text"
+          autocomplete="off"
+          placeholder="URL de la miniatura de la publicación (Puede subirla luego desde su dispositivo en GitHub)"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
+        />
+      </div>
+
+      <div class="mb-4">
+        <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Categorias*</label>
+        <select id="tags" name="state[]" multiple placeholder="Categorias de la publicación (Max 3)" autocomplete="off">
+          <option value="">Select a state...</option>
+          <option value="AL">Noticias</option>
+          <option value="AK">Startups</option>
+          <option value="AZ">Web</option>
+          <option value="AR">Ui/UX</option>
+          <option value="CA">Hardware</option>
+          <option value="CO">Base de Datos</option>
+        </select>
+      </div>
+
+      <hr class="my-6" />
+
+      <div class="mb-6">
+        <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >Nombre de usuario de GitHub *</label
+        >
+
+        <div class="flex">
+          <span
+            class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-100 border border-r-0 border-gray-300 rounded-l-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600"
+          >
+            @
+          </span>
+          <input
+            type="text"
+            id="username"
+            autocomplete="off"
+            class="rounded-none rounded-r-lg border bg-gray-50 text-gray-900 focus:ring-gray-500 focus:border-gray-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
+            placeholder="username"
+          />
+        </div>
+      </div>
+
+      <div class="flex justify-center">
+        <button
+          onclick="validateSubmission()"
+          class="text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
+          >Redactar Publicación</button
+        >
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<NewPostModal />
+
+<link href="https://cdn.jsdelivr.net/npm/tom-select/dist/css/tom-select.css" rel="stylesheet" />
+<script is:inline src="https://cdn.jsdelivr.net/npm/tom-select/dist/js/tom-select.complete.min.js"></script>
+
+<script is:inline>
+  new TomSelect("#tags", {
+    maxItems: 3,
+  });
+
+  function getValue(name) {
+    return document.getElementById(name).value;
+  }
+
+  function validateSubmission() {
+    const title = getValue("title");
+    const thumbnail = getValue("thumbnail-url");
+    const username = getValue("username");
+    const pubName = Date.now();
+    const tags = getValue("tags");
+    const description = getValue("description");
+
+    const filename = title.replace(/\s/g, "-") + ".md";
+
+    const formattedTags = '["' + tags.replace(/,/g, '","') + '"]';
+
+    let fileText = `---
+title: "${title}"
+thumbnail: "${thumbnail}"
+username: "${username}"
+pubName: "${pubName}"
+tags: ${formattedTags}
+description: "${description}"
+---
+
+Aqui va el cuerpo de tu documento.
+
+`;
+
+    const encodedFileText = encodeURIComponent(fileText);
+
+    const githubQueryLink =
+      "https://github.com/CuCodersCommunity/cucoderscommunity.github.io/new/main/src/pages/dev/" +
+      username +
+      "/blog/new?value=" +
+      encodedFileText +
+      "&filename=" +
+      filename;
+
+    window.open(githubQueryLink);
+  }
+</script>
+
+<style is:inline>
+  .ts-control {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    padding: 0.6rem !important;
+    background-color: #f9fafb;
+    border-width: 1px px;
+    border-radius: 0.5rem;
+  }
+
+  .ts-control .item {
+    background-color: #e5e7eb !important;
+    border-radius: 0.3rem;
+  }
+
+  .full .ts-control {
+    background-color: #f3f4f6 !important;
+  }
+</style>
