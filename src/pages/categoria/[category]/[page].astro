@@ -17,7 +17,7 @@ export async function getStaticPaths({ paginate }) {
     const category = categoryObj.slug;
     return paginate(filteredPosts, {
       params: { category },
-      pageSize: 10,
+      pageSize: 6,
     });
   });
 }
