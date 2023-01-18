@@ -1,7 +1,8 @@
 ---
-import BaseLayout from "../../../layouts/mainLayout.astro";
+import MainLayout from "../../../layouts/mainLayout.astro";
 import categories from "../../../data/categories.json";
 import BlogCard from "../../../components/blogCard.astro";
+import Pagination from "../../../components/pagination.astro";
 
 export async function getStaticPaths({ paginate }) {
   let allCategories = [];
@@ -11,7 +12,8 @@ export async function getStaticPaths({ paginate }) {
 
   const allPosts = await Astro.glob("../../../pages/dev/**/blog/*.md");
   return allCategories.map((categoryObj) => {
-    const filteredPosts = allPosts.filter((post) => post.frontmatter.categories.includes(categoryObj.key));
+    let filteredPosts = allPosts.filter((post) => post.frontmatter.categories.includes(categoryObj.key));
+    filteredPosts.sort((a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf());
     const category = categoryObj.slug;
     return paginate(filteredPosts, {
       params: { category },
@@ -23,6 +25,7 @@ const { page } = Astro.props;
 const params = Astro.params;
 ---
 
-<BaseLayout title={params.category}>
+<MainLayout title={params.category}>
   {page.data.map((post) => <BlogCard post={post} />)}
-</BaseLayout>
+  <Pagination prev={page.url.prev} next={page.url.next} />
+</MainLayout>
