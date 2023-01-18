@@ -4,7 +4,7 @@ title: "5 consejos para mejorar tu proyecto en GitHub"
 pubDate: "Apr 15 2022"
 description: ""
 image: "https://img4.teletype.in/files/33/65/3365957f-caf4-4487-9ed0-2c4450556bc8.jpeg"
-categories: ["DevOps","Tutorial"]
+categories: ["devops","tutorials"]
 ---
 
 En los últimos años, GitHub se ha convertido en el sitio donde se encuentran los proyectos OpenSource más populares (y siendo de Microsoft, quien lo hubiera dicho).

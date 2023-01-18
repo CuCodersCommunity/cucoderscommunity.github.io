@@ -14,6 +14,7 @@ if (isSideMenu) {
 
 let categoriesList = [];
 for (const key in categories) {
+  categories[key].url = "/categoria/" + categories[key].slug + "/1";
   categoriesList.push(categories[key]);
 }
 ---
@@ -22,11 +23,7 @@ for (const key in categories) {
   <div class={sidebarClass}>
     <ul class="space-y-2">
       <Item text="Mostrar Todo" ico="/assets/img/icons/all.svg" url="/" />
-      {
-        categoriesList.map((category) => (
-          <Item text={category.text} ico={category.ico} url={"/categoria/" + category.slug + "/1"} />
-        ))
-      }
+      {categoriesList.map((category) => <Item text={category.text} ico={category.ico} url={category.url} />)}
     </ul>
   </div>
 
