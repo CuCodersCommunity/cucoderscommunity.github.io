@@ -1,114 +1,72 @@
 {
   "news": {
-    "id": "news",
     "slug": "noticias",
     "text": "Noticias",
-    "tag": "#Noticias",
-    "url": "/categoria/noticias/1",
     "ico": "/assets/img/icons/news.svg"
   },
   "tutorials": {
-    "id": "tutoriales",
     "slug": "tutoriales",
     "text": "Tutoriales",
-    "tag": "#Tutoriales",
-    "url": "/categoria/tutoriales/1",
     "ico": "/assets/img/icons/tutorial2.svg"
   },
   "startups": {
-    "id": "startups",
     "slug": "startups",
     "text": "Startups",
-    "tag": "#Startups",
-    "url": "/categoria/startups/1",
     "ico": "/assets/img/icons/business.svg"
   },
   "web": {
-    "id": "web",
     "slug": "web",
     "text": "Web",
-    "tag": "#Web",
-    "url": "/categoria/web/1",
     "ico": "/assets/img/icons/html5.svg"
   },
   "design": {
-    "id": "design",
     "slug": "diseño",
     "text": "Diseño",
-    "tag": "#Diseño",
-    "url": "/categoria/diseño/1",
     "ico": "/assets/img/icons/uiux.svg"
   },
   "hardware": {
-    "id": "hardware",
     "slug": "hardware",
     "text": "Hardware",
-    "tag": "#Hardware",
-    "url": "/categoria/hardware/1",
     "ico": "/assets/img/icons/hardware.svg"
   },
   "database": {
-    "id": "database",
     "slug": "base-de-datos",
     "text": "Base de Datos",
-    "tag": "#BaseDeDatos",
-    "url": "/categoria/base-de-datos/1",
     "ico": "/assets/img/icons/data.svg"
   },
   "nocode": {
-    "id": "nocode",
     "slug": "no-code",
     "text": "No-Code",
-    "tag": "#NoCode",
-    "url": "/categoria/no-code/1",
     "ico": "/assets/img/icons/no-code.svg"
   },
   "blockchain": {
-    "id": "blockchain",
     "slug": "blockchain",
     "text": "Blockchain",
-    "tag": "#Blockchain",
-    "url": "/categoria/blockchain/1",
     "ico": "/assets/img/icons/bitcoin.svg"
   },
   "videogames": {
-    "id": "videogames",
     "slug": "videojuegos",
     "text": "Videojuegos",
-    "tag": "#Videojuegos",
-    "url": "/categoria/videojuegos/1",
     "ico": "/assets/img/icons/games.svg"
   },
   "mobile": {
-    "id": "mobile",
     "slug": "mobile",
     "text": "Mobile",
-    "tag": "#Mobile",
-    "url": "/categoria/mobile/1",
     "ico": "/assets/img/icons/mobile.svg"
   },
   "desktop": {
-    "id": "desktop",
     "slug": "desktop",
     "text": "Desktop",
-    "tag": "#Desktop",
-    "url": "/categoria/desktop/1",
     "ico": "/assets/img/icons/desktop.svg"
   },
   "devops": {
-    "id": "devops",
     "slug": "devops",
     "text": "DevOps",
-    "tag": "#DevOps",
-    "url": "/categoria/devops/1",
     "ico": "/assets/img/icons/server.svg"
   },
   "ia": {
-    "id": "ia",
     "slug": "ia",
     "text": "IA",
-    "tag": "#IA",
-    "url": "/categoria/ia/1",
     "ico": "/assets/img/icons/ia.svg"
   }
 }
