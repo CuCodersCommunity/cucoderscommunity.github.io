@@ -1,6 +1,13 @@
 ---
 import BaseLayout from "../layouts/baseLayout.astro";
 import NewPostModal from "../components/modals/newPostModal.astro";
+import categories from "../data/categories.json";
+
+let categoriesList = [];
+for (const key in categories) {
+  categories[key].key = key;
+  categoriesList.push(categories[key]);
+}
 ---
 
 <BaseLayout title="Crear Nueva Publicación" description="Crea una nueva publicación en CuCoders">
@@ -57,22 +64,15 @@ import NewPostModal from "../components/modals/newPostModal.astro";
 
       <div class="mb-4">
         <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Categorias*</label>
-        <select id="categories" name="state[]" multiple placeholder="Categorias de la publicación (Max 3)" autocomplete="off">
+        <select
+          id="categories"
+          name="state[]"
+          multiple
+          placeholder="Categorias de la publicación (Max 3)"
+          autocomplete="off"
+        >
           <option value="">Select a state...</option>
-          <option value="Noticias">Noticias</option>
-          <option value="Startups">Startups</option>
-          <option value="Tutorials">Startups</option>
-          <option value="Web">Web</option>
-          <option value="Diseño">Diseño</option>
-          <option value="Hardware">Hardware</option>
-          <option value="BaseDeDatos">Base de Datos</option>
-          <option value="NoCode">No-Code</option>
-          <option value="Blockchain">Blockchain</option>
-          <option value="Videojuegos">Videojuegos</option>
-          <option value="Mobile">Mobile</option>
-          <option value="Desktop">Desktop</option>
-          <option value="DevOps">DevOps</option>
-          <option value="IA">IA</option>
+          {categoriesList.map((category) => <option value={category.key}>{category.text}</option>)}
         </select>
       </div>
 
