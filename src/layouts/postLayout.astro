@@ -7,7 +7,7 @@ import { Octokit } from "octokit";
 
 dayjs.locale("es");
 
-const { title, pubDate, image, tags } = Astro.props.frontmatter;
+const { title, pubDate, image, categories } = Astro.props.frontmatter;
 const display_date = dayjs(pubDate).format("D MMM");
 const stats = readingTime(Astro.props.rawContent());
 const read_time = stats.text.replace("read", "");
@@ -92,12 +92,12 @@ if (!image) {
       <div class="my-2 flex justify-between">
         <div>
           {
-            tags.map((tag) => (
+            categories.map((category) => (
               <a
                 href="#"
                 class="text-gray-600 bg-white my-1 border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-normal rounded md:text-base text-sm px-1 py-1.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
               >
-                {"#" + tag}
+                {"#" + category}
               </a>
             ))
           }

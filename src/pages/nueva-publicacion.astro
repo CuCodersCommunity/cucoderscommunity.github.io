@@ -57,7 +57,7 @@ import NewPostModal from "../components/modals/newPostModal.astro";
 
       <div class="mb-4">
         <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Categorias*</label>
-        <select id="tags" name="state[]" multiple placeholder="Categorias de la publicación (Max 3)" autocomplete="off">
+        <select id="categories" name="state[]" multiple placeholder="Categorias de la publicación (Max 3)" autocomplete="off">
           <option value="">Select a state...</option>
           <option value="Noticias">Noticias</option>
           <option value="Startups">Startups</option>
@@ -116,7 +116,7 @@ import NewPostModal from "../components/modals/newPostModal.astro";
 <script is:inline src="https://cdn.jsdelivr.net/npm/tom-select/dist/js/tom-select.complete.min.js"></script>
 
 <script is:inline>
-  new TomSelect("#tags", {
+  new TomSelect("#categories", {
     maxItems: 3,
   });
 
@@ -129,12 +129,12 @@ import NewPostModal from "../components/modals/newPostModal.astro";
     const image = getValue("thumbnail-url");
     const username = getValue("username");
     const pubDate = Date.now();
-    const tags = getValue("tags");
+    const categories = getValue("categories");
     const description = getValue("description");
 
     const filename = title.replace(/\s/g, "-") + ".md";
 
-    const formattedTags = '["' + tags.replace(/,/g, '","') + '"]';
+    const formattedCategories = '["' + categories.replace(/,/g, '","') + '"]';
 
     let fileText = `---
 layout: "../../../../layouts/postLayout.astro"    
@@ -142,7 +142,7 @@ title: "${title}"
 pubDate: "${pubDate}"
 image: "${image}"
 username: "${username}"
-tags: ${formattedTags}
+categories: ${formattedCategories}
 description: "${description}"
 ---
 

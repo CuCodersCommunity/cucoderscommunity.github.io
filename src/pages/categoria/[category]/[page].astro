@@ -1,0 +1,28 @@
+---
+import BaseLayout from "../../../layouts/mainLayout.astro";
+import categories from "../../../data/categories.json";
+
+export async function getStaticPaths({ paginate }) {
+
+  let allCategories =[];
+  for (const key in categories) {
+    allCategories.push(categories[key].slug);
+  }
+
+  const allPosts = await Astro.glob("../../../pages/dev/**/blog/*.md");
+  return allCategories.map((category) => {
+    const filteredPosts = allPosts.filter((post) => post.frontmatter.categories.includes(category));
+    return paginate(filteredPosts, {
+      params: { category },
+      pageSize: 10,
+    });
+  });
+}
+const { page } = Astro.props;
+const params = Astro.params;
+---
+
+<BaseLayout title={params.category}>
+  <p>Posts categoryged with {params.category}</p>
+  {page.data.map((post) => <li>{post.frontmatter.title}</li>)}
+</BaseLayout>
