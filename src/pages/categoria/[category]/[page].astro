@@ -6,13 +6,14 @@ import Pagination from "../../../components/pagination.astro";
 
 export async function getStaticPaths({ paginate }) {
   let allCategories = [];
+  allCategories.push({ key: 'todo', slug: "todo" });
   for (const key in categories) {
     allCategories.push({ key: key, slug: categories[key].slug });
   }
 
   const allPosts = await Astro.glob("../../../pages/dev/**/blog/*.md");
   return allCategories.map((categoryObj) => {
-    let filteredPosts = allPosts.filter((post) => post.frontmatter.categories.includes(categoryObj.key));
+    let filteredPosts = categoryObj.key == "todo" ? allPosts : allPosts.filter((post) => post.frontmatter.categories.includes(categoryObj.key));
     filteredPosts.sort((a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf());
     const category = categoryObj.slug;
     return paginate(filteredPosts, {

@@ -4,8 +4,14 @@ import SideBar from "../components/sideBar.astro";
 import BlogCard from "../components/blogCard.astro";
 import RightSideBar from "../components/rightSideBar.astro";
 import RightDrawer from "../components/rightDrawer.astro";
+import Pagination from "../components/pagination.astro";
 
-const allPosts = (await Astro.glob("../pages/dev/**/blog/*.md")).sort((a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf());
+const allPosts = (await Astro.glob("../pages/dev/**/blog/*.md")).sort(
+  (a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf()
+);
+
+const posts = allPosts.slice(0, 6);
+const showPagination = Object.keys(allPosts).length > 6;
 ---
 
 <BaseLayout title="CuCoders | La comunidad de los programadores cubanos" description="CuCoders description">
@@ -14,23 +20,8 @@ const allPosts = (await Astro.glob("../pages/dev/**/blog/*.md")).sort((a, b) => 
       <SideBar />
     </div>
     <div class="px-5 md:px-0">
-      {allPosts.map((post) => <BlogCard post={post} />)}
-
-      <div class="flex justify-center">
-        <a
-          href="#"
-          class="inline-flex items-center px-5 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-        >
-          Anterior
-        </a>
-
-        <a
-          href="#"
-          class="inline-flex items-center px-5 py-2 ml-3 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
-        >
-          Siguiente
-        </a>
-      </div>
+      {posts.map((post) => <BlogCard post={post} />)}
+      {showPagination && <Pagination next="/categoria/todo/2" />}
     </div>
     <div class="hidden lg:block">
       <RightSideBar />
