@@ -1,0 +1,40 @@
+---
+import BaseLayout from "../layouts/baseLayout.astro";
+import SideBar from "../components/sideBar.astro";
+import RightSideBar from "../components/rightSideBar.astro";
+import RightDrawer from "../components/rightDrawer.astro";
+---
+
+<BaseLayout title="CuCoders | La comunidad de los programadores cubanos" description="CuCoders description">
+  <div class="grid w-full mt-8 gap-8 grid-cols-1 md:grid-cols-[16rem_1fr] lg:grid-cols-[16rem_1fr_17rem]">
+    <div class="hidden md:block">
+      <SideBar />
+    </div>
+    <div class="px-5 md:px-0">
+      <slot />
+
+      <div class="flex justify-center">
+        <a
+          href="#"
+          class="inline-flex items-center px-5 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+        >
+          Anterior
+        </a>
+
+        <a
+          href="#"
+          class="inline-flex items-center px-5 py-2 ml-3 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
+        >
+          Siguiente
+        </a>
+      </div>
+    </div>
+    <div class="hidden lg:block">
+      <RightSideBar />
+    </div>
+  </div>
+</BaseLayout>
+
+<RightDrawer title="Categorías">
+  <SideBar isSideMenu={true} />
+</RightDrawer>

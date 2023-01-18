@@ -2,6 +2,7 @@
 import PromoCard from "./sidebarComponents/promoCard.astro";
 import PromoImage from "./sidebarComponents/promoImage.astro";
 import Item from "./sidebarComponents/sidebarItem.astro";
+import categories from "../data/categories.json";
 
 const { isSideMenu = false } = Astro.props;
 
@@ -10,25 +11,18 @@ let sidebarClass = "px-3 mb-5 py-4 overflow-y-auto rounded-md bg-white border-so
 if (isSideMenu) {
   sidebarClass = "mb-5 overflow-y-auto";
 }
+
+let categoriesList = [];
+for (const key in categories) {
+  categoriesList.push(categories[key]);
+}
 ---
 
 <aside class="w-64" aria-label="Sidebar">
   <div class={sidebarClass}>
     <ul class="space-y-2">
-      <Item text="Mostrar Todo" ico="/assets/img/icons/all.svg" url="#" />
-      <Item text="Noticias" ico="/assets/img/icons/news.svg" url="#" />
-      <Item text="Startups" ico="/assets/img/icons/business.svg" url="#" />
-      <Item text="Web" ico="/assets/img/icons/html5.svg" url="#" />
-      <Item text="UI/UX" ico="/assets/img/icons/uiux.svg" url="#" />
-      <Item text="Hardware" ico="/assets/img/icons/hardware.svg" url="#" />
-      <Item text="Base de Datos" ico="/assets/img/icons/data.svg" url="#" />
-      <Item text="No-Code" ico="/assets/img/icons/no-code.svg" url="#" />
-      <Item text="Blockchain" ico="/assets/img/icons/bitcoin.svg" url="#" />
-      <Item text="Videojuegos" ico="/assets/img/icons/games.svg" url="#" />
-      <Item text="Mobile" ico="/assets/img/icons/mobile.svg" url="#" />
-      <Item text="Desktop" ico="/assets/img/icons/desktop.svg" url="#" />
-      <Item text="DevOps" ico="/assets/img/icons/server.svg" url="#" />
-      <Item text="IA" ico="/assets/img/icons/ia.svg" url="#" />
+      <Item text="Mostrar Todo" ico="/assets/img/icons/all.svg" url="/" />
+      {categoriesList.map((category) => <Item text={category.text} ico={category.ico} url={category.url} />)}
     </ul>
   </div>
 

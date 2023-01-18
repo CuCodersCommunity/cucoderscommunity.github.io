@@ -1,0 +1,45 @@
+---
+import BaseLayout from "../../../layouts/mainLayout.astro";
+import categories from "../../../data/categories.json";
+
+export async function getStaticPaths({ paginate }) {
+  console.log(categories);
+
+  for (const key in categories) {
+      console.log(`${key}: ${categories[key]}`);
+  }
+
+  const allTags = [
+    "noticias",
+    "tutorials",
+    "startups",
+    "tutorials",
+    "web",
+    "diseño",
+    "hardware",
+    "base-de-datos",
+    "no-code",
+    "blockchain",
+    "videojuegos",
+    "mobile",
+    "desktop",
+    "devops",
+    "ia",
+  ];
+  const allPosts = await Astro.glob("../../../pages/dev/**/blog/*.md");
+  return allTags.map((tag) => {
+    const filteredPosts = allPosts.filter((post) => post.frontmatter.tags.includes(tag));
+    return paginate(filteredPosts, {
+      params: { tag },
+      pageSize: 10,
+    });
+  });
+}
+const { page } = Astro.props;
+const params = Astro.params;
+---
+
+<BaseLayout title={params.tag}>
+  <p>Posts tagged with {params.tag}</p>
+  {page.data.map((post) => <li>{post.frontmatter.title}</li>)}
+</BaseLayout>
