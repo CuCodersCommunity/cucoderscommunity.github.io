@@ -25,7 +25,7 @@ const showPagination = Object.keys(allPosts).length > 6;
     </div>
     <div class="px-5 md:px-0">
       {posts.map((post) => <BlogCard post={post} />)}
-      {showPagination && <Pagination next="/categoria/todo/2" />}
+      {showPagination && <Pagination next="/categorias/todo/2" />}
     </div>
     <div class="hidden lg:block">
       <RightSideBar />

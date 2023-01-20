@@ -1,5 +1,5 @@
 ---
-import MainLayout from "../../layouts/mainLayout.astro";
+import ProfileLayout from "../../layouts/profileLayout.astro";
 import { members_api_url } from "../../data/conf.json";
 
 const response = await fetch(members_api_url + "members-data");
@@ -20,6 +20,4 @@ export async function getStaticPaths() {
 const params = Astro.params;
 ---
 
-<MainLayout title={params.username}>
-  {members_data[params.username].username}
-</MainLayout>
+<ProfileLayout profile={members_data[params.username]} />

@@ -1,0 +1,63 @@
+---
+import BaseLayout from "./baseLayout.astro";
+
+const { profile } = Astro.props;
+---
+
+<BaseLayout title={profile.name} description={profile.bio} image={profile.avatar_url}>
+  <div
+    class="bg-white border md:mx-auto mb-5 -mt-6 md:mt-12 lg:max-w-[58rem] border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 w-full"
+  >
+    <div class="p-8 md:px-15 lg:px-20">
+      <div class="mb-5 flex justify-between">
+        <a href={profile.github_url} class="flex items-center space-x-4">
+          <img class="w-36 h-36 rounded-full" src={profile.avatar_url} alt={profile.name + " avatar"} />
+          <div class="font-medium dark:text-white">
+            <div class="text-2xl">
+              {profile.name}
+            </div>
+            <div class="text-base font-normal text-gray-600 dark:text-gray-500">{profile.headline}</div>
+            <div class="text-base font-normal ">{profile.bio}</div>
+          </div>
+        </a>
+
+        <div class="flex items-center">
+          <button
+            id="dropdownMenuIconHorizontalButton"
+            data-dropdown-toggle="dropdownDotsHorizontal"
+            class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            type="button"
+          >
+            <img src="/assets/img/icons/menu-vertical-black.svg" class="h-6 w-6" />
+          </button>
+        </div>
+
+        <!-- Dropdown menu -->
+        <div
+          id="dropdownDotsHorizontal"
+          class="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
+        >
+          <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownMenuIconHorizontalButton">
+            <li>
+              <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a
+              >
+            </li>
+            <li>
+              <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
+            </li>
+            <li>
+              <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
+            </li>
+          </ul>
+          <div class="py-1">
+            <a
+              href="#"
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+              >Separated link</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
