@@ -1,5 +1,5 @@
 ---
-const { url, toltip, icon, target = "_self", id } = Astro.props;
+const { url, text, img, target = "_self", id } = Astro.props;
 ---
 
 <a
@@ -9,7 +9,7 @@ const { url, toltip, icon, target = "_self", id } = Astro.props;
   class="hidden md:inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 keychainify-checked"
 >
   <slot />
-  <img src={icon} class="w-6 h-6 inline" />
+  <img src={img} class="w-6 h-6 inline" />
 </a>
 
 <div
@@ -19,7 +19,7 @@ const { url, toltip, icon, target = "_self", id } = Astro.props;
   style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate(976px, -64px);"
   data-popper-placement="top"
 >
-  {toltip}
+  {text}
   <div class="tooltip-arrow" data-popper-arrow="" style="position: absolute; left: 0px; transform: translate(99px, 0px);">
   </div>
 </div>

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "./baseLayout.astro";
+import LinkIcon from "../components/helpers/linkIcon.astro";
 
 const { profile } = Astro.props;
 ---
@@ -10,50 +11,54 @@ const { profile } = Astro.props;
   >
     <div class="p-8 md:px-15 lg:px-12">
       <div class="mb-5 flex justify-between">
-        <div class="flex items-center space-x-4">
+        <div class="flex items-center space-x-4 w-full">
           <img class="w-36 h-36 rounded-full mr-2" src={profile.avatar_url} alt={profile.name + " avatar"} />
-          <div class="font-medium dark:text-white">
+          <div class="font-medium dark:text-white grow">
             <div class="text-2xl mb-1 flex justify-between items-center">
-              <div class="">
+              <div class="text-gray-900">
                 {profile.name}
               </div>
               <div>
+                <LinkIcon
+                  url="https://t.me/CuCodersComunidad"
+                  img="/assets/img/icons/github.svg"
+                  text="Github"
+                  target="_blank"
+                  id="profile-github"
+                />
+                <LinkIcon
+                  url="https://t.me/CuCodersComunidad"
+                  img="/assets/img/icons/twitter.svg"
+                  text="Twitter"
+                  target="_blank"
+                  id="profile-twitter"
+                />
+
+
                 <a
                   href="https://t.me/CuCodersComunidad"
                   class="hidden md:inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 keychainify-checked"
                 >
-                  <img src="/assets/img/icons/github.svg" class="w-6 h-6 inline" />
+                  <img src="/assets/img/icons/linkedin.svg" class="w-6 h-6 inline" />
                 </a>
                 <a
-                href="https://t.me/CuCodersComunidad"
-                class="hidden md:inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 keychainify-checked"
-              >
-                <img src="/assets/img/icons/twitter.svg" class="w-6 h-6 inline" />
-              </a>
-              <a
-              href="https://t.me/CuCodersComunidad"
-              class="hidden md:inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 keychainify-checked"
-            >
-              <img src="/assets/img/icons/linkedin.svg" class="w-6 h-6 inline" />
-            </a>
-            <a
-            href="https://t.me/CuCodersComunidad"
-            class="hidden md:inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 keychainify-checked"
-          >
-            <img src="/assets/img/icons/web.svg" class="w-6 h-6 inline" />
-          </a>
-      
+                  href="https://t.me/CuCodersComunidad"
+                  class="hidden md:inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 keychainify-checked"
+                >
+                  <img src="/assets/img/icons/web.svg" class="w-6 h-6 inline" />
+                </a>
               </div>
             </div>
             <div class="text-base mb-3 font-normal flex text-gray-600 dark:text-gray-500">
-            <div>
-              {profile.headline}
-              </div>  
-              <div class="ml-10">
-                Cuba
-                </div>  
+              <div>
+                {profile.headline}
+              </div>
+              <div class="ml-5 flex items-center">
+                <img src="/assets/img/icons/map.svg" class="w-5 h-5 inline" />
+                <spam class="ml-1">Cuba</spam>
+              </div>
             </div>
-            <div class="text-base mb-1 font-normal">{profile.bio}</div>
+            <div class="text-sm mb-1 font-normal text-gray-900">{profile.bio}</div>
           </div>
         </div>
       </div>
