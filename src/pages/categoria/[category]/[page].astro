@@ -14,7 +14,7 @@ export async function getStaticPaths({ paginate }) {
   const allPosts = await Astro.glob("../../../pages/dev/**/blog/*.md");
   return allCategories.map((categoryObj) => {
     let filteredPosts = categoryObj.key == "todo" ? allPosts : allPosts.filter((post) => post.frontmatter.categories.includes(categoryObj.key));
-    filteredPosts.sort((a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.  .pubDate).valueOf());
+    filteredPosts.sort((a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf());
     const category = categoryObj.slug;
     return paginate(filteredPosts, {
       params: { category },
