@@ -3,13 +3,12 @@ import dayjs from "dayjs";
 import "dayjs/locale/es";
 import readingTime from "reading-time";
 import categories from "../data/categories.json";
-import { Octokit } from "octokit";
+import {members_api_url} from "../data/conf.json"
 
 const { post } = Astro.props;
 const author = post.url.split("/")[2];
-const octokit = new Octokit({ auth: import.meta.env.SECRET_GITHUB_TOKEN });
-const response = await octokit.request("GET /users/" + author, { username: author });
-const user_data = await response.data;
+const response = await fetch(members_api_url+"/members/"+author);
+const user_data = await response.json();
 const stats = readingTime(post.rawContent());
 const read_time = stats.text.replace("read", "");
 const description = post.frontmatter.description ? post.frontmatter.description : post.rawContent().slice(0, 160) + "...";
@@ -30,8 +29,8 @@ if (!post.frontmatter.image) {
 
   <div class="p-5">
     <div class="mb-3 flex justify-between">
-      <a href={user_data.html_url} class="flex items-center space-x-4">
-        <img class="w-10 h-10 rounded-full" src={user_data.avatar_url} alt={user_data.name + " avatar"} />
+      <a href={user_data.github_url} class="flex items-center space-x-4">
+        <img class="w-10 h-10 rounded-full" src={user_data.avatar_url_small} alt={user_data.name + " avatar"} />
         <div class="font-medium dark:text-white">
           <div>
             {user_data.name}
