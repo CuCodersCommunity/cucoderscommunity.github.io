@@ -4,7 +4,7 @@ import NavBar from "../components/navBar.astro";
 import Footer from "../components/footer.astro";
 import MainDrawer from "../components/mainDrawer.astro";
 
-const { title, description, image = "/assets/img/favicon.png" } = Astro.props;
+const { title, description, image = "/assets/img/favicon.png", hasRightSidebar=false } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -17,7 +17,7 @@ const { title, description, image = "/assets/img/favicon.png" } = Astro.props;
     <PageMetaTags title={title} description={description} image={image} />
   </head>
   <body class="bg-gray-50">
-    <NavBar />
+    <NavBar hasRightSidebar={hasRightSidebar} />
     <MainDrawer />
     <div class="container flex flex-wrap items-center justify-between mx-auto pt-16">
       <slot />

@@ -14,7 +14,11 @@ const posts = allPosts.slice(0, 6);
 const showPagination = Object.keys(allPosts).length > 6;
 ---
 
-<BaseLayout title="CuCoders | La comunidad de los programadores cubanos" description="CuCoders description">
+<BaseLayout
+  title="CuCoders | La comunidad de los programadores cubanos"
+  description="CuCoders description"
+  hasRightSidebar={true}
+>
   <div class="grid w-full mt-8 gap-8 grid-cols-1 md:grid-cols-[16rem_1fr] lg:grid-cols-[16rem_1fr_17rem]">
     <div class="hidden md:block">
       <SideBar />
