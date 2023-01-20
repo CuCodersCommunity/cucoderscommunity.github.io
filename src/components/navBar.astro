@@ -1,5 +1,6 @@
 ---
 const { hasRightSidebar } = Astro.props;
+import LinkIcon from "./helpers/linkIcon.astro";
 ---
 
 <nav
@@ -40,56 +41,25 @@ const { hasRightSidebar } = Astro.props;
         )
       }
     </div>
-
     <div class="md:order-2 hidden md:flex">
-      <a
-        href="https://t.me/CuCodersComunidad"
-        data-tooltip-target="tooltip-community-2"
-        class="hidden md:inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 mr-1 keychainify-checked"
-      >
-        <span class="mr-2 font-medium inline"> Comunidad</span>
-        <img src="/assets/img/icons/people2.svg" class="w-6 h-6 inline" />
-        <span class="sr-only">Únete a la comunidad en Telegram</span>
-      </a>
-      <div
-        id="tooltip-community-2"
-        role="tooltip"
-        class="absolute z-10 inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm tooltip opacity-0 invisible"
-        style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate(976px, -64px);"
-        data-popper-placement="top"
-      >
-        Comunidad en Telegram
-        <div
-          class="tooltip-arrow"
-          data-popper-arrow=""
-          style="position: absolute; left: 0px; transform: translate(99px, 0px);"
+      <div class="mr-1">
+        <LinkIcon
+          url="https://t.me/CuCodersComunidad"
+          toltip="Comunidad en Telegram"
+          id="nav-community-icon"
+          target="_blank"
+          icon="/assets/img/icons/people2.svg"
         >
-        </div>
+          <span class="mr-2 font-medium inline"> Comunidad</span>
+        </LinkIcon>
       </div>
-
-      <a
-        href="https://github.com/cucoderscommunity"
-        data-tooltip-target="tooltip-github-2"
-        class="hidden sm:inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 mr-1 keychainify-checked"
-      >
-        <img src="/assets/img/icons/github.svg" class="w-6 h-6" />
-        <span class="sr-only">Ver en Github</span>
-      </a>
-      <div
-        id="tooltip-github-2"
-        role="tooltip"
-        class="absolute z-10 inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm tooltip opacity-0 invisible"
-        style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate(970px, -62px);"
-        data-popper-placement="top"
-      >
-        Ver en Github
-        <div
-          class="tooltip-arrow"
-          data-popper-arrow=""
-          style="position: absolute; left: 0px; transform: translate(60px, 0px);"
-        >
-        </div>
-      </div>
+      <LinkIcon
+        url="https://github.com/cucoderscommunity"
+        toltip="Ver en Github"
+        id="nav-github-icon"
+        target="_blank"
+        icon="/assets/img/icons/github.svg"
+      />
     </div>
     <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
       <ul
