@@ -47,6 +47,13 @@ const content = marked.parse(markdown);
                 />
                 <LinkIcon
                   url="https://t.me/CuCodersComunidad"
+                  img="/assets/img/icons/telegram.svg"
+                  text="Telegram"
+                  target="_blank"
+                  id="profile-telegram"
+                />
+                <LinkIcon
+                  url="https://t.me/CuCodersComunidad"
                   img="/assets/img/icons/linkedin.svg"
                   text="Linkedin"
                   target="_blank"
@@ -59,13 +66,6 @@ const content = marked.parse(markdown);
                   target="_blank"
                   id="profile-github"
                 />
-                <LinkIcon
-                  url="https://t.me/CuCodersComunidad"
-                  img="/assets/img/icons/telegram.svg"
-                  text="Telegram"
-                  target="_blank"
-                  id="profile-telegram"
-                />
               </div>
             </div>
             <div class="text-base mb-3 font-normal flex text-gray-600 dark:text-gray-500">
@@ -77,7 +77,14 @@ const content = marked.parse(markdown);
                 <spam class="ml-1">Cuba</spam>
               </div>
             </div>
-            <div class="text-sm mb-1 font-normal text-gray-900">{profile.bio}</div>
+            <div class="text-sm mb-4 font-normal text-gray-900">{profile.bio}</div>
+            <div>
+              {
+                profile.roles.map((role) => (
+                  <div class="inline rounded-md bg-gray-50 text-gray-800 font-normal text-sm py-1 px-2 mr-3 ">{role}</div>
+                ))
+              }
+            </div>
           </div>
         </div>
       </div>
@@ -153,6 +160,24 @@ const content = marked.parse(markdown);
                 ></path></svg
               >
               Blog
+            </a>
+          </li>
+          <li class="mr-2">
+            <a
+              href="#"
+              class="inline-flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-5 h-5 mr-2 text-gray-400 group-hover:text-gray-500 dark:text-gray-500 dark:group-hover:text-gray-300"
+                fill="currentColor"
+                viewBox="0 0 32 32"
+                ><path
+                  fill="currentColor"
+                  d="M24 21c-.5 0-1-.2-1.4-.6l-3-3c-.4-.4-.6-.9-.6-1.4s.2-1 .6-1.4l3-3c.4-.4.9-.6 1.4-.6c.5 0 1 .2 1.4.6l3 3c.4.4.6.9.6 1.4c0 .5-.2 1-.6 1.4l-3 3c-.4.4-.9.6-1.4.6zm0-8l-3 3l3 3l3-3l-3-3zm-8 0c-.5 0-1-.2-1.4-.6l-3-3C11.2 9 11 8.5 11 8s.2-1 .6-1.4l3-3c.4-.4.9-.6 1.4-.6c.5 0 1 .2 1.4.6l3 3c.4.4.6.9.6 1.4c0 .5-.2 1-.6 1.4l-3 3c-.4.4-.9.6-1.4.6zm0-8l-3 3l3 3l3-3l-3-3zm0 24c-.5 0-1-.2-1.4-.6l-3-3c-.4-.4-.6-.9-.6-1.4s.2-1 .6-1.4l3-3c.4-.4.9-.6 1.4-.6c.5 0 1 .2 1.4.6l3 3c.4.4.6.9.6 1.4c0 .5-.2 1-.6 1.4l-3 3c-.4.4-.9.6-1.4.6zm0-8l-3 3l3 3l3-3l-3-3zm-8 0c-.5 0-1-.2-1.4-.6l-3-3C3.2 17 3 16.5 3 16s.2-1 .6-1.4l3-3c.4-.4.9-.6 1.4-.6c.5 0 1 .2 1.4.6l3 3c.4.4.6.9.6 1.4c0 .5-.2 1-.6 1.4l-3 3c-.4.4-.9.6-1.4.6zm0-8l-3 3l3 3l3-3l-3-3z"
+                ></path></svg
+              >
+              Proyectos
             </a>
           </li>
           <li class="mr-2">
