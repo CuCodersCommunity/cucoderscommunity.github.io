@@ -19,7 +19,6 @@ export async function getStaticPaths() {
 }
 
 const params = Astro.params;
-
 const pageResponse = await fetch(`https://raw.githubusercontent.com/${params.username}/${params.username}/main/README.md`);
 const markdown = await pageResponse.text();
 const content = marked.parse(markdown);

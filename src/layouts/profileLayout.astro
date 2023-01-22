@@ -12,7 +12,7 @@ const { profile, activeTab } = Astro.props;
   <div
     class="bg-white border md:mx-auto mb-5 lg:max-w-[58rem] border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 w-full"
   >
-    <ProfileTabs activeTab={activeTab} />
+    <ProfileTabs activeTab={activeTab} profile={profile} />
     <slot />
   </div>
 </BaseLayout>

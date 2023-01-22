@@ -1,6 +1,5 @@
 ---
-const { activeTab } = Astro.props;
-console.log(activeTab);
+const { activeTab, profile } = Astro.props;
 
 const activeTabClasses =
   "inline-flex p-4 text-gray-600 border-b-2 border-gray-600 rounded-t-lg active dark:text-gray-500 dark:border-gray-500 group";
@@ -19,7 +18,7 @@ for (const tab of tabsNames) {
   <div class="border-b border-gray-200 dark:border-gray-700">
     <ul class="flex flex-wrap -mb-px text-sm justify-center font-medium text-center text-gray-500 dark:text-gray-400">
       <li class="mr-2">
-        <a href="#" class={tabsClasses["profile"]} aria-current="page">
+        <a href={"/dev/"+profile.username} class={tabsClasses["profile"]} aria-current="page">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
@@ -35,7 +34,7 @@ for (const tab of tabsNames) {
         </a>
       </li>
       <li class="mr-2">
-        <a href="#" class={tabsClasses["cv"]}>
+        <a href={"/dev/"+profile.username+"/curriculo"} class={tabsClasses["cv"]}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="w-5 h-5 mr-2 text-gray-400 group-hover:text-gray-500 dark:text-gray-500 dark:group-hover:text-gray-300"

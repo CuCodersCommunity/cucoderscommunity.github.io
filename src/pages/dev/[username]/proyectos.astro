@@ -1,0 +1,23 @@
+---
+import ProfileLayout from "../../../layouts/profileLayout.astro";
+import { members_api_url } from "../../../data/conf.json";
+
+const response = await fetch(members_api_url + "members-data");
+const members_data = await response.json();
+
+export async function getStaticPaths() {
+  const response = await fetch(members_api_url + "members-list");
+  const members_list = await response.json();
+  var pathsList = [];
+
+  for (const key of members_list) {
+    const obj = { params: { username: key } };
+    pathsList.push(obj);
+  }
+  return pathsList;
+}
+
+const params = Astro.params;
+---
+
+<ProfileLayout profile={members_data[params.username]} activeTab="projects" />
