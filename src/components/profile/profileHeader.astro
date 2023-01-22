@@ -1,0 +1,85 @@
+---
+import LinkIcon from "../../components/helpers/linkIcon.astro";
+
+const { profile } = Astro.props;
+---
+
+<div
+  class="bg-white border md:mx-auto mb-5 -mt-6 md:mt-12 lg:max-w-[58rem] border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 w-full"
+>
+  <div class="p-8 md:px-15 lg:px-12">
+    <div class="mb-5 flex justify-between">
+      <div class="flex items-center space-x-4 w-full">
+        <img class="w-36 h-36 rounded-full mr-2" src={profile.avatar_url} alt={profile.name + " avatar"} />
+        <div class="font-medium dark:text-white grow">
+          <div class="text-2xl mb-1 flex justify-between items-center">
+            <div class="text-gray-900">
+              {profile.name}
+            </div>
+            <div>
+              <LinkIcon
+                url="https://t.me/CuCodersComunidad"
+                img="/assets/img/icons/web.svg"
+                text="Web"
+                target="_blank"
+                id="profile-web"
+              />
+              <LinkIcon
+                url="https://t.me/CuCodersComunidad"
+                img="/assets/img/icons/email.svg"
+                text="Email"
+                target="_blank"
+                id="profile-email"
+              />
+              <LinkIcon
+                url="https://t.me/CuCodersComunidad"
+                img="/assets/img/icons/twitter.svg"
+                text="Twitter"
+                target="_blank"
+                id="profile-twitter"
+              />
+              <LinkIcon
+                url="https://t.me/CuCodersComunidad"
+                img="/assets/img/icons/telegram.svg"
+                text="Telegram"
+                target="_blank"
+                id="profile-telegram"
+              />
+              <LinkIcon
+                url="https://t.me/CuCodersComunidad"
+                img="/assets/img/icons/linkedin.svg"
+                text="Linkedin"
+                target="_blank"
+                id="profile-linkedin"
+              />
+              <LinkIcon
+                url="https://t.me/CuCodersComunidad"
+                img="/assets/img/icons/github.svg"
+                text="Github"
+                target="_blank"
+                id="profile-github"
+              />
+            </div>
+          </div>
+          <div class="text-base mb-3 font-normal flex text-gray-600 dark:text-gray-500">
+            <div>
+              {profile.headline}
+            </div>
+            <div class="ml-5 flex items-center">
+              <img src="/assets/img/icons/map.svg" class="w-5 h-5 inline" />
+              <spam class="ml-1">Cuba</spam>
+            </div>
+          </div>
+          <div class="text-sm mb-4 font-normal text-gray-900">{profile.bio}</div>
+          <div>
+            {
+              profile.roles.map((role) => (
+                <div class="inline rounded-md bg-gray-50 text-gray-800 font-normal text-sm py-1 px-2 mr-3 ">{role}</div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
