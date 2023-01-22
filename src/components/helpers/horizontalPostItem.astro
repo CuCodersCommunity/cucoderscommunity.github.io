@@ -4,10 +4,10 @@ const description = post.frontmatter.description ? post.frontmatter.description 
 ---
 
 <a
-  href="#"
+  href={post.url}
   class="flex items-center bg-white border-b border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
 >
-  <img class="object-cover w-full rounded-lg h-96 md:h-auto md:w-48" src={post.frontmatter.image} alt="" />
+  <img class="object-cover w-full mr-5 rounded-lg h-96 md:h-auto md:w-48" src={post.frontmatter.image} alt="" />
   <div class="flex flex-col justify-between p-4 leading-normal">
     <h5 class="mb-2 text-lg font-medium tracking-tight text-gray-900 dark:text-white">
       {post.frontmatter.title}

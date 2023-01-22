@@ -25,7 +25,7 @@ const userPosts = allPosts.filter((post) => post.file.includes("/dev/" + params.
 ---
 
 <ProfileLayout profile={members_data[params.username]} activeTab="blog">
-  <div class="px-6 my-5">
+  <div class="px-10 my-5">
     {userPosts.map((post) => <HorizontalPostItem post={post} />)}
   </div>
 </ProfileLayout>
