@@ -3,13 +3,7 @@ import BaseLayout from "./baseLayout.astro";
 import ProfileHeader from "../components/profile/profileHeader.astro";
 import ProfileTabs from "../components/profile/profileTabs.astro";
 
-import { marked } from "marked";
-
-const { profile } = Astro.props;
-
-const response = await fetch(`https://raw.githubusercontent.com/${profile.username}/${profile.username}/main/README.md`);
-const markdown = await response.text();
-const content = marked.parse(markdown);
+const { profile, activeTab } = Astro.props;
 ---
 
 <BaseLayout title={profile.name} description={profile.bio} image={profile.avatar_url}>
@@ -18,10 +12,7 @@ const content = marked.parse(markdown);
   <div
     class="bg-white border md:mx-auto mb-5 lg:max-w-[58rem] border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 w-full"
   >
-    <ProfileTabs />
-    <article
-      class="my-5 prose-base mx-auto px-10 py-6 prose-h2:mt-3 prose-ul:list-disc prose-img:m-0 prose-img:inline break-words"
-      set:html={content}
-    />
+    <ProfileTabs activeTab={activeTab} />
+    <slot />
   </div>
 </BaseLayout>

@@ -1,12 +1,25 @@
+---
+const { activeTab } = Astro.props;
+console.log(activeTab);
+
+const activeTabClasses =
+  "inline-flex p-4 text-gray-600 border-b-2 border-gray-600 rounded-t-lg active dark:text-gray-500 dark:border-gray-500 group";
+const tabClasses =
+  "inline-flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group";
+
+const tabsNames = ["profile", "cv", "blog", "projects", "apps", "services"];
+let tabsClasses = {};
+
+for (const tab of tabsNames) {
+  tabsClasses[tab] = tab == activeTab ? activeTabClasses : tabClasses;
+}
+---
+
 <div>
   <div class="border-b border-gray-200 dark:border-gray-700">
     <ul class="flex flex-wrap -mb-px text-sm justify-center font-medium text-center text-gray-500 dark:text-gray-400">
       <li class="mr-2">
-        <a
-          href="#"
-          class="inline-flex p-4 text-gray-600 border-b-2 border-gray-600 rounded-t-lg active dark:text-gray-500 dark:border-gray-500 group"
-          aria-current="page"
-        >
+        <a href="#" class={tabsClasses["profile"]} aria-current="page">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="currentColor"
@@ -22,10 +35,7 @@
         </a>
       </li>
       <li class="mr-2">
-        <a
-          href="#"
-          class="inline-flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group"
-        >
+        <a href="#" class={tabsClasses["cv"]}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="w-5 h-5 mr-2 text-gray-400 group-hover:text-gray-500 dark:text-gray-500 dark:group-hover:text-gray-300"
@@ -49,10 +59,7 @@
         </a>
       </li>
       <li class="mr-2">
-        <a
-          href="#"
-          class="inline-flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group"
-        >
+        <a href="#" class={tabsClasses["blog"]}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="w-5 h-5 mr-2 text-gray-400 group-hover:text-gray-500 dark:text-gray-500 dark:group-hover:text-gray-300"
@@ -67,10 +74,7 @@
         </a>
       </li>
       <li class="mr-2">
-        <a
-          href="#"
-          class="inline-flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group"
-        >
+        <a href="#" class={tabsClasses["projects"]}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="w-5 h-5 mr-2 text-gray-400 group-hover:text-gray-500 dark:text-gray-500 dark:group-hover:text-gray-300"
@@ -85,10 +89,7 @@
         </a>
       </li>
       <li class="mr-2">
-        <a
-          href="#"
-          class="inline-flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group"
-        >
+        <a href="#" class={tabsClasses["apps"]}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="w-5 h-5 mr-2 text-gray-400 group-hover:text-gray-500 dark:text-gray-500 dark:group-hover:text-gray-300"
@@ -104,10 +105,7 @@
         </a>
       </li>
       <li class="mr-2">
-        <a
-          href="#"
-          class="inline-flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group"
-        >
+        <a href="#" class={tabsClasses["services"]}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="w-5 h-5 mr-2 text-gray-400 group-hover:text-gray-500 dark:text-gray-500 dark:group-hover:text-gray-300"
