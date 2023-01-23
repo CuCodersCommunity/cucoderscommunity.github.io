@@ -17,6 +17,71 @@
   "backendDev": {
     "slug": "back-end-developer",
     "text": "Back-end Developer",
-    "ico": "/assets/img/icons/frontend.svg"
+    "ico": "/assets/img/icons/backend.svg"
+  },
+  "mobileDev": {
+    "slug": "mobile-developer",
+    "text": "Mobile Developer",
+    "ico": "/assets/img/icons/mobile.svg"
+  },
+  "gameDev": {
+    "slug": "game-developer",
+    "text": "Game Developer",
+    "ico": "/assets/img/icons/games.svg"
+  },
+  "ioTDev": {
+    "slug": "iot-developer",
+    "text": "IoT Developer",
+    "ico": "/assets/img/icons/iot.svg"
+  },
+  "blockchainDev": {
+    "slug": "blockchain-developer",
+    "text": "Blockchain Developer",
+    "ico": "/assets/img/icons/blockchain.svg"
+  },
+  "vrDev": {
+    "slug": "vr-ar-developer",
+    "text": "VR / AR Developer",
+    "ico": "/assets/img/icons/vr.svg"
+  },
+  "devOpsEng": {
+    "slug": "devops-engineer",
+    "text": "DevOps Engineer",
+    "ico": "/assets/img/icons/server.svg"
+  },
+  "dataEng": {
+    "slug": "data-engineer",
+    "text": "Data Engineer",
+    "ico": "/assets/img/icons/data.svg"
+  },
+  "cloudEng": {
+    "slug": "cloud-engineer",
+    "text": "Cloud Engineer",
+    "ico": "/assets/img/icons/cloud.svg"
+  },
+  "sysAdmin": {
+    "slug": "system-administrator",
+    "text": "System Administrator",
+    "ico": "/assets/img/icons/server.svg"
+  },
+  "qa": {
+    "slug": "qa-engineer",
+    "text": "Q.A. Engineer",
+    "ico": "/assets/img/icons/QA.svg"
+  },
+  "technicalLead": {
+    "slug": "technical-lead",
+    "text": "Technical Lead",
+    "ico": "/assets/img/icons/admin.svg"
+  },
+  "ai": {
+    "slug": "ai-ml-Engineer",
+    "text": "A.I./M.L. Engineer",
+    "ico": "/assets/img/icons/ai.svg"
+  },
+  "cybersecurityEngineer": {
+    "slug": "cybersecurity-engineer",
+    "text": "Cybersecurity Engineer",
+    "ico": "/assets/img/icons/security.svg"
   }
 }
