@@ -8,18 +8,18 @@ categories: ["tutorials"]
 description: "CV Maker es una herramienta de creación de currículos en línea que te permite crear tu currículo de forma fácil y rápida. Completamente gratuito y respetando tu privacidad."
 ---
 
-# Historia
+## Historia
 
 Hace algún tiempo estuve buscando algún creador de currículos online y los que me gustaban no eran gratuitos, así que para aquellos que pensaran igual, creé el mío propio.
 
-# Cómo funciona
+## Cómo funciona
 
 A partir de los datos que ingreses en un formulario a la izquierda, se genera automáticamente tu CV a la derecha, ¡no puede ser más simple que eso!
 
 ![cv](https://user-images.githubusercontent.com/53962116/214132115-5da8626c-a670-4e92-b402-e7d0dc291151.png)
 
 
-# Algunas características:
+## Algunas características:
 
 - Modo oscuro (Por si quieres que tu currículo sea diferente con un fondo casi negro)
 - Multilenguaje (Te creas una copia en español y otra en inglés, siempre se recomienda hacer esto último)
@@ -33,7 +33,7 @@ Sin más, [aquí está la página](https://cool-cv-maker.netlify.app/). Agradezc
 
 Muchas gracias!
 
-# Datos Técnicos
+## Datos Técnicos
 
 - Está escrito casi totalmente en Typescript, usando [Gatsby](https://www.gatsbyjs.org/).
 - Para los estilos se usó [Tailwind CSS](https://tailwindcss.com/).
