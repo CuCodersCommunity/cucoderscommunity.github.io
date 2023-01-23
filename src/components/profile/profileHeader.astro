@@ -1,5 +1,6 @@
 ---
 import LinkIcon from "../../components/helpers/linkIcon.astro";
+import categories from "../../data/profileCategories.json";
 
 const { profile } = Astro.props;
 ---
@@ -86,7 +87,12 @@ const { profile } = Astro.props;
           <div>
             {
               profile.roles.map((role) => (
-                <div class="inline rounded-md bg-gray-50 text-gray-800 font-normal text-sm py-1 px-2 mr-3 ">{role}</div>
+                <a
+                  href={"/directorio/" + categories[role].slug + "/1"}
+                  class="inline rounded-md bg-gray-50 text-gray-800 font-normal text-sm py-1 px-2 mr-3 "
+                >
+                  {categories[role].text}
+                </a>
               ))
             }
           </div>
