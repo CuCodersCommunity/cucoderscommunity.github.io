@@ -5,36 +5,33 @@ import { members_api_url } from "../../data/conf.json";
 const response = await fetch(members_api_url + "members-data");
 const members_data = await response.json();
 const members_array = Object.values(members_data);
+
 ---
 
 <DirectoryLayout>
-  <div class="grid grid-cols-3 gap-5">
+  <div class="grid grid-cols-3 gap-6">
     {
       members_array.map((member) => (
         <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700">
-          <div class="flex flex-col items-center pb-10">
+          <a href={"/dev/" + member["username"]} class="flex flex-col items-center py-5">
             <img
               class="w-24 h-24 my-3 rounded-full shadow-lg"
               src={member["avatar_url"]}
               alt={member["name"] + " profile picture"}
             />
             <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">{member["name"]}</h5>
-            <span class="text-sm text-gray-500 dark:text-gray-400">{member["headline"]}</span>
-            <div class="flex mt-4 space-x-3 md:mt-6">
-              <a
-                href="#"
-                class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              >
-                Add friend
-              </a>
-              <a
-                href="#"
-                class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-gray-900 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700"
-              >
-                Message
-              </a>
+            <span class="text-sm text-gray-500 dark:text-gray-400 border px-3 py-0.5 rounded-full">
+              {member["headline"]}
+            </span>
+            <div class="flex mt-2 line-clamp-2 overflow-hidden text-sm font-normal text-gray-600 space-x-3 px-5">
+              {member["bio"]}
             </div>
-          </div>
+            <div class="my-3 px-5">
+              {member["roles"].map((role) => (
+                <div class="inline rounded-md bg-gray-50 text-gray-800 font-normal text-sm py-1 px-2 mr-3 ">{role}</div>
+              ))}
+            </div>
+          </a>
         </div>
       ))
     }
