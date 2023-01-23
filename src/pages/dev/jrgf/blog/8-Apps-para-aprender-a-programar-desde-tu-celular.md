@@ -1,17 +1,12 @@
 ---
 layout: "../../../../layouts/postLayout.astro"    
-title: "8 Apps para aprender a programar desde tu celular"
+title: "Las 8 mejores aplicaciones para aprender a programar desde tu celular"
 pubDate: "1674488697108"
 image: "https://1.bp.blogspot.com/-b6bxqJmHSBQ/YCF7iAb1e8I/AAAAAAAAQD4/bjVGymoEwg4HKkjQI04cj9LyYnHS4LhdQCLcBGAsYHQ/s0/new-curriculum-for-android-educators-social-v4.png"
 username: "jrgf"
 categories: ["news"]
 description: "Feliz inicio de semana a todos nuestros cucoders y esta bella comunidad. En esta ocasión te traigo las mieles sobre estas 8 aplicaciones para entornos moviles para aprender programación que te enseñaran mediante de forma amena y entretenida  "
 ---
-
-Aqui va el cuerpo de tu documento.
-
-**Las 8 mejores aplicaciones para aprender a programar desde tu celular**
--
 
 Buen inicio de semana queridos CuCoders. En este primer post(mío y de la semana) les traigo unas mieles muy especiales para mi y que espero que les sirvan de ayuda.
 Hace bastante poco que empecé a dedicarme a la programación y en el principio al no tener una PC o una portátil para aprender con todos los entornos y herramientas que la red nos ofrece, me vi obligado a usar mi único aliado en este entonces mi teléfono así que me di a la tarea de buscar aplicaciones que me enseñaran desde 0 como programar en la basta PlayStore de Google y aquí les traigo una recopilación de las que a mi parecer son las mejores, más completas u ofrecen algo de valor por encima de las demás:
