@@ -1,7 +1,7 @@
 ---
 layout: "../../../../layouts/postLayout.astro"    
 title: "Las 8 mejores aplicaciones para aprender a programar desde tu celular"
-pubDate: "1674488697108"
+pubDate: "Jan 23 2023"
 image: "https://1.bp.blogspot.com/-b6bxqJmHSBQ/YCF7iAb1e8I/AAAAAAAAQD4/bjVGymoEwg4HKkjQI04cj9LyYnHS4LhdQCLcBGAsYHQ/s0/new-curriculum-for-android-educators-social-v4.png"
 username: "jrgf"
 categories: ["news"]
