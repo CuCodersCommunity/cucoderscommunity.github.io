@@ -4,7 +4,7 @@ import LinkIcon from "../helpers/linkIcon.astro";
 const { profile } = Astro.props;
 ---
 
-<div class="w-full max-w-sm py-5 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700">
+<div class="w-full py-5 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700">
   <a href={"/dev/" + profile["username"]} class="flex flex-col items-center mb-3">
     <img
       class="w-24 h-24 my-3 rounded-full shadow-lg"
@@ -20,7 +20,7 @@ const { profile } = Astro.props;
     <div class="flex mt-2 line-clamp-2 text-center overflow-hidden text-sm font-normal text-gray-600 space-x-3 px-5">
       {profile["bio"]}
     </div>
-    <div class="px-5 flex justify-center">
+    <div class="px-5 flex justify-center w-full">
       {
         profile["roles"].map((role) => (
           <LinkIcon

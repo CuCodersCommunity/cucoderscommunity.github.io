@@ -9,7 +9,7 @@ const members_array = Object.values(members_data);
 ---
 
 <DirectoryLayout>
-  <div class="grid grid-cols-3 gap-6">
+  <div class="grid gap-6 w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
     {members_array.map((profile) => <ProfileCard profile={profile} />)}
   </div>
 </DirectoryLayout>
