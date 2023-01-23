@@ -1,0 +1,22 @@
+{
+  "softwareDev": {
+    "slug": "software-developer",
+    "text": "Software Developer",
+    "ico": "/assets/img/icons/dev.svg"
+  },
+  "fullStackDev": {
+    "slug": "full-stack-developer",
+    "text": "Full Stack Developer",
+    "ico": "/assets/img/icons/fullstack.svg"
+  },
+  "frontendDev": {
+    "slug": "front-end-developer",
+    "text": "Front-end Developer",
+    "ico": "/assets/img/icons/frontend.svg"
+  },
+  "backendDev": {
+    "slug": "back-end-developer",
+    "text": "Back-end Developer",
+    "ico": "/assets/img/icons/frontend.svg"
+  }
+}

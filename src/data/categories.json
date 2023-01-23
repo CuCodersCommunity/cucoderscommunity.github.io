@@ -66,7 +66,12 @@
   },
   "ia": {
     "slug": "ia",
-    "text": "IA",
+    "text": "Inteligencia Artificial",
     "ico": "/assets/img/icons/ia.svg"
+  },
+  "qa": {
+    "slug": "qa",
+    "text": "Q.A.",
+    "ico": "/assets/img/icons/QA.svg"
   }
 }

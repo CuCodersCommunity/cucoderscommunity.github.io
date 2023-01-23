@@ -1,0 +1,53 @@
+---
+import PromoCard from "./sidebarComponents/promoCard.astro";
+import PromoImage from "./sidebarComponents/promoImage.astro";
+import Item from "./sidebarComponents/sidebarItem.astro";
+import categories from "../data/profileCategories.json";
+
+const { isSideMenu = false } = Astro.props;
+
+let sidebarClass = "px-3 mb-5 py-4 overflow-y-auto rounded-md bg-white border-solid border-[1px] border-gray-200";
+
+if (isSideMenu) {
+  sidebarClass = "mb-5 overflow-y-auto";
+}
+
+let categoriesList = [];
+for (const key in categories) {
+  categories[key].url = "/categorias/" + categories[key].slug + "/1";
+  categoriesList.push(categories[key]);
+}
+---
+
+<aside class="w-64" aria-label="Sidebar">
+  <div class={sidebarClass}>
+    <ul class="space-y-2">
+      <Item text="Mostrar Todo" ico="/assets/img/icons/all.svg" url="/" />
+      {categoriesList.map((category) => <Item text={category.text} ico={category.ico} url={category.url} />)}
+    </ul>
+  </div>
+
+  <a
+    href="/nueva-publicacion"
+    class="text-gray-900 bg-white w-full border border-gray-200 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 rounded-full text-base font-normal px-5 py-3 text-center inline-flex justify-center items-center mr-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+  >
+    <img src="/assets/img/icons/write.svg" class="w-6 h-6 mr-2" />
+    Crear Perfil
+  </a>
+
+  <div class="border-t my-5 h-1 border-gray-200"></div>
+
+  <PromoCard
+    img="https://pbs.twimg.com/media/EyTqAuOXEAU6hbF.jpg"
+    title="QvaPay ahora en tu celular"
+    desc="Esta noticia me la estoy inventando, pero bueno. Qvapay lanza un wallpaper para tu celular."
+  />
+
+  <PromoCard
+    img="https://crecexdiez.com/assets/img/bydefault.jpg"
+    title="Lleva tu negocio al siguignete nivel con Crecexdiez"
+    desc="Esto es banner de prueba. Mas nada que eso asi que no te emociones lol."
+  />
+
+  <PromoImage text="Demo text in the img" img="https://pbs.twimg.com/media/FmIxRvIXEAcg7br?format=jpg&name=small" url="#" />
+</aside>
