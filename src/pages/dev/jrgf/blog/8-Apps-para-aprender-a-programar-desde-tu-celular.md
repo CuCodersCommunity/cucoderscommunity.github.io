@@ -16,7 +16,8 @@ Hace bastante poco que empecé a dedicarme a la programación y en el principio 
  **GrassHopper**
  -
 
-![GrassHoper App de Google](https://play-lh.googleusercontent.com/cw5dsfacor9mV5qSyU3c2UcPHbp2XP_N3OA1-297kN_0K8yZrEMo6qaWraF1m6eRV2Y)
+<img src="https://play-lh.googleusercontent.com/cw5dsfacor9mV5qSyU3c2UcPHbp2XP_N3OA1-297kN_0K8yZrEMo6qaWraF1m6eRV2Y" width="200" height="200">
+
 Grasshopper es una app desarrollada por Google para aprender a programar de manera fácil y amena. Es totalmente gratis no tiene anuncios in-app ni comprar integradas. El lenguaje escogido para el aprendizaje es Javascript.
 **Los pros:**
  - Totalmente gratis
@@ -29,7 +30,8 @@ Grasshopper es una app desarrollada por Google para aprender a programar de mane
 
   **Enki**
   -
-![Enki](https://play-lh.googleusercontent.com/QOpn8VzGHmWrRsZnKOgmRtOJH07KbM_N14HlFhoXmofLW-2jzF6Ki9FBPbSiUv9LHyw)
+<img src="https://play-lh.googleusercontent.com/QOpn8VzGHmWrRsZnKOgmRtOJH07KbM_N14HlFhoXmofLW-2jzF6Ki9FBPbSiUv9LHyw" width="200" height="200"> 
+
 Enki es una app con una basta comunidad de mas de 1 millón de usuarios y una basta cantidad de lo que desees aprender desde cursos completos de algoritmos hasta el uso de Linux,Docker y Kubernetes.
 
 **Los pros:**
@@ -48,33 +50,35 @@ Enki es una app con una basta comunidad de mas de 1 millón de usuarios y una ba
 **SoloLearn**
  -
  
-![SoloLearn](https://play-lh.googleusercontent.com/LIGo0qeu7aTc3LFnyDRTV01Q6szr3iG3h2WSqYj7Ef1XFKAS6IvKKuLSpTJn7NJUj-U)
+<img src="https://play-lh.googleusercontent.com/LIGo0qeu7aTc3LFnyDRTV01Q6szr3iG3h2WSqYj7Ef1XFKAS6IvKKuLSpTJn7NJUj-U" width="200" height="200">
+
 La mas famosa y querida por la comunidad,cuenta con una biblioteca basta para aprender a programar desde 0. Cuenta con una comunidad que siempre esta nutriendo de nuevos cursos, tecnicas en para el desarrollo de software en casi cualquier lenguaje de programación a la aplicación y su propio Playground que soporte desde C hasta Java.
 
 **Los pros:**
 -
  - Curso básicos bien explicados y algunos en español.
  - Cuenta con división de cursos en básicos,intermedios y avanzados
- - Apoyo de la comunidad
- - Te da certificaciones una vez completado el curso 
+ - Apoyo de la comunidad.
+ - Te da certificaciones una vez completado el curso. 
  
  **Los contras:**
  -
  - De pago, los mejores cursos y algunas herramientas son de pago
  - Los cursos avanzados están un poco desactualizados y son un poco mas difíciles de digerir muchos no cuentan con los ejemplos de los cursos intermedios y básicos.
- - Necesitas conexión constante a internet
+ - Necesitas conexión constante a internet.
 
 
   **Mimo**
   
-![Mimo](https://play-lh.googleusercontent.com/Rm3YurneyLmFDbNi5eexlBhhPy_JhzQj-HCyW206ZP2o1n-agS0eTIl4H59mrssPshs)
+<img src="https://play-lh.googleusercontent.com/Rm3YurneyLmFDbNi5eexlBhhPy_JhzQj-HCyW206ZP2o1n-agS0eTIl4H59mrssPshs" width="200" height="200">
+
  Mimo es una app con cursos pensados sobre todo para niños y adolescentes con cursos interactivos de diversos lenguajes de programación. Es progresiva y pensada como un juego con progresión y avance de niveles.
 
  **Los pros:**
  -
- - App sencilla y que enseña de manera progresiva diferentes lenguajes
+ - App sencilla y que enseña de manera progresiva diferentes lenguajes.
  - Una buena opción para niños y adolescentes por su interactividad
- - Puede ser un buen material de apoyo a profesores
+ - Puede ser un buen material de apoyo a profesores.
  
  **Los contras:**
  -
@@ -83,49 +87,52 @@ La mas famosa y querida por la comunidad,cuenta con una biblioteca basta para ap
 
 **LarnU**
 -
-![LarnU](https://larnu.app/logo.png) 
+<img src="https://larnu.app/logo.png" width="200"> 
 
- Esta app es de una startup latinoamericana creada con el objetivo de *Empoderar a las personas en sus metas de aprender a programar y su crecimiento profesional*.Es una app bastante bien lograda a mi parecer con buena interactividad y muy intuitiva. Con vidas a forma de juego te va guiando por los diferentes cursos en los que debes completar las tareas para avanzar
+ Esta app es de una startup latinoamericana creada con el objetivo de *Empoderar a las personas en sus metas de aprender a programar y su crecimiento profesional*.Es una app bastante bien lograda a mi parecer con buena interactividad y muy intuitiva. Con vidas a forma de juego te va guiando por los diferentes cursos en los que debes completar las tareas para avanzar.
  
 **Los pros:**
 -
- - App intuitiva y facil para nuevos usuarios que desean aprender a programar desde 0
- - Buen soporte de la app que te ayudaran si te encuentras con problemas técnicos en la misma
- - Ideal para todas las edades por su estilo de avance con vidas a modo de videojuego
+ - App intuitiva y facil para nuevos usuarios que desean aprender a programar desde 0.
+ - Buen soporte de la app que te ayudaran si te encuentras con problemas técnicos en la misma.
+ - Ideal para todas las edades por su estilo de avance con vidas a modo de videojuego.
 
  **Los contras:**
  - 
  - Anuncios In-App
  - Vidas limitadas por las que necesitas esperar un día si las pierdes
- - Mejores funcionalidades tras un muro de pago como el retiro de anuncios, vidas ilimitadas y la posibilidad de saltar clases
+ - Mejores funcionalidades tras un muro de pago como el retiro de anuncios, vidas ilimitadas y la posibilidad de saltar clases.
 
  **CodeAcademy Go**
- -  ![Codeacademy Go](https://play-lh.googleusercontent.com/sfcMEVWE3eIUF5uQ2fo4MeLBFNDGaftbN_t6_i6zbvE6XC0dOcizOMA9cfigSXq7_92b)
+ -  
+ <img src="https://play-lh.googleusercontent.com/sfcMEVWE3eIUF5uQ2fo4MeLBFNDGaftbN_t6_i6zbvE6XC0dOcizOMA9cfigSXq7_92b" width="200" height="200">
+ 
 La versión para Android de la famosa plataforma Codeacademy con prácticamente todas las funcionalidades de esta. Preguntas interactivas y todo lo que incluye en la web.Te ofrece diferentes paths o caminos para tu aprendizaje.
 
 **Los pros:**
  - 
  - Cursos de varios lenguajes en los que podras aprender desde HTML hasta C++
- - Preguntas interactivas del tipo *Drag'n Drop* y esquemas de avance y progresión
+ - Preguntas interactivas del tipo *Drag'n Drop* y esquemas de avance y progresión.
 
 **Los contras:**
 -
 
  - Como las aplicaciones anteriores las mejores funcionalidades están bajo un muro de pago.
 
- -Conexión constante a internet para poder hacer las tareas y completar las preguntas
+ -Conexión constante a internet para poder hacer las tareas y completar las preguntas.
 
 
 **Programming Hub**
 -
-![Programming Hub](https://play-lh.googleusercontent.com/3E-AjwKJC4YA0_bXkQSW2KzGQeIZWh-8qeaeJ5kYdvHA8rz29KJ1-rCD6QX3vYKAGKj0=w240-h480-rw)
+<img src="https://play-lh.googleusercontent.com/3E-AjwKJC4YA0_bXkQSW2KzGQeIZWh-8qeaeJ5kYdvHA8rz29KJ1-rCD6QX3vYKAGKj0=w240-h480-rw" width="200">
+
  Con Programming Hub tienes acceso a una serie de lecciones sobre diferentes lenguajes de programación que han sido creados para ajustarse al tamaño de una pantalla móvil, el contenido muestra lo esencial y busca que sea como un juego. Esta app busca ser como el Duolingo para programar.
 
 **Los pros:**
 -
 - Disponible en mas de 15 idiomas
 - Gran parte del contenido es gratuito 
-- Cuenta con un modo sin conexión para que sigas aprendiendo sin necesidad de acceder a internet
+- Cuenta con un modo sin conexión para que sigas aprendiendo sin necesidad de acceder a internet.
 
 **Los contras:**
 -
@@ -136,29 +143,35 @@ La versión para Android de la famosa plataforma Codeacademy con prácticamente 
 
 **CodigoFacilito**
 -
-![CodigoFacilito](https://play-lh.googleusercontent.com/VyV8Zp6p_UNT1GQaAthe3Ec_5_m03OhjNBZGvthRxcesnrmkXck3CwTfS7PjRqZh0_0)
+<img src="https://play-lh.googleusercontent.com/VyV8Zp6p_UNT1GQaAthe3Ec_5_m03OhjNBZGvthRxcesnrmkXck3CwTfS7PjRqZh0_0" width="200">
+
  La plataforma CodigoFacilito estrena aplicación para móviles  y te trae mas de 8000 horas en cursos, descargables en la versión premium para poder ver offline y que abarcan diferentes cursos desde programación web hasta creación de aplicaciones Android.
 
 **Los pros:**
 -
 - Todos los cursos de la plataforma accesibles desde tu celular
-- Posibilidad de descarga de cursos para su consumo offline
+- Posibilidad de descarga de cursos para su consumo offline.
 
 **Los contras:**
 -
-- Muro de pago para las funcionalidades de descarga y parte de los cursos
+- Muro de pago para las funcionalidades de descarga y parte de los cursos.
 
 **Mencion especial: Swift PlayGrounds**
 -
-![Swift Playgrounds](https://images.macrumors.com/t/c5Y4nOCavYbbRRBlf-x-cX3r6jE=/1600x/article-new/2014/06/swift.png)
+<img src="https://images.macrumors.com/t/c5Y4nOCavYbbRRBlf-x-cX3r6jE=/1600x/article-new/2014/06/swift.png" width="200" height="200">
  
  Si cuentas con un Ipad, un Iphone o una Mac esta es una muy buena opción si deseas aprender de manera interactiva,fácil y a modo de juego como aprender a programar el lenguaje Swift y su entorno de desarrollo.
 
 **Los pros:**
 -
 - Interactividad y facilidad en las lecciones que ofrece
-- Una muy buena opcion para introducir niños y adolescentes a la programación
+- Una muy buena opcion para introducir niños y adolescentes a la programación.
 
 **Los contras:**
 -
-- Solo disponible para los que posean dispositivos Apple
+- Solo disponible para los que posean dispositivos Apple.
+
+
+## Conclusiones
+
+Bueno comunidad espero les sirva este conglomerado de aplicaciones.Como pueden ver no existen barreras para aprender nuevas habilidades y superarse. Si saben de otras aplicaciones no duden en compartirlas.Saludos,peace out!.

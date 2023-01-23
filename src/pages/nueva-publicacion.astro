@@ -128,7 +128,7 @@ for (const key in categories) {
     const title = getValue("title");
     const image = getValue("thumbnail-url");
     const username = getValue("username");
-    const pubDate = Date.now();
+    const pubDate = Date.now().toDateString();
     const categories = getValue("categories");
     const description = getValue("description");
 
