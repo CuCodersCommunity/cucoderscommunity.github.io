@@ -1,7 +1,7 @@
 ---
 layout: "../../../../layouts/postLayout.astro"    
 title: "Crea tu currículo en línea con CV Maker"
-pubDate: "1674365606985"
+pubDate: "Sun Jan 22 2023"
 image: "https://user-images.githubusercontent.com/53962116/214132096-c13eaf10-7355-4091-842a-72050a870468.png"
 username: "M4ss1ck"
 categories: ["tutorials"]

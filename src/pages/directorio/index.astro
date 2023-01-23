@@ -5,7 +5,6 @@ import { members_api_url } from "../../data/conf.json";
 const response = await fetch(members_api_url + "members-data");
 const members_data = await response.json();
 const members_array = Object.values(members_data);
-
 ---
 
 <DirectoryLayout>
@@ -19,7 +18,9 @@ const members_array = Object.values(members_data);
               src={member["avatar_url"]}
               alt={member["name"] + " profile picture"}
             />
-            <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">{member["name"]}</h5>
+            <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">
+              {member["name"] ? member["name"] : "@" + member["username"]}
+            </h5>
             <span class="text-sm text-gray-500 dark:text-gray-400 border px-3 py-0.5 rounded-full">
               {member["headline"]}
             </span>
