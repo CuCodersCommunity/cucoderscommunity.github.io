@@ -13,27 +13,33 @@ const { profile } = Astro.props;
       <div class="flex items-center flex-col md:flex-row md:space-x-4 w-full">
         <div class="relative mb-3 md:mb-0">
           <img class="w-36 h-36 min-w-[9rem] rounded-full md:mr-2" src={profile.avatar_url} alt={profile.name + " avatar"} />
-          <div
-            data-tooltip-target="tooltip-right"
-            data-tooltip-placement="right"
-            class="bottom-2 left-[7rem] absolute grid place-content-center w-9 h-9 bg-green-500 border-4 border-white dark:border-gray-800 rounded-full"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"
-              ><path
-                fill="white"
-                d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"
-              ></path></svg
-            >
-          </div>
 
-          <div
-            id="tooltip-right"
-            role="tooltip"
-            class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700"
-          >
-            Buscando Trabajo
-            <div class="tooltip-arrow" data-popper-arrow></div>
-          </div>
+          {
+            profile["hireable"] && (
+              <>
+                <div
+                  data-tooltip-target="tooltip-right"
+                  data-tooltip-placement="right"
+                  class="bottom-2 left-[7rem] absolute grid place-content-center w-9 h-9 bg-green-500 border-4 border-white dark:border-gray-800 rounded-full"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+                    <path
+                      fill="white"
+                      d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z"
+                    />
+                  </svg>
+                </div>
+                <div
+                  id="tooltip-right"
+                  role="tooltip"
+                  class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700"
+                >
+                  Buscando Trabajo
+                  <div class="tooltip-arrow" data-popper-arrow />
+                </div>
+              </>
+            )
+          }
         </div>
 
         <div class="font-medium dark:text-white grow">
