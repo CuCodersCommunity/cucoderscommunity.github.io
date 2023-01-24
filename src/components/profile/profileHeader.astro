@@ -91,10 +91,14 @@ const { profile } = Astro.props;
             <div>
               {profile.headline}
             </div>
-            <div class="ml-5 flex items-center">
-              <img src="/assets/img/icons/map.svg" class="w-5 h-5 inline" />
-              <spam class="ml-1">Cuba</spam>
-            </div>
+            {
+              profile.location && (
+                <div class="ml-5 flex items-center">
+                  <img src="/assets/img/icons/map.svg" class="w-5 h-5 inline" />
+                  <spam class="ml-1">{profile.location}</spam>
+                </div>
+              )
+            }
           </div>
           <div class="text-sm mb-4 font-normal text-gray-900">{profile.bio}</div>
           <div>
