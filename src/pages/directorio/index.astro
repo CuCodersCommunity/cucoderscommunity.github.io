@@ -2,14 +2,19 @@
 import DirectoryLayout from "../../layouts/directoryLayout.astro";
 import { members_api_url } from "../../data/conf.json";
 import ProfileCard from "../../components/profile/profileCard.astro";
+import Pagination from "../../components/pagination.astro";
 
 const response = await fetch(members_api_url + "members-data");
 const members_data = await response.json();
 const members_array = Object.values(members_data);
+
+const members = members_array.slice(0, 15);
+const showPagination = Object.keys(members_array).length > 15;
 ---
 
 <DirectoryLayout>
-  <div class="grid gap-6 w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-    {members_array.map((profile) => <ProfileCard profile={profile} />)}
+  <div class="grid gap-6 w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-7">
+    {members.map((profile) => <ProfileCard profile={profile} />)}
   </div>
+  {showPagination && <Pagination next="/directorio/todos/2" />}
 </DirectoryLayout>
