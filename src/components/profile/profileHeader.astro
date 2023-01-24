@@ -48,73 +48,106 @@ const { profile } = Astro.props;
               {profile.name}
             </div>
             <div class="py-2 md:py-0">
-              <LinkIcon
-                url="https://t.me/CuCodersComunidad"
-                img="/assets/img/icons/web.svg"
-                text="Web"
-                target="_blank"
-                id="profile-web"
-                size="md:w-5 md:h-5 w-6 h-6"
-                padding="p-2"
-              />
-              <LinkIcon
-                url="https://t.me/CuCodersComunidad"
-                img="/assets/img/icons/email.svg"
-                text="Email"
-                target="_blank"
-                id="profile-email"
-                size="md:w-5 md:h-5 w-6 h-6"
-                padding="p-2"
-              />
-              <LinkIcon
-                url="https://t.me/CuCodersComunidad"
-                img="/assets/img/icons/twitter.svg"
-                text="Twitter"
-                target="_blank"
-                id="profile-twitter"
-                size="md:w-5 md:h-5 w-6 h-6"
-                padding="p-2"
-              />
-              <LinkIcon
-                url="https://t.me/CuCodersComunidad"
-                img="/assets/img/icons/telegram.svg"
-                text="Telegram"
-                target="_blank"
-                id="profile-telegram"
-                size="md:w-5 md:h-5 w-6 h-6"
-                padding="p-2"
-              />
-              <LinkIcon
-                url="https://t.me/CuCodersComunidad"
-                img="/assets/img/icons/linkedin.svg"
-                text="Linkedin"
-                target="_blank"
-                id="profile-linkedin"
-                size="md:w-5 md:h-5 w-6 h-6"
-                padding="p-2"
-              />
-              <LinkIcon
-                url="https://t.me/CuCodersComunidad"
-                img="/assets/img/icons/github.svg"
-                text="Github"
-                target="_blank"
-                id="profile-github"
-                size="md:w-5 md:h-5 w-6 h-6"
-                padding="p-2"
-              />
+              {
+                profile["blog"] && (
+                  <LinkIcon
+                    url={profile["blog"]}
+                    img="/assets/img/icons/web.svg"
+                    text="Web"
+                    target="_blank"
+                    id="profile-web"
+                    size="md:w-5 md:h-5 w-6 h-6"
+                    padding="p-2"
+                  />
+                )
+              }
+
+              {
+                profile["email"] && (
+                  <LinkIcon
+                    url={"mailto:" + profile["email"]}
+                    img="/assets/img/icons/email.svg"
+                    text="Email"
+                    target="_blank"
+                    id="profile-email"
+                    size="md:w-5 md:h-5 w-6 h-6"
+                    padding="p-2"
+                  />
+                )
+              }
+              {
+                profile["twitter_username"] && (
+                  <LinkIcon
+                    url={"https://twitter.com/" + profile["twitter_username"]}
+                    img="/assets/img/icons/twitter.svg"
+                    text="Twitter"
+                    target="_blank"
+                    id="profile-twitter"
+                    size="md:w-5 md:h-5 w-6 h-6"
+                    padding="p-2"
+                  />
+                )
+              }
+              {
+                profile["telegram_username"] && (
+                  <LinkIcon
+                    url={"https://t.me/" + profile["telegram_username"]}
+                    img="/assets/img/icons/telegram.svg"
+                    text="Telegram"
+                    target="_blank"
+                    id="profile-telegram"
+                    size="md:w-5 md:h-5 w-6 h-6"
+                    padding="p-2"
+                  />
+                )
+              }
+              {
+                profile["linkedin_username"] && (
+                  <LinkIcon
+                    url={"https://www.linkedin.com/in/" + profile["linkedin_username"]}
+                    img="/assets/img/icons/linkedin.svg"
+                    text="Linkedin"
+                    target="_blank"
+                    id="profile-linkedin"
+                    size="md:w-5 md:h-5 w-6 h-6"
+                    padding="p-2"
+                  />
+                )
+              }
+              {
+                profile["username"] && (
+                  <LinkIcon
+                    url={"https://github.com/" + profile["username"]}
+                    img="/assets/img/icons/github.svg"
+                    text="Github"
+                    target="_blank"
+                    id="profile-github"
+                    size="md:w-5 md:h-5 w-6 h-6"
+                    padding="p-2"
+                  />
+                )
+              }
             </div>
           </div>
           <div
-            class="text-base mb-3 font-normal flex justify-center md:justify-start items-center text-gray-600 dark:text-gray-500"
+            class="text-base mb-3 font-normal flex justify-center flex-wrap md:justify-start items-center text-gray-600 dark:text-gray-500"
           >
-            <div>
+            <div class="md:mr-5 mr-3">
               {profile.headline}
             </div>
             {
               profile.location && (
-                <div class="ml-5 flex items-center ">
+                <div class="flex items-center md:mr-5 mr-3">
                   <img src="/assets/img/icons/map.svg" class="w-5 h-5 inline" />
                   <spam class="ml-1">{profile.location}</spam>
+                </div>
+              )
+            }
+             {
+              profile.company && (
+                <div class="flex items-center md:mr-5 mr-3">
+                  <img src="/assets/img/icons/company.svg" class="w-5 h-5 inline" />
+                  <spam class="ml-1">{profile.company}</spam>
                 </div>
               )
             }
