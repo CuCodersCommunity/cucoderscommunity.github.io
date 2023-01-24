@@ -1,4 +1,9 @@
 {
+  "Freelancer": {
+    "slug": "freelancer",
+    "text": "Freelancer",
+    "ico": "/assets/img/icons/freelancer.svg"
+  },
   "softwareDev": {
     "slug": "software-developer",
     "text": "Software Developer",
