@@ -1,3 +1,4 @@
 {
-    "members_api_url": "http://cucoderscommunity.github.io/members-api/"
+  "members_api_url": "http://cucoderscommunity.github.io/members-api/",
+  "main_api_url": "https://cucoders-backend.vercel.app/api/"
 }
