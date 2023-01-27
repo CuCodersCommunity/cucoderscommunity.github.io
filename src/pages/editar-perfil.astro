@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/baseLayout.astro";
 import categories from "../data/profileCategories.json";
+import Toast from "../components/toast/toast.astro";
 import "../styles/main.css";
 
 let categoriesList = [];
@@ -15,7 +16,7 @@ for (const key in categories) {
     class="bg-white border md:mx-auto mb-6 md:mt-12 mt-6 p-8 lg:max-w-[58rem] border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 w-full"
   >
     <div>
-      <label for="github-search" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">GitHub</label>
+      <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">GitHub</label>
       <div class="flex">
         <span
           class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300 rounded-l-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600"
@@ -24,12 +25,12 @@ for (const key in categories) {
         </span>
         <input
           type="text"
-          id="github-search"
+          id="username"
           class="rounded-none rounded-r-lg bg-gray-50 border text-gray-900 focus:ring-gray-500 focus:border-gray-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
           placeholder="Nombre de Usuario"
         />
         <button
-          onclick="loadGithubUser()"
+          id="loadUserBtn"
           class="text-white ml-5 bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm w-auto px-5 py-2.5 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
           >Cargar</button
         >
@@ -190,6 +191,11 @@ for (const key in categories) {
   <div
     class="bg-white border md:mx-auto mb-5 p-8 lg:max-w-[58rem] border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 w-full"
   >
+    <div class="flex justify-between">
+      <h1 class="text-xl font-bold">Datos de CuCoders</h1>
+    </div>
+
+    <hr class="my-4" />
     <div class="mb-6">
       <label for="headline" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Encabezado</label>
       <input
@@ -202,7 +208,7 @@ for (const key in categories) {
     </div>
 
     <div class="mb-6">
-      <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Categorias*</label>
+      <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Categorias</label>
       <select id="categories" name="state[]" multiple placeholder="Categorias" autocomplete="off">
         <option value="">Select a state...</option>
         {categoriesList.map((category) => <option value={category.key}>{category.text}</option>)}
@@ -251,6 +257,8 @@ for (const key in categories) {
       >
     </div>
   </div>
+
+  <Toast />
 </BaseLayout>
 
 <link href="https://cdn.jsdelivr.net/npm/tom-select/dist/css/tom-select.css" rel="stylesheet" />
@@ -258,8 +266,38 @@ for (const key in categories) {
 
 <script is:inline>
   new TomSelect("#categories", {});
+</script>
 
-  function loadGithubUser() {
-    console.log("asd");
+<script>
+  import { backend_url } from "../data/conf.json";
+  import { showToast } from "../components/toast/toast";
+
+  const loadUserBtn = document.getElementById("loadUserBtn");
+  loadUserBtn.addEventListener("click", searchGithubUser, true);
+
+  function searchGithubUser() {
+    const username = (<HTMLInputElement>document.getElementById("username")).value;
+    const url = backend_url + "api/members/is-member?username=" + username;
+
+    fetch(url, {
+      method: "GET",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.is_member) {
+          loadGithubUserData();
+          showForm();
+          showToast("Datos de usuario cargados satisfactoriamente.");
+        } else {
+          showToast("El usuario " + username + " no es miembro de la Comunidad. Necesitas registrarte para actualizar tu perfil.", true);
+        }
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   }
+
+  function loadGithubUserData() {}
+
+  function showForm() {}
 </script>
