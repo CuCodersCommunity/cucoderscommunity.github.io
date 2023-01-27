@@ -81,7 +81,7 @@ for (const key in categories) {
           <input
             type="text"
             id="name"
-            class="bg-gray-50 border border-gray-300 opacity-50 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
+            class="bg-gray-50 border border-gray-300 opacity-75 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
             placeholder="Jose Antonio"
             disabled
           />
@@ -92,7 +92,7 @@ for (const key in categories) {
             type="text"
             id="location"
             maxlength="25"
-            class="bg-gray-50 border border-gray-300 opacity-50 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
+            class="bg-gray-50 border border-gray-300 opacity-75 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
             placeholder="Cuba"
             disabled
           />
@@ -100,7 +100,7 @@ for (const key in categories) {
 
         <div>
           <label for="twitter-username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Twitter</label>
-          <div class="flex opacity-50">
+          <div class="flex opacity-75">
             <span
               class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300 rounded-l-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600"
             >
@@ -117,7 +117,7 @@ for (const key in categories) {
         </div>
         <div>
           <label for="github-username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">GitHub</label>
-          <div class="flex opacity-50">
+          <div class="flex opacity-75">
             <span
               class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300 rounded-l-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600"
             >
@@ -138,7 +138,7 @@ for (const key in categories) {
           <input
             type="email"
             id="email"
-            class="bg-gray-50 border border-gray-300 opacity-50 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
+            class="bg-gray-50 border border-gray-300 opacity-75 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
             placeholder="name@company.com"
             disabled
           />
@@ -148,7 +148,7 @@ for (const key in categories) {
           <input
             type="text"
             id="company"
-            class="bg-gray-50 border border-gray-300 opacity-50 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
+            class="bg-gray-50 border border-gray-300 opacity-75 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
             placeholder="Microsoft"
             disabled
           />
@@ -158,7 +158,7 @@ for (const key in categories) {
           <input
             type="url"
             id="website"
-            class="bg-gray-50 border border-gray-300 opacity-50 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
+            class="bg-gray-50 border border-gray-300 opacity-75 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
             placeholder="flowbite.com"
             disabled
           />
@@ -182,7 +182,7 @@ for (const key in categories) {
           maxlength="160"
           disabled
           rows="2"
-          class="block p-2.5 w-full text-sm opacity-50 text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-gray-500 focus:border-gray-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
+          class="block p-2.5 w-full text-sm opacity-75 text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-gray-500 focus:border-gray-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
           placeholder="Una breve descripción de lo que haces."></textarea>
       </div>
     </div>
@@ -289,15 +289,45 @@ for (const key in categories) {
           showForm();
           showToast("Datos de usuario cargados satisfactoriamente.");
         } else {
-          showToast("El usuario " + username + " no es miembro de la Comunidad. Necesitas registrarte para actualizar tu perfil.", true);
+          showToast(
+            "El usuario " +
+              username +
+              " no es miembro de la Comunidad. Necesitas registrarte primero para actualizar tu perfil.",
+            true
+          );
         }
       })
       .catch((e) => {
-        console.log(e);
+        showToast("Ocurrió un error inesperado. Por favor vuelva a intentarlo más tarde.", true);
       });
   }
 
-  function loadGithubUserData() {}
+  function loadGithubUserData() {
+    const username = (<HTMLInputElement>document.getElementById("username")).value;
+
+    fetch("https://api.github.com/users/" + username, {
+      method: "GET",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setFormData(data);
+      })
+      .catch((e) => {
+        showToast("Ocurrió un error inesperado. Por favor vuelva a intentarlo más tarde.", true);
+      });
+  }
+
+  function setFormData(data) {
+    (<HTMLInputElement>document.getElementById("name")).value = data.name;
+    (<HTMLInputElement>document.getElementById("location")).value = data.location;
+    (<HTMLInputElement>document.getElementById("twitter-username")).value = data.twitter_username;
+    (<HTMLInputElement>document.getElementById("github-username")).value = data.login;
+    (<HTMLInputElement>document.getElementById("email")).value = data.email;
+    (<HTMLInputElement>document.getElementById("company")).value = data.company;
+    (<HTMLInputElement>document.getElementById("website")).value = data.blog;
+    (<HTMLInputElement>document.getElementById("hireable")).checked = data.hireable;
+    (<HTMLInputElement>document.getElementById("bio")).value = data.bio;
+  }
 
   function showForm() {}
 </script>
