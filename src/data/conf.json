@@ -1,4 +1,4 @@
 {
   "members_api_url": "https://cucoderscommunity.github.io/members-api/",
-  "backend_url": "https://cucoders-backend.vercel.app/"
+  "backend_url": "http://localhost:3001/"
 }

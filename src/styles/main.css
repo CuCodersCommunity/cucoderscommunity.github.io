@@ -1,0 +1,17 @@
+.ts-control {
+    font-size: 0.875rem !important;
+    line-height: 1.25rem !important;
+    padding: 0.6rem !important;
+    background-color: #f9fafb !important;
+    border-width: 1px px !important;
+    border-radius: 0.5rem !important;
+  }
+
+  .ts-control .item {
+    background-color: #e5e7eb !important;
+    border-radius: 0.3rem !important;
+  }
+
+  .full .ts-control {
+    background-color: #f3f4f6 !important;
+  }

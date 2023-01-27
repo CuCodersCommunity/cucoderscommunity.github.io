@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/baseLayout.astro";
 import NewPostModal from "../components/modals/newPostModal.astro";
 import categories from "../data/categories.json";
+import "../styles/main.css";
 
 let categoriesList = [];
 for (const key in categories) {
@@ -163,23 +164,3 @@ Aqui va el cuerpo de tu documento.
     window.open(githubQueryLink);
   }
 </script>
-
-<style is:inline>
-  .ts-control {
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-    padding: 0.6rem !important;
-    background-color: #f9fafb;
-    border-width: 1px px;
-    border-radius: 0.5rem;
-  }
-
-  .ts-control .item {
-    background-color: #e5e7eb !important;
-    border-radius: 0.3rem;
-  }
-
-  .full .ts-control {
-    background-color: #f3f4f6 !important;
-  }
-</style>
