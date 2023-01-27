@@ -9,6 +9,11 @@
     "text": "Tutoriales",
     "ico": "/assets/img/icons/tutorial2.svg"
   },
+  "software": {
+    "slug": "software",
+    "text": "Software",
+    "ico": "/assets/img/icons/apps.svg"
+  },
   "startups": {
     "slug": "startups",
     "text": "Startups",
