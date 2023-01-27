@@ -26,9 +26,10 @@ for (const key in categories) {
           type="text"
           id="github-search"
           class="rounded-none rounded-r-lg bg-gray-50 border text-gray-900 focus:ring-gray-500 focus:border-gray-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
-          placeholder="Tu nombre de usuario de GitHub"
+          placeholder="Nombre de Usuario"
         />
         <button
+          onclick="loadGithubUser()"
           class="text-white ml-5 bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm w-auto px-5 py-2.5 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
           >Cargar</button
         >
@@ -38,7 +39,41 @@ for (const key in categories) {
   <div
     class="bg-white border md:mx-auto mb-5 p-8 lg:max-w-[58rem] border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 w-full"
   >
-    <form>
+    <div class="flex justify-between">
+      <h1 class="text-xl font-bold">Datos de Github</h1>
+
+      <img
+        src="/assets/img/icons/sharp-help-outline.svg"
+        alt="Ayuda"
+        class="w-7 h-7 cursor-pointer mx-3"
+        data-popover-target="popover-default"
+      />
+      <div
+        data-popover
+        id="popover-default"
+        role="tooltip"
+        class="absolute z-10 invisible inline-block w-64 text-sm font-light text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800"
+      >
+        <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
+          <h3 class="font-semibold text-gray-900 dark:text-white">Datos de GitHub</h3>
+        </div>
+        <div class="px-3 py-2">
+          <p>
+            CuCoder utiliza parte de los datos publicos de tu cuenta de GitHub. Pedes actualizarlos desde tu <a
+              class="underline"
+              href="https://github.com/settings/profile"
+              target="_blank"
+            >
+              perfil en GitHub.</a
+            >
+          </p>
+        </div>
+        <div data-popper-arrow></div>
+      </div>
+    </div>
+
+    <hr class="my-4" />
+    <div>
       <div class="grid gap-6 mb-6 md:grid-cols-2">
         <div>
           <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
@@ -149,7 +184,7 @@ for (const key in categories) {
           class="block p-2.5 w-full text-sm opacity-50 text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-gray-500 focus:border-gray-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
           placeholder="Una breve descripción de lo que haces."></textarea>
       </div>
-    </form>
+    </div>
   </div>
 
   <div
@@ -211,7 +246,7 @@ for (const key in categories) {
 
     <div class="flex justify-center">
       <button
-        class="text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
+        class="text-white mt-4 bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
         >Actualizar Perfil</button
       >
     </div>
@@ -223,4 +258,8 @@ for (const key in categories) {
 
 <script is:inline>
   new TomSelect("#categories", {});
+
+  function loadGithubUser() {
+    console.log("asd");
+  }
 </script>
