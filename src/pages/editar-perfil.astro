@@ -31,14 +31,47 @@ for (const key in categories) {
         />
         <button
           id="loadUserBtn"
-          class="text-white ml-5 bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm w-auto px-5 py-2.5 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
-          >Cargar</button
+          class="text-white disabled:opacity-75 w-auto ml-5 bg-[#24292F] hover:bg-[#24292F]/90 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center flex content-center justify-center items-center dark:focus:ring-gray-500 dark:hover:bg-[#050708]/30 mr-2"
+        >
+          <svg
+            id="spinner-ico"
+            aria-hidden="true"
+            role="status"
+            class="hidden w-4 h-4 mr-2 text-white animate-spin"
+            viewBox="0 0 100 101"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+              fill="#E5E7EB"></path>
+            <path
+              d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+              fill="currentColor"></path>
+          </svg>
+          <svg
+            id="github-ico"
+            class="w-4 h-4 mr-2"
+            aria-hidden="true"
+            focusable="false"
+            data-prefix="fab"
+            data-icon="github"
+            role="img"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 496 512"
+            ><path
+              fill="currentColor"
+              d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"
+            ></path></svg
+          >
+          Cargar</button
         >
       </div>
     </div>
   </div>
   <div
-    class="bg-white border md:mx-auto mb-5 p-8 lg:max-w-[58rem] border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 w-full"
+    id="github-form"
+    class="bg-white hidden border md:mx-auto mb-5 p-8 lg:max-w-[58rem] border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 w-full"
   >
     <div class="flex justify-between">
       <h1 class="text-xl font-bold">Datos de Github</h1>
@@ -60,13 +93,8 @@ for (const key in categories) {
         </div>
         <div class="px-3 py-2">
           <p>
-            CuCoder utiliza parte de los datos publicos de tu cuenta de GitHub. Pedes actualizarlos desde tu <a
-              class="underline"
-              href="https://github.com/settings/profile"
-              target="_blank"
-            >
-              perfil en GitHub.</a
-            >
+            CuCoder utiliza parte de los datos publicos de tu cuenta de GitHub. Para actualizar estos datos desdes hacerlo
+            desde tu <a class="underline" href="https://github.com/settings/profile" target="_blank"> perfil en GitHub.</a>
           </p>
         </div>
         <div data-popper-arrow></div>
@@ -82,7 +110,6 @@ for (const key in categories) {
             type="text"
             id="name"
             class="bg-gray-50 border border-gray-300 opacity-75 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
-            placeholder="Jose Antonio"
             disabled
           />
         </div>
@@ -93,7 +120,6 @@ for (const key in categories) {
             id="location"
             maxlength="25"
             class="bg-gray-50 border border-gray-300 opacity-75 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
-            placeholder="Cuba"
             disabled
           />
         </div>
@@ -111,7 +137,6 @@ for (const key in categories) {
               id="twitter-username"
               disabled
               class="rounded-none rounded-r-lg bg-gray-50 border text-gray-900 focus:ring-gray-500 focus:border-gray-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
-              placeholder="Nombre de Usuario"
             />
           </div>
         </div>
@@ -128,7 +153,6 @@ for (const key in categories) {
               id="github-username"
               disabled
               class="rounded-none rounded-r-lg bg-gray-50 border text-gray-900 focus:ring-gray-500 focus:border-gray-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
-              placeholder="Nombre de Usuario"
             />
           </div>
         </div>
@@ -139,7 +163,6 @@ for (const key in categories) {
             type="email"
             id="email"
             class="bg-gray-50 border border-gray-300 opacity-75 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
-            placeholder="name@company.com"
             disabled
           />
         </div>
@@ -149,7 +172,6 @@ for (const key in categories) {
             type="text"
             id="company"
             class="bg-gray-50 border border-gray-300 opacity-75 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
-            placeholder="Microsoft"
             disabled
           />
         </div>
@@ -159,7 +181,6 @@ for (const key in categories) {
             type="url"
             id="website"
             class="bg-gray-50 border border-gray-300 opacity-75 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
-            placeholder="flowbite.com"
             disabled
           />
         </div>
@@ -183,13 +204,14 @@ for (const key in categories) {
           disabled
           rows="2"
           class="block p-2.5 w-full text-sm opacity-75 text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-gray-500 focus:border-gray-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
-          placeholder="Una breve descripción de lo que haces."></textarea>
+        ></textarea>
       </div>
     </div>
   </div>
 
   <div
-    class="bg-white border md:mx-auto mb-5 p-8 lg:max-w-[58rem] border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 w-full"
+    id="cucoders-form"
+    class="bg-white hidden border md:mx-auto mb-5 p-8 lg:max-w-[58rem] border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 w-full"
   >
     <div class="flex justify-between">
       <h1 class="text-xl font-bold">Datos de CuCoders</h1>
@@ -252,12 +274,12 @@ for (const key in categories) {
 
     <div class="flex justify-center">
       <button
+        id="updateProfile"
         class="text-white mt-4 bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
         >Actualizar Perfil</button
       >
     </div>
   </div>
-
   <Toast />
 </BaseLayout>
 
@@ -272,12 +294,16 @@ for (const key in categories) {
   import { backend_url } from "../data/conf.json";
   import { showToast } from "../components/toast/toast";
 
+  const proflieBtn = document.getElementById("updateProfile");
+  proflieBtn.addEventListener("click", updateProfile, true);
+
   const loadUserBtn = document.getElementById("loadUserBtn");
   loadUserBtn.addEventListener("click", searchGithubUser, true);
 
   function searchGithubUser() {
     const username = (<HTMLInputElement>document.getElementById("username")).value;
     const url = backend_url + "api/members/is-member?username=" + username;
+    disableInput();
 
     fetch(url, {
       method: "GET",
@@ -286,8 +312,6 @@ for (const key in categories) {
       .then((data) => {
         if (data.is_member) {
           loadGithubUserData();
-          showForm();
-          showToast("Datos de usuario cargados satisfactoriamente.");
         } else {
           showToast(
             "El usuario " +
@@ -295,10 +319,12 @@ for (const key in categories) {
               " no es miembro de la Comunidad. Necesitas registrarte primero para actualizar tu perfil.",
             true
           );
+          enableInput();
         }
       })
       .catch((e) => {
         showToast("Ocurrió un error inesperado. Por favor vuelva a intentarlo más tarde.", true);
+        enableInput();
       });
   }
 
@@ -311,9 +337,13 @@ for (const key in categories) {
       .then((response) => response.json())
       .then((data) => {
         setFormData(data);
+        enableInput();
+        showForm();
+        showToast("Datos de usuario cargados satisfactoriamente.");
       })
       .catch((e) => {
         showToast("Ocurrió un error inesperado. Por favor vuelva a intentarlo más tarde.", true);
+        enableInput();
       });
   }
 
@@ -329,5 +359,52 @@ for (const key in categories) {
     (<HTMLInputElement>document.getElementById("bio")).value = data.bio;
   }
 
-  function showForm() {}
+  function showForm() {
+    document.getElementById("github-form").classList.remove("hidden");
+    document.getElementById("cucoders-form").classList.remove("hidden");
+  }
+
+  function disableInput() {
+    document.getElementById("loadUserBtn").setAttribute("disabled", "");
+    document.getElementById("spinner-ico").classList.remove("hidden");
+    document.getElementById("spinner-ico").classList.add("inline");
+    document.getElementById("github-ico").classList.add("hidden");
+  }
+
+  function enableInput() {
+    document.getElementById("loadUserBtn").removeAttribute("disabled");
+    document.getElementById("spinner-ico").classList.add("hidden");
+    document.getElementById("spinner-ico").classList.remove("inline");
+    document.getElementById("github-ico").classList.remove("hidden");
+  }
+
+  function updateProfile() {
+    const username = (<HTMLInputElement>document.getElementById("github-username")).value;
+    const data = createProfileData();
+    const encodedFileData = encodeURIComponent(JSON.stringify(data));
+    const filename = "profile-data.json";
+
+    const githubQueryLink = `https://github.com/${username}/${username}/new/main/cucoders_data/new?value=${encodedFileData}&filename=${filename}`;
+
+    window.open(githubQueryLink);
+  }
+
+  function createProfileData() {
+    const data = {
+      username: (<HTMLInputElement>document.getElementById("github-username")).value,
+      headline: (<HTMLInputElement>document.getElementById("headline")).value,
+      linkedin_username: (<HTMLInputElement>document.getElementById("linkedin-username")).value,
+      telegram_username: (<HTMLInputElement>document.getElementById("telegram-username")).value,
+    };
+
+    var categories = [];
+    for (let option of (<HTMLSelectElement>document.getElementById("categories")).options) {
+      if (option.selected) {
+        categories.push(option.value);
+      }
+    }
+
+    data["categories"] = categories;
+    return data;
+  }
 </script>
