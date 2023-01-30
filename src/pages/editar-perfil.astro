@@ -332,10 +332,10 @@ for (const key in categories) {
   </div>
 
   <div id="profile-pages" class="hidden w-full gap-6 md:grid-cols-2 lg:max-w-[58rem] mx-auto">
-    <CardLink title="🧑‍💻 Perfil" subtitle="Resumen general de tu perfil" id="profile" target="_blank" />
+    <CardLink title="🧑‍💻 Perfil" subtitle="Resumen general de tu perfil" id="overview" target="_blank" />
     <CardLink title="💼 Servicios" subtitle="Lista los servicios que ofreces" id="services" target="_blank" />
-    <CardLink title="💡 Proyectos" subtitle="Todos tus proyectos en una sola pagina" id="project" target="_blank" />
-    <CardLink title="📃 Currículo" subtitle="Resume tu experiencia, formación y aptitudes." id="cv" target="_blank" />
+    <CardLink title="💡 Proyectos" subtitle="Todos tus proyectos en una sola pagina" id="projects" target="_blank" />
+    <CardLink title="📃 Currículo" subtitle="Resume tu experiencia, formación y aptitudes." id="resume" target="_blank" />
   </div>
 
   <Toast />
@@ -403,6 +403,7 @@ for (const key in categories) {
         setFormData(data);
         enableInput();
         showForm();
+        setProfilePagesLinks(username);
         showToast("Datos de usuario cargados satisfactoriamente.");
       })
       .catch((e) => {
@@ -500,5 +501,33 @@ for (const key in categories) {
     const username = (<HTMLInputElement>document.getElementById("github-username")).value;
     const githubQueryLink = `https://github.com/${username}/${username}/edit/main/cucoders_data/profile-data.json`;
     window.open(githubQueryLink);
+  }
+
+  function setProfilePagesLinks(username) {
+    setLinkAttr(username, "overview", "overview.md");
+    setLinkAttr(username, "services", "services.md");
+    setLinkAttr(username, "projects", "projects.md");
+    setLinkAttr(username, "resume", "resume.md");
+  }
+
+  async function setLinkAttr(username, id, file_name) {
+    const fileData = "paco kun";
+
+    const file = await getRemoteFileData(
+      `https://raw.githubusercontent.com/${username}/${username}/main/cucoders_data/${file_name}`,
+      "text"
+    );
+    if (file) {
+      document
+        .getElementById(id)
+        .setAttribute("href", `https://github.com/${username}/${username}/edit/main/cucoders_data/${file_name}`);
+    } else {
+      document
+        .getElementById(id)
+        .setAttribute(
+          "href",
+          `https://github.com/${username}/${username}/new/main/cucoders_data/new?value=${fileData}&filename=${file_name}`
+        );
+    }
   }
 </script>
