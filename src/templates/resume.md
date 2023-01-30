@@ -1,7 +1,3 @@
-# Nombre y Apellidos
-
-📍 Ubicación | 📞 Teléfono | 📧 Email
-
 ## 💼 Perfil profesional
 Breve descripción de su experiencia y objetivos profesionales.
 

@@ -1,6 +1,8 @@
 ---
 import ProfileLayout from "../../../layouts/profileLayout.astro";
 import { members_api_url } from "../../../data/conf.json";
+import { marked } from "marked";
+import { getRemoteFileData } from "../../../components/helpers/getRemoteFile";
 
 const response = await fetch(members_api_url + "members-data");
 const members_data = await response.json();
@@ -18,6 +20,20 @@ export async function getStaticPaths() {
 }
 
 const params = Astro.params;
+let content = "";
+
+const fileData = await getRemoteFileData(
+  `https://raw.githubusercontent.com/${params.username}/${params.username}/main/cucoders_data/services.md`,
+  "text"
+);
+if (fileData) {
+  content = marked.parse(fileData);
+}
 ---
 
-<ProfileLayout profile={members_data[params.username]} activeTab="services" />
+<ProfileLayout profile={members_data[params.username]} activeTab="services">
+  <article
+    class="my-5 prose-sm mx-auto px-10 py-6 prose-h2:mt-3 overflow-auto prose-ul:list-disc prose-img:m-0 prose-img:inline break-words"
+    set:html={content}
+  />
+</ProfileLayout>
