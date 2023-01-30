@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/baseLayout.astro";
 import categories from "../data/profileCategories.json";
 import Toast from "../components/toast/toast.astro";
+import CardLink from "../components/forms/cardLink.astro";
 import "../styles/main.css";
 
 let categoriesList = [];
@@ -28,9 +29,7 @@ for (const key in categories) {
         clip-rule="evenodd"></path></svg
     >
     <span class="sr-only">Info</span>
-    <div>
-      Los cambios realizados en el perfil tardan 24h en ser reflejados en el sitio web de CuCoders.
-    </div>
+    <div>Los cambios realizados en el perfil tardan 24h en ser reflejados en el sitio web de CuCoders.</div>
   </div>
 
   <div
@@ -229,6 +228,15 @@ for (const key in categories) {
         ></textarea>
       </div>
     </div>
+
+    <div class="flex justify-center">
+      <a
+        href="https://github.com/settings/profile"
+        target="_blank"
+        class="text-white mt-4 mx-2 bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
+        >Editar Perfil</a
+      >
+    </div>
   </div>
 
   <div
@@ -317,11 +325,19 @@ for (const key in categories) {
         <button
           id="updateProfile"
           class="text-white mt-4 mx-2 bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
-          >Actualizar Perfil desde Github</button
+          >Actualizar Perfil</button
         >
       </div>
     </div>
   </div>
+
+  <div id="profile-pages" class="hidden w-full gap-6 md:grid-cols-2 lg:max-w-[58rem] mx-auto">
+    <CardLink title="🧑‍💻 Perfil" subtitle="Resumen general de tu perfil" id="profile" target="_blank" />
+    <CardLink title="💼 Servicios" subtitle="Lista los servicios que ofreces" id="services" target="_blank" />
+    <CardLink title="💡 Proyectos" subtitle="Todos tus proyectos en una sola pagina" id="project" target="_blank" />
+    <CardLink title="📃 Currículo" subtitle="Resume tu experiencia, formación y aptitudes." id="cv" target="_blank" />
+  </div>
+
   <Toast />
 </BaseLayout>
 
@@ -428,6 +444,8 @@ for (const key in categories) {
   function showForm() {
     document.getElementById("github-form").classList.remove("hidden");
     document.getElementById("cucoders-form").classList.remove("hidden");
+    document.getElementById("profile-pages").classList.remove("hidden");
+    document.getElementById("profile-pages").classList.add("grid");
   }
 
   function disableInput() {
