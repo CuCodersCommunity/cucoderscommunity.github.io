@@ -352,6 +352,7 @@ for (const key in categories) {
   import { backend_url } from "../data/conf.json";
   import { showToast } from "../components/toast/toast";
   import { getRemoteFileData } from "../components/helpers/getRemoteFile";
+  import * as overviewTemplate from "../templates/overview.md";
 
   const proflieBtn = document.getElementById("createProfile");
   proflieBtn.addEventListener("click", createProfile, true);
@@ -504,14 +505,14 @@ for (const key in categories) {
   }
 
   function setProfilePagesLinks(username) {
-    setLinkAttr(username, "overview", "overview.md");
+    setLinkAttr(username, "overview", "overview.md", overviewTemplate.rawContent());
     setLinkAttr(username, "services", "services.md");
     setLinkAttr(username, "projects", "projects.md");
     setLinkAttr(username, "resume", "resume.md");
   }
 
-  async function setLinkAttr(username, id, file_name) {
-    const fileData = "paco kun";
+  async function setLinkAttr(username, id, file_name, newFileContent = "") {
+    const encodedFileData = encodeURIComponent(newFileContent);
 
     const file = await getRemoteFileData(
       `https://raw.githubusercontent.com/${username}/${username}/main/cucoders_data/${file_name}`,
@@ -526,7 +527,7 @@ for (const key in categories) {
         .getElementById(id)
         .setAttribute(
           "href",
-          `https://github.com/${username}/${username}/new/main/cucoders_data/new?value=${fileData}&filename=${file_name}`
+          `https://github.com/${username}/${username}/new/main/cucoders_data/new?value=${encodedFileData}&filename=${file_name}`
         );
     }
   }
