@@ -13,7 +13,28 @@ for (const key in categories) {
 
 <BaseLayout title="Editar Perfil">
   <div
-    class="bg-white border md:mx-auto mb-6 md:mt-12 mt-6 p-8 lg:max-w-[58rem] border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 w-full"
+    class="flex p-4 mb-6 md:mt-12 lg:max-w-[58rem] mx-auto w-full text-sm text-blue-800 border border-blue-300 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400 dark:border-blue-800"
+    role="alert"
+  >
+    <svg
+      aria-hidden="true"
+      class="flex-shrink-0 inline w-5 h-5 mr-3"
+      fill="currentColor"
+      viewBox="0 0 20 20"
+      xmlns="http://www.w3.org/2000/svg"
+      ><path
+        fill-rule="evenodd"
+        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+        clip-rule="evenodd"></path></svg
+    >
+    <span class="sr-only">Info</span>
+    <div>
+      Los cambios realizados en el perfil tardan 24h en ser reflejados en el sitio web de CuCoders.
+    </div>
+  </div>
+
+  <div
+    class="bg-white border mb-6 md:mx-auto p-8 lg:max-w-[58rem] border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 w-full"
   >
     <div>
       <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">GitHub</label>
@@ -69,6 +90,7 @@ for (const key in categories) {
       </div>
     </div>
   </div>
+
   <div
     id="github-form"
     class="bg-white hidden border md:mx-auto mb-5 p-8 lg:max-w-[58rem] border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 w-full"
@@ -451,7 +473,9 @@ for (const key in categories) {
   function copyToClipboard() {
     const profileData = createProfileData();
     navigator.clipboard.writeText(JSON.stringify(profileData));
-    showToast("Datos copiados al portapapeles satisfactoriamente! Abra su configuración en Github y remplácela con los nuevos datos.");
+    showToast(
+      "Datos copiados al portapapeles satisfactoriamente! Abra su configuración en Github y remplácela con los nuevos datos."
+    );
   }
 
   function updateProfile() {
