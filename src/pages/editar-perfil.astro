@@ -11,7 +11,7 @@ for (const key in categories) {
 }
 ---
 
-<BaseLayout>
+<BaseLayout title="Editar Perfil">
   <div
     class="bg-white border md:mx-auto mb-6 md:mt-12 mt-6 p-8 lg:max-w-[58rem] border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 w-full"
   >
@@ -274,10 +274,30 @@ for (const key in categories) {
 
     <div class="flex justify-center">
       <button
-        id="updateProfile"
-        class="text-white mt-4 bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
-        >Actualizar Perfil</button
+        id="createProfile"
+        class="text-white mt-4 mx-2 bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
+        >Crear Perfil</button
       >
+      <div id="edit-profile-btns" class="hidden">
+        <button
+          id="copyData"
+          type="button"
+          class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2 -ml-1 inline" viewBox="0 0 24 24"
+            ><path
+              fill="currentColor"
+              d="M9 18q-.825 0-1.412-.587Q7 16.825 7 16V4q0-.825.588-1.413Q8.175 2 9 2h9q.825 0 1.413.587Q20 3.175 20 4v12q0 .825-.587 1.413Q18.825 18 18 18Zm0-2h9V4H9v12Zm-4 6q-.825 0-1.413-.587Q3 20.825 3 20V7q0-.425.288-.713Q3.575 6 4 6t.713.287Q5 6.575 5 7v13h10q.425 0 .713.288q.287.287.287.712t-.287.712Q15.425 22 15 22ZM9 4v12V4Z"
+            ></path></svg
+          >
+          Copiar Datos</button
+        >
+        <button
+          id="updateProfile"
+          class="text-white mt-4 mx-2 bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
+          >Actualizar Perfil desde Github</button
+        >
+      </div>
     </div>
   </div>
   <Toast />
@@ -295,11 +315,17 @@ for (const key in categories) {
   import { showToast } from "../components/toast/toast";
   import { getRemoteFileData } from "../components/helpers/getRemoteFile";
 
-  const proflieBtn = document.getElementById("updateProfile");
-  proflieBtn.addEventListener("click", updateProfile, true);
+  const proflieBtn = document.getElementById("createProfile");
+  proflieBtn.addEventListener("click", createProfile, true);
 
   const loadUserBtn = document.getElementById("loadUserBtn");
   loadUserBtn.addEventListener("click", searchGithubUser, true);
+
+  const copyDataBtn = document.getElementById("copyData");
+  copyDataBtn.addEventListener("click", copyToClipboard, true);
+
+  const updateBtn = document.getElementById("updateProfile");
+  updateBtn.addEventListener("click", updateProfile, true);
 
   function searchGithubUser() {
     const username = (<HTMLInputElement>document.getElementById("username")).value;
@@ -351,10 +377,10 @@ for (const key in categories) {
       `https://raw.githubusercontent.com/${username}/${username}/main/cucoders_data/profile-data.json`,
       "json"
     );
-    console.log(data);
     if (data) {
-      asd();
-      cuCodersFormData(data)
+      cuCodersFormData(data);
+      document.getElementById("edit-profile-btns").classList.remove("hidden");
+      document.getElementById("createProfile").classList.add("hidden");
     }
   }
 
@@ -374,8 +400,7 @@ for (const key in categories) {
     (<HTMLInputElement>document.getElementById("headline")).value = data.headline;
     (<HTMLInputElement>document.getElementById("linkedin-username")).value = data.linkedin_username;
     (<HTMLInputElement>document.getElementById("telegram-username")).value = data.telegram_username;
-      // mostrar boton de actualizar perfil
-    // (<HTMLInputElement>document.getElementById("categories")).value = data.categories;
+    // TODO: Buscar alguna manera de cargar de este lado los datos del select multiple
   }
 
   function showForm() {
@@ -397,13 +422,11 @@ for (const key in categories) {
     document.getElementById("github-ico").classList.remove("hidden");
   }
 
-  function updateProfile() {
+  function createProfile() {
     const username = (<HTMLInputElement>document.getElementById("github-username")).value;
     const data = createProfileData();
     const encodedFileData = encodeURIComponent(JSON.stringify(data));
-    const filename = "profile-data.json";
-
-    const githubQueryLink = `https://github.com/${username}/${username}/new/main/cucoders_data/new?value=${encodedFileData}&filename=${filename}`;
+    const githubQueryLink = `https://github.com/${username}/${username}/new/main/cucoders_data/new?value=${encodedFileData}&filename=profile-data.json`;
 
     window.open(githubQueryLink);
   }
@@ -422,8 +445,18 @@ for (const key in categories) {
         categories.push(option.value);
       }
     }
-
     data["categories"] = categories;
     return data;
+  }
+  function copyToClipboard() {
+    const profileData = createProfileData();
+    navigator.clipboard.writeText(JSON.stringify(profileData));
+    showToast("Datos copiados al portapapeles satisfactoriamente! Abra su configuración en Github y remplácela con los nuevos datos.");
+  }
+
+  function updateProfile() {
+    const username = (<HTMLInputElement>document.getElementById("github-username")).value;
+    const githubQueryLink = `https://github.com/${username}/${username}/edit/main/cucoders_data/profile-data.json`;
+    window.open(githubQueryLink);
   }
 </script>
