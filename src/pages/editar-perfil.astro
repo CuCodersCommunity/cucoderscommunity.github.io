@@ -287,12 +287,13 @@ for (const key in categories) {
 <script is:inline src="https://cdn.jsdelivr.net/npm/tom-select/dist/js/tom-select.complete.min.js"></script>
 
 <script is:inline>
-  new TomSelect("#categories", {});
+  var control = new TomSelect("#categories", {});
 </script>
 
 <script>
   import { backend_url } from "../data/conf.json";
   import { showToast } from "../components/toast/toast";
+  import { getRemoteFileData } from "../components/helpers/getRemoteFile";
 
   const proflieBtn = document.getElementById("updateProfile");
   proflieBtn.addEventListener("click", updateProfile, true);
@@ -312,11 +313,10 @@ for (const key in categories) {
       .then((data) => {
         if (data.is_member) {
           loadGithubUserData();
+          loadCucodersUserData(username);
         } else {
           showToast(
-            "El usuario " +
-              username +
-              " no es miembro de la Comunidad. Necesitas registrarte primero para actualizar tu perfil.",
+            `El usuario ${username} no es miembro de la Comunidad. Necesitas registrarte primero para actualizar tu perfil.`,
             true
           );
           enableInput();
@@ -346,6 +346,17 @@ for (const key in categories) {
         enableInput();
       });
   }
+  async function loadCucodersUserData(username) {
+    const data = await getRemoteFileData(
+      `https://raw.githubusercontent.com/${username}/${username}/main/cucoders_data/profile-data.json`,
+      "json"
+    );
+    console.log(data);
+    if (data) {
+      asd();
+      cuCodersFormData(data)
+    }
+  }
 
   function setFormData(data) {
     (<HTMLInputElement>document.getElementById("name")).value = data.name;
@@ -357,6 +368,14 @@ for (const key in categories) {
     (<HTMLInputElement>document.getElementById("website")).value = data.blog;
     (<HTMLInputElement>document.getElementById("hireable")).checked = data.hireable;
     (<HTMLInputElement>document.getElementById("bio")).value = data.bio;
+  }
+
+  function cuCodersFormData(data) {
+    (<HTMLInputElement>document.getElementById("headline")).value = data.headline;
+    (<HTMLInputElement>document.getElementById("linkedin-username")).value = data.linkedin_username;
+    (<HTMLInputElement>document.getElementById("telegram-username")).value = data.telegram_username;
+      // mostrar boton de actualizar perfil
+    // (<HTMLInputElement>document.getElementById("categories")).value = data.categories;
   }
 
   function showForm() {
