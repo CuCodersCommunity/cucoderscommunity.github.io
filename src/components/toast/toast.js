@@ -11,12 +11,16 @@ function showToast(text, error = false) {
   document.getElementById("toast").classList.remove("opacity-0");
   document.getElementById("toast").classList.remove("hidden");
   document.getElementById("toast").classList.add("flex");
+
+  setTimeout(hideToast, 5000);
 }
 
 function hideToast() {
   document.getElementById("toast").classList.add("opacity-0");
-  document.getElementById("toast").classList.add("hidden");
-  document.getElementById("toast").classList.remove("flex");
+  setTimeout(function () {
+    document.getElementById("toast").classList.remove("flex");
+    document.getElementById("toast").classList.add("hidden");
+  }, 1000);
 }
 
 export { showToast, hideToast };
