@@ -7,7 +7,7 @@ const { profile } = Astro.props;
 <div class="w-full py-5 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700">
   <a href={"/dev/" + profile["username"]} class="flex flex-col items-center mb-3">
     <div class="relative">
-      <img class="w-24 h-24 my-3 rounded-full" src={profile["avatar_url"]} alt={profile["name"] + " profile picture"} />
+      <img class="w-24 h-24 my-3 rounded-full" src={profile["avatar_url_medium"]} alt={profile["name"] + " profile picture"} />
       {
         profile["hireable"] && (
           <div class="bottom-3 left-[4.5rem] absolute grid place-content-center w-7 h-7 bg-green-500 border-4 border-white dark:border-gray-800 rounded-full">
@@ -33,7 +33,7 @@ const { profile } = Astro.props;
     </div>
     <div class="px-5 flex justify-center w-full">
       {
-        profile["roles"].map((role) => (
+        profile["categories"].map((role) => (
           <LinkIcon
             url={"/directorio/" + categories[role].slug + "/1"}
             img={categories[role].ico}

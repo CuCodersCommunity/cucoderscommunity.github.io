@@ -155,7 +155,7 @@ const { profile } = Astro.props;
           <div class="text-sm mb-4 font-normal text-center md:text-left text-gray-900">{profile.bio}</div>
           <div class="flex flex-wrap justify-center md:justify-start">
             {
-              profile.roles.map((role) => (
+              profile.categories.map((role) => (
                 <a
                   href={"/directorio/" + categories[role].slug + "/1"}
                   class="inline rounded-md bg-gray-50 text-gray-800 my-1 md:my-0 font-normal text-sm py-1 px-2 mr-3 "

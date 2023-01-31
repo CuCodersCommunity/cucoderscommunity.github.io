@@ -20,7 +20,7 @@ export async function getStaticPaths({ paginate }) {
     let filteredMembers =
       categoryObj.key == "todos"
         ? members_array
-        : members_array.filter((member) => member["roles"].includes(categoryObj.key));
+        : members_array.filter((member) => member["categories"].includes(categoryObj.key));
     const category = categoryObj.slug;
     return paginate(filteredMembers, {
       params: { category },
