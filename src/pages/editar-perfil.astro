@@ -51,7 +51,7 @@ for (const key in categories) {
         />
         <button
           id="loadUserBtn"
-          class="text-white disabled:opacity-75 w-auto ml-5 bg-[#24292F] hover:bg-[#24292F]/90 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center flex content-center justify-center items-center dark:focus:ring-gray-500 dark:hover:bg-[#050708]/30 mr-2"
+          class="text-white disabled:opacity-50 w-auto ml-5 bg-[#24292F] hover:bg-[#24292F]/90 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center flex content-center justify-center items-center dark:focus:ring-gray-500 dark:hover:bg-[#050708]/30 mr-2"
         >
           <svg
             id="spinner-ico"
@@ -91,7 +91,7 @@ for (const key in categories) {
   </div>
 
   <div
-    id="github-form"
+    id="profile-form"
     class="bg-white hidden border md:mx-auto mb-5 p-8 lg:max-w-[58rem] border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 w-full"
   >
     <div class="flex justify-between">
@@ -114,8 +114,9 @@ for (const key in categories) {
         </div>
         <div class="px-3 py-2">
           <p>
-            CuCoder utiliza parte de los datos publicos de tu cuenta de GitHub. Para actualizar estos datos desdes hacerlo
-            desde tu <a class="underline" href="https://github.com/settings/profile" target="_blank"> perfil en GitHub.</a>
+            CuCoder usa tus datos públicos de GitHub para generar tu perfil, para actualizarlos debes hacerlo
+            <a class="underline" href="https://github.com/settings/profile" target="_blank"> desde GitHub</a> y luego recargarlos
+            aquí.
           </p>
         </div>
         <div data-popper-arrow></div>
@@ -123,6 +124,9 @@ for (const key in categories) {
     </div>
 
     <hr class="my-4" />
+
+    <input type="hidden" id="user-id" />
+
     <div>
       <div class="grid gap-6 mb-6 md:grid-cols-2">
         <div>
@@ -130,7 +134,7 @@ for (const key in categories) {
           <input
             type="text"
             id="name"
-            class="bg-gray-50 border border-gray-300 opacity-75 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
+            class="bg-gray-50 border border-gray-300 opacity-50 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
             disabled
           />
         </div>
@@ -140,14 +144,14 @@ for (const key in categories) {
             type="text"
             id="location"
             maxlength="25"
-            class="bg-gray-50 border border-gray-300 opacity-75 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
+            class="bg-gray-50 border border-gray-300 opacity-50 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
             disabled
           />
         </div>
 
         <div>
           <label for="twitter-username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Twitter</label>
-          <div class="flex opacity-75">
+          <div class="flex opacity-50">
             <span
               class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300 rounded-l-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600"
             >
@@ -163,7 +167,7 @@ for (const key in categories) {
         </div>
         <div>
           <label for="github-username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">GitHub</label>
-          <div class="flex opacity-75">
+          <div class="flex opacity-50">
             <span
               class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300 rounded-l-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600"
             >
@@ -177,22 +181,12 @@ for (const key in categories) {
             />
           </div>
         </div>
-
-        <div>
-          <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
-          <input
-            type="email"
-            id="email"
-            class="bg-gray-50 border border-gray-300 opacity-75 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
-            disabled
-          />
-        </div>
         <div>
           <label for="company" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Compañia</label>
           <input
             type="text"
             id="company"
-            class="bg-gray-50 border border-gray-300 opacity-75 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
+            class="bg-gray-50 border border-gray-300 opacity-50 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
             disabled
           />
         </div>
@@ -201,7 +195,7 @@ for (const key in categories) {
           <input
             type="url"
             id="website"
-            class="bg-gray-50 border border-gray-300 opacity-75 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
+            class="bg-gray-50 border border-gray-300 opacity-50 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
             disabled
           />
         </div>
@@ -224,30 +218,26 @@ for (const key in categories) {
           maxlength="160"
           disabled
           rows="2"
-          class="block p-2.5 w-full text-sm opacity-75 text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-gray-500 focus:border-gray-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
+          class="block p-2.5 w-full text-sm opacity-50 text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-gray-500 focus:border-gray-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
         ></textarea>
       </div>
     </div>
 
-    <div class="flex justify-center">
-      <a
-        href="https://github.com/settings/profile"
-        target="_blank"
-        class="text-white mt-4 mx-2 bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
-        >Editar Perfil</a
-      >
-    </div>
-  </div>
-
-  <div
-    id="cucoders-form"
-    class="bg-white hidden border md:mx-auto mb-5 p-8 lg:max-w-[58rem] border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 w-full"
-  >
     <div class="flex justify-between">
       <h1 class="text-xl font-bold">Datos de CuCoders</h1>
     </div>
 
     <hr class="my-4" />
+
+    <div class="mb-6">
+      <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
+      <input
+        type="email"
+        id="email"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
+      />
+    </div>
+
     <div class="mb-6">
       <label for="headline" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Encabezado</label>
       <input
@@ -432,14 +422,15 @@ for (const key in categories) {
     (<HTMLInputElement>document.getElementById("location")).value = data.location;
     (<HTMLInputElement>document.getElementById("twitter-username")).value = data.twitter_username;
     (<HTMLInputElement>document.getElementById("github-username")).value = data.login;
-    (<HTMLInputElement>document.getElementById("email")).value = data.email;
     (<HTMLInputElement>document.getElementById("company")).value = data.company;
     (<HTMLInputElement>document.getElementById("website")).value = data.blog;
     (<HTMLInputElement>document.getElementById("hireable")).checked = data.hireable;
     (<HTMLInputElement>document.getElementById("bio")).value = data.bio;
+    (<HTMLInputElement>document.getElementById("user-id")).value = data.id;
   }
 
   function cuCodersFormData(data) {
+    (<HTMLInputElement>document.getElementById("email")).value = data.email;
     (<HTMLInputElement>document.getElementById("headline")).value = data.headline;
     (<HTMLInputElement>document.getElementById("linkedin-username")).value = data.linkedin_username;
     (<HTMLInputElement>document.getElementById("telegram-username")).value = data.telegram_username;
@@ -447,8 +438,7 @@ for (const key in categories) {
   }
 
   function showForm() {
-    document.getElementById("github-form").classList.remove("hidden");
-    document.getElementById("cucoders-form").classList.remove("hidden");
+    document.getElementById("profile-form").classList.remove("hidden");
     document.getElementById("profile-pages").classList.remove("hidden");
     document.getElementById("profile-pages").classList.add("grid");
   }
@@ -479,6 +469,15 @@ for (const key in categories) {
   function createProfileData() {
     const data = {
       username: (<HTMLInputElement>document.getElementById("github-username")).value,
+      id: (<HTMLInputElement>document.getElementById("user-id")).value,
+      name: (<HTMLInputElement>document.getElementById("name")).value,
+      company: (<HTMLInputElement>document.getElementById("company")).value,
+      web: (<HTMLInputElement>document.getElementById("website")).value,
+      location: (<HTMLInputElement>document.getElementById("location")).value,
+      email: (<HTMLInputElement>document.getElementById("email")).value,
+      hireable: (<HTMLInputElement>document.getElementById("hireable")).checked,
+      bio: (<HTMLInputElement>document.getElementById("bio")).value,
+      twitter_username: (<HTMLInputElement>document.getElementById("twitter-username")).value,
       headline: (<HTMLInputElement>document.getElementById("headline")).value,
       linkedin_username: (<HTMLInputElement>document.getElementById("linkedin-username")).value,
       telegram_username: (<HTMLInputElement>document.getElementById("telegram-username")).value,
