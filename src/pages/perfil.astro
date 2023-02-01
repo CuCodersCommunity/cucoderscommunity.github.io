@@ -3,6 +3,7 @@ import BaseLayout from "../layouts/baseLayout.astro";
 import categories from "../data/profileCategories.json";
 import Toast from "../components/toast/toast.astro";
 import CardLink from "../components/forms/cardLink.astro";
+import Tooltip from "../components/ui/tooltip.astro";
 import "../styles/main.css";
 
 let categoriesList = [];
@@ -114,14 +115,7 @@ for (const key in categories) {
       </div>
     </div>
 
-    <div
-      id="tooltip-reload"
-      role="tooltip"
-      class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700"
-    >
-      Recargar datos
-      <div class="tooltip-arrow" data-popper-arrow></div>
-    </div>
+    <Tooltip id="tooltip-reload" text="Recargar datos" />
 
     <div
       data-popover
@@ -466,13 +460,18 @@ for (const key in categories) {
   }
 
   function disableInput() {
+    document.getElementById("reloadGithubData").setAttribute("disabled", "");
+    document.getElementById("reloadGithubData").classList.add("animate-spin");
     document.getElementById("loadUserBtn").setAttribute("disabled", "");
     document.getElementById("spinner-ico").classList.remove("hidden");
     document.getElementById("spinner-ico").classList.add("inline");
     document.getElementById("github-ico").classList.add("hidden");
+
   }
 
   function enableInput() {
+    document.getElementById("reloadGithubData").removeAttribute("disabled");
+    document.getElementById("reloadGithubData").classList.remove("animate-spin");
     document.getElementById("loadUserBtn").removeAttribute("disabled");
     document.getElementById("spinner-ico").classList.add("hidden");
     document.getElementById("spinner-ico").classList.remove("inline");
