@@ -97,30 +97,49 @@ for (const key in categories) {
     <div class="flex justify-between">
       <h1 class="text-xl font-bold">Datos de Github</h1>
 
-      <img
-        src="/assets/img/icons/sharp-help-outline.svg"
-        alt="Ayuda"
-        class="w-7 h-7 cursor-pointer mx-3"
-        data-popover-target="popover-default"
-      />
-      <div
-        data-popover
-        id="popover-default"
-        role="tooltip"
-        class="absolute z-10 invisible inline-block w-64 text-sm font-light text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800"
-      >
-        <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
-          <h3 class="font-semibold text-gray-900 dark:text-white">Datos de GitHub</h3>
-        </div>
-        <div class="px-3 py-2">
-          <p>
-            CuCoder usa tus datos públicos de GitHub para generar tu perfil, para actualizarlos debes hacerlo
-            <a class="underline" href="https://github.com/settings/profile" target="_blank"> desde GitHub</a> y luego recargarlos
-            aquí.
-          </p>
-        </div>
-        <div data-popper-arrow></div>
+      <div class="flex">
+        <img
+          id="reloadGithubData"
+          data-tooltip-target="tooltip-reload"
+          src="/assets/img/icons/reload.svg"
+          alt="Recargar Datos"
+          class="w-7 h-7 cursor-pointer mx-3"
+        />
+        <img
+          src="/assets/img/icons/sharp-help-outline.svg"
+          alt="Ayuda"
+          class="w-7 h-7 cursor-pointer mx-3"
+          data-popover-target="popover-default"
+        />
       </div>
+    </div>
+
+    <div
+      id="tooltip-reload"
+      role="tooltip"
+      class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700"
+    >
+      Recargar datos
+      <div class="tooltip-arrow" data-popper-arrow></div>
+    </div>
+
+    <div
+      data-popover
+      id="popover-default"
+      role="tooltip"
+      class="absolute z-10 invisible inline-block w-64 text-sm font-light text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 dark:text-gray-400 dark:border-gray-600 dark:bg-gray-800"
+    >
+      <div class="px-3 py-2 bg-gray-100 border-b border-gray-200 rounded-t-lg dark:border-gray-600 dark:bg-gray-700">
+        <h3 class="font-semibold text-gray-900 dark:text-white">Datos de GitHub</h3>
+      </div>
+      <div class="px-3 py-2">
+        <p>
+          Estos datos se obtienen de tu perfil de GitHub,
+          <a class="underline" href="https://github.com/settings/profile" target="_blank">actualízalos</a> y luego recargarlos
+          aquí.
+        </p>
+      </div>
+      <div data-popper-arrow></div>
     </div>
 
     <hr class="my-4" />
@@ -352,6 +371,9 @@ for (const key in categories) {
 
   const loadUserBtn = document.getElementById("loadUserBtn");
   loadUserBtn.addEventListener("click", searchGithubUser, true);
+
+  const reloadBtn = document.getElementById("reloadGithubData");
+  reloadBtn.addEventListener("click", searchGithubUser, true);
 
   const copyDataBtn = document.getElementById("copyData");
   copyDataBtn.addEventListener("click", copyToClipboard, true);
