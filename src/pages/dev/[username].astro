@@ -2,6 +2,7 @@
 import ProfileLayout from "../../layouts/profileLayout.astro";
 import { members_api_url } from "../../data/conf.json";
 import { marked } from "marked";
+import { getRemoteFileData } from "../../components/helpers/getRemoteFile";
 
 const response = await fetch(members_api_url + "members-data");
 const members_data = await response.json();
@@ -19,9 +20,16 @@ export async function getStaticPaths() {
 }
 
 const params = Astro.params;
-const pageResponse = await fetch(`https://raw.githubusercontent.com/${params.username}/${params.username}/main/README.md`);
-const markdown = await pageResponse.text();
-const content = marked.parse(markdown);
+
+let content = "";
+
+const fileData = await getRemoteFileData(
+  `https://raw.githubusercontent.com/${params.username}/${params.username}/main/README.md`,
+  "text"
+);
+if (fileData) {
+  content = marked.parse(fileData);
+}
 ---
 
 <ProfileLayout profile={members_data[params.username]} activeTab="profile">
