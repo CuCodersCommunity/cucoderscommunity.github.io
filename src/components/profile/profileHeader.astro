@@ -140,9 +140,8 @@ const { profile } = Astro.props;
           <div
             class="text-base mb-3 font-normal flex justify-center flex-wrap md:justify-start items-center text-gray-600 dark:text-gray-500"
           >
-            <div class="md:mr-5 mr-3">
-              {profile.headline}
-            </div>
+            {profile.headline && <div class="md:mr-5 mr-3">{profile.headline}</div>}
+
             {
               profile.location && (
                 <div class="flex items-center md:mr-5 mr-3">
