@@ -140,7 +140,7 @@ for (const key in categories) {
     <hr class="my-4" />
 
     <input type="hidden" id="user-id" />
-    <input type="hidden" id="branch-name" />
+    <input type="hidden" id="repository-branch-name" />
 
     <div>
       <div class="grid gap-6 mb-6 md:grid-cols-2">
@@ -426,7 +426,7 @@ for (const key in categories) {
     try {
       const response = await fetch(url, { method: "GET" });
       const data = await response.json();
-      (<HTMLInputElement>document.getElementById("branch-name")).value = data[0].name;
+      (<HTMLInputElement>document.getElementById("repository-branch-name")).value = data[0].name;
       return true;
     } catch {
       return false;
@@ -545,6 +545,7 @@ for (const key in categories) {
       headline: (<HTMLInputElement>document.getElementById("headline")).value,
       linkedin_username: (<HTMLInputElement>document.getElementById("linkedin-username")).value,
       telegram_username: (<HTMLInputElement>document.getElementById("telegram-username")).value,
+      repository_branch_name: (<HTMLInputElement>document.getElementById("repo-branch-name")).value
     };
 
     var categories = [];
