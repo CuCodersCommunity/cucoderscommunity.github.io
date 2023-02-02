@@ -4,6 +4,7 @@ import categories from "../data/profileCategories.json";
 import Toast from "../components/toast/toast.astro";
 import CardLink from "../components/forms/cardLink.astro";
 import Tooltip from "../components/ui/tooltip.astro";
+import CreateRepoModal from "../components/modals/createRepoModal.astro";
 import "../styles/main.css";
 
 let categoriesList = [];
@@ -139,6 +140,7 @@ for (const key in categories) {
     <hr class="my-4" />
 
     <input type="hidden" id="user-id" />
+    <input type="hidden" id="branch-name" />
 
     <div>
       <div class="grid gap-6 mb-6 md:grid-cols-2">
@@ -342,6 +344,7 @@ for (const key in categories) {
   </div>
 
   <Toast />
+  <CreateRepoModal />
 </BaseLayout>
 
 <link href="https://cdn.jsdelivr.net/npm/tom-select/dist/css/tom-select.css" rel="stylesheet" />
@@ -354,6 +357,7 @@ for (const key in categories) {
 <script>
   import { backend_url } from "../data/conf.json";
   import { showToast } from "../components/toast/toast";
+  import { Modal } from "flowbite";
   import { getRemoteFileData } from "../components/helpers/getRemoteFile";
   import * as overviewTemplate from "../templates/overview.md";
   import * as servicesTemplate from "../templates/services.md";
@@ -364,10 +368,10 @@ for (const key in categories) {
   proflieBtn.addEventListener("click", createProfile, true);
 
   const loadUserBtn = document.getElementById("loadUserBtn");
-  loadUserBtn.addEventListener("click", searchGithubUser, true);
+  loadUserBtn.addEventListener("click", loadUserData, true);
 
   const reloadBtn = document.getElementById("reloadGithubData");
-  reloadBtn.addEventListener("click", searchGithubUser, true);
+  reloadBtn.addEventListener("click", loadUserData, true);
 
   const copyDataBtn = document.getElementById("copyData");
   copyDataBtn.addEventListener("click", copyToClipboard, true);
@@ -375,36 +379,61 @@ for (const key in categories) {
   const updateBtn = document.getElementById("updateProfile");
   updateBtn.addEventListener("click", updateProfile, true);
 
-  function searchGithubUser() {
-    const username = (<HTMLInputElement>document.getElementById("username")).value;
-    const url = backend_url + "api/members/is-member?username=" + username;
-    disableInput();
+  const continueBtn = document.getElementById("continue-btn");
+  continueBtn.addEventListener("click", continueCreateRepoForm, true);
 
-    fetch(url, {
-      method: "GET",
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.is_member) {
-          loadGithubUserData();
-          loadCucodersUserData(username);
-        } else {
-          showToast(
-            `El usuario ${username} no es miembro de la Comunidad. Necesitas registrarte primero para actualizar tu perfil.`,
-            true
-          );
-          enableInput();
-        }
-      })
-      .catch((e) => {
-        showToast("Ocurrió un error inesperado. Por favor vuelva a intentarlo más tarde.", true);
-        enableInput();
-      });
+  const closeModalBtn = document.getElementById("close-modal-btn");
+  closeModalBtn.addEventListener("click", closeCreateRepoForm, true);
+
+  const $repoModalEl = document.getElementById("repoModal");
+  const modal = new Modal($repoModalEl, { placement: "center", backdrop: "static", closable: true });
+
+  async function loadUserData() {
+    const username = (<HTMLInputElement>document.getElementById("username")).value;
+
+    disableInput();
+    const isMember = await isCommunityMemeber(username);
+    if (!isMember) {
+      const alert = `El usuario ${username} no es miembro de la Comunidad. Necesitas registrarte primero para actualizar tu perfil.`;
+      showToast(alert, true);
+      enableInput();
+      return;
+    }
+    const specialRepo = await isSpecialRepoAvailable(username);
+    if (!specialRepo) {
+      modal.show();
+      enableInput();
+      return;
+    }
+
+    loadGithubUserData(username);
+    loadCucodersUserData(username);
   }
 
-  function loadGithubUserData() {
-    const username = (<HTMLInputElement>document.getElementById("username")).value;
+  async function isCommunityMemeber(username) {
+    const url = backend_url + "api/members/is-member?username=" + username;
+    try {
+      const response = await fetch(url, { method: "GET" });
+      const data = await response.json();
+      return data.is_member;
+    } catch {
+      return false;
+    }
+  }
 
+  async function isSpecialRepoAvailable(username) {
+    const url = `https://api.github.com/repos/${username}/${username}/branches`;
+    try {
+      const response = await fetch(url, { method: "GET" });
+      const data = await response.json();
+      (<HTMLInputElement>document.getElementById("branch-name")).value = data[0].name;
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
+  function loadGithubUserData(username) {
     fetch("https://api.github.com/users/" + username, {
       method: "GET",
     })
@@ -421,6 +450,16 @@ for (const key in categories) {
         enableInput();
       });
   }
+
+  function continueCreateRepoForm() {
+    modal.hide();
+    loadUserData();
+  }
+
+  function closeCreateRepoForm(){
+    modal.hide();
+  }
+
   async function loadCucodersUserData(username) {
     const data = await getRemoteFileData(
       `https://raw.githubusercontent.com/${username}/${username}/main/cucoders_data/profile-data.json`,
@@ -466,7 +505,6 @@ for (const key in categories) {
     document.getElementById("spinner-ico").classList.remove("hidden");
     document.getElementById("spinner-ico").classList.add("inline");
     document.getElementById("github-ico").classList.add("hidden");
-
   }
 
   function enableInput() {
@@ -483,7 +521,12 @@ for (const key in categories) {
     const data = createProfileData();
     const encodedFileData = encodeURIComponent(JSON.stringify(data));
     const githubQueryLink = `https://github.com/${username}/${username}/new/main/cucoders_data/new?value=${encodedFileData}&filename=profile-data.json`;
+    window.open(githubQueryLink);
+  }
 
+  function updateProfile() {
+    const username = (<HTMLInputElement>document.getElementById("github-username")).value;
+    const githubQueryLink = `https://github.com/${username}/${username}/edit/main/cucoders_data/profile-data.json`;
     window.open(githubQueryLink);
   }
 
@@ -513,18 +556,13 @@ for (const key in categories) {
     data["categories"] = categories;
     return data;
   }
+
   function copyToClipboard() {
     const profileData = createProfileData();
     navigator.clipboard.writeText(JSON.stringify(profileData));
-    showToast(
-      "Datos copiados al portapapeles satisfactoriamente! Abra su configuración en Github y remplácela con los nuevos datos."
-    );
-  }
-
-  function updateProfile() {
-    const username = (<HTMLInputElement>document.getElementById("github-username")).value;
-    const githubQueryLink = `https://github.com/${username}/${username}/edit/main/cucoders_data/profile-data.json`;
-    window.open(githubQueryLink);
+    const alert =
+      "Datos copiados al portapapeles satisfactoriamente! Abra su configuración en Github y remplácela con los nuevos datos.";
+    showToast(alert);
   }
 
   function setProfilePagesLinks(username) {

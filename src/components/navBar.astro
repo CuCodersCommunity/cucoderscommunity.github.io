@@ -150,26 +150,36 @@ import LinkIcon from "./helpers/linkIcon.astro";
   id="dropdownMainMenu"
   class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
 >
-<ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownMenuIconButton">
-  <li>
-    <a href="/registro" class="inline-flex w-full items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-      <img src="/assets/img/icons/profile.svg" class="w-5 h-5 mr-2" />
-      Regístrate
-    </a>
-  </li>
-  <li>
-    <a href="/perfil" class="inline-flex w-full items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-      <img src="/assets/img/icons/write.svg" class="w-5 h-5 mr-2" />
-      Editar Perfil
-    </a>
-  </li>
-</ul>
   <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownMenuIconButton">
     <li>
-      <a href="/nueva-publicacion" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Crear Publicación</a>
+      <a
+        href="/perfil"
+        class="inline-flex w-full items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+      >
+        <img src="/assets/img/icons/profile.svg" class="w-5 h-5 mr-2" />
+        Perfil
+      </a>
     </li>
     <li>
-      <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Publicar Aplicación</a>
+      <a
+        href="/registro"
+        class="inline-flex w-full items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+      >
+        <img src="/assets/img/icons/login.svg" class="w-5 h-5 mr-2" />
+        Regístrate
+      </a>
+    </li>
+  </ul>
+  <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownMenuIconButton">
+    <li>
+      <a href="/nueva-publicacion" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+        >Crear Publicación</a
+      >
+    </li>
+    <li>
+      <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+        >Publicar Aplicación</a
+      >
     </li>
     <li>
       <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Publicar Empleo</a>
@@ -183,7 +193,7 @@ import LinkIcon from "./helpers/linkIcon.astro";
     <a
       href="#"
       class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-      >Acerca de CuCoders </a
-    >
+      >Acerca de CuCoders
+    </a>
   </div>
 </div>
