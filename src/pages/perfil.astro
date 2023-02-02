@@ -140,7 +140,6 @@ for (const key in categories) {
     <hr class="my-4" />
 
     <input type="hidden" id="user-id" />
-    <input type="hidden" id="repository-branch-name" />
 
     <div>
       <div class="grid gap-6 mb-6 md:grid-cols-2">
@@ -422,11 +421,12 @@ for (const key in categories) {
   }
 
   async function isSpecialRepoAvailable(username) {
-    const url = `https://api.github.com/repos/${username}/${username}/branches`;
+    const url = `https://api.github.com/repos/${username}/${username}`;
     try {
       const response = await fetch(url, { method: "GET" });
-      const data = await response.json();
-      (<HTMLInputElement>document.getElementById("repository-branch-name")).value = data[0].name;
+      const status = await response.status;
+      if (status == 404) return false;
+
       return true;
     } catch {
       return false;
@@ -456,7 +456,7 @@ for (const key in categories) {
     loadUserData();
   }
 
-  function closeCreateRepoForm(){
+  function closeCreateRepoForm() {
     modal.hide();
   }
 
@@ -544,8 +544,7 @@ for (const key in categories) {
       twitter_username: (<HTMLInputElement>document.getElementById("twitter-username")).value,
       headline: (<HTMLInputElement>document.getElementById("headline")).value,
       linkedin_username: (<HTMLInputElement>document.getElementById("linkedin-username")).value,
-      telegram_username: (<HTMLInputElement>document.getElementById("telegram-username")).value,
-      repository_branch_name: (<HTMLInputElement>document.getElementById("repo-branch-name")).value
+      telegram_username: (<HTMLInputElement>document.getElementById("telegram-username")).value
     };
 
     var categories = [];
