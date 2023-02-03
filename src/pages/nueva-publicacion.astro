@@ -130,25 +130,26 @@ for (const key in categories) {
     const image = getValue("thumbnail-url");
     const username = getValue("username");
     const pubDate = new Date().toDateString();
-    const categories = getValue("categories");
     const description = getValue("description");
-
     const filename = title.replace(/\s/g, "-") + ".md";
 
-    const formattedCategories = '["' + categories.replace(/,/g, '","') + '"]';
+    var categories = [];
+    for (let option of document.getElementById("categories").options) {
+      if (option.selected) {
+        categories.push(option.value);
+      }
+    }
 
     let fileText = `---
 title: "${title}"
 pubDate: "${pubDate}"
 image: "${image}"
 username: "${username}"
-categories: ${formattedCategories}
+categories: ${JSON.stringify(categories)}
 description: "${description}"
 ---
 
-Aqui va el cuerpo de tu documento.
-
-`;
+Aqui va el cuerpo de tu documento.`;
 
     const encodedFileText = encodeURIComponent(fileText);
 
