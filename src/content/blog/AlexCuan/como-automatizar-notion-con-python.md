@@ -1,6 +1,6 @@
 ---
-layout: "../../../../layouts/postLayout.astro"
 title: "Como automatizar Notion con Python"
+username: "AlexCuan"
 pubDate: "Jan 8 2023"
 description: "Notion es una gran herramienta y esencial para mí. Es como un segundo cerebro. Sin embargo, una vez entendidos los conceptos básicos, se puede sacar aún más partido."
 image: "https://i.pinimg.com/564x/ab/5b/10/ab5b1049f9dc3e3afd176e77357c3895.jpg"

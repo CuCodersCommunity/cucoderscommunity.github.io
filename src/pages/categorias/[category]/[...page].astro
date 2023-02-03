@@ -3,6 +3,7 @@ import MainLayout from "../../../layouts/mainLayout.astro";
 import categories from "../../../data/categories.json";
 import BlogCard from "../../../components/blogCard.astro";
 import Pagination from "../../../components/pagination.astro";
+import { getCollection } from "astro:content";
 
 export async function getStaticPaths({ paginate }) {
   let allCategories = [];
@@ -11,13 +12,13 @@ export async function getStaticPaths({ paginate }) {
     allCategories.push({ key: key, slug: categories[key].slug });
   }
 
-  const allPosts = await Astro.glob("../../../pages/dev/**/blog/*.md");
+  const allPosts = await getCollection('blog');
   return allCategories.map((categoryObj) => {
     let filteredPosts =
       categoryObj.key == "todo"
         ? allPosts
-        : allPosts.filter((post) => post.frontmatter.categories.includes(categoryObj.key));
-    filteredPosts.sort((a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf());
+        : allPosts.filter((post) => post.data.categories.includes(categoryObj.key));
+    filteredPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
     const category = categoryObj.slug;
     return paginate(filteredPosts, {
       params: { category },

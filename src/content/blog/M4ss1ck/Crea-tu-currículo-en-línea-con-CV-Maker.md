@@ -1,9 +1,8 @@
 ---
-layout: "../../../../layouts/postLayout.astro"    
 title: "Crea tu currículo en línea con CV Maker"
 pubDate: "Sun Jan 22 2023"
-image: "https://user-images.githubusercontent.com/53962116/214132096-c13eaf10-7355-4091-842a-72050a870468.png"
 username: "M4ss1ck"
+image: "https://user-images.githubusercontent.com/53962116/214132096-c13eaf10-7355-4091-842a-72050a870468.png"
 categories: ["tutorials"]
 description: "CV Maker es una herramienta de creación de currículos en línea que te permite crear tu currículo de forma fácil y rápida. Completamente gratuito y respetando tu privacidad."
 ---

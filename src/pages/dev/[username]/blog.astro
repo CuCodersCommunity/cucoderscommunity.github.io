@@ -2,6 +2,7 @@
 import ProfileLayout from "../../../layouts/profileLayout.astro";
 import { members_api_url } from "../../../data/conf.json";
 import HorizontalPostItem from "../../../components/helpers/horizontalPostItem.astro";
+import { getCollection } from "astro:content";
 
 const response = await fetch(members_api_url + "members-data");
 const members_data = await response.json();
@@ -20,8 +21,10 @@ export async function getStaticPaths() {
 
 const params = Astro.params;
 
-const allPosts = await Astro.glob("../**/blog/*.md");
-const userPosts = allPosts.filter((post) => post.file.includes("/dev/" + params.username + "/blog/"));
+const userPosts = await getCollection("blog", ({ id }) => {
+  return id.startsWith(params.username + "/");
+});
+
 ---
 
 <ProfileLayout profile={members_data[params.username]} activeTab="blog">

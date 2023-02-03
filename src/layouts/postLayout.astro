@@ -4,37 +4,35 @@ import dayjs from "dayjs";
 import "dayjs/locale/es";
 import readingTime from "reading-time";
 import categoriesList from "../data/categories.json";
-import {members_api_url} from "../data/conf.json"
+import { members_api_url } from "../data/conf.json";
 
 dayjs.locale("es");
 
-const { title, pubDate, image, categories } = Astro.props.frontmatter;
-const display_date = dayjs(pubDate).format("D MMM");
-const stats = readingTime(Astro.props.rawContent());
+const { post } = Astro.props;
+const post_data = post.data;
+const display_date = dayjs(post_data.pubDate).format("D MMM, YYYY");
+const stats = readingTime(post.body);
 const read_time = stats.text.replace("read", "");
-let banner_syle = "background-image: url(" + image + ")";
-const author = Astro.props.url.split("/")[2];
-const response = await fetch(members_api_url+"/members/"+author);
+let banner_syle = "background-image: url(" + post_data.image + ")";
+const response = await fetch(members_api_url + "/members/" + post_data.username);
 const user_data = await response.json();
 
-const description = Astro.props.frontmatter.description
-  ? Astro.props.frontmatter.description
-  : Astro.props.rawContent().slice(0, 160) + "...";
+const description = post_data.description ? post_data.description : post.body.slice(0, 160) + "...";
 
-if (!image) {
+if (!post_data.image) {
   banner_syle = "display: none";
 }
 ---
 
-<BaseLayout title={title} description={description} image={image}>
+<BaseLayout title={post_data.title} description={description} image={post_data.image}>
   <div
-    class="bg-white border md:mx-auto mb-5 -mt-6 md:mt-12 lg:max-w-[58rem] border-gray-200 rounded-lg  dark:bg-gray-800 dark:border-gray-700 w-full"
+    class="bg-white border md:mx-auto mb-5 -mt-6 md:mt-12 lg:max-w-[58rem] border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 w-full"
   >
     <div class="bg-cover bg-center h-[15rem] md:h-[22rem] lg:h-[28rem] rounded-t-lg" style={banner_syle}></div>
 
     <div class="p-8 md:px-15 lg:px-20">
       <div class="mb-5 flex justify-between">
-        <a href={"/dev/"+user_data.username} class="flex items-center space-x-4">
+        <a href={"/dev/" + user_data.username} class="flex items-center space-x-4">
           <img class="w-12 h-12 rounded-full" src={user_data.avatar_url_small} alt={user_data.name + " avatar"} />
           <div class="font-medium dark:text-white">
             <div>
@@ -71,8 +69,7 @@ if (!image) {
               >
             </li>
             <li>
-              <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Mejorar esta Página</a
-              >
+              <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Editar</a>
             </li>
           </ul>
           <div class="py-1">
@@ -85,17 +82,17 @@ if (!image) {
         </div>
       </div>
       <h1 class="mb-5 text-3xl md:text-4xl font-bold tracking-tight text-gray-900 dark:text-white">
-        {title}
+        {post_data.title}
       </h1>
       <div class="my-2 flex justify-between">
         <div>
           {
-            categories.map((category) => (
+            post_data.categories.map((category) => (
               <a
-              href={"/categorias/" + categoriesList[category].slug}
+                href={"/categorias/" + categoriesList[category].slug}
                 class="text-gray-600 bg-white my-1 border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-normal rounded md:text-base text-sm px-1 py-1.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
               >
-              {"#" + categoriesList[category].text}
+                {"#" + categoriesList[category].text}
               </a>
             ))
           }

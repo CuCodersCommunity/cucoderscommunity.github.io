@@ -3,33 +3,32 @@ import dayjs from "dayjs";
 import "dayjs/locale/es";
 import readingTime from "reading-time";
 import categories from "../data/categories.json";
-import {members_api_url} from "../data/conf.json"
+import { members_api_url } from "../data/conf.json";
 
 const { post } = Astro.props;
-const author = post.url.split("/")[2];
-const response = await fetch(members_api_url+"/members/"+author);
+const response = await fetch(members_api_url + "/members/" + post.data.username);
 const user_data = await response.json();
-const stats = readingTime(post.rawContent());
+const stats = readingTime(post.body);
 const read_time = stats.text.replace("read", "");
-const description = post.frontmatter.description ? post.frontmatter.description : post.rawContent().slice(0, 160) + "...";
+const description = post.data.description ? post.data.description : post.body.slice(0, 160) + "...";
 
-const display_date = dayjs(post.frontmatter.pubDate).format("D MMM");
+const display_date = dayjs(post.data.pubDate).format("D MMM");
 
-let BannerSyle = "background-image: url(" + post.frontmatter.image + ")";
+let BannerSyle = "background-image: url(" + post.data.image + ")";
 
-if (!post.frontmatter.image) {
+if (!post.data.image) {
   BannerSyle = "display: none";
 }
 ---
 
 <div class="bg-white border border-gray-200 rounded-lg mb-5 dark:bg-gray-800 dark:border-gray-700 w-full">
-  <a href={post.url}>
+  <a href={'/publicaciones/'+post.slug}>
     <div class="bg-cover bg-center h-[13rem] md:h-[14rem] lg:h-[20rem] rounded-t-lg" style={BannerSyle}></div>
   </a>
 
   <div class="p-5">
     <div class="mb-3 flex justify-between">
-      <a href={"/dev/"+user_data.username} class="flex items-center space-x-4">
+      <a href={"/dev/" + user_data.username} class="flex items-center space-x-4">
         <img class="w-10 h-10 rounded-full" src={user_data.avatar_url_small} alt={user_data.name + " avatar"} />
         <div class="font-medium dark:text-white">
           <div>
@@ -76,9 +75,9 @@ if (!post.frontmatter.image) {
       </div>
     </div>
 
-    <a href={post.url}>
+    <a href={'/publicaciones/'+post.slug}>
       <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-        {post.frontmatter.title}
+        {post.data.title}
       </h5>
     </a>
     <p class="mb-5 font-normal text-gray-700 dark:text-gray-400 line-clamp-3 md:line-clamp-3">
@@ -87,7 +86,7 @@ if (!post.frontmatter.image) {
     <div class="my-2 flex justify-between">
       <div>
         {
-          post.frontmatter.categories.map((category) => (
+          post.data.categories.map((category) => (
             <a
               href={"/categorias/" + categories[category].slug}
               class="text-gray-600 bg-white my-1 border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-normal rounded md:text-base text-sm px-1 py-1.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"

@@ -138,7 +138,6 @@ for (const key in categories) {
     const formattedCategories = '["' + categories.replace(/,/g, '","') + '"]';
 
     let fileText = `---
-layout: "../../../../layouts/postLayout.astro"    
 title: "${title}"
 pubDate: "${pubDate}"
 image: "${image}"
@@ -154,9 +153,9 @@ Aqui va el cuerpo de tu documento.
     const encodedFileText = encodeURIComponent(fileText);
 
     const githubQueryLink =
-      "https://github.com/CuCodersCommunity/cucoderscommunity.github.io/new/main/src/pages/dev/" +
+      "https://github.com/CuCodersCommunity/cucoderscommunity.github.io/new/main/src/content/blog/" +
       username +
-      "/blog/new?value=" +
+      "/new?value=" +
       encodedFileText +
       "&filename=" +
       filename;
