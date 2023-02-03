@@ -45,7 +45,7 @@ const { profile } = Astro.props;
       {
         profile["categories"].map((role) => (
           <LinkIcon
-            url={"/directorio/" + categories[role].slug + "/1"}
+            url={"/directorio/" + categories[role].slug}
             img={categories[role].ico}
             text={categories[role].text}
             target="_self"

@@ -164,7 +164,7 @@ const { profile } = Astro.props;
             {
               profile.categories.map((role) => (
                 <a
-                  href={"/directorio/" + categories[role].slug + "/1"}
+                  href={"/directorio/" + categories[role].slug}
                   class="inline rounded-md bg-gray-50 text-gray-800 my-1 md:my-0 font-normal text-sm py-1 px-2 mr-3 "
                 >
                   {categories[role].text}
