@@ -5,6 +5,7 @@ import Toast from "../components/toast/toast.astro";
 import CardLink from "../components/forms/cardLink.astro";
 import Tooltip from "../components/ui/tooltip.astro";
 import CreateRepoModal from "../components/modals/createRepoModal.astro";
+import ChangeRepoNameModal from "../components/modals/changeRepoNameModal.astro";
 import "../styles/main.css";
 
 let categoriesList = [];
@@ -344,6 +345,7 @@ for (const key in categories) {
 
   <Toast />
   <CreateRepoModal />
+  <ChangeRepoNameModal />
 </BaseLayout>
 
 <link href="https://cdn.jsdelivr.net/npm/tom-select/dist/css/tom-select.css" rel="stylesheet" />
@@ -384,8 +386,17 @@ for (const key in categories) {
   const closeModalBtn = document.getElementById("close-modal-btn");
   closeModalBtn.addEventListener("click", closeCreateRepoForm, true);
 
+  const continueBranchBtn = document.getElementById("continue-branch-btn");
+  continueBranchBtn.addEventListener("click", continueBranchForm, true);
+
+  const closeBranchModalBtn = document.getElementById("close-branch-modal-btn");
+  closeBranchModalBtn.addEventListener("click", closeBranchForm, true);
+
   const $repoModalEl = document.getElementById("repoModal");
-  const modal = new Modal($repoModalEl, { placement: "center", backdrop: "static", closable: true });
+  const repoModal = new Modal($repoModalEl, { placement: "center", backdrop: "static", closable: true });
+
+  const $branchModalEl = document.getElementById("branchModal");
+  const branchModal = new Modal($branchModalEl, { placement: "center", backdrop: "static", closable: true });
 
   async function loadUserData() {
     const username = (<HTMLInputElement>document.getElementById("username")).value;
@@ -400,7 +411,16 @@ for (const key in categories) {
     }
     const specialRepo = await isSpecialRepoAvailable(username);
     if (!specialRepo) {
-      modal.show();
+      repoModal.show();
+      enableInput();
+      return;
+    }
+
+    const mainBranch = await isMainBranch(username);
+    if (!mainBranch) {
+      const new_url = `https://github.com/${username}/${username}/branches`;
+      (<HTMLInputElement>document.getElementById("change-branch-name-btn")).setAttribute("href", new_url);
+      branchModal.show();
       enableInput();
       return;
     }
@@ -433,6 +453,17 @@ for (const key in categories) {
     }
   }
 
+  async function isMainBranch(username) {
+    const url = backend_url + "api/members/has-main-branch?username=" + username;
+    try {
+      const response = await fetch(url, { method: "GET" });
+      const data = await response.json();
+      return data.has_main_branch;
+    } catch {
+      return false;
+    }
+  }
+
   function loadGithubUserData(username) {
     fetch("https://api.github.com/users/" + username, {
       method: "GET",
@@ -452,12 +483,21 @@ for (const key in categories) {
   }
 
   function continueCreateRepoForm() {
-    modal.hide();
+    repoModal.hide();
     loadUserData();
   }
 
   function closeCreateRepoForm() {
-    modal.hide();
+    repoModal.hide();
+  }
+
+  function continueBranchForm() {
+    branchModal.hide();
+    loadUserData();
+  }
+
+  function closeBranchForm() {
+    branchModal.hide();
   }
 
   async function loadCucodersUserData(username) {
@@ -467,8 +507,8 @@ for (const key in categories) {
     );
     if (data) {
       cuCodersFormData(data);
-      document.getElementById("edit-profile-btns").classList.remove("hidden");
-      document.getElementById("createProfile").classList.add("hidden");
+      (<HTMLInputElement>document.getElementById("edit-profile-btns")).classList.remove("hidden");
+      (<HTMLInputElement>document.getElementById("createProfile")).classList.add("hidden");
     }
   }
 
@@ -493,27 +533,27 @@ for (const key in categories) {
   }
 
   function showForm() {
-    document.getElementById("profile-form").classList.remove("hidden");
-    document.getElementById("profile-pages").classList.remove("hidden");
-    document.getElementById("profile-pages").classList.add("grid");
+    (<HTMLInputElement>document.getElementById("profile-form")).classList.remove("hidden");
+    (<HTMLInputElement>document.getElementById("profile-pages")).classList.remove("hidden");
+    (<HTMLInputElement>document.getElementById("profile-pages")).classList.add("grid");
   }
 
   function disableInput() {
-    document.getElementById("reloadGithubData").setAttribute("disabled", "");
-    document.getElementById("reloadGithubData").classList.add("animate-spin");
-    document.getElementById("loadUserBtn").setAttribute("disabled", "");
-    document.getElementById("spinner-ico").classList.remove("hidden");
-    document.getElementById("spinner-ico").classList.add("inline");
-    document.getElementById("github-ico").classList.add("hidden");
+    (<HTMLInputElement>document.getElementById("reloadGithubData")).setAttribute("disabled", "");
+    (<HTMLInputElement>document.getElementById("reloadGithubData")).classList.add("animate-spin");
+    (<HTMLInputElement>document.getElementById("loadUserBtn")).setAttribute("disabled", "");
+    (<HTMLInputElement>document.getElementById("spinner-ico")).classList.remove("hidden");
+    (<HTMLInputElement>document.getElementById("spinner-ico")).classList.add("inline");
+    (<HTMLInputElement>document.getElementById("github-ico")).classList.add("hidden");
   }
 
   function enableInput() {
-    document.getElementById("reloadGithubData").removeAttribute("disabled");
-    document.getElementById("reloadGithubData").classList.remove("animate-spin");
-    document.getElementById("loadUserBtn").removeAttribute("disabled");
-    document.getElementById("spinner-ico").classList.add("hidden");
-    document.getElementById("spinner-ico").classList.remove("inline");
-    document.getElementById("github-ico").classList.remove("hidden");
+    (<HTMLInputElement>document.getElementById("reloadGithubData")).removeAttribute("disabled");
+    (<HTMLInputElement>document.getElementById("reloadGithubData")).classList.remove("animate-spin");
+    (<HTMLInputElement>document.getElementById("loadUserBtn")).removeAttribute("disabled");
+    (<HTMLInputElement>document.getElementById("spinner-ico")).classList.add("hidden");
+    (<HTMLInputElement>document.getElementById("spinner-ico")).classList.remove("inline");
+    (<HTMLInputElement>document.getElementById("github-ico")).classList.remove("hidden");
   }
 
   function createProfile() {
@@ -544,7 +584,7 @@ for (const key in categories) {
       twitter_username: (<HTMLInputElement>document.getElementById("twitter-username")).value,
       headline: (<HTMLInputElement>document.getElementById("headline")).value,
       linkedin_username: (<HTMLInputElement>document.getElementById("linkedin-username")).value,
-      telegram_username: (<HTMLInputElement>document.getElementById("telegram-username")).value
+      telegram_username: (<HTMLInputElement>document.getElementById("telegram-username")).value,
     };
 
     var categories = [];
