@@ -1,0 +1,26 @@
+---
+import AppsLayout from "../../layouts/appsLayout.astro";
+import SideBar from "../../components/mainSideBar.astro";
+import BlogCard from "../../components/blogCard.astro";
+import RightSideBar from "../../components/rightSideBar.astro";
+import RightDrawer from "../../components/rightDrawer.astro";
+import Pagination from "../../components/pagination.astro";
+import { getCollection } from "astro:content";
+
+const allPosts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const posts = allPosts.slice(0, 6);
+const showPagination = Object.keys(allPosts).length > 6;
+---
+
+<AppsLayout
+  title="CuCoders | La comunidad de los programadores cubanos"
+  description="CuCoders description"
+  hasRightSidebar={true}
+>
+
+</AppsLayout>
+
+<RightDrawer title="Categorías">
+  <SideBar isSideMenu={true} />
+</RightDrawer>

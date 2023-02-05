@@ -1,0 +1,87 @@
+{
+  "games": {
+    "slug": "juegos",
+    "text": "Juegos",
+    "ico": "/assets/img/icons/games.svg"
+  },
+  "productivity": {
+    "slug": "productividad",
+    "text": "Productividad",
+    "ico": "/assets/img/icons/QA.svg"
+  },
+  "business": {
+    "slug": "negocios",
+    "text": "Negocios",
+    "ico": "/assets/img/icons/business.svg"
+  },
+  "finances": {
+    "slug": "finanzas",
+    "text": "Finanzas",
+    "ico": "/assets/img/icons/finances.svg"
+  },
+  "communication": {
+    "slug": "comunicacion",
+    "text": "Comunicación",
+    "ico": "/assets/img/icons/chat.svg"
+  },
+  "toolsAndUtilities": {
+    "slug": "herramientas-y-utilidades",
+    "text": "Herramientas y Utilidades",
+    "ico": "/assets/img/icons/tools.svg"
+  },
+  "augmentedAndVirtualReality": {
+    "slug": "realidad-virtual-y-aumentada",
+    "text": "Realidad Virtual & Aumentada",
+    "ico": "/assets/img/icons/vr.svg"
+  },
+  "education": {
+    "slug": "educacion",
+    "text": "Educación",
+    "ico": "/assets/img/icons/education.svg"
+  },
+  "healthAndWellness": {
+    "slug": "salud-y-bienestar",
+    "text": "Salud y Bienestar",
+    "ico": "/assets/img/icons/health.svg"
+  },
+  "lifestyle": {
+    "slug": "estilo-de-vida",
+    "text": "Estilo de Vida",
+    "ico": "/assets/img/icons/city.svg"
+  },
+  "travelAndTransportation": {
+    "slug": "viajes-y-transportacion",
+    "text": "Viajes y Transportación",
+    "ico": "/assets/img/icons/travel.svg"
+  },
+  "mapsAndNavigation": {
+    "slug": "mapas-y-navegacion",
+    "text": "Mapas y Navegación",
+    "ico": "/assets/img/icons/map2.svg"
+  },
+  "entertainment": {
+    "slug": "entretenimiento",
+    "text": "Entretenimiento",
+    "ico": "/assets/img/icons/tv.svg"
+  },
+  "shopping": {
+    "slug": "compras",
+    "text": "Compras",
+    "ico": "/assets/img/icons/store.svg"
+  },
+  "artAndDesign": {
+    "slug": "arte-y-diseno",
+    "text": "Arte y Diseño",
+    "ico": "/assets/img/icons/art.svg"
+  },
+  "multimedia": {
+    "slug": "multimedia",
+    "text": "Multimedia",
+    "ico": "/assets/img/icons/media.svg"
+  },
+  "dev": {
+    "slug": "programacion",
+    "text": "Programación",
+    "ico": "/assets/img/icons/dev.svg"
+  }
+}
