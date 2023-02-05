@@ -14,14 +14,14 @@ const appsSchema = z.object({
     description: z.string().optional(),
     logo: z.string(),
     website: z.string(),
-    repository_url: z.string(),
-    twitter_username: z.string(),
-    telegram_username: z.string(),
+    email: z.string().optional(),
+    repository_url: z.string().optional(),
+    twitter_username: z.string().optional(),
+    telegram_username: z.string().optional(),
     dev_username: z.string(),
     pubDate: z.string().transform(str => new Date(str)),
     categories: z.array(z.string()),
-    platforms: z.array(z.string()),
-    screenshots: z.array(z.string()),
+    platforms: z.array(z.string())
 });
 
 export type BlogSchema = z.infer<typeof blogSchema>;

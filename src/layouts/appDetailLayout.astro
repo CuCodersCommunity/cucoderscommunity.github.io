@@ -1,0 +1,17 @@
+---
+import BaseLayout from "./baseLayout.astro";
+import AppHeader from "../components/apps/appHeader.astro";
+
+const { app } = Astro.props;
+---
+
+<BaseLayout title={app.data.name} description={app.data.description} image={app.data.logo}>
+  <AppHeader app={app} />
+  <div
+    class="bg-white border md:mx-auto mb-5 lg:max-w-[58rem] border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 w-full"
+  >
+    <article class="my-5 prose-sm mx-auto px-10 py-6 prose-h2:mt-3 overflow-auto prose-ul:list-disc prose-img:m-0 prose-img:inline break-words">
+      <slot />
+    </article>
+  </div>
+</BaseLayout>

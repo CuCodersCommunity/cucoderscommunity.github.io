@@ -11,13 +11,12 @@ export async function getStaticPaths({ paginate }) {
     allCategories.push({ key: key, slug: categories[key].slug });
   }
 
-
-  const AllApps = await getCollection('apps');
+  const AllApps = await getCollection("apps");
   return allCategories.map((categoryObj) => {
-    let filteredPosts =  AllApps.filter((post) => post.data.categories.includes(categoryObj.key));
-    filteredPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+    let filteredApps = AllApps.filter((app) => app.data.categories.includes(categoryObj.key));
+    filteredApps.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
     const category = categoryObj.slug;
-    return paginate(filteredPosts, {
+    return paginate(filteredApps, {
       params: { category },
       pageSize: 6,
     });
@@ -29,6 +28,6 @@ const params = Astro.params;
 
 <AppsLayout title={params.category}>
   {page.data.length == 0 && <img src="/assets/img/emptyList.webp" class="w-ful mx-auto my-4" />}
-  {page.data.map((post) => <BlogCard post={post} />)}
+  {page.data.map((app) => <div>asd</div>)}
   <Pagination prev={page.url.prev} next={page.url.next} />
 </AppsLayout>
