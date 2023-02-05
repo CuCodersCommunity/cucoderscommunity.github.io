@@ -1,8 +1,8 @@
 ---
-import AppsLayout from "../../../../layouts/appsLayout.astro";
-import categories from "../../../../data/appsCategories.json";
-import BlogCard from "../../../../components/blogCard.astro";
-import Pagination from "../../../../components/pagination.astro";
+import categories from "../../../data/appsCategories.json";
+import AppsLayout from "../../../layouts/appsLayout.astro";
+import BlogCard from "../../../components/blogCard.astro";
+import Pagination from "../../../components/pagination.astro";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths({ paginate }) {

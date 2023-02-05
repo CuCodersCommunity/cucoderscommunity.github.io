@@ -1,0 +1,16 @@
+---
+import BaseLayout from "./baseLayout.astro";
+import ProfileHeader from "../components/profile/profileHeader.astro";
+
+const { app } = Astro.props;
+---
+
+<BaseLayout title={app.name} description={app.description} image={app.logo}>
+  <!-- <ProfileHeader app={app} /> -->
+
+  <div
+    class="bg-white border md:mx-auto mb-5 lg:max-w-[58rem] border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 w-full"
+  >
+    <slot />
+  </div>
+</BaseLayout>
