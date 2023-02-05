@@ -10,12 +10,18 @@ const blogSchema = z.object({
 });
 
 const appsSchema = z.object({
-    title: z.string(),
-    username: z.string(),
-    pubDate: z.string().transform(str => new Date(str)),
+    name: z.string(),
     description: z.string().optional(),
-    image: z.string().optional(),
+    logo: z.string(),
+    website: z.string(),
+    repository_url: z.string(),
+    twitter_username: z.string(),
+    telegram_username: z.string(),
+    dev_username: z.string(),
+    pubDate: z.string().transform(str => new Date(str)),
     categories: z.array(z.string()),
+    platforms: z.array(z.string()),
+    screenshots: z.array(z.string()),
 });
 
 export type BlogSchema = z.infer<typeof blogSchema>;
