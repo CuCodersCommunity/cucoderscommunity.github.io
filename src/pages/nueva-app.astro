@@ -11,6 +11,8 @@ for (const key in categories) {
   categories[key].key = key;
   categoriesList.push(categories[key]);
 }
+
+let platformList = ["Windows", "Linux", "macOS", "Web", "Android", "iOS"];
 ---
 
 <BaseLayout title="Perfil">
@@ -85,15 +87,17 @@ for (const key in categories) {
     <input type="hidden" id="user-id" />
 
     <div>
+      <input type="hidden" id="github-username" />
       <div class="grid gap-6 mb-6 md:grid-cols-2">
         <TextInput id="name" label="Nombre *" maxlength="80" />
-        <TextInput id="log" label="Logo *" placeholder="URL de la imagen" maxlength="200" />
+        <TextInput id="logo" label="Logo *" placeholder="URL de la imagen" maxlength="200" />
       </div>
       <div class="mb-6">
-        <TextInput id="description *" label="Breve descripción" maxlength="200" />
+        <TextInput id="description" label="Descripción *" maxlength="200" />
       </div>
       <div class="grid gap-6 mb-6 md:grid-cols-2">
         <TextInput id="website" label="Sitio Web" type="url" />
+        <TextInput id="repository_url" label="Repositorio URL" type="url" />
         <TextInput id="email" label="Email" type="email" />
         <UsernameInput id="twitter_username" label="Twitter" placeholder="Nombre de Usuario" />
         <UsernameInput id="telegram_username" label="Telegram" placeholder="Nombre de Usuario" />
@@ -109,10 +113,10 @@ for (const key in categories) {
     </div>
 
     <div class="mb-6">
-      <label for="platforms" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Categorias</label>
+      <label for="platforms" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Plataformas</label>
       <select id="platforms" name="state[]" multiple placeholder="Plataformas" autocomplete="off">
         <option value="">Select a state...</option>
-        {categoriesList.map((category) => <option value={category.key}>{category.text}</option>)}
+        {platformList.map((category) => <option value={category}>{category}</option>)}
       </select>
     </div>
 
@@ -122,26 +126,6 @@ for (const key in categories) {
         class="text-white mt-4 mx-2 bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
         >Publicar Aplicación</button
       >
-      <div id="edit-profile-btns" class="w-full sm:w-auto hidden">
-        <button
-          id="copyData"
-          type="button"
-          class="text-gray-900 w-full sm:mx-2 sm:w-auto bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-2 -ml-1 inline" viewBox="0 0 24 24"
-            ><path
-              fill="currentColor"
-              d="M9 18q-.825 0-1.412-.587Q7 16.825 7 16V4q0-.825.588-1.413Q8.175 2 9 2h9q.825 0 1.413.587Q20 3.175 20 4v12q0 .825-.587 1.413Q18.825 18 18 18Zm0-2h9V4H9v12Zm-4 6q-.825 0-1.413-.587Q3 20.825 3 20V7q0-.425.288-.713Q3.575 6 4 6t.713.287Q5 6.575 5 7v13h10q.425 0 .713.288q.287.287.287.712t-.287.712Q15.425 22 15 22ZM9 4v12V4Z"
-            ></path></svg
-          >
-          Copiar Datos</button
-        >
-        <button
-          id="updateProfile"
-          class="text-white mt-4 w-full sm:mx-2 sm:w-auto bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
-          >Actualizar Perfil</button
-        >
-      </div>
     </div>
   </div>
 
@@ -155,17 +139,19 @@ for (const key in categories) {
   var control = new TomSelect("#categories", {
     maxItems: 4,
   });
+
+  var control2 = new TomSelect("#platforms", {});
 </script>
 
 <script>
   import { backend_url } from "../data/conf.json";
   import { showToast } from "../components/toast/toast";
 
-  const proflieBtn = document.getElementById("createApp");
-  proflieBtn.addEventListener("click", createApp, true);
-
   const loadUserBtn = document.getElementById("loadUserBtn");
   loadUserBtn.addEventListener("click", loadUserData, true);
+
+  const proflieBtn = document.getElementById("createApp");
+  proflieBtn.addEventListener("click", createApp, true);
 
   async function loadUserData() {
     const username = (<HTMLInputElement>document.getElementById("username")).value;
@@ -178,6 +164,7 @@ for (const key in categories) {
       enableInput();
       return;
     }
+    await getGithubCaseUsername(username);
     enableInput();
     (<HTMLInputElement>document.getElementById("app-form")).classList.remove("hidden");
   }
@@ -191,6 +178,20 @@ for (const key in categories) {
     } catch {
       return false;
     }
+  }
+
+  async function getGithubCaseUsername(username) {
+    fetch("https://api.github.com/users/" + username, {
+      method: "GET",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        getElem("github-username").value = data.login;
+      })
+      .catch((e) => {
+        showToast("Ocurrió un error inesperado. Por favor vuelva a intentarlo más tarde.", true);
+        enableInput();
+      });
   }
 
   function disableInput() {
@@ -209,44 +210,43 @@ for (const key in categories) {
 
   function createApp() {
     const username = (<HTMLInputElement>document.getElementById("github-username")).value;
-    const data = createAppData();
-    const encodedFileData = encodeURIComponent(JSON.stringify(data));
-    const githubQueryLink = `https://github.com/${username}/${username}/new/main/cucoders_data/new?value=${encodedFileData}&filename=profile-data.json`;
+    const fileName = getElem("name").value.replace(/\s/g, "-") + ".md";
+    const fileText = createAppData();
+    const encodedFileText = encodeURIComponent(fileText);
+    const githubQueryLink = `https://github.com/CuCodersCommunity/cucoderscommunity.github.io/new/main/src/content/apps/${username}/new?value=${encodedFileText}&filename=${fileName}`;
     window.open(githubQueryLink);
   }
 
-  function createAppData() {
-    const data = {
-      username: (<HTMLInputElement>document.getElementById("github-username")).value,
-      id: (<HTMLInputElement>document.getElementById("user-id")).value,
-      name: (<HTMLInputElement>document.getElementById("name")).value,
-      company: (<HTMLInputElement>document.getElementById("company")).value,
-      web: (<HTMLInputElement>document.getElementById("website")).value,
-      location: (<HTMLInputElement>document.getElementById("location")).value,
-      email: (<HTMLInputElement>document.getElementById("email")).value,
-      hireable: (<HTMLInputElement>document.getElementById("hireable")).checked,
-      bio: (<HTMLInputElement>document.getElementById("bio")).value,
-      twitter_username: (<HTMLInputElement>document.getElementById("twitter-username")).value,
-      headline: (<HTMLInputElement>document.getElementById("headline")).value,
-      linkedin_username: (<HTMLInputElement>document.getElementById("linkedin-username")).value,
-      telegram_username: (<HTMLInputElement>document.getElementById("telegram-username")).value,
-    };
-
-    var categories = [];
-    for (let option of (<HTMLSelectElement>document.getElementById("categories")).options) {
-      if (option.selected) {
-        categories.push(option.value);
-      }
-    }
-    data["categories"] = categories;
-    return data;
+  function getElem(id) {
+    return <HTMLInputElement>document.getElementById(id);
   }
 
-  function copyToClipboard() {
-    const profileData = createAppData();
-    navigator.clipboard.writeText(JSON.stringify(profileData));
-    const alert =
-      "Datos copiados al portapapeles satisfactoriamente! Abra su configuración en Github y remplácela con los nuevos datos.";
-    showToast(alert);
+  function createAppData() {
+    return `---
+name: "${getElem("name").value}"
+id: "${getElem("name").value.replace(/\s/g, "-")}"
+description: "${getElem("description").value}"
+logo: "${getElem("logo").value}"
+email: "${getElem("email").value}"
+repository_url: "${getElem("repository_url").value}"
+twitter_username: "${getElem("twitter_username").value}"
+telegram_username: "${getElem("telegram_username").value}"
+dev_username: "${getElem("github-username").value}"
+pubDate: "${new Date().toDateString()}"
+categories: ${JSON.stringify(getSelectedElements("categories"))}
+categories: ${JSON.stringify(getSelectedElements("platforms"))}
+---
+
+Aquí va la descripción general de tu app en formato MarkDown.`;
+  }
+
+  function getSelectedElements(id) {
+    var list = [];
+    for (let option of (<HTMLSelectElement>document.getElementById(id)).options) {
+      if (option.selected) {
+        list.push(option.value);
+      }
+    }
+    return list;
   }
 </script>

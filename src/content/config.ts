@@ -11,6 +11,7 @@ const blogSchema = z.object({
 
 const appsSchema = z.object({
     name: z.string(),
+    id: z.string(),
     description: z.string().optional(),
     logo: z.string(),
     website: z.string(),

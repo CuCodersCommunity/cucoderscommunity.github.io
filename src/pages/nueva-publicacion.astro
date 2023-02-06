@@ -152,15 +152,7 @@ description: "${description}"
 Aqui va el cuerpo de tu documento.`;
 
     const encodedFileText = encodeURIComponent(fileText);
-
-    const githubQueryLink =
-      "https://github.com/CuCodersCommunity/cucoderscommunity.github.io/new/main/src/content/blog/" +
-      username +
-      "/new?value=" +
-      encodedFileText +
-      "&filename=" +
-      filename;
-
+    const githubQueryLink = `https://github.com/CuCodersCommunity/cucoderscommunity.github.io/new/main/src/content/blog/${username}/new?value=${encodedFileText}&filename=${filename}`;
     window.open(githubQueryLink);
   }
 </script>
