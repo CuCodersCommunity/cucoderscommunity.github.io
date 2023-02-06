@@ -1,0 +1,73 @@
+---
+import BaseLayout from "../../layouts/baseLayout.astro";
+import CardLink from "../../components/forms/cardLink.astro";
+---
+
+<BaseLayout title="Rutas">
+  <div class="w-full mx-auto my-6 lg:max-w-[58rem] md:mt-12 px-3 sm:px-0 text-center">
+    <h1 class="text-3xl font-semibold text-gray-800">Rutas</h1>
+    <h2 class="text-base text-gray-700">Guías paso a paso y caminos para aprender diferentes herramientas o tecnologías</h2>
+  </div>
+  <div class="grid w-full gap-4 md:grid-cols-2 lg:max-w-[58rem] mx-auto px-3 sm:px-0">
+    <CardLink
+      title="🧑‍💻 Frontend Developer"
+      subtitle="Guía paso a paso para convertirse en un desarrollador frontend."
+      target="_blank"
+      url="https://roadmap.sh/frontend"
+    />
+    <CardLink
+      title="⚙️ Backend Developer"
+      subtitle="Guía paso a paso para convertirse en un desarrollador backend."
+      target="_blank"
+      url="https://roadmap.sh/backend"
+    />
+    <CardLink
+      title="🗄️ Ruta de DevOps"
+      subtitle="Guía paso a paso para DevOps, SRE o cualquier otro rol de operaciones."
+      target="_blank"
+      url="https://roadmap.sh/devops"
+    />
+    <CardLink
+      title="📱 Android Developer"
+      subtitle="Guía paso a paso para convertirse en un desarrollador Android."
+      target="_blank"
+      url="https://roadmap.sh/android"
+    />
+    <CardLink
+      title="🔗 Blockchain Developer"
+      subtitle="Guía paso a paso para convertirse en un desarrollador blockchain."
+      target="_blank"
+      url="https://roadmap.sh/blockchain"
+    />
+    <CardLink
+      title="💻 Arquitecto de Software"
+      subtitle="Guía paso a paso para convertirse en un arquitecto de software."
+      target="_blank"
+      url="https://roadmap.sh/software-architect"
+    />
+    <CardLink
+      title="✅ Ingeniero QA"
+      subtitle="Pasos a seguir para convertirse en un Ingeniero de Control de la Calidad."
+      target="_blank"
+      url="https://roadmap.sh/qa"
+    />
+    <CardLink
+      title="👨‍💻 Ciencias de la Computación"
+      subtitle="Currículum de Ciencias de la Computación con recursos gratuitos para un desarrollador autodidacta."
+      target="_blank"
+      url="https://roadmap.sh/qa"
+    />
+    <CardLink
+    title="🛡️ Cyber Security Expert "
+    subtitle="Guía paso a paso para convertirse en un experto en seguridad informática."
+    target="_blank"
+    url="https://roadmap.sh/cyber-security"
+  />
+    <CardLink
+      title="🔀 Otras rutas"
+      subtitle="Otras rutas paso a paso para mejorar tu formacion profesional."
+      target="_blank"
+      url="https://roadmap.sh/roadmaps"
+    />
+  </div>
+</BaseLayout>
