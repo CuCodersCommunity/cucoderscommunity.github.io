@@ -1,12 +1,17 @@
 ---
 import appCategories from "../../data/appsCategories.json";
 
-const { url, title, subtitle, logo, categories } = Astro.props;
+const {
+  url,
+  title,
+  subtitle,
+  logo,
+  categories,
+  classes = "inline-flex items-center w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg",
+} = Astro.props;
 ---
 
-<div
-  class="inline-flex items-center w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
->
+<div class={classes}>
   <a href={url} class="p-3 border md:mr-2 rounded-2xl bg-white self-start">
     <img class="w-10 h-10 md:w-12 md:h-12 md:min-w-[3rem] min-w-[2.5rem] rounded-xl" src={logo} alt={title + " logo"} />
   </a>
