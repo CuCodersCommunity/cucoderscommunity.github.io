@@ -26,14 +26,14 @@ import SidebarMultiLevelItem from "./sidebarComponents/sidebarMultiLevelItem.ast
   </button>
   <div class="py-4 overflow-y-auto">
     <ul class="space-y-2">
-           <!-- <SidebarMultiLevelItem text="Directorios" id="Directorios">
-      </SidebarMultiLevelItem> -->
       <SidebarItem text="Inicio" url="/" />
       <SidebarItem text="Coders" url="/directorio" />
       <SidebarItem text="Empleos" url="#" />
       <SidebarItem text="Apps" url="/apps" />
       <SidebarItem text="Eventos" url="#" />
-      <SidebarItem text="Guías" url="#" />
+      <SidebarMultiLevelItem text="Formación" id="formation">
+        <SidebarItem text="Rutas" url="/formacion/rutas" />
+      </SidebarMultiLevelItem>
       <SidebarItem text="Recursos" url="#" />
     </ul>
     <ul class="pt-4 mt-4 space-y-2 border-t border-gray-200 dark:border-gray-700">
