@@ -5,6 +5,7 @@ description: "WeekToDo is a free and Open Source Minimalist Weekly Planner and T
 logo: "https://weektodo.me/logo.svg"
 website: "https://weektodo.me"
 repository_url: "https://github.com/manuelernestog/weektodo"
+is_open_source: true
 email: "contact@weektodo.me"
 twitter_username: "weektodo"
 telegram_username: "weektodo"

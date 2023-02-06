@@ -15,7 +15,7 @@ for (const key in categories) {
 let platformList = ["Windows", "Linux", "macOS", "Web", "Android", "iOS"];
 ---
 
-<BaseLayout title="Perfil">
+<BaseLayout title="Publicar Nueva Aplicación">
   <div
     class="bg-white border mb-6 md:mx-auto p-8 -mt-6 md:mt-12 lg:max-w-[58rem] border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 w-full"
   >
@@ -97,8 +97,18 @@ let platformList = ["Windows", "Linux", "macOS", "Web", "Android", "iOS"];
       </div>
       <div class="grid gap-6 mb-6 md:grid-cols-2">
         <TextInput id="website" label="Sitio Web" type="url" />
-        <TextInput id="repository_url" label="Repositorio URL" type="url" />
         <TextInput id="email" label="Email" type="email" />
+        <div class="flex items-center">
+          <input
+            id="is-open-source"
+            type="checkbox"
+            value=""
+            class="w-4 h-4 text-gray-600 bg-gray-100 border-gray-300 rounded focus:ring-gray-500 dark:focus:ring-gray-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+          />
+          <label for="is-open-source" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Es de Código Abierto</label
+          >
+        </div>
+        <TextInput id="repository_url" label="Repositorio URL" type="url" />
         <UsernameInput id="twitter_username" label="Twitter" placeholder="Nombre de Usuario" />
         <UsernameInput id="telegram_username" label="Telegram" placeholder="Nombre de Usuario" />
       </div>
@@ -228,6 +238,7 @@ id: "${getElem("name").value.replace(/\s/g, "-")}"
 description: "${getElem("description").value}"
 logo: "${getElem("logo").value}"
 email: "${getElem("email").value}"
+is_open_source: ${getElem("is-open-source").checked}
 repository_url: "${getElem("repository_url").value}"
 twitter_username: "${getElem("twitter_username").value}"
 telegram_username: "${getElem("telegram_username").value}"

@@ -16,6 +16,7 @@ const appsSchema = z.object({
     logo: z.string(),
     website: z.string(),
     email: z.string().optional(),
+    is_open_source: z.boolean(),
     repository_url: z.string().optional(),
     twitter_username: z.string().optional(),
     telegram_username: z.string().optional(),

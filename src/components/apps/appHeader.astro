@@ -4,6 +4,8 @@ import categories from "../../data/appsCategories.json";
 
 const { app } = Astro.props;
 const appData = app.data;
+
+console.log(appData);
 ---
 
 <div
@@ -120,8 +122,17 @@ const appData = app.data;
           </div>
           <div class="flex flex-wrap justify-center md:justify-start">
             {
+              appData.is_open_source && (
+                <p class="inline my-1 cursor-default rounded-md bg-green-50 text-gray-800 font-normal text-sm py-1 px-2 mr-2 ">
+                  Código Abierto
+                </p>
+              )
+            }
+            {
               appData.platforms.map((platform) => (
-                <p class="inline my-1 cursor-default rounded-md bg-gray-50 text-gray-800 font-normal text-sm py-1 px-2 mr-2 ">{platform}</p>
+                <p class="inline my-1 cursor-default rounded-md bg-gray-50 text-gray-800 font-normal text-sm py-1 px-2 mr-2 ">
+                  {platform}
+                </p>
               ))
             }
           </div>
@@ -140,13 +151,16 @@ const appData = app.data;
         <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Compartir</a>
       </li>
       <li>
-        <a href={"/dev/"+appData.dev_username} class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-          >Desarrollador</a
+        <a
+          href={"/dev/" + appData.dev_username}
+          class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Desarrollador</a
         >
       </li>
       <li>
-        <a href={`https://github.com/CuCodersCommunity/cucoderscommunity.github.io/edit/main/src/content/apps/${appData.dev_username}/${appData.id}.md`} target="_blank" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-          >Editar App</a
+        <a
+          href={`https://github.com/CuCodersCommunity/cucoderscommunity.github.io/edit/main/src/content/apps/${appData.dev_username}/${appData.id}.md`}
+          target="_blank"
+          class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Editar App</a
         >
       </li>
     </ul>
