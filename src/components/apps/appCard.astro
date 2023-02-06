@@ -1,0 +1,29 @@
+---
+import appCategories from "../../data/appsCategories.json";
+
+const { url, title, subtitle, logo, categories } = Astro.props;
+---
+
+<div
+  class="inline-flex items-center w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-50 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700"
+>
+  <a href={url} class="p-3 border md:mr-2 rounded-2xl bg-white self-start">
+    <img class="w-12 h-12 min-w-[3rem] rounded-xl" src={logo} alt={title + " logo"} />
+  </a>
+  <div class="ml-1">
+    <a href={url} class="w-full ml-2 text-lg font-semibold">{title}</a>
+    <a href={url} class="w-full ml-2 text-base text-gray-700 line-clamp-1">{subtitle}</a>
+    <div class="mt-1">
+      {
+        categories.map((category) => (
+          <a
+            href={"/apps/" + appCategories[category].slug}
+            class="text-gray-500 text-sm mr-2 px-2 border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-normal rounded  py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+          >
+            {"#" + appCategories[category].text}
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</div>

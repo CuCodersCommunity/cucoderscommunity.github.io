@@ -1,7 +1,7 @@
 ---
 import categories from "../../../data/appsCategories.json";
 import AppsLayout from "../../../layouts/appsLayout.astro";
-import BlogCard from "../../../components/blogCard.astro";
+import AppCard from "../../../components/apps/appCard.astro";
 import Pagination from "../../../components/pagination.astro";
 import { getCollection } from "astro:content";
 
@@ -18,7 +18,7 @@ export async function getStaticPaths({ paginate }) {
     const category = categoryObj.slug;
     return paginate(filteredApps, {
       params: { category },
-      pageSize: 6,
+      pageSize: 18,
     });
   });
 }
@@ -28,6 +28,20 @@ const params = Astro.params;
 
 <AppsLayout title={params.category}>
   {page.data.length == 0 && <img src="/assets/img/emptyList.webp" class="w-ful mx-auto my-4" />}
-  {page.data.map((app) => <div>asd</div>)}
+
+  <div class="grid w-full gap-4 md:grid-cols-1 mx-auto px-3 sm:px-0">
+    {
+      page.data.map((app) => (
+        <AppCard
+          title={app.data.name}
+          subtitle={app.data.description}
+          url={"/apps/" + app.slug}
+          logo={app.data.logo}
+          categories={app.data.categories}
+        />
+      ))
+    }
+  </div>
+
   <Pagination prev={page.url.prev} next={page.url.next} />
 </AppsLayout>

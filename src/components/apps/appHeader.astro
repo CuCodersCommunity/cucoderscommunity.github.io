@@ -14,7 +14,7 @@ const appData = app.data;
       <div class="flex items-center flex-col md:flex-row md:space-x-4 w-full">
         <div class="relative mb-3 md:mb-0">
           <div class="p-6 border md:mr-2 rounded-2xl">
-            <img class="w-28 h-28 min-w-[7rem] rounded-xl" src={appData.logo} alt={appData.name + " avatar"} />
+            <img class="w-28 h-28 min-w-[7rem] rounded-xl" src={appData.logo} alt={appData.name + " logo"} />
           </div>
         </div>
 
@@ -110,7 +110,7 @@ const appData = app.data;
                 appData.categories.map((category) => (
                   <a
                     href={"/apps/" + categories[category].slug}
-                    class="inline my-1 rounded-md border text-gray-800 font-normal text-sm py-1 px-2 mr-3 "
+                    class="inline my-1 rounded-md hover:bg-gray-50 border text-gray-800 font-normal text-sm py-1 px-2 mr-3 "
                   >
                     {categories[category].text}
                   </a>
@@ -121,7 +121,7 @@ const appData = app.data;
           <div class="flex flex-wrap justify-center md:justify-start">
             {
               appData.platforms.map((platform) => (
-                <p class="inline my-1 rounded-md bg-gray-50 text-gray-800 font-normal text-sm py-1 px-2 mr-2 ">{platform}</p>
+                <p class="inline my-1 cursor-default rounded-md bg-gray-50 text-gray-800 font-normal text-sm py-1 px-2 mr-2 ">{platform}</p>
               ))
             }
           </div>
