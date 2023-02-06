@@ -1,23 +1,34 @@
 ---
 import AppsLayout from "../../layouts/appsLayout.astro";
 import SideBar from "../../components/mainSideBar.astro";
-import BlogCard from "../../components/blogCard.astro";
-import RightSideBar from "../../components/rightSideBar.astro";
 import RightDrawer from "../../components/rightDrawer.astro";
-import Pagination from "../../components/pagination.astro";
+import AppCard from "../../components/apps/appCard.astro";
 import { getCollection } from "astro:content";
 
-const allPosts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-
-const posts = allPosts.slice(0, 6);
-const showPagination = Object.keys(allPosts).length > 6;
+const apps = (await getCollection("apps")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const lastApps = apps.slice(0, 12);
 ---
 
-<AppsLayout
+<AppsLayout title="Directorio de Aplicaciones Cubanas"
   title="CuCoders | La comunidad de los programadores cubanos"
   description="CuCoders description"
   hasRightSidebar={true}
 >
+
+<h2 class="mb-3 text-xl mx-2 font-semibold text-gray-700"> Últimos lanzamientos</h2>
+<div class="grid mb-6 w-full gap-4 md:grid-cols-1 mx-auto px-3 sm:px-0">
+  {
+    lastApps.map((app) => (
+      <AppCard
+        title={app.data.name}
+        subtitle={app.data.description}
+        url={"/apps/" + app.slug}
+        logo={app.data.logo}
+        categories={app.data.categories}
+      />
+    ))
+  }
+</div>
 
 </AppsLayout>
 
