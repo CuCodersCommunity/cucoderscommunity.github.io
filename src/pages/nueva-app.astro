@@ -2,10 +2,8 @@
 import BaseLayout from "../layouts/baseLayout.astro";
 import categories from "../data/appsCategories.json";
 import Toast from "../components/toast/toast.astro";
-import CardLink from "../components/forms/cardLink.astro";
-import Tooltip from "../components/ui/tooltip.astro";
-import CreateRepoModal from "../components/modals/createRepoModal.astro";
-import ChangeRepoNameModal from "../components/modals/changeRepoNameModal.astro";
+import TextInput from "../components/forms/textInput.astro";
+import UsernameInput from "../components/forms/usernameInput.astro";
 import "../styles/main.css";
 
 let categoriesList = [];
@@ -88,174 +86,41 @@ for (const key in categories) {
 
     <div>
       <div class="grid gap-6 mb-6 md:grid-cols-2">
-        <div>
-          <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
-          <input
-            type="text"
-            id="name"
-            class="bg-gray-50 border border-gray-300 opacity-50 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
-            disabled
-          />
-        </div>
-        <div>
-          <label for="location" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ubicación</label>
-          <input
-            type="text"
-            id="location"
-            maxlength="25"
-            class="bg-gray-50 border border-gray-300 opacity-50 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
-            disabled
-          />
-        </div>
-
-        <div>
-          <label for="twitter-username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Twitter</label>
-          <div class="flex opacity-50">
-            <span
-              class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300 rounded-l-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600"
-            >
-              @
-            </span>
-            <input
-              type="text"
-              id="twitter-username"
-              disabled
-              class="rounded-none rounded-r-lg bg-gray-50 border text-gray-900 focus:ring-gray-500 focus:border-gray-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
-            />
-          </div>
-        </div>
-        <div>
-          <label for="github-username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">GitHub</label>
-          <div class="flex opacity-50">
-            <span
-              class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300 rounded-l-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600"
-            >
-              @
-            </span>
-            <input
-              type="text"
-              id="github-username"
-              disabled
-              class="rounded-none rounded-r-lg bg-gray-50 border text-gray-900 focus:ring-gray-500 focus:border-gray-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
-            />
-          </div>
-        </div>
-        <div>
-          <label for="company" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Compañia</label>
-          <input
-            type="text"
-            id="company"
-            class="bg-gray-50 border border-gray-300 opacity-50 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
-            disabled
-          />
-        </div>
-        <div>
-          <label for="website" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Website URL</label>
-          <input
-            type="url"
-            id="website"
-            class="bg-gray-50 border border-gray-300 opacity-50 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
-            disabled
-          />
-        </div>
-        <div class="flex items-center">
-          <input
-            id="hireable"
-            type="checkbox"
-            value=""
-            disabled
-            class="w-4 h-4 text-gray-600 opacity-50 bg-gray-100 border-gray-300 rounded focus:ring-gray-500 dark:focus:ring-gray-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-          />
-          <label for="default-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Open to Work</label
-          >
-        </div>
+        <TextInput id="name" label="Nombre *" maxlength="80" />
+        <TextInput id="log" label="Logo *" placeholder="URL de la imagen" maxlength="200" />
       </div>
       <div class="mb-6">
-        <label for="bio" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bio</label>
-        <textarea
-          id="bio"
-          maxlength="160"
-          disabled
-          rows="2"
-          class="block p-2.5 w-full text-sm opacity-50 text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-gray-500 focus:border-gray-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
-        ></textarea>
+        <TextInput id="description *" label="Breve descripción" maxlength="200" />
+      </div>
+      <div class="grid gap-6 mb-6 md:grid-cols-2">
+        <TextInput id="website" label="Sitio Web" type="url" />
+        <TextInput id="email" label="Email" type="email" />
+        <UsernameInput id="twitter_username" label="Twitter" placeholder="Nombre de Usuario" />
+        <UsernameInput id="telegram_username" label="Telegram" placeholder="Nombre de Usuario" />
       </div>
     </div>
 
-    <div class="flex justify-between">
-      <h1 class="text-xl font-bold">Datos de CuCoders</h1>
-    </div>
-
-    <hr class="my-4" />
-
     <div class="mb-6">
-      <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
-      <input
-        type="email"
-        id="email"
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
-      />
-    </div>
-
-    <div class="mb-6">
-      <label for="headline" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Encabezado</label>
-      <input
-        type="text"
-        id="headline"
-        maxlength="35"
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-gray-500 focus:border-gray-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
-        placeholder="Software Engineer"
-      />
-    </div>
-
-    <div class="mb-6">
-      <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Categorias</label>
+      <label for="categories" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Categorias</label>
       <select id="categories" name="state[]" multiple placeholder="Categorias" autocomplete="off">
         <option value="">Select a state...</option>
         {categoriesList.map((category) => <option value={category.key}>{category.text}</option>)}
       </select>
     </div>
 
-    <div class="grid gap-6 mb-6 md:grid-cols-2">
-      <div>
-        <label for="telegram-username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Telegram</label>
-        <div class="flex">
-          <span
-            class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300 rounded-l-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600"
-          >
-            @
-          </span>
-          <input
-            type="text"
-            id="telegram-username"
-            class="rounded-none rounded-r-lg bg-gray-50 border text-gray-900 focus:ring-gray-500 focus:border-gray-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
-            placeholder="Nombre de Usuario"
-          />
-        </div>
-      </div>
-      <div>
-        <label for="linkedin-username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Linkedin</label>
-        <div class="flex">
-          <span
-            class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 border border-r-0 border-gray-300 rounded-l-md dark:bg-gray-600 dark:text-gray-400 dark:border-gray-600"
-          >
-            @
-          </span>
-          <input
-            type="text"
-            id="linkedin-username"
-            class="rounded-none rounded-r-lg bg-gray-50 border text-gray-900 focus:ring-gray-500 focus:border-gray-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
-            placeholder="Nombre de Usuario"
-          />
-        </div>
-      </div>
+    <div class="mb-6">
+      <label for="platforms" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Categorias</label>
+      <select id="platforms" name="state[]" multiple placeholder="Plataformas" autocomplete="off">
+        <option value="">Select a state...</option>
+        {categoriesList.map((category) => <option value={category.key}>{category.text}</option>)}
+      </select>
     </div>
 
     <div class="flex justify-center">
       <button
-        id="createProfile"
+        id="createApp"
         class="text-white mt-4 mx-2 bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
-        >Crear Perfil</button
+        >Publicar Aplicación</button
       >
       <div id="edit-profile-btns" class="w-full sm:w-auto hidden">
         <button
@@ -287,15 +152,17 @@ for (const key in categories) {
 <script is:inline src="https://cdn.jsdelivr.net/npm/tom-select/dist/js/tom-select.complete.min.js"></script>
 
 <script is:inline>
-  var control = new TomSelect("#categories", {});
+  var control = new TomSelect("#categories", {
+    maxItems: 4,
+  });
 </script>
 
 <script>
   import { backend_url } from "../data/conf.json";
   import { showToast } from "../components/toast/toast";
 
-  const proflieBtn = document.getElementById("createProfile");
-  proflieBtn.addEventListener("click", createProfile, true);
+  const proflieBtn = document.getElementById("createApp");
+  proflieBtn.addEventListener("click", createApp, true);
 
   const loadUserBtn = document.getElementById("loadUserBtn");
   loadUserBtn.addEventListener("click", loadUserData, true);
@@ -340,15 +207,15 @@ for (const key in categories) {
     (<HTMLInputElement>document.getElementById("github-ico")).classList.remove("hidden");
   }
 
-  function createProfile() {
+  function createApp() {
     const username = (<HTMLInputElement>document.getElementById("github-username")).value;
-    const data = createProfileData();
+    const data = createAppData();
     const encodedFileData = encodeURIComponent(JSON.stringify(data));
     const githubQueryLink = `https://github.com/${username}/${username}/new/main/cucoders_data/new?value=${encodedFileData}&filename=profile-data.json`;
     window.open(githubQueryLink);
   }
 
-  function createProfileData() {
+  function createAppData() {
     const data = {
       username: (<HTMLInputElement>document.getElementById("github-username")).value,
       id: (<HTMLInputElement>document.getElementById("user-id")).value,
@@ -376,7 +243,7 @@ for (const key in categories) {
   }
 
   function copyToClipboard() {
-    const profileData = createProfileData();
+    const profileData = createAppData();
     navigator.clipboard.writeText(JSON.stringify(profileData));
     const alert =
       "Datos copiados al portapapeles satisfactoriamente! Abra su configuración en Github y remplácela con los nuevos datos.";
