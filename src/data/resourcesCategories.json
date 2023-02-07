@@ -3,7 +3,7 @@
     "id": "cloudProvider",
     "isParent": true,
     "text": "Servicios de Nube",
-    "ico": "/assets/img/icons/news.svg",
+    "ico": "/assets/img/icons/cloud.svg",
     "slug": "servicios-de-nube",
     "items": [
       {
@@ -40,7 +40,7 @@
     "id": "webDevelpment",
     "isParent": true,
     "text": "Desarrollo Web",
-    "ico": "/assets/img/icons/news.svg",
+    "ico": "/assets/img/icons/web.svg",
     "slug": "webDevelpment",
     "items": [
       {
@@ -94,14 +94,14 @@
     "id": "nocode",
     "isParent": false,
     "text": "No-Code",
-    "ico": "/assets/img/icons/news.svg",
+    "ico": "/assets/img/icons/no-code.svg",
     "slug": "no-code"
   },
   {
     "id": "devTools",
     "isParent": true,
     "text": "Desarrollo",
-    "ico": "/assets/img/icons/news.svg",
+    "ico": "/assets/img/icons/dev.svg",
     "slug": "desarrollo",
     "items": [
       {
@@ -142,7 +142,7 @@
     "id": "graphiResource",
     "isParent": true,
     "text": "Recursos Gráficos",
-    "ico": "/assets/img/icons/news.svg",
+    "ico": "/assets/img/icons/uiux.svg",
     "slug": "recursos-graficos",
     "items": [
       {
