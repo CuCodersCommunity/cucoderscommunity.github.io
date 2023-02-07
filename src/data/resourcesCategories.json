@@ -1,0 +1,175 @@
+[
+  {
+    "id": "cloudProvider",
+    "isParent": true,
+    "text": "Servicios de Nube",
+    "ico": "/assets/img/icons/news.svg",
+    "slug": "servicios-de-nube",
+    "items": [
+      {
+        "slug": "provedores-principales",
+        "text": "Provedores Principales"
+      },
+      {
+        "slug": "web-hosting",
+        "text": "Web Hosting"
+      },
+      {
+        "slug": "baas",
+        "text": "BaaS"
+      },
+      {
+        "slug": "paas",
+        "text": "PaaS"
+      },
+      {
+        "slug": "iaas",
+        "text": "IaaS"
+      },
+      {
+        "slug": "dbaas",
+        "text": "DBaaS"
+      },
+      {
+        "slug": "dominios",
+        "text": "Dominios"
+      }
+    ]
+  },
+  {
+    "id": "webDevelpment",
+    "isParent": true,
+    "text": "Desarrollo Web",
+    "ico": "/assets/img/icons/news.svg",
+    "slug": "webDevelpment",
+    "items": [
+      {
+        "slug": "plantillas-web",
+        "text": "Plantillas Web"
+      },
+      {
+        "slug": "formularios",
+        "text": "Formularios"
+      },
+      {
+        "slug": "cms",
+        "text": "CMS"
+      },
+      {
+        "slug": "seo",
+        "text": "SEO"
+      },
+      {
+        "slug": "componenetes-de-ui",
+        "text": "Componenetes de UI"
+      }
+    ]
+  },
+  {
+    "id": "colaborationsTeams",
+    "isParent": true,
+    "text": "Equipos",
+    "ico": "/assets/img/icons/news.svg",
+    "slug": "equipos-y-colaboracion",
+    "items": [
+      {
+        "slug": "gestion-de-proyectos",
+        "text": "Gestion de Proyectos"
+      },
+      {
+        "slug": "whiteboard",
+        "text": "WhiteBoard"
+      },
+      {
+        "slug": "vhat",
+        "text": "Chat"
+      },
+      {
+        "slug": "email",
+        "text": "Email"
+      }
+    ]
+  },
+  {
+    "id": "nocode",
+    "isParent": false,
+    "text": "No-Code",
+    "ico": "/assets/img/icons/news.svg",
+    "slug": "no-code"
+  },
+  {
+    "id": "devTools",
+    "isParent": true,
+    "text": "Desarrollo",
+    "ico": "/assets/img/icons/news.svg",
+    "slug": "desarrollo",
+    "items": [
+      {
+        "slug": "apis",
+        "text": "APIs"
+      },
+      {
+        "slug": "excepciones",
+        "text": "Excepciones"
+      },
+      {
+        "slug": "calidad-del-codigo",
+        "text": "Calidad del Codigo"
+      },
+      {
+        "slug": "ci-cd",
+        "text": "CI / CD"
+      },
+      {
+        "slug": "pruebas",
+        "text": "Pruebas"
+      },
+      {
+        "slug": "traducciones",
+        "text": "Traducciones"
+      },
+      {
+        "slug": "busquedas",
+        "text": "Busquedas"
+      },
+      {
+        "slug": "monitoreadores",
+        "text": "Monitoreadores"
+      }
+    ]
+  },
+  {
+    "id": "graphiResource",
+    "isParent": true,
+    "text": "Recursos Gráficos",
+    "ico": "/assets/img/icons/news.svg",
+    "slug": "recursos-graficos",
+    "items": [
+      {
+        "slug": "fuentes",
+        "text": "Fuentes"
+      },
+      {
+        "slug": "iconos",
+        "text": "Iconos"
+      },
+      {
+        "slug": "ilustraciones",
+        "text": "Ilustraciones"
+      },
+      {
+        "slug": "imagenes-stock",
+        "text": "Imágenes Stock"
+      },
+      {
+        "slug": "herramientas-ui",
+        "text": "Herramientas UI"
+      },
+      {
+        "slug": "inspiracion",
+        "text": "Inspiración"
+      }
+    ]
+  }
+]
+
