@@ -7,30 +7,37 @@
     "slug": "servicios-de-nube",
     "items": [
       {
+        "id": "mainProviders",
         "slug": "provedores-principales",
         "text": "Provedores Principales"
       },
       {
+        "id": "webHosting",
         "slug": "web-hosting",
         "text": "Web Hosting"
       },
       {
+        "id": "bass",
         "slug": "baas",
         "text": "BaaS"
       },
       {
+        "id": "paas",
         "slug": "paas",
         "text": "PaaS"
       },
       {
+        "id": "iaas",
         "slug": "iaas",
         "text": "IaaS"
       },
       {
+        "id": "dbaas",
         "slug": "dbaas",
         "text": "DBaaS"
       },
       {
+        "id": "domains",
         "slug": "dominios",
         "text": "Dominios"
       }
@@ -44,47 +51,56 @@
     "slug": "webDevelpment",
     "items": [
       {
+        "id": "webTemplates",
         "slug": "plantillas-web",
         "text": "Plantillas Web"
       },
       {
+        "id": "forms",
         "slug": "formularios",
         "text": "Formularios"
       },
       {
+        "id": "cms",
         "slug": "cms",
         "text": "CMS"
       },
       {
+        "id": "seo",
         "slug": "seo",
         "text": "SEO"
       },
       {
+        "id": "uiKits",
         "slug": "componenetes-de-ui",
         "text": "Componenetes de UI"
       }
     ]
   },
   {
-    "id": "colaborationsTeams",
+    "id": "teams",
     "isParent": true,
     "text": "Equipos",
     "ico": "/assets/img/icons/news.svg",
     "slug": "equipos-y-colaboracion",
     "items": [
       {
+        "id": "projectManagement",
         "slug": "gestion-de-proyectos",
         "text": "Gestion de Proyectos"
       },
       {
+        "id": "whiteboard",
         "slug": "whiteboard",
         "text": "WhiteBoard"
       },
       {
-        "slug": "vhat",
+        "id": "chat",
+        "slug": "chat",
         "text": "Chat"
       },
       {
+        "id": "email",
         "slug": "email",
         "text": "Email"
       }
@@ -105,71 +121,84 @@
     "slug": "desarrollo",
     "items": [
       {
+        "id": "apis",
         "slug": "apis",
         "text": "APIs"
       },
       {
+        "id": "excepciones",
         "slug": "excepciones",
         "text": "Excepciones"
       },
       {
+        "id": "codeQuality",
         "slug": "calidad-del-codigo",
         "text": "Calidad del Codigo"
       },
       {
+        "id": "cicd",
         "slug": "ci-cd",
         "text": "CI / CD"
       },
       {
+        "id": "tests",
         "slug": "pruebas",
         "text": "Pruebas"
       },
       {
+        "id": "translations",
         "slug": "traducciones",
         "text": "Traducciones"
       },
       {
+        "id": "searchs",
         "slug": "busquedas",
         "text": "Busquedas"
       },
       {
+        "id": "monitoring",
         "slug": "monitoreadores",
         "text": "Monitoreadores"
       }
     ]
   },
   {
-    "id": "graphiResource",
+    "id": "graphicResource",
     "isParent": true,
     "text": "Recursos Gráficos",
     "ico": "/assets/img/icons/uiux.svg",
     "slug": "recursos-graficos",
     "items": [
       {
+        "id": "fonts",
         "slug": "fuentes",
         "text": "Fuentes"
       },
       {
+        "id": "icons",
         "slug": "iconos",
         "text": "Iconos"
       },
       {
+        "id": "illustrations",
         "slug": "ilustraciones",
         "text": "Ilustraciones"
       },
       {
+        "id": "images",
         "slug": "imagenes-stock",
         "text": "Imágenes Stock"
       },
       {
+        "id": "uiTools",
         "slug": "herramientas-ui",
         "text": "Herramientas UI"
       },
       {
+        "id": "inspiration",
         "slug": "inspiracion",
         "text": "Inspiración"
       }
     ]
   }
 ]
-
