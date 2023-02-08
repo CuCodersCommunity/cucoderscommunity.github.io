@@ -26,13 +26,23 @@ const appsSchema = z.object({
     platforms: z.array(z.string())
 });
 
+const resourcesSchema = z.object({
+    name: z.string(),
+    url: z.string(),
+    description: z.string(),
+    category: z.string(),
+});
+
 export type BlogSchema = z.infer<typeof blogSchema>;
 export type AppSchema = z.infer<typeof appsSchema>;
+export type resourcesSchema = z.infer<typeof resourcesSchema>;
 
 const blogCollection = defineCollection({ schema: blogSchema });
 const appsCollection = defineCollection({ schema: appsSchema });
+const resourcesCollection = defineCollection({ schema: resourcesSchema });
 
 export const collections = {
     'blog': blogCollection,
-    'apps': appsCollection
+    'apps': appsCollection,
+    'resources': resourcesCollection,
 }

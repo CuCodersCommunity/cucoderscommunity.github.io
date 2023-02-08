@@ -81,7 +81,7 @@
     "id": "teams",
     "isParent": true,
     "text": "Equipos",
-    "ico": "/assets/img/icons/news.svg",
+    "ico": "/assets/img/icons/tech-leader.svg",
     "slug": "equipos-y-colaboracion",
     "items": [
       {
@@ -105,13 +105,6 @@
         "text": "Email"
       }
     ]
-  },
-  {
-    "id": "nocode",
-    "isParent": false,
-    "text": "No-Code",
-    "ico": "/assets/img/icons/no-code.svg",
-    "slug": "no-code"
   },
   {
     "id": "devTools",
@@ -200,5 +193,12 @@
         "text": "Inspiración"
       }
     ]
+  },
+  {
+    "id": "nocode",
+    "isParent": false,
+    "text": "No-Code",
+    "ico": "/assets/img/icons/no-code.svg",
+    "slug": "no-code"
   }
 ]

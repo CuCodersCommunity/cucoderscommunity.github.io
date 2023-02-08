@@ -1,30 +1,28 @@
 ---
 import ResourcesLayout from "../../../layouts/resourcesLayout.astro";
 import categories from "../../../data/resourcesCategories.json";
-import ProfileCard from "../../../components/profile/profileCard.astro";
 import Pagination from "../../../components/pagination.astro";
-import { allResourcesData } from "../../../data/resources/resources";
+import { getCollection } from "astro:content";
 
 export async function getStaticPaths({ paginate }) {
   let allCategories = [];
   for (const key in categories) {
     if (categories[key].isParent) {
       for (const item in categories[key].items) {
-        allCategories.push({ key: key, slug: categories[key].items[item].slug });
+        allCategories.push({ key: categories[key].items[item].id, slug: categories[key].items[item].slug });
       }
     } else {
-      allCategories.push({ key: key, slug: categories[key].slug });
+      allCategories.push({ key: categories[key].id, slug: categories[key].slug });
     }
   }
-  console.log(allCategories);
 
+  const allResources = await getCollection("resources");
   return allCategories.map((categoryObj) => {
-    let filteredPosts = allPosts.filter((post) => post.data.categories.includes(categoryObj.key));
-    filteredPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+    let filteredResources = allResources.filter((resource) => resource.data.category == categoryObj.key);
     const category = categoryObj.slug;
-    return paginate(filteredPosts, {
+    return paginate(filteredResources, {
       params: { category },
-      pageSize: 6,
+      pageSize: 25,
     });
   });
 }
@@ -32,10 +30,8 @@ const { page } = Astro.props;
 const params = Astro.params;
 ---
 
-<ResourcesLayout title={"Directorio | " + params.category}>
+<ResourcesLayout title={params.category}>
   {page.data.length == 0 && <img src="/assets/img/emptyList.webp" class="w-ful mx-auto my-4" />}
-  <div class="grid gap-6 w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-7">
-    {page.data.map((profile) => <ProfileCard profile={profile} />)}
-  </div>
+  {page.data.map((resource) => <div>{resource.slug} </div>)}
   <Pagination prev={page.url.prev} next={page.url.next} />
 </ResourcesLayout>
