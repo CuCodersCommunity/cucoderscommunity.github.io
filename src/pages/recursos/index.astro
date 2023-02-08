@@ -5,8 +5,8 @@ import RightDrawer from "../../components/rightDrawer.astro";
 import ResourceCard from "../../components/resourceCard.astro";
 import { getCollection } from "astro:content";
 
-const apps = (await getCollection("resources")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-const lastApps = apps.slice(0, 20);
+const resources = (await getCollection("resources")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const lastResources = resources.slice(0, 20);
 ---
 
 <ResourcesLayout title="Directorio de Recursos para Programadores | CuCoders"
@@ -17,7 +17,7 @@ const lastApps = apps.slice(0, 20);
 <h2 class="mb-3 text-xl mx-2 font-semibold text-gray-700"> Últimos recursos</h2>
 <div class="grid mb-6 w-full gap-4 md:grid-cols-1 mx-auto px-3 sm:px-0">
   {
-    lastApps.map((resource) => (
+    lastResources.map((resource) => (
       <ResourceCard
       name={resource.data.name} url={resource.data.url} description={resource.data.description}
       />
