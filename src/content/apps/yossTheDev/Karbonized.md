@@ -11,7 +11,7 @@ telegram_username: ""
 dev_username: "yossTheDev"
 pubDate: "Wed Feb 08 2023"
 categories: ["artAndDesign","dev","toolsAndUtilities"]
-categories: ["Web"]
+platforms: ["Web"]
 ---
 
 <h1 align="center">Karbonized</h1>
