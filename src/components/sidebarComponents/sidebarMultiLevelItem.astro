@@ -1,5 +1,9 @@
 ---
-const { ico, text, id } = Astro.props;
+const { ico, text, id, opened = false } = Astro.props;
+let menuClass = "hidden py-2 space-y-2";
+if (opened) {
+  menuClass = "py-2 space-y-2";
+}
 ---
 
 <li>
@@ -18,7 +22,7 @@ const { ico, text, id } = Astro.props;
         clip-rule="evenodd"></path></svg
     >
   </button>
-  <ul id={id} class="hidden py-2 space-y-2">
+  <ul id={id} class={menuClass}>
     <div class="pl-6">
       <slot />
     </div>

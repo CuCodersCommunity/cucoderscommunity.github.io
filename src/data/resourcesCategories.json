@@ -8,36 +8,43 @@
     "items": [
       {
         "id": "integralSolutions",
+        "parentId": "cloudProvider",
         "slug": "soluciones-integrales",
         "text": "Soluciones Integrales"
       },
       {
         "id": "webHosting",
+        "parentId": "cloudProvider",
         "slug": "web-hosting",
         "text": "Web Hosting"
       },
       {
         "id": "bass",
+        "parentId": "cloudProvider",
         "slug": "baas",
         "text": "BaaS"
       },
       {
         "id": "paas",
+        "parentId": "cloudProvider",
         "slug": "paas",
         "text": "PaaS"
       },
       {
         "id": "iaas",
+        "parentId": "cloudProvider",
         "slug": "iaas",
         "text": "IaaS"
       },
       {
         "id": "dbaas",
+        "parentId": "cloudProvider",
         "slug": "dbaas",
         "text": "DBaaS"
       },
       {
         "id": "domains",
+        "parentId": "cloudProvider",
         "slug": "dominios",
         "text": "Dominios"
       }
@@ -52,26 +59,31 @@
     "items": [
       {
         "id": "webTemplates",
+        "parentId": "webDevelpment",
         "slug": "plantillas-web",
         "text": "Plantillas Web"
       },
       {
         "id": "forms",
+        "parentId": "webDevelpment",
         "slug": "formularios",
         "text": "Formularios"
       },
       {
         "id": "cms",
+        "parentId": "webDevelpment",
         "slug": "cms",
         "text": "CMS"
       },
       {
         "id": "seo",
+        "parentId": "webDevelpment",
         "slug": "seo",
         "text": "SEO"
       },
       {
         "id": "uiKits",
+        "parentId": "webDevelpment",
         "slug": "componenetes-de-ui",
         "text": "Componenetes de UI"
       }
@@ -86,21 +98,25 @@
     "items": [
       {
         "id": "projectManagement",
+        "parentId": "teams",
         "slug": "gestion-de-proyectos",
         "text": "Gestion de Proyectos"
       },
       {
         "id": "whiteboard",
+        "parentId": "teams",
         "slug": "whiteboard",
         "text": "WhiteBoard"
       },
       {
         "id": "chat",
+        "parentId": "teams",
         "slug": "chat",
         "text": "Chat"
       },
       {
         "id": "email",
+        "parentId": "teams",
         "slug": "email",
         "text": "Email"
       }
@@ -115,41 +131,49 @@
     "items": [
       {
         "id": "apis",
+        "parentId": "devTools",
         "slug": "apis",
         "text": "APIs"
       },
       {
         "id": "excepciones",
+        "parentId": "devTools",
         "slug": "excepciones",
         "text": "Excepciones"
       },
       {
         "id": "codeQuality",
+        "parentId": "devTools",
         "slug": "calidad-del-codigo",
         "text": "Calidad del Codigo"
       },
       {
         "id": "cicd",
+        "parentId": "devTools",
         "slug": "ci-cd",
         "text": "CI / CD"
       },
       {
         "id": "tests",
+        "parentId": "devTools",
         "slug": "pruebas",
         "text": "Pruebas"
       },
       {
         "id": "translations",
+        "parentId": "devTools",
         "slug": "traducciones",
         "text": "Traducciones"
       },
       {
         "id": "searchs",
+        "parentId": "devTools",
         "slug": "busquedas",
         "text": "Busquedas"
       },
       {
         "id": "monitoring",
+        "parentId": "devTools",
         "slug": "monitoreadores",
         "text": "Monitoreadores"
       }
@@ -164,36 +188,43 @@
     "items": [
       {
         "id": "fonts",
+        "parentId": "graphicResource",
         "slug": "fuentes",
         "text": "Fuentes"
       },
       {
         "id": "icons",
+        "parentId": "graphicResource",
         "slug": "iconos",
         "text": "Iconos"
       },
       {
         "id": "illustrations",
+        "parentId": "graphicResource",
         "slug": "ilustraciones",
         "text": "Ilustraciones"
       },
       {
         "id": "mockups",
+        "parentId": "graphicResource",
         "slug": "mockups",
         "text": "Mockups"
       },
       {
         "id": "images",
+        "parentId": "graphicResource",
         "slug": "imagenes-stock",
         "text": "Imágenes Stock"
       },
       {
         "id": "uiTools",
+        "parentId": "graphicResource",
         "slug": "herramientas-ui",
         "text": "Herramientas UI"
       },
       {
         "id": "inspiration",
+        "parentId": "graphicResource",
         "slug": "inspiracion",
         "text": "Inspiración"
       }

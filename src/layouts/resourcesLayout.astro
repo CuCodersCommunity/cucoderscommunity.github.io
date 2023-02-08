@@ -4,13 +4,13 @@ import RightSideBar from "../components/rightSideBar.astro";
 import RightDrawer from "../components/rightDrawer.astro";
 import ResourcesSidebar from "../components/resourcesSidebar.astro";
 
-const { title, description, image } = Astro.props;
+const { title, description, image, openCategory } = Astro.props;
 ---
 
 <BaseLayout title={title} description={description} image={image} hasRightSidebar={true}>
   <div class="grid w-full gap-8 grid-cols-1 md:grid-cols-[16rem_1fr] mt-8">
     <div class="hidden md:block">
-      <ResourcesSidebar />
+      <ResourcesSidebar openCategory={openCategory} />
     </div>
     <div class="px-5 md:px-0">
       <slot />
@@ -19,5 +19,5 @@ const { title, description, image } = Astro.props;
 </BaseLayout>
 
 <RightDrawer title="Categorías">
-  <ResourcesSidebar isSideMenu={true} />
+  <ResourcesSidebar isSideMenu={true} openCategory={openCategory} />
 </RightDrawer>

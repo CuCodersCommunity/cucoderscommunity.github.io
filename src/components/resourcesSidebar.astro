@@ -4,7 +4,7 @@ import Item from "./sidebarComponents/sidebarItem.astro";
 import SidebarMultiLevelItem from "./sidebarComponents/sidebarMultiLevelItem.astro";
 import categories from "../data/resourcesCategories.json";
 
-const { isSideMenu = false } = Astro.props;
+const { isSideMenu = false, openCategory = null } = Astro.props;
 
 let sidebarClass = "px-3 mb-5 py-4 overflow-y-auto rounded-md bg-white border-solid border-[1px] border-gray-200";
 let sidebarIdComplement = "";
@@ -12,6 +12,10 @@ let sidebarIdComplement = "";
 if (isSideMenu) {
   sidebarClass = "mb-5 overflow-y-auto";
   sidebarIdComplement = "-sidebar";
+}
+
+function isOpenCategory(categoryId) {
+  return openCategory == categoryId;
 }
 ---
 
@@ -22,7 +26,12 @@ if (isSideMenu) {
         categories.map((category) => (
           <div>
             {category.isParent ? (
-              <SidebarMultiLevelItem text={category.text} id={category.id + sidebarIdComplement} ico={category.ico}>
+              <SidebarMultiLevelItem
+                text={category.text}
+                id={category.id + sidebarIdComplement}
+                ico={category.ico}
+                opened={isOpenCategory(category.id)}
+              >
                 {category.items.map((item) => (
                   <Item text={item.text} url={"/recursos/" + item.slug} />
                 ))}
