@@ -29,9 +29,24 @@ export async function getStaticPaths({ paginate }) {
 }
 const { page } = Astro.props;
 const params = Astro.params;
+const category = getSelectedCategoryBySlug(params.category);
+
+function getSelectedCategoryBySlug(slug) {
+  for (const category of categories) {
+    for (const item of category.items) {
+      if (item.slug == slug) {
+        return item;
+      }
+    }
+    if (category.slug == slug) {
+      return category;
+    }
+  }
+  return null;
+}
 ---
 
-<ResourcesLayout title={params.category}>
+<ResourcesLayout title={category.text+" | Directorio de Recursos"}>
   {page.data.length == 0 && <img src="/assets/img/emptyList.webp" class="w-ful mx-auto my-4" />}
 
   <div class="grid mb-6 w-full gap-3 md:grid-cols-1 mx-auto px-1 sm:px-0">

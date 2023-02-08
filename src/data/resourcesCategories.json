@@ -48,7 +48,7 @@
     "isParent": true,
     "text": "Desarrollo Web",
     "ico": "/assets/img/icons/web.svg",
-    "slug": "webDevelpment",
+    "slug": "desarrollo-web",
     "items": [
       {
         "id": "webTemplates",
@@ -204,6 +204,7 @@
     "isParent": false,
     "text": "No-Code",
     "ico": "/assets/img/icons/no-code.svg",
-    "slug": "no-code"
+    "slug": "no-code",
+    "items": []
   }
 ]
