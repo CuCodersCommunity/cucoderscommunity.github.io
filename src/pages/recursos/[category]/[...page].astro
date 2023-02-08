@@ -2,6 +2,7 @@
 import ResourcesLayout from "../../../layouts/resourcesLayout.astro";
 import categories from "../../../data/resourcesCategories.json";
 import Pagination from "../../../components/pagination.astro";
+import ResourceCard from "../../../components/resourceCard.astro";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths({ paginate }) {
@@ -32,6 +33,10 @@ const params = Astro.params;
 
 <ResourcesLayout title={params.category}>
   {page.data.length == 0 && <img src="/assets/img/emptyList.webp" class="w-ful mx-auto my-4" />}
-  {page.data.map((resource) => <div>{resource.slug} </div>)}
+  {
+    page.data.map((resource) => (
+      <ResourceCard name={resource.data.name} url={resource.data.url} description={resource.data.description} />
+    ))
+  }
   <Pagination prev={page.url.prev} next={page.url.next} />
 </ResourcesLayout>
