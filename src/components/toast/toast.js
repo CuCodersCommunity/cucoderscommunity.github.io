@@ -12,7 +12,7 @@ function showToast(text, error = false) {
   document.getElementById("toast").classList.remove("hidden");
   document.getElementById("toast").classList.add("flex");
 
-  setTimeout(hideToast, 5000);
+  setTimeout(hideToast, 20000);
 }
 
 function hideToast() {
