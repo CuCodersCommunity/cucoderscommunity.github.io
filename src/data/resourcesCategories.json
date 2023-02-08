@@ -7,9 +7,9 @@
     "slug": "servicios-de-nube",
     "items": [
       {
-        "id": "mainProviders",
-        "slug": "provedores-principales",
-        "text": "Provedores Principales"
+        "id": "integralSolutions",
+        "slug": "soluciones-integrales",
+        "text": "Soluciones Integrales"
       },
       {
         "id": "webHosting",

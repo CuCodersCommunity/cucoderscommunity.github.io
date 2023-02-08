@@ -24,11 +24,11 @@ if (isSideMenu) {
             {category.isParent ? (
               <SidebarMultiLevelItem text={category.text} id={category.id + sidebarIdComplement} ico={category.ico}>
                 {category.items.map((item) => (
-                  <Item text={item.text} url={item.slug} />
+                  <Item text={item.text} url={"/recursos/" + item.slug} />
                 ))}
               </SidebarMultiLevelItem>
             ) : (
-              <Item text={category.text} url={category.slug} ico={category.ico} />
+              <Item text={category.text} url={"/recursos/" + category.slug} ico={category.ico} />
             )}
           </div>
         ))
