@@ -13,6 +13,7 @@ export async function getStaticPaths({ paginate }) {
         allCategories.push({ key: categories[key].items[item].id, slug: categories[key].items[item].slug });
       }
     } else {
+      console.log(categories[key]);
       allCategories.push({ key: categories[key].id, slug: categories[key].slug });
     }
   }
@@ -34,7 +35,7 @@ const params = Astro.params;
 <ResourcesLayout title={params.category}>
   {page.data.length == 0 && <img src="/assets/img/emptyList.webp" class="w-ful mx-auto my-4" />}
 
-  <div class="grid mb-6 w-full gap-3 md:grid-cols-1 mx-auto px-3 sm:px-0">
+  <div class="grid mb-6 w-full gap-3 md:grid-cols-1 mx-auto px-1 sm:px-0">
     {
       page.data.map((resource) => (
         <ResourceCard name={resource.data.name} url={resource.data.url} description={resource.data.description} />

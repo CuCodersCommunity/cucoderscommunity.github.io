@@ -7,16 +7,14 @@ import categories from "../data/resourcesCategories.json";
 const { isSideMenu = false } = Astro.props;
 
 let sidebarClass = "px-3 mb-5 py-4 overflow-y-auto rounded-md bg-white border-solid border-[1px] border-gray-200";
+let sidebarIdComplement = "";
 
 if (isSideMenu) {
   sidebarClass = "mb-5 overflow-y-auto";
-  categories.forEach((category) => {
-    category.id = category.id + "-sidebar";
-  })
+  sidebarIdComplement = "-sidebar";
 }
 ---
 
-<!-- <Item text={category.text} ico={category.ico} url={category.url} /> -->
 <aside class="w-64" aria-label="Sidebar">
   <div class={sidebarClass}>
     <ul class="space-y-2">
@@ -24,13 +22,13 @@ if (isSideMenu) {
         categories.map((category) => (
           <div>
             {category.isParent ? (
-              <SidebarMultiLevelItem text={category.text} id={category.id} ico={category.ico}>
+              <SidebarMultiLevelItem text={category.text} id={category.id + sidebarIdComplement} ico={category.ico}>
                 {category.items.map((item) => (
                   <Item text={item.text} url={item.slug} />
                 ))}
               </SidebarMultiLevelItem>
             ) : (
-            <Item text={category.text} url={category.slug} ico={category.ico} />
+              <Item text={category.text} url={category.slug} ico={category.ico} />
             )}
           </div>
         ))
