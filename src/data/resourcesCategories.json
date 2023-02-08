@@ -178,6 +178,11 @@
         "text": "Ilustraciones"
       },
       {
+        "id": "mockups",
+        "slug": "mockups",
+        "text": "Mockups"
+      },
+      {
         "id": "images",
         "slug": "imagenes-stock",
         "text": "Imágenes Stock"
