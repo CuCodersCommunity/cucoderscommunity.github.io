@@ -23,7 +23,7 @@ export async function getStaticPaths({ paginate }) {
     const category = categoryObj.slug;
     return paginate(filteredResources, {
       params: { category },
-      pageSize: 25,
+      pageSize: 20,
     });
   });
 }

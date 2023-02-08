@@ -31,6 +31,7 @@ const resourcesSchema = z.object({
     url: z.string(),
     description: z.string(),
     category: z.string(),
+    pubDate: z.string().transform(str => new Date(str)),
 });
 
 export type BlogSchema = z.infer<typeof blogSchema>;
