@@ -34,16 +34,32 @@ const resourcesSchema = z.object({
     pubDate: z.string().transform(str => new Date(str)),
 });
 
+const eventsSchema = z.object({
+    name: z.string(),
+    description: z.string(),
+    startDate: z.string().transform(str => new Date(str)),
+    endDate: z.string().transform(str => new Date(str)),
+    location: z.string(),
+    image: z.string().optional(),
+    website: z.string(),
+    virtual: z.boolean().optional(),
+    presential: z.boolean().optional(),
+    pubDate: z.string().transform(str => new Date(str)),
+});
+
 export type BlogSchema = z.infer<typeof blogSchema>;
 export type AppSchema = z.infer<typeof appsSchema>;
 export type resourcesSchema = z.infer<typeof resourcesSchema>;
+export type eventsSchema = z.infer<typeof eventsSchema>;
 
 const blogCollection = defineCollection({ schema: blogSchema });
 const appsCollection = defineCollection({ schema: appsSchema });
 const resourcesCollection = defineCollection({ schema: resourcesSchema });
+const eventsCollection = defineCollection({ schema: eventsSchema });
 
 export const collections = {
     'blog': blogCollection,
     'apps': appsCollection,
     'resources': resourcesCollection,
+    'events': eventsCollection,
 }

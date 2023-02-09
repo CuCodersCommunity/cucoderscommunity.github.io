@@ -1,0 +1,23 @@
+---
+import BaseLayout from "../layouts/baseLayout.astro";
+import RightSideBar from "../components/rightSideBar.astro";
+import RightDrawer from "../components/rightDrawer.astro";
+import DirectorySideBar from "../components/directorySideBar.astro";
+
+const { title, description, image } = Astro.props;
+---
+
+<BaseLayout title={title} description={description} image={image} hasRightSidebar={true}>
+  <div class="grid w-full gap-8 grid-cols-1 md:grid-cols-[16rem_1fr] mt-8">
+    <div class="hidden md:block">
+      <DirectorySideBar />
+    </div>
+    <div class="px-5 md:px-0">
+      <slot />
+    </div>
+  </div>
+</BaseLayout>
+
+<RightDrawer title="Categorías">
+  <DirectorySideBar isSideMenu={true} />
+</RightDrawer>
