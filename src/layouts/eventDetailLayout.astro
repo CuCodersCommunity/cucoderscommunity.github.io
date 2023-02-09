@@ -1,0 +1,105 @@
+---
+import BaseLayout from "./baseLayout.astro";
+import dayjs from "dayjs";
+import "dayjs/locale/es";
+
+dayjs.locale("es");
+
+const { event } = Astro.props;
+const eventData = event.data;
+const display_date = `${dayjs(eventData.startDate).format("D MMM. YYYY hh:mm a")} - ${dayjs(eventData.endDate).format(
+  "D MMM. YYYY hh:mm a"
+)} `;
+
+let banner_syle = "background-image: url(" + eventData.image + ")";
+
+if (!eventData.image) {
+  banner_syle = "display: none";
+}
+---
+
+<BaseLayout title={eventData.name} description={eventData.description} image={eventData.image}>
+  <div
+    class="bg-white border md:mx-auto mb-5 -mt-6 md:mt-12 lg:max-w-[58rem] border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 w-full"
+  >
+    <div class="bg-cover bg-center h-[14rem] md:h-[22rem] lg:h-[26rem] rounded-t-lg" style={banner_syle}></div>
+
+    <div class="p-8 md:px-15 lg:px-20">
+      <div class="flex justify-between">
+        <h1 class="mb-3 text-3xl md:text-4xl font-bold tracking-tight text-gray-900 dark:text-white">
+          {eventData.name}
+        </h1>
+        <div class="mb-3 flex justify-end">
+          <div class="flex items-center">
+            <a
+              class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+              type="button"
+            >
+              <img src="/assets/img/icons/web.svg" class="h-6 w-6" />
+            </a>
+            <button
+              id="dropdownMenuIconHorizontalButton"
+              data-dropdown-toggle="dropdownDotsHorizontal"
+              class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+              type="button"
+            >
+              <img src="/assets/img/icons/menu-vertical-black.svg" class="h-6 w-6" />
+            </button>
+          </div>
+
+          <!-- Dropdown menu -->
+          <div
+            id="dropdownDotsHorizontal"
+            class="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
+          >
+            <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownMenuIconHorizontalButton">
+              <li>
+                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  >Compartir</a
+                >
+              </li>
+              <li>
+                <a
+                  href={"https://github.com/CuCodersCommunity/cucoderscommunity.github.io/edit/main/src/content/blog/" +
+                    event.id}
+                  target="_blank"
+                  class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Editar</a
+                >
+              </li>
+            </ul>
+            <div class="py-1">
+              <a
+                href="#"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+                >Reportar</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="my-2 flex justify-between">
+        <div>
+          <div class="flex items-center md:mr-5 mr-3">
+            <img src="/assets/img/icons/event.svg" class="w-6 h-6 inline" />
+            <spam class="ml-1 text-gray-600">{display_date}</spam>
+          </div>
+        </div>
+      </div>
+      <div>
+        {
+          eventData.location && (
+            <div class="flex items-center md:mr-5 mr-3">
+              <img src="/assets/img/icons/map.svg" class="w-6 h-6 inline" />
+              <spam class="ml-1 text-gray-600">{eventData.location}</spam>
+            </div>
+          )
+        }
+      </div>
+      <hr class="my-5">
+      <article class="my-5 prose lg:prose-lg prose-img:mx-auto max-w-none break-words">
+        <slot />
+      </article>
+    </div>
+  </div>
+</BaseLayout>
