@@ -33,7 +33,7 @@ import "../styles/main.css";
       <div class="grid gap-6 mb-6 md:grid-cols-2">
         <CheckboxInput id="virtual" label="Virtual" />
         <CheckboxInput id="presential" label="Presencial" />
-        <TextInput id="location" label="Ubicacion" maxlength="250" placeholder="La Habana, Cuba." />
+        <TextInput id="location" label="Ubicacion" maxlength="250" placeholder="La Habana, Cuba. | Telegram | Youtube..." />
         <TextInput id="url" label="URL" maxlength="250" />
       </div>
       <div class="mb-6"></div>
@@ -74,8 +74,8 @@ endDate: "${getElem("endDate").value}"
 location: "${getElem("location").value}"
 image: "${getElem("image").value}"
 url: "${getElem("url").value}"
-virtual: "${getElem("virtual").value}"
-presential: "${getElem("presential").value}"
+virtual: ${getElem("virtual").checked}
+presential: ${getElem("presential").checked}
 pubDate: "${new Date().toDateString()}"
 ---
 
