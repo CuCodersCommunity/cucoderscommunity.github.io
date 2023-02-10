@@ -1,17 +1,19 @@
 ---
-import EventLayout from "../../layouts/eventLayout.astro";
-import EventCard from "../../components/eventCard.astro";
-import Pagination from "../../components/pagination.astro";
+import EventLayout from "../../../layouts/eventLayout.astro";
+import EventCard from "../../../components/eventCard.astro";
+import Pagination from "../../../components/pagination.astro";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths({ paginate }) {
-  const allEvents = await getCollection('events');
+  const allEvents = await getCollection("events");
 
-  let filterEvents = allEvents.filter((event) => event.data.endDate >= new Date()).sort((a, b) => a.data.startDate.valueOf() - b.data.startDate.valueOf());
+  let filterEvents = allEvents
+    .filter((event) => event.data.endDate >= new Date() && event.data.presential)
+    .sort((a, b) => a.data.startDate.valueOf() - b.data.startDate.valueOf());
 
   return paginate(filterEvents, {
-      pageSize: 12,
-    });
+    pageSize: 12,
+  });
 }
 const { page } = Astro.props;
 ---
