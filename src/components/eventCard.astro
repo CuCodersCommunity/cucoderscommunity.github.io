@@ -11,11 +11,12 @@ let BannerSyle = "background-image: url(" + event.data.image + ")";
 if (!event.data.image) {
   BannerSyle = "display: none";
 }
-
-
 ---
 
-<a href={"/eventos/" + event.slug} class="bg-white border border-gray-200 rounded-lg mb-5 dark:bg-gray-800 dark:border-gray-700 w-full">
+<a
+  href={"/eventos/" + event.slug}
+  class="bg-white border border-gray-200 rounded-lg mb-5 dark:bg-gray-800 dark:border-gray-700 w-full"
+>
   <div>
     <div class="bg-cover bg-center h-[11rem] md:h-[8rem] lg:h-[11rem] 2xl:h-[13rem] rounded-t-lg" style={BannerSyle}></div>
   </div>
@@ -33,11 +34,15 @@ if (!event.data.image) {
     <p class="mb-5 font-normal text-sm text-gray-700 dark:text-gray-400 line-clamp-3">
       {event.data.description}
     </p>
-    <div class="my-2 flex justify-center">
-      <div class="flex items-center">
-        <img src="/assets/img/icons/map.svg" class="w-5 h-5 inline mr-1" />
-        <spam class="text-sm text-gray-500">{event.data.location}</spam>
-      </div>
-    </div>
+    {
+      event.data.location && (
+        <div class="my-2 flex justify-center">
+          <div class="flex items-center">
+            <img src="/assets/img/icons/map.svg" class="w-5 h-5 inline mr-1" />
+            <spam class="text-sm text-gray-500">{event.data.location}</spam>
+          </div>
+        </div>
+      )
+    }
   </div>
 </a>

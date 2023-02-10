@@ -25,8 +25,8 @@ if (!eventData.image) {
     <div class="bg-cover bg-center h-[12rem] md:h-[22rem] lg:h-[28rem] rounded-t-lg" style={banner_syle}></div>
 
     <div class="p-8 md:px-15 lg:px-20">
-      <div class="flex justify-between">
-        <h1 class="mb-1 text-3xl md:text-4xl font-bold tracking-tight text-gray-900 dark:text-white">
+      <div class="flex flex-col md:flex-row md:justify-between items-center">
+        <h1 class="mb-1 text-3xl md:text-4xl text-center md:text-left font-bold tracking-tight text-gray-900 dark:text-white">
           {eventData.name}
         </h1>
         <div class="mb-1 flex justify-end">
@@ -66,7 +66,7 @@ if (!eventData.image) {
               </li>
               <li>
                 <a
-                  href={"https://github.com/CuCodersCommunity/cucoderscommunity.github.io/edit/main/src/content/blog/" +
+                  href={"https://github.com/CuCodersCommunity/cucoderscommunity.github.io/edit/main/src/content/events/" +
                     event.id}
                   target="_blank"
                   class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Editar</a
@@ -84,15 +84,15 @@ if (!eventData.image) {
         </div>
       </div>
 
-      <div class="my-2 flex justify-between">
-        <div>
+      <div class="my-2 flex justify-center md:justify-start">
+        <div >
           <div class="flex items-center md:mr-5 mr-3">
             <img src="/assets/img/icons/event.svg" class="w-6 h-6 inline" />
             <spam class="ml-1 text-gray-600">{display_date}</spam>
           </div>
         </div>
       </div>
-      <div class="flex">
+      <div class="flex justify-center md:justify-start">
         {
           eventData.location && (
             <div class="flex items-center md:mr-5 mr-3">
