@@ -26,10 +26,10 @@ if (!eventData.image) {
 
     <div class="p-8 md:px-15 lg:px-20">
       <div class="flex justify-between">
-        <h1 class="mb-3 text-3xl md:text-4xl font-bold tracking-tight text-gray-900 dark:text-white">
+        <h1 class="mb-1 text-3xl md:text-4xl font-bold tracking-tight text-gray-900 dark:text-white">
           {eventData.name}
         </h1>
-        <div class="mb-3 flex justify-end">
+        <div class="mb-1 flex justify-end">
           <div class="flex items-center">
             <a
               class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
@@ -86,7 +86,7 @@ if (!eventData.image) {
           </div>
         </div>
       </div>
-      <div>
+      <div class="flex">
         {
           eventData.location && (
             <div class="flex items-center md:mr-5 mr-3">
@@ -95,8 +95,10 @@ if (!eventData.image) {
             </div>
           )
         }
+        {eventData.virtual && <spam class="ml-4 text-gray-600">#Virtual</spam>}
+        {eventData.presential && <spam class="ml-4 text-gray-600">#Presencial</spam>}
       </div>
-      <hr class="my-5">
+      <hr class="my-5" />
       <article class="my-5 prose lg:prose-lg prose-img:mx-auto max-w-none break-words">
         <slot />
       </article>

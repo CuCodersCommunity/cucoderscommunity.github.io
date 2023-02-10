@@ -5,7 +5,7 @@ startDate: "Mar 2 2023"
 endDate: "Mar 3 2023"
 location: "Madrid [Universidad Carlos III]"
 image: "https://t3chfest.es/2023/media/social/t3f.png"
-website: "https://t3chfest.es/2023/"
+url: "https://t3chfest.es/2023/"
 virtual: false
 presential: true
 pubDate: "Jan 8 2023"

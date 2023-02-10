@@ -217,6 +217,12 @@
         "text": "Imágenes Stock"
       },
       {
+        "id": "logoCreation",
+        "parentId": "graphicResource",
+        "slug": "creacion-de-logos",
+        "text": "Creación de Logos"
+      },
+      {
         "id": "uiTools",
         "parentId": "graphicResource",
         "slug": "herramientas-ui",

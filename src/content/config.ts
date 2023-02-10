@@ -41,7 +41,7 @@ const eventsSchema = z.object({
     endDate: z.string().transform(str => new Date(str)),
     location: z.string(),
     image: z.string().optional(),
-    website: z.string(),
+    url: z.string(),
     virtual: z.boolean().optional(),
     presential: z.boolean().optional(),
     pubDate: z.string().transform(str => new Date(str)),
