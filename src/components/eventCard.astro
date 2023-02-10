@@ -17,12 +17,12 @@ if (!event.data.image) {
 
 <a href={"/eventos/" + event.slug} class="bg-white border border-gray-200 rounded-lg mb-5 dark:bg-gray-800 dark:border-gray-700 w-full">
   <div>
-    <div class="bg-cover bg-center h-[10rem] md:h-[13rem] lg:h-[16rem] 2xl:h-[13rem] rounded-t-lg" style={BannerSyle}></div>
+    <div class="bg-cover bg-center h-[11rem] md:h-[8rem] lg:h-[11rem] 2xl:h-[13rem] rounded-t-lg" style={BannerSyle}></div>
   </div>
 
   <div class="p-5">
     <div>
-      <h5 class="mb-2 text-xl line-clamp-2 font-bold tracking-tight text-gray-900 dark:text-white">
+      <h5 class="mb-2 text-lg line-clamp-2 font-bold tracking-tight text-gray-900 dark:text-white">
         {event.data.name}
       </h5>
     </div>
@@ -30,12 +30,12 @@ if (!event.data.image) {
       <img src="/assets/img/icons/event-date.svg" class="w-5 h-5 mr-2 inline" />
       <spam class="text-sm text-gray-500">{display_date}</spam>
     </div>
-    <p class="mb-5 font-normal text-gray-700 dark:text-gray-400 line-clamp-3">
+    <p class="mb-5 font-normal text-sm text-gray-700 dark:text-gray-400 line-clamp-3">
       {event.data.description}
     </p>
-    <div class="my-2 flex justify-end">
+    <div class="my-2 flex justify-center">
       <div class="flex items-center">
-        <img src="/assets/img/icons/map.svg" class="w-5 h-5 inline" />
+        <img src="/assets/img/icons/map.svg" class="w-5 h-5 inline mr-1" />
         <spam class="text-sm text-gray-500">{event.data.location}</spam>
       </div>
     </div>
