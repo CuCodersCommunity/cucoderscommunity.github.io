@@ -30,20 +30,26 @@ if (!eventData.image) {
           {eventData.name}
         </h1>
         <div class="mb-1 flex justify-end">
-          <div class="flex items-center">
-            <a
-              class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-              type="button"
-            >
-              <img src="/assets/img/icons/web.svg" class="h-6 w-6" />
-            </a>
+          <div class="flex items-start ml-3">
+            {
+              eventData.url && (
+                <a
+                  href={eventData.url}
+                  target="_blank"
+                  class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                  type="button"
+                >
+                  <img src="/assets/img/icons/url.svg" class="h-6 w-6 min-w-[1.5rem]" />
+                </a>
+              )
+            }
             <button
               id="dropdownMenuIconHorizontalButton"
               data-dropdown-toggle="dropdownDotsHorizontal"
               class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
               type="button"
             >
-              <img src="/assets/img/icons/menu-vertical-black.svg" class="h-6 w-6" />
+              <img src="/assets/img/icons/menu-vertical-black.svg" class="h-6 w-6 min-w-[1.5rem]" />
             </button>
           </div>
 
@@ -95,8 +101,8 @@ if (!eventData.image) {
             </div>
           )
         }
-        {eventData.virtual && <spam class="ml-4 text-gray-600">#Virtual</spam>}
-        {eventData.presential && <spam class="ml-4 text-gray-600">#Presencial</spam>}
+        {eventData.virtual && <spam class="mr-5 text-gray-600">#Virtual</spam>}
+        {eventData.presential && <spam class="mr-5 text-gray-600">#Presencial</spam>}
       </div>
       <hr class="my-5" />
       <article class="my-5 prose lg:prose-lg prose-img:mx-auto max-w-none break-words">

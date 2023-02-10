@@ -148,6 +148,12 @@
         "text": "Calidad del Codigo"
       },
       {
+        "id": "codeGenaration",
+        "parentId": "devTools",
+        "slug": "generacion-de-codigo",
+        "text": "Generación de Código"
+      },
+      {
         "id": "cicd",
         "parentId": "devTools",
         "slug": "ci-cd",
