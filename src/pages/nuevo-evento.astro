@@ -1,0 +1,90 @@
+---
+import BaseLayout from "../layouts/baseLayout.astro";
+import CheckboxInput from "../components/forms/checkboxInput.astro";
+import TextInput from "../components/forms/textInput.astro";
+import "../styles/main.css";
+---
+
+<BaseLayout title="Publicar Nuevo Evento">
+  <div
+    id="resource-form"
+    class="bg-white border md:mx-auto mb-5 md:mt-12 p-8 lg:max-w-[58rem] border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 w-full"
+  >
+    <div class="flex justify-between">
+      <h1 class="text-xl font-bold">Nuevo Evento</h1>
+    </div>
+
+    <hr class="my-4" />
+
+    <div>
+      <div class="mb-6">
+        <TextInput id="name" label="Nombre *" maxlength="150" />
+      </div>
+      <div class="mb-6">
+        <TextInput id="description" label="Descripción *" maxlength="250" />
+      </div>
+      <div class="mb-6">
+        <TextInput id="image" label="Imagen" />
+      </div>
+      <div class="grid gap-6 mb-6 md:grid-cols-2">
+        <TextInput id="startDate" label="Fecha de Inicio *" type="datetime-local" />
+        <TextInput id="endDate" label="Fecha de Fin *" type="datetime-local" />
+      </div>
+      <div class="grid gap-6 mb-6 md:grid-cols-2">
+        <CheckboxInput id="virtual" label="Virtual" />
+        <CheckboxInput id="presential" label="Presencial" />
+        <TextInput id="location" label="Ubicacion" maxlength="250" placeholder="La Habana, Cuba." />
+        <TextInput id="url" label="URL" maxlength="250" />
+      </div>
+      <div class="mb-6"></div>
+    </div>
+
+    <div class="flex justify-center">
+      <button
+        id="addEvent"
+        class="text-white mt-4 mx-2 bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
+        >Adicionar Evento</button
+      >
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  const resourceBtn = document.getElementById("addEvent");
+  resourceBtn.addEventListener("click", addEvent, true);
+
+  function addEvent() {
+    const fileName = getElem("name").value.replace(/\s/g, "-") + ".md";
+    const fileText = createResourceData();
+    const encodedFileText = encodeURIComponent(fileText);
+    const githubQueryLink = getFileRoute(fileName, encodedFileText);
+    window.open(githubQueryLink);
+  }
+
+  function getElem(id) {
+    return <HTMLInputElement>document.getElementById(id);
+  }
+
+  function createResourceData() {
+    return `---
+name: "${getElem("name").value}"
+description: "${getElem("description").value}"
+startDate: "${getElem("startDate").value}"
+endDate: "${getElem("endDate").value}"
+location: "${getElem("location").value}"
+image: "${getElem("image").value}"
+url: "${getElem("url").value}"
+virtual: "${getElem("virtual").value}"
+presential: "${getElem("presential").value}"
+pubDate: "${new Date().toDateString()}"
+---
+
+Aqui va la descripción general del evento.`;
+  }
+
+  function getFileRoute(fileName, encodedFileText) {
+    let year = new Date().getFullYear();
+    let route = `https://github.com/CuCodersCommunity/cucoderscommunity.github.io/new/main/src/content/resources/${year}/new?value=${encodedFileText}&filename=${fileName}`;
+    return route;
+  }
+</script>
