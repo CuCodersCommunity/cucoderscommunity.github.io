@@ -2,7 +2,7 @@
 name: "Feria Internacional del Libro en la Habana | Segunda Edicion"
 description: "Feria Internacional del Libro de la habana."
 startDate: "2023-02-06T15:11"
-endDate: "2023-02-07T18:11"
+endDate: "2023-02-21T18:11"
 location: ""
 image: "https://buenidioma.com/wp-content/uploads/2022/03/0-14-feria-libro-habana-2022-2.jpg"
 url: "asd"

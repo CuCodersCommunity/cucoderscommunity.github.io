@@ -1,22 +1,19 @@
 ---
 import TimeLineItem from "./timeLineItem.astro";
+import { getNextEvents } from "../helpers/getNextEvents";
+
+const events = await getNextEvents();
 ---
 
-<div class="font-medium text-gray-800 mb-4">Próximos Eventos</div>
-<ol class="relative border-l border-gray-300 dark:border-gray-700">
-  <TimeLineItem
-    title="Plazi Conf"
-    desc="Lorem insump dolores ad asd asd asd asd asdasd asd asd asd asd asd ..."
-    date="16 de Febrero"
-  />
-  <TimeLineItem
-    title="Python Pizza Holguin"
-    desc="Lorem insump dolores ad asd asd asd asd asdasd asd asd asd asd asd ..."
-    date="16 de Febrero"
-  />
-  <TimeLineItem
-    title="Bankay"
-    desc="Lorem insump dolores ad asd asd asd asd asdasd asd asd asd asd asd ..."
-    date="16 de Febrero"
-  />
-</ol>
+{
+  events.length != 0 && (
+    <>
+      <div class="font-medium text-gray-800 mb-4">Próximos Eventos</div>
+      <ol class="relative border-l border-gray-300 dark:border-gray-700">
+        {events.map((event) => (
+          <TimeLineItem name={event.name} description={event.description} date={event.date} url={"/eventos/" + event.url} />
+        ))}
+      </ol>
+    </>
+  )
+}
