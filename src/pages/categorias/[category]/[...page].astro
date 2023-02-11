@@ -31,7 +31,7 @@ const params = Astro.params;
 ---
 
 <MainLayout title={params.category}>
-  {page.data.length == 0 && <img src="/assets/img/emptyList.webp" class="w-ful mx-auto my-4" />}
+  {page.data.length == 0 && <img src="/assets/img/emptyList.webp" class="md:w-2/3 w-full mx-auto my-4" />}
   {page.data.map((post) => <BlogCard post={post} />)}
   <Pagination prev={page.url.prev} next={page.url.next} />
 </MainLayout>

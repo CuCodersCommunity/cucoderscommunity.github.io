@@ -27,7 +27,7 @@ const params = Astro.params;
 ---
 
 <AppsLayout title={params.category}>
-  {page.data.length == 0 && <img src="/assets/img/emptyList.webp" class="w-ful mx-auto my-4" />}
+  {page.data.length == 0 && <img src="/assets/img/emptyList.webp" class="md:w-2/3 w-full mx-auto my-4" />}
 
   <div class="grid mb-6 w-full gap-4 md:grid-cols-1 mx-auto px-3 sm:px-0">
     {
