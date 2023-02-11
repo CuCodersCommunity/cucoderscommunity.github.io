@@ -3,8 +3,10 @@ import EventsTimeLine from "./sidebarComponents/eventsTimeLine.astro";
 import MembersList from "./sidebarComponents/membersList.astro";
 import AppItem from "./sidebarComponents/appItem.astro";
 import { getLastApps } from "./helpers/getLastApps";
+import { getFeaturedApps } from "./helpers/getFeaturedApps";
 
 const lastApps = await getLastApps();
+const featuredApps = await getFeaturedApps();
 ---
 
 <div>
@@ -25,22 +27,10 @@ const lastApps = await getLastApps();
 
   <div class="border-solid mb-3 pb-3">
     <div class="font-medium text-gray-800 mb-4">Aplicaciones Destacadas</div>
-    <AppItem
-      name="WeekToDo"
-      category="Productivity"
-      img="https://d4.alternativeto.net/KOIzY85M7EHbxJUNyX4asbJkCYqxEfK7h5bCjLK4faQ/rs:fill:40:40:0/g:ce:0:0/YWJzOi8vZGlzdC9pY29ucy93ZWVrdG9kb18xODYxNDUucG5n.png"
-    />
-    <AppItem
-      name="QvaPay"
-      category="Pagos"
-      img="https://upload.wikimedia.org/wikipedia/commons/d/d8/Logotipo_de_la_plataforma_de_pago_QvaPay.png"
-    />
-    <AppItem name="Apklis" category="Útiles" img="https://cubapk.com/media/repo/icons-640/cu.uci.android.apklis.1295.png" />
-    <AppItem name="La Nave" category="Útiles" img="https://cubapk.com/media/repo/icons-640/app.lanave.user.11111.png" />
-    <AppItem
-      name="Habana Servicentro"
-      category="Útiles"
-      img="https://cubapk.com/media/repo/icons-640/com.habanaservicentropro.com.70000.png"
-    />
+    {
+      featuredApps.map((app) => (
+        <AppItem name={app.name} img={app.logo} description={app.description} url={"/apps/" + app.url} />
+      ))
+    }
   </div>
 </div>

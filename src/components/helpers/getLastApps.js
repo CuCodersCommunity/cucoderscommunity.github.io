@@ -1,6 +1,4 @@
 import { getCollection } from "astro:content";
-import dayjs from "dayjs";
-import "dayjs/locale/es";
 
 async function getLastApps(url, type = "json") {
   const allApps = await getCollection("apps");
