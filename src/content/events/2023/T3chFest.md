@@ -1,8 +1,8 @@
 ---
 name: "T3chFest"
 description: "Festival de nuevas tecnologías en la Universidad Carlos III de Madrid. 2 y 3 de marzo de 2023."
-startDate: "Jan 2 2023"
-endDate: "Jan 3 2023"
+startDate: "Mar 2 2023"
+endDate: "Mar 3 2023"
 location: "Madrid [Universidad Carlos III]"
 image: "https://t3chfest.es/2023/media/social/t3f.png"
 url: "https://t3chfest.es/2023/"
