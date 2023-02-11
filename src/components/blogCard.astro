@@ -12,7 +12,7 @@ const stats = readingTime(post.body);
 const read_time = stats.text.replace("read", "");
 const description = post.data.description ? post.data.description : post.body.slice(0, 160) + "...";
 
-const display_date = dayjs(post.data.pubDate).format("D MMM");
+const display_date = dayjs(post.data.pubDate).format("D MMM. YYYY");
 
 let BannerSyle = "background-image: url(" + post.data.image + ")";
 

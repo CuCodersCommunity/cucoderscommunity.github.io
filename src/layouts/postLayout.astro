@@ -10,7 +10,7 @@ dayjs.locale("es");
 
 const { post } = Astro.props;
 const post_data = post.data;
-const display_date = dayjs(post_data.pubDate).format("D MMM, YYYY");
+const display_date = dayjs(post_data.pubDate).format("D MMM. YYYY");
 const stats = readingTime(post.body);
 const read_time = stats.text.replace("read", "");
 let banner_syle = "background-image: url(" + post_data.image + ")";
