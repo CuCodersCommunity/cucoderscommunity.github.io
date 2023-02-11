@@ -1,6 +1,7 @@
 ---
 import LinkIcon from "../../components/helpers/linkIcon.astro";
 import categories from "../../data/appsCategories.json";
+import ShareThisModal from "../helpers/shareThisModal.astro";
 
 const { app } = Astro.props;
 const appData = app.data;
@@ -146,7 +147,10 @@ const appData = app.data;
   >
     <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownMenuIconHorizontalButton">
       <li>
-        <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Compartir</a>
+        <a
+          id="shareThisBtn"
+          class="block px-4 cursor-pointer py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Compartir</a
+        >
       </li>
       <li>
         <a
@@ -171,3 +175,5 @@ const appData = app.data;
     </div>
   </div>
 </div>
+
+<ShareThisModal />
