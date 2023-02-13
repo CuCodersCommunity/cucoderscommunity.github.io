@@ -1,0 +1,41 @@
+---
+import DirectoryLayout from "../../../../layouts/directoryLayout.astro";
+import categories from "../../../../data/profileCategories.json";
+import ProfileCard from "../../../../components/profile/profileCard.astro";
+import Pagination from "../../../../components/pagination.astro";
+import { members_api_url } from "../../../../data/conf.json";
+
+export async function getStaticPaths({ paginate }) {
+  let allCategories = [];
+  allCategories.push({ key: "todos", slug: "todos" });
+  for (const key in categories) {
+    allCategories.push({ key: key, slug: categories[key].slug });
+  }
+
+  const response = await fetch(members_api_url + "members-data");
+  const members_data = await response.json();
+  const members_array = Object.values(members_data);
+
+  return allCategories.map((categoryObj) => {
+    let filteredMembers =
+      categoryObj.key == "todos"
+        ? members_array
+        : members_array.filter((member) => member["categories"].includes(categoryObj.key));
+    const category = categoryObj.slug;
+    return paginate(filteredMembers, {
+      params: { category },
+      pageSize: 21,
+    });
+  });
+}
+const { page } = Astro.props;
+const params = Astro.params;
+---
+
+<DirectoryLayout title={"Directorio | "+ params.category}>
+  {page.data.length == 0 && <img src="/assets/img/emptyList.webp" class="md:w-2/3 w-full mx-auto my-4" />}
+  <div class="grid gap-6 w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-7">
+    {page.data.map((profile) => <ProfileCard profile={profile} />)}
+  </div>
+  <Pagination prev={page.url.prev} next={page.url.next} />
+</DirectoryLayout>
