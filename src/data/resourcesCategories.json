@@ -256,7 +256,7 @@
   },
   {
     "id": "formation",
-    "isParent": false,
+    "isParent": true,
     "text": "Formación",
     "ico": "/assets/img/icons/education.svg",
     "slug": "no-code",
