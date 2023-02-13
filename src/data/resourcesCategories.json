@@ -255,6 +255,27 @@
     ]
   },
   {
+    "id": "formation",
+    "isParent": false,
+    "text": "Formación",
+    "ico": "/assets/img/icons/education.svg",
+    "slug": "no-code",
+    "items": [
+      {
+        "id": "formationGeneral",
+        "parentId": "formation",
+        "slug": "formacion-integrales",
+        "text": "Formación Integral"
+      },
+      {
+        "id": "formationPrograming",
+        "parentId": "formation",
+        "slug": "formacion-programacion",
+        "text": "Programación"
+      }
+    ]
+  },
+  {
     "id": "nocode",
     "isParent": false,
     "text": "No-Code",

@@ -1,13 +1,13 @@
 ---
-const { img, title, desc } = Astro.props;
+const { img, title, desc, url, target="_self" } = Astro.props;
 ---
 
 <div class="overflow-y-auto rounded-md mb-5 bg-white border-solid border-[1px] border-gray-200">
-  <a href="#">
-    <img class="rounded-t-lg" src={img} alt="" />
+  <a href={url} target={target}>
+    <img class="rounded-t-lg" src={img} alt="title" />
   </a>
   <div class="p-5">
-    <a href="#">
+    <a href={url} target={target}>
       <h5 class="mb-2 text-base font-bold tracking-tight text-gray-900 dark:text-white">
         {title}
       </h5>
