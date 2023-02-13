@@ -1,4 +1,3 @@
-![Todoist](https://user-images.githubusercontent.com/70978816/218134945-e3759099-0bdc-44d7-9464-187cd4c9e19e.PNG)
 ---
 name: "Todoist"
 url: "https://todoist.com/es"

@@ -1,4 +1,3 @@
-![What Font Is](https://user-images.githubusercontent.com/70978816/218131097-947d803c-feae-4921-b129-b8daf48ea020.png)
 ---
 name: "What Font Is"
 url: "https://www.whatfontis.com/"
