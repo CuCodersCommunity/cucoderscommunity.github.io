@@ -2,6 +2,8 @@ import { getCollection } from "astro:content";
 import dayjs from "dayjs";
 import "dayjs/locale/es";
 
+dayjs.locale("es");
+
 async function getNextEvents(url, type = "json") {
   const allEvents = await getCollection("events");
   let filterEvents = await allEvents

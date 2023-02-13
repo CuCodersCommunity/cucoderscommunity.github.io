@@ -2,6 +2,8 @@
 import dayjs from "dayjs";
 import "dayjs/locale/es";
 
+dayjs.locale("es");
+
 const { event } = Astro.props;
 
 const display_date = `${dayjs(event.data.startDate).format("DD/MM/YY")} - ${dayjs(event.data.endDate).format("DD/MM/YY")}`;
