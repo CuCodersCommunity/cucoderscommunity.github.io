@@ -1,6 +1,7 @@
 ---
 layout: "../layouts/textLayout.astro"
 title: "Acerca de CuCoders"
+description: "Conoce a Cucoders, la comunidad de desarrolladores líderes en Cuba. ¡Descubre que es nuestra plataforma en la página Acerca de para entender cómo podemos ayudarte a alcanzar tus metas profesionales!"
 ---
 
 Bienvenidos a CuCoders, la plataforma de la comunidad de programadores cubanos. Si eres un dev o emprendedor en el ámbito tecnológico, ¡estás en el lugar correcto! En CuCoders, nuestro objetivo principal es potenciar el desarrollo de software en Cuba y apoyar a los desarrolladores y emprendedores en su carrera profesional.
