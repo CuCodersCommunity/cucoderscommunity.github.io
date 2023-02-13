@@ -3,7 +3,7 @@ import { getCollection } from "astro:content";
 async function getLastApps(url, type = "json") {
   const allApps = await getCollection("apps");
   let filterApps = await allApps
-    .sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf())
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
     .slice(0, 3);
 
   let lastApps = [];

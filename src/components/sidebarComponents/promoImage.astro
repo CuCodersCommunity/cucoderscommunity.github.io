@@ -1,11 +1,12 @@
 ---
-const { url = "#", img, text } = Astro.props;
+const { url = "#", img, text, target="_blank" } = Astro.props;
 
 const promoStyle = `background-image: url(${img})`;
 ---
 
 <a
   href={url}
+  target={target}
   class="flex group p-8 mb-8 h-36 bg-gray-500 hover:bg-blend-multiply text-left bg-local bg-center bg-no-repeat bg-cover rounded-lg transition-all duration-300"
   style={promoStyle}
 >

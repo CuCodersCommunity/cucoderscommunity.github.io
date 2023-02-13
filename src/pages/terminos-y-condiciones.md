@@ -5,7 +5,7 @@ title: "Términos y Condiciones de Registro en CuCoders"
 
 Bienvenido a CuCoders, una comunidad en línea de desarrolladores dedicada a compartir conocimientos, experiencias y proyectos en el campo de la programación. Al registrarte en nuestra página web, aceptas cumplir con los siguientes términos y condiciones:
 
-**Registro:** Para registrarte en CuCoders, debes hacerlo mediante tu usuario de la plataforma GitHub. Los datos de tu perfil se toman directamente de tu usuario de GitHub y son complementados con informacion adicional opcionalproporcionada por ti. No debes registrarte en nuestra comunidad en nombre de otra persona o utilizar una identidad falsa.
+**Registro:** Para registrarte en CuCoders, debes hacerlo mediante tu usuario de la plataforma GitHub. Los datos de tu perfil se toman directamente de tu usuario de GitHub y son complementados con informacion adicional opcional  proporcionada por ti. No debes registrarte en nuestra comunidad en nombre de otra persona o utilizar una identidad falsa.
 
 **Conducta en la comunidad:** Al utilizar CuCoders, aceptas comportarte de manera respetuosa y profesional hacia otros miembros de la comunidad. No se permiten comentarios o comportamientos ofensivos, discriminatorios o ilegales. Cualquier miembro que no cumpla con estas normas podrá ser suspendido o expulsado de la comunidad.
 

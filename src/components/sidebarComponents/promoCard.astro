@@ -8,11 +8,11 @@ const { img, title, desc, url, target="_self" } = Astro.props;
   </a>
   <div class="p-5">
     <a href={url} target={target}>
-      <h5 class="mb-2 text-base font-bold tracking-tight text-gray-900 dark:text-white">
+      <h5 class="mb-2 text-base font-bold tracking-tight text-gray-900 dark:text-white line-clamp-2">
         {title}
       </h5>
     </a>
-    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 line-clamp-4">
       {desc}
     </p>
   </div>
