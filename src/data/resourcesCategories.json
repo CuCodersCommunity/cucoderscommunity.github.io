@@ -88,10 +88,10 @@
         "text": "Componenetes de UI"
       },
       {
-        "id": "frameworkCSS",
+        "id": "frameworksCSS",
         "parentId": "webDevelpment",
-        "slug": "framework-css",
-        "text": "Framework CSS"
+        "slug": "frameworks-css",
+        "text": "Frameworks CSS"
       }
     ]
   },
