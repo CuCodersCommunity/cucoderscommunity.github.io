@@ -211,6 +211,12 @@
         "text": "Iconos"
       },
       {
+        "id": "colors",
+        "parentId": "graphicResource",
+        "slug": "colores",
+        "text": "Colores"
+      },
+      {
         "id": "illustrations",
         "parentId": "graphicResource",
         "slug": "ilustraciones",
