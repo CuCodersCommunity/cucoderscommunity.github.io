@@ -3,7 +3,11 @@ import BaseLayout from "../layouts/baseLayout.astro";
 import RightDrawer from "../components/rightDrawer.astro";
 import EventsSidebar from "../components/eventsSidebar.astro";
 
-const { title, description, image } = Astro.props;
+const {
+  title,
+  description = "Únete a la comunidad de tecnología en constante crecimiento en nuestra sección de eventos. Asiste a conferencias, talleres y encuentros para aprender de expertos y conectar con otros profesionales de la industria. ¡Explora nuestro calendario de eventos y amplía tus horizontes en el mundo de la tecnología con Cucoders",
+  image,
+} = Astro.props;
 ---
 
 <BaseLayout title={title} description={description} image={image} hasRightSidebar={true}>
