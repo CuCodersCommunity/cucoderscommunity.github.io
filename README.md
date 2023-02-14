@@ -1,6 +1,6 @@
 # CuCoders Web
 
-> Esta página web se encuentra en desarrollo y aún no está lista para ser utilizada por los usuarios finales. Actualmente, se encuentra hosteada y puede ser probada para tener una idea de su funcionamiento, pero tenga en cuenta que al estar en desarrollo va a encontrar muchas faltas o errores. Las funcionalidades se irán informando porel canal de telegram a medida que se liberen. El código está abierto y puede ser utilizado como material de estudio, pero aún no se han establecido las directrices para contribuir al proyecto. Por lo tanto, por el momento no se aceptarán solicitudes de pull request. Se informará a través del canal de Telegram cuando se permitan contribuciones.
+> Esta página web se encuentra en desarrollo y aún no está lista para ser utilizada por los usuarios finales. Actualmente, se encuentra hosteada y puede ser probada para tener una idea de su funcionamiento, pero tenga en cuenta que al estar en desarrollo va a encontrar muchas faltas o errores. Las funcionalidades se irán informando por el canal de telegram a medida que se liberen. El código está abierto y puede ser utilizado como material de estudio, pero aún no se han establecido las directrices para contribuir al proyecto. Por lo tanto, por el momento no se aceptarán solicitudes de pull request. Se informará a través del canal de Telegram cuando se permitan contribuciones.
 
 ## 🚀 Estructura del Proyecto
 
