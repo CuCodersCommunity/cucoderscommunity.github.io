@@ -14,7 +14,7 @@ export async function getStaticPaths({ paginate }) {
   const AllApps = await getCollection("apps");
   return allCategories.map((categoryObj) => {
     let filteredApps = AllApps.filter((app) => app.data.categories.includes(categoryObj.key));
-    filteredApps.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
+    filteredApps.sort((a, b) => (a.name > b.name ? 1 : b.name > a.name ? -1 : 0));
     const category = categoryObj.slug;
     return paginate(filteredApps, {
       params: { category },
@@ -24,9 +24,21 @@ export async function getStaticPaths({ paginate }) {
 }
 const { page } = Astro.props;
 const params = Astro.params;
+
+let category = {};
+
+for (const [key, value] of Object.entries(categories)) {
+  if (value.slug == params.category) {
+    category = value;
+    break;
+  }
+}
 ---
 
-<AppsLayout title={params.category}>
+<AppsLayout
+  title={`Directorio de Aplicaciones Cubanas | ${category.text} | Pagina ${page.currentPage}`}
+  description="Explora el futuro de la tecnología cubana en el directorio de aplicaciones de Cucoders. Descubre las aplicaciones creadas por desarrolladores locales y apóyalos en su camino hacia el éxito. ¡Navega en nuestro directorio de aplicaciones y descubre las soluciones innovadoras desarrolladas en Cuba!"
+>
   {page.data.length == 0 && <img src="/assets/img/emptyList.webp" class="md:w-2/3 w-full mx-auto my-4" />}
 
   <div class="grid mb-6 w-full gap-4 md:grid-cols-1 mx-auto px-3 sm:px-0">
