@@ -12,7 +12,7 @@ const members = members_array.slice(0, 21);
 const showPagination = Object.keys(members_array).length > 21;
 ---
 
-<DirectoryLayout>
+<DirectoryLayout title="Directorio de Desarrolladores Cubanos" >
   <div class="grid gap-6 w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-7">
     {members.map((profile) => <ProfileCard profile={profile} />)}
   </div>

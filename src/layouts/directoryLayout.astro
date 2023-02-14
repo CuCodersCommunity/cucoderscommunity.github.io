@@ -4,7 +4,11 @@ import RightSideBar from "../components/rightSideBar.astro";
 import RightDrawer from "../components/rightDrawer.astro";
 import DirectorySideBar from "../components/directorySideBar.astro";
 
-const { title, description, image } = Astro.props;
+const {
+  title,
+  description = "Conecta con los mejores programadores cubanos en el directorio de programadores de Cucoders. Descubre sus habilidades y experiencias y encuentra el colaborador perfecto para tu próximo proyecto. ¡Explora nuestro directorio de programadores y expande tu red profesional hoy en Cucoders!",
+  image,
+} = Astro.props;
 ---
 
 <BaseLayout title={title} description={description} image={image} hasRightSidebar={true}>
