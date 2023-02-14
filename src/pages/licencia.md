@@ -1,3 +1,9 @@
+---
+layout: "../layouts/textLayout.astro"
+title: "Licencia de CuCoders"
+description: "MIT License"
+---
+
 MIT License
 
 Copyright (c) 2023 Manuel Ernesto Garcia

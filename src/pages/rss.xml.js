@@ -11,7 +11,6 @@ export async function get(context) {
         title: post.data.title,
         pubDate: post.data.pubDate,
         description: post.data.description,
-        image: post.data.image,
         link: `/publicaciones/${post.slug}/`,
       })),
     });
