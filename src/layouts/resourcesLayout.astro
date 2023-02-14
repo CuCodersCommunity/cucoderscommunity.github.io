@@ -4,7 +4,12 @@ import RightSideBar from "../components/rightSideBar.astro";
 import RightDrawer from "../components/rightDrawer.astro";
 import ResourcesSidebar from "../components/resourcesSidebar.astro";
 
-const { title, description, image, openCategory } = Astro.props;
+const {
+  title,
+  description = "Mantente a la vanguardia en el mundo de la programación con nuestro directorio de los mejores recursos y herramientas de todo Internet. Descubre tutoriales, herramientas, aplicaciones y mucho más para mejorar tus habilidades y optimizar tu trabajo.",
+  image,
+  openCategory,
+} = Astro.props;
 ---
 
 <BaseLayout title={title} description={description} image={image} hasRightSidebar={true}>
