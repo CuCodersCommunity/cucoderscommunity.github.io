@@ -1,7 +1,7 @@
 ---
 layout: "../layouts/textLayout.astro"
 title: "Términos y Condiciones de Registro en CuCoders"
-description= ""Aprende acerca de las políticas y procedimientos de Cucoders antes de unirte a la comunidad. Revisa nuestros Términos y Condiciones para entender cómo protegemos tu información y cómo se espera que uses la plataforma."
+description: "Aprende acerca de las políticas y procedimientos de Cucoders antes de unirte a la comunidad. Revisa nuestros Términos y Condiciones para entender cómo protegemos tu información y cómo se espera que uses la plataforma."
 ---
 
 Bienvenido a CuCoders, una comunidad en línea de desarrolladores dedicada a compartir conocimientos, experiencias y proyectos en el campo de la programación. Al registrarte en nuestra página web, aceptas cumplir con los siguientes términos y condiciones:
