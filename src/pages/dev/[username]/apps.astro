@@ -28,7 +28,7 @@ const userApps = await getCollection("apps", ({ id }) => {
 
 ---
 
-<ProfileLayout profile={members_data[params.username]} activeTab="apps">
+<ProfileLayout profile={members_data[params.username]} activeTab="apps"  pageTitle="Aplicaciones">
   <div class="grid mb-6 w-full gap-4 md:grid-cols-1 mx-auto px-3 sm:px-0">
     {
       userApps.map((app) => (

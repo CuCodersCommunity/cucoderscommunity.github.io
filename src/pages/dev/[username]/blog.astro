@@ -27,7 +27,7 @@ const userPosts = await getCollection("blog", ({ id }) => {
 
 ---
 
-<ProfileLayout profile={members_data[params.username]} activeTab="blog">
+<ProfileLayout profile={members_data[params.username]} activeTab="blog"  pageTitle="Blog">
   <div class="px-10 my-5">
     {userPosts.map((post) => <HorizontalPostItem post={post} />)}
   </div>
