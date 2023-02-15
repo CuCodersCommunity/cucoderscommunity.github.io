@@ -282,5 +282,13 @@
     "ico": "/assets/img/icons/no-code.svg",
     "slug": "no-code",
     "items": []
+  },
+  {
+    "id": "otherLists",
+    "isParent": false,
+    "text": "Otras Listas",
+    "ico": "/assets/img/icons/list.svg",
+    "slug": "otras-listas",
+    "items": []
   }
 ]
