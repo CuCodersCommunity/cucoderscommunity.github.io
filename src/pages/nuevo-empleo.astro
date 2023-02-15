@@ -1,0 +1,137 @@
+---
+import BaseLayout from "../layouts/baseLayout.astro";
+import CheckboxInput from "../components/forms/checkboxInput.astro";
+import TextInput from "../components/forms/textInput.astro";
+import "../styles/main.css";
+import categories from "../data/profileCategories.json";
+
+let categoriesList = [];
+for (const key in categories) {
+  categories[key].key = key;
+  categoriesList.push(categories[key]);
+}
+---
+
+<BaseLayout
+  title="Publicar Nuevo Empleo"
+  description="Atrae al mejor talento de la tecnología con nuestras ofertas de empleo en CuCoders. Publica una nueva oferta y encuentra al candidato perfecto para tu empresa. ¡Descubre cómo puedes conectarte con la comunidad de programadores de Cuba y atraer al mejor talento hoy mismo en CuCoders!"
+>
+  <div
+    id="job-form"
+    class="bg-white border md:mx-auto mb-5 md:mt-12 p-8 lg:max-w-[58rem] border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 w-full"
+  >
+    <div class="flex justify-between">
+      <h1 class="text-xl font-bold">Nuevo Empleo</h1>
+    </div>
+
+    <hr class="my-4" />
+
+    <div>
+      <div class="mb-6">
+        <TextInput id="title" label="Título *" maxlength="150" />
+      </div>
+
+      <div class="mb-6">
+        <TextInput id="salary" label="Salario" maxlength="100" />
+      </div>
+
+      <div class="mb-6">
+        <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Descripción</label>
+        <textarea
+          id="description"
+          maxlength="250"
+          rows="5"
+          class="block p-2.5 w-full text-sm bg-gray-50 text-gray-900 rounded-lg border border-gray-300 focus:ring-gray-500 focus:border-gray-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
+        ></textarea>
+      </div>
+
+      <div class="mb-6">
+        <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Categorias *</label>
+        <select id="categories" name="state[]" multiple placeholder="Categorias" autocomplete="off">
+          <option value="">Select a state...</option>
+          {categoriesList.map((category) => <option value={category.key}>{category.text}</option>)}
+        </select>
+      </div>
+
+      <div class="grid gap-6 mb-6 md:grid-cols-3">
+        <CheckboxInput id="freelance" label="Freelance" />
+        <CheckboxInput id="fulltime" label="Full-time" />
+        <CheckboxInput id="parttime" label="Part-time" />
+      </div>
+      <div class="grid gap-6 mb-6 md:grid-cols-3">
+        <CheckboxInput id="remote" label="Remoto" />
+        <CheckboxInput id="presential" label="Presencial" />
+        <CheckboxInput id="relocate" label="Relocate" />
+      </div>
+
+      <div class="grid gap-6 mb-6 md:grid-cols-1">
+        <TextInput id="location" label="Ubicación" maxlength="250" />
+      </div>
+
+      <div class="flex justify-between">
+        <h1 class="text-xl font-bold">Datos de Contacto</h1>
+      </div>
+      <hr class="my-4" />
+      <div class="grid gap-6 mb-6 md:grid-cols-3">
+        <TextInput id="appyEmail" label="Correo Electronico" maxlength="250" />
+        <TextInput id="appyUrl" label="URL para aplicar" maxlength="250" />
+        <TextInput id="appyapplyTelegramUser" label="Usuario de Telegram" maxlength="250" />
+      </div>
+    </div>
+
+    <div class="flex justify-center">
+      <button
+        id="addEvent"
+        class="text-white mt-4 mx-2 bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
+        >Publicar Empleo</button
+      >
+    </div>
+  </div>
+</BaseLayout>
+
+<link href="https://cdn.jsdelivr.net/npm/tom-select/dist/css/tom-select.css" rel="stylesheet" />
+<script is:inline src="https://cdn.jsdelivr.net/npm/tom-select/dist/js/tom-select.complete.min.js"></script>
+
+<script is:inline>
+  var control = new TomSelect("#categories", { maxItems: 5 });
+</script>
+
+<script>
+  const resourceBtn = document.getElementById("addEvent");
+  resourceBtn.addEventListener("click", addEvent, true);
+
+  function addEvent() {
+    const fileName = getElem("name").value.replace(/\s/g, "-") + ".md";
+    const fileText = createResourceData();
+    const encodedFileText = encodeURIComponent(fileText);
+    const githubQueryLink = getFileRoute(fileName, encodedFileText);
+    window.open(githubQueryLink);
+  }
+
+  function getElem(id) {
+    return <HTMLInputElement>document.getElementById(id);
+  }
+
+  function createResourceData() {
+    return `---
+name: "${getElem("name").value}"
+description: "${getElem("description").value}"
+startDate: "${getElem("startDate").value}"
+endDate: "${getElem("endDate").value}"
+location: "${getElem("location").value}"
+image: "${getElem("image").value}"
+url: "${getElem("url").value}"
+virtual: ${getElem("virtual").checked}
+presential: ${getElem("presential").checked}
+pubDate: "${new Date().toDateString()}"
+---
+
+Aqui va la descripción general del evento.`;
+  }
+
+  function getFileRoute(fileName, encodedFileText) {
+    let year = new Date().getFullYear();
+    let route = `https://github.com/CuCodersCommunity/cucoderscommunity.github.io/new/main/src/content/resources/${year}/new?value=${encodedFileText}&filename=${fileName}`;
+    return route;
+  }
+</script>
