@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/baseLayout.astro";
 import CheckboxInput from "../components/forms/checkboxInput.astro";
+import UsernameInput from "../components/forms/usernameInput.astro";
 import TextInput from "../components/forms/textInput.astro";
 import "../styles/main.css";
 import categories from "../data/profileCategories.json";
@@ -40,7 +41,7 @@ for (const key in categories) {
         <textarea
           id="description"
           maxlength="250"
-          rows="5"
+          rows="6"
           class="block p-2.5 w-full text-sm bg-gray-50 text-gray-900 rounded-lg border border-gray-300 focus:ring-gray-500 focus:border-gray-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
         ></textarea>
       </div>
@@ -73,9 +74,9 @@ for (const key in categories) {
       </div>
       <hr class="my-4" />
       <div class="grid gap-6 mb-6 md:grid-cols-3">
-        <TextInput id="appyEmail" label="Correo Electronico" maxlength="250" />
-        <TextInput id="appyUrl" label="URL para aplicar" maxlength="250" />
-        <TextInput id="appyapplyTelegramUser" label="Usuario de Telegram" maxlength="250" />
+        <TextInput id="appyEmail" label="Correo Electronico" maxlength="250" type="email" />
+        <TextInput id="appyUrl" label="URL para aplicar" maxlength="250" type="url" />
+        <UsernameInput id="appyapplyTelegramUser" label="Usuario de Telegram" maxlength="250" />
       </div>
     </div>
 
@@ -87,33 +88,32 @@ for (const key in categories) {
       >
     </div>
   </div>
-</BaseLayout>
 
-<link href="https://cdn.jsdelivr.net/npm/tom-select/dist/css/tom-select.css" rel="stylesheet" />
-<script is:inline src="https://cdn.jsdelivr.net/npm/tom-select/dist/js/tom-select.complete.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tom-select/dist/css/tom-select.css" rel="stylesheet" />
+  <script is:inline src="https://cdn.jsdelivr.net/npm/tom-select/dist/js/tom-select.complete.min.js"></script>
 
-<script is:inline>
-  var control = new TomSelect("#categories", { maxItems: 5 });
-</script>
+  <script is:inline>
+    var control = new TomSelect("#categories", { maxItems: 5 });
+  </script>
 
-<script>
-  const resourceBtn = document.getElementById("addEvent");
-  resourceBtn.addEventListener("click", addEvent, true);
+  <script>
+    const resourceBtn = document.getElementById("addEvent");
+    resourceBtn.addEventListener("click", addEvent, true);
 
-  function addEvent() {
-    const fileName = getElem("name").value.replace(/\s/g, "-") + ".md";
-    const fileText = createResourceData();
-    const encodedFileText = encodeURIComponent(fileText);
-    const githubQueryLink = getFileRoute(fileName, encodedFileText);
-    window.open(githubQueryLink);
-  }
+    function addEvent() {
+      const fileName = getElem("name").value.replace(/\s/g, "-") + ".md";
+      const fileText = createResourceData();
+      const encodedFileText = encodeURIComponent(fileText);
+      const githubQueryLink = getFileRoute(fileName, encodedFileText);
+      window.open(githubQueryLink);
+    }
 
-  function getElem(id) {
-    return <HTMLInputElement>document.getElementById(id);
-  }
+    function getElem(id) {
+      return <HTMLInputElement>document.getElementById(id);
+    }
 
-  function createResourceData() {
-    return `---
+    function createResourceData() {
+      return `---
 name: "${getElem("name").value}"
 description: "${getElem("description").value}"
 startDate: "${getElem("startDate").value}"
@@ -127,11 +127,12 @@ pubDate: "${new Date().toDateString()}"
 ---
 
 Aqui va la descripción general del evento.`;
-  }
+    }
 
-  function getFileRoute(fileName, encodedFileText) {
-    let year = new Date().getFullYear();
-    let route = `https://github.com/CuCodersCommunity/cucoderscommunity.github.io/new/main/src/content/resources/${year}/new?value=${encodedFileText}&filename=${fileName}`;
-    return route;
-  }
-</script>
+    function getFileRoute(fileName, encodedFileText) {
+      let year = new Date().getFullYear();
+      let route = `https://github.com/CuCodersCommunity/cucoderscommunity.github.io/new/main/src/content/resources/${year}/new?value=${encodedFileText}&filename=${fileName}`;
+      return route;
+    }
+  </script>
+</BaseLayout>
