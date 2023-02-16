@@ -1,0 +1,59 @@
+---
+import categories from "../../../data/appsCategories.json";
+import JobLayout from "../../../layouts/jobLayout.astro";
+import AppCard from "../../../components/apps/appCard.astro";
+import Pagination from "../../../components/pagination.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths({ paginate }) {
+  let allCategories = [];
+  for (const key in categories) {
+    allCategories.push({ key: key, slug: categories[key].slug });
+  }
+
+  const AllApps = await getCollection("apps");
+  return allCategories.map((categoryObj) => {
+    let filteredApps = AllApps.filter((app) => app.data.categories.includes(categoryObj.key));
+    filteredApps.sort((a, b) => (a.name > b.name ? 1 : b.name > a.name ? -1 : 0));
+    const category = categoryObj.slug;
+    return paginate(filteredApps, {
+      params: { category },
+      pageSize: 18,
+    });
+  });
+}
+const { page } = Astro.props;
+const params = Astro.params;
+
+let category = {};
+
+for (const [key, value] of Object.entries(categories)) {
+  if (value.slug == params.category) {
+    category = value;
+    break;
+  }
+}
+---
+
+<JobLayout
+  title={`Directorio de Aplicaciones Cubanas | ${category.text} | Página ${page.currentPage}`}
+  description="Explora el futuro de la tecnología cubana en el directorio de aplicaciones de Cucoders. Descubre las aplicaciones creadas por desarrolladores locales y apóyalos en su camino hacia el éxito. ¡Navega en nuestro directorio de aplicaciones y descubre las soluciones innovadoras desarrolladas en Cuba!"
+>
+  {page.data.length == 0 && <img src="/assets/img/emptyList.webp" class="md:w-2/3 w-full mx-auto my-4" />}
+
+  <div class="grid mb-6 w-full gap-4 md:grid-cols-1 mx-auto px-3 sm:px-0">
+    {
+      page.data.map((app) => (
+        <AppCard
+          title={app.data.name}
+          subtitle={app.data.description}
+          url={"/apps/" + app.slug}
+          logo={app.data.logo}
+          categories={app.data.categories}
+        />
+      ))
+    }
+  </div>
+
+  <Pagination prev={page.url.prev} next={page.url.next} />
+</JobLayout>

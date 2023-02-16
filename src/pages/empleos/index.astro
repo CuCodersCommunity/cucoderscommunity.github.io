@@ -1,0 +1,38 @@
+---
+import AppsLayout from "../../layouts/appsLayout.astro";
+import SideBar from "../../components/mainSideBar.astro";
+import RightDrawer from "../../components/rightDrawer.astro";
+import AppCard from "../../components/apps/appCard.astro";
+import { getCollection } from "astro:content";
+
+const apps = (await getCollection("apps")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+
+const lastApps = apps.slice(0, 12);
+---
+
+<AppsLayout title="Directorio de Aplicaciones Cubanas | CuCoders"
+  description="Explora el futuro de la tecnología cubana en el directorio de aplicaciones de Cucoders. Descubre las aplicaciones creadas por desarrolladores locales y apóyalos en su camino hacia el éxito. ¡Navega en nuestro directorio de aplicaciones y descubre las soluciones innovadoras desarrolladas en Cuba!"
+  hasRightSidebar={true}
+>
+
+<h2 class="mb-3 text-xl mx-2 font-semibold text-gray-700"> Últimos lanzamientos</h2>
+<div class="grid mb-6 w-full gap-4 md:grid-cols-1 mx-auto px-3 sm:px-0">
+  {
+    lastApps.map((app) => (
+      <AppCard
+        title={app.data.name}
+        subtitle={app.data.description}
+        url={"/apps/" + app.slug}
+        logo={app.data.logo}
+        categories={app.data.categories}
+      />
+    ))
+  }
+</div>
+
+</AppsLayout>
+
+<RightDrawer title="Categorías">
+  <SideBar isSideMenu={true} />
+</RightDrawer>
