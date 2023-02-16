@@ -3,6 +3,7 @@ import BaseLayout from "../layouts/baseLayout.astro";
 import CheckboxInput from "../components/forms/checkboxInput.astro";
 import UsernameInput from "../components/forms/usernameInput.astro";
 import TextInput from "../components/forms/textInput.astro";
+import Toast from "../components/toast/toast.astro";
 import "../styles/main.css";
 import categories from "../data/profileCategories.json";
 
@@ -89,75 +90,78 @@ for (const key in categories) {
     </div>
   </div>
 
-  <link href="https://cdn.jsdelivr.net/npm/tom-select/dist/css/tom-select.css" rel="stylesheet" />
-  <script is:inline src="https://cdn.jsdelivr.net/npm/tom-select/dist/js/tom-select.complete.min.js"></script>
-
-  <script is:inline>
-    var control = new TomSelect("#categories", { maxItems: 5 });
-  </script>
-
-  <script>
-    import { backend_url } from "../data/conf.json";
-    import dayjs from "dayjs";
-    const resourceBtn = document.getElementById("addJob");
-    resourceBtn.addEventListener("click", addJob, true);
-
-    async function addJob() {
-      const data = createJobData();
-      disableBtn();
-      try {
-        const response = await fetch(backend_url + "api/jobs/new-job", {
-          method: "POST",
-          body: JSON.stringify(data),
-        });
-        const responseData = await response.json();
-        window.open(`${window.location.origin}/empleo-publicado`, "_self");
-      } catch (e) {
-        enableBtn();
-        alert("Algo salio mal. Por favor intentelo de nuevo mas tarde;");
-      }
-    }
-
-    function getElem(id) {
-      return <HTMLInputElement>document.getElementById(id);
-    }
-
-    function createJobData() {
-      let data = {
-        title: getElem("title").value,
-        salary: getElem("salary").value,
-        description: getElem("description").value,
-        categories: [],
-        freelance: getElem("freelance").checked,
-        fulltime: getElem("fulltime").checked,
-        parttime: getElem("parttime").checked,
-        remote: getElem("remote").checked,
-        presential: getElem("presential").checked,
-        relocate: getElem("relocate").checked,
-        location: getElem("location").value,
-        pubDate: dayjs().format("MM/DD/YYYY"),
-        applyEmail: getElem("applyEmail").value,
-        applyUrl: getElem("applyUrl").value,
-        applyTelegramUser: getElem("applyTelegramUser").value,
-        slug: getElem("title").value.replace(/\s/g, "-"),
-      };
-
-      for (let option of document.getElementById("categories").options) {
-        if (option.selected) {
-          data.categories.push(option.value);
-        }
-      }
-      return data;
-    }
-
-    function disableBtn() {
-      resourceBtn.disabled = true;
-      resourceBtn.textContent = "Publicando...";
-    }
-
-    function enableBtn() {
-      resourceBtn.disabled = false;
-      resourceBtn.textContent = "Publicar Empleo";
-    }
-  </script>
+  <Toast />
 </BaseLayout>
+
+<link href="https://cdn.jsdelivr.net/npm/tom-select/dist/css/tom-select.css" rel="stylesheet" />
+<script is:inline src="https://cdn.jsdelivr.net/npm/tom-select/dist/js/tom-select.complete.min.js"></script>
+
+<script is:inline>
+  var control = new TomSelect("#categories", { maxItems: 5 });
+</script>
+
+<script>
+  import { backend_url } from "../data/conf.json";
+  import dayjs from "dayjs";
+  import { showToast } from "../components/toast/toast";
+  const resourceBtn = document.getElementById("addJob");
+  resourceBtn.addEventListener("click", addJob, true);
+
+  async function addJob() {
+    const data = createJobData();
+    disableBtn();
+    try {
+      const response = await fetch(backend_url + "api/jobs/new-job", {
+        method: "POST",
+        body: JSON.stringify(data),
+      });
+      const responseData = await response.json();
+      window.open(`${window.location.origin}/empleo-publicado`, "_self");
+    } catch (e) {
+      enableBtn();
+      showToast("Algo salio mal. Por favor vuelva a intentarlo más tarde.", true);
+    }
+  }
+
+  function getElem(id) {
+    return <HTMLInputElement>document.getElementById(id);
+  }
+
+  function createJobData() {
+    let data = {
+      title: getElem("title").value,
+      salary: getElem("salary").value,
+      description: getElem("description").value,
+      categories: [],
+      freelance: getElem("freelance").checked,
+      fulltime: getElem("fulltime").checked,
+      parttime: getElem("parttime").checked,
+      remote: getElem("remote").checked,
+      presential: getElem("presential").checked,
+      relocate: getElem("relocate").checked,
+      location: getElem("location").value,
+      pubDate: dayjs().format("MM/DD/YYYY"),
+      applyEmail: getElem("applyEmail").value,
+      applyUrl: getElem("applyUrl").value,
+      applyTelegramUser: getElem("applyTelegramUser").value,
+      slug: getElem("title").value.replace(/\s/g, "-"),
+    };
+
+    for (let option of document.getElementById("categories").options) {
+      if (option.selected) {
+        data.categories.push(option.value);
+      }
+    }
+    return data;
+  }
+
+  function disableBtn() {
+    resourceBtn.disabled = true;
+    resourceBtn.textContent = "Publicando...";
+  }
+
+  function enableBtn() {
+    resourceBtn.disabled = false;
+    resourceBtn.textContent = "Publicar Empleo";
+  }
+</script>
