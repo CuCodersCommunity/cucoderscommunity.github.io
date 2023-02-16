@@ -111,7 +111,7 @@ for (const key in categories) {
           body: JSON.stringify(data),
         });
         const responseData = await response.json();
-        enableBtn();
+        window.open(`${window.location.origin}/empleo-publicado`, "_self");
       } catch (e) {
         enableBtn();
         alert("Algo salio mal. Por favor intentelo de nuevo mas tarde;");
@@ -158,12 +158,6 @@ for (const key in categories) {
     function enableBtn() {
       resourceBtn.disabled = false;
       resourceBtn.textContent = "Publicar Empleo";
-    }
-
-    function getFileRoute(fileName, encodedFileText) {
-      let year = new Date().getFullYear();
-      let route = `https://github.com/CuCodersCommunity/cucoderscommunity.github.io/new/main/src/content/resources/${year}/new?value=${encodedFileText}&filename=${fileName}`;
-      return route;
     }
   </script>
 </BaseLayout>
