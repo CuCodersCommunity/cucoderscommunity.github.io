@@ -20,9 +20,7 @@ const { job } = Astro.props;
           <>
             <div class="flex items-center mr-2 px-2 py-1 rounded">
               <img src={`/assets/img/icons/money2.svg`} class="w-4 h-4 inline" />
-              <p class="ml-1 text-sm max-w-[10rem] truncate">
-                {job.salary} asda sd asd asd asd asd asd ad asd as dasd asd asd asd asd asd as d
-              </p>
+              <p class="ml-1 text-sm max-w-[10rem] truncate"> {job.salary} </p>
             </div>
             <div class="w-0.5 h-5 mr-2 bg-gray-400 place-self-center hidden md:block" />
           </>
@@ -54,10 +52,10 @@ const { job } = Astro.props;
         )
       }
       {job.presential && <JobCardCategory text={job.location} ico="map" url={jobsCategories["presential"].slug} />}
-      <div class="w-0.5 h-5 mr-2 bg-gray-400 place-self-center hidden md:block"></div>
       {
         job.relocate && (
           <>
+            <div class="w-0.5 h-5 mr-2 bg-gray-400 place-self-center hidden md:block" />
             <JobCardCategory text={jobsCategories["relocate"].text} ico="relocate" url={jobsCategories["relocate"].slug} />
           </>
         )

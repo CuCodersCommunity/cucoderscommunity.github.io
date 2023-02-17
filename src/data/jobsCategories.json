@@ -1,9 +1,4 @@
 {
-  "freelancer": {
-    "slug": "freelancer",
-    "text": "Freelancer",
-    "ico": "/assets/img/icons/freelancer.svg"
-  },
   "fulltime": {
     "slug": "tiempo-completo",
     "text": "Tiempo Completo",
@@ -13,6 +8,11 @@
     "slug": "tiempo-parcial",
     "text": "Tiempo Parcial",
     "ico": "/assets/img/icons/part-time.svg"
+  },
+  "freelancer": {
+    "slug": "freelancer",
+    "text": "Freelancer",
+    "ico": "/assets/img/icons/freelancer.svg"
   },
   "remote": {
     "slug": "remoto",
