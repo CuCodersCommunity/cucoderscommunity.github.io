@@ -7,9 +7,13 @@ import JobCard from "../../../components/jobs/jobCard.astro";
 import Pagination from "../../../components/pagination.astro";
 
 export async function getStaticPaths({ paginate }) {
-  let allJobsCategories = [];
+  let allCategories = [];
   for (const key in jobsCategories) {
-    allJobsCategories.push({ key: key, slug: jobsCategories[key].slug });
+    allCategories.push({ key: key, slug: jobsCategories[key].slug, type: "job" });
+  }
+
+  for (const key in profileCategories) {
+    allCategories.push({ key: key, slug: profileCategories[key].slug, type: "profile" });
   }
 
   // Este es un trabajo temporal aqui hay que llamar a la API
@@ -35,8 +39,11 @@ export async function getStaticPaths({ paginate }) {
     },
   ];
 
-  return allJobsCategories.map((categoryObj) => {
-    let filteredJobs = AllJobs.filter((job) => job[categoryObj.key]);
+  return allCategories.map((categoryObj) => {
+    let filteredJobs =
+      categoryObj.type == "job"
+        ? AllJobs.filter((job) => job[categoryObj.key])
+        : AllJobs.filter((job) => job.categories.includes(categoryObj.key));
     filteredJobs.sort((a, b) => b.pubDate.valueOf() - a.pubDate.valueOf());
     const category = categoryObj.slug;
     return paginate(filteredJobs, {
@@ -51,6 +58,13 @@ const params = Astro.params;
 let category = {};
 
 for (const [key, value] of Object.entries(jobsCategories)) {
+  if (value.slug == params.category) {
+    category = value;
+    break;
+  }
+}
+
+for (const [key, value] of Object.entries(profileCategories)) {
   if (value.slug == params.category) {
     category = value;
     break;
