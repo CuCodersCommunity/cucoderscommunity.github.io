@@ -4,6 +4,8 @@ import jobsCategories from "../../data/jobsCategories.json";
 import JobCardCategory from "./jobCardCategory.astro";
 
 const { job } = Astro.props;
+
+console.log(job);
 ---
 
 <div class="inline-flex items-center w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg">
@@ -14,7 +16,7 @@ const { job } = Astro.props;
     <a href={job.slug} class="w-full my-2 text-sm md:text:base text-gray-600 line-clamp-4 md:line-clamp-2"
       >{job.description}</a
     >
-    <div class="flex flex-wrap -ml-2">
+    <div class="flex flex-wrap -ml-2 justify-center md:justify-start">
       {
         job.salary && (
           <>
@@ -24,7 +26,7 @@ const { job } = Astro.props;
                 {job.salary} asda sd asd asd asd asd asd ad asd as dasd asd asd asd asd asd as d
               </p>
             </div>
-            <div class="w-0.5 h-5 mr-2 bg-gray-400 place-self-center" />
+            <div class="w-0.5 h-5 mr-2 bg-gray-400 place-self-center hidden md:block" />
           </>
         )
       }
@@ -47,14 +49,14 @@ const { job } = Astro.props;
           <JobCardCategory text={jobsCategories["parttime"].text} ico="part-time" url={jobsCategories["parttime"].slug} />
         )
       }
-      <div class="w-0.5 h-5 mr-2 bg-gray-400 place-self-center"></div>
+      <div class="w-0.5 h-5 mr-2 bg-gray-400 place-self-center hidden md:block"></div>
       {
         job.remote && (
           <JobCardCategory text={jobsCategories["remote"].text} ico="remote" url={jobsCategories["remote"].slug} />
         )
       }
       {job.presential && <JobCardCategory text={job.location} ico="map" url={jobsCategories["presential"].slug} />}
-      <div class="w-0.5 h-5 mr-2 bg-gray-400 place-self-center"></div>
+      <div class="w-0.5 h-5 mr-2 bg-gray-400 place-self-center hidden md:block"></div>
       {
         job.relocate && (
           <>
@@ -62,18 +64,20 @@ const { job } = Astro.props;
           </>
         )
       }
-    </div>
-    <div class="mt-1 flex flex-wrap">
       {
         job.categories.map((category) => (
-          <a
-            href={"/apps/" + jobsCategories[category].slug}
-            class="text-gray-500 text-sm mr-2 px-2 border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-normal rounded  py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
-          >
-            {"#" + jobsCategories[category].text}
-          </a>
+          <>
+            <div class="w-0.5 h-5 mr-2 bg-gray-400 place-self-center hidden md:block" />
+            <a
+              href={"/empleos/" + profileCategories[category].slug}
+              class="text-gray-500 text-sm mr-2 px-2 border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-normal rounded  py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+            >
+              {"#" + profileCategories[category].text}
+            </a>
+          </>
         ))
       }
     </div>
+    <div class="mt-1 flex flex-wrap"></div>
   </div>
 </div>
