@@ -14,13 +14,13 @@ if (isSideMenu) {
 
 let categoriesList = [];
 for (const key in categories) {
-  categories[key].url = "/directorio/" + categories[key].slug;
+  categories[key].url = "/empleos/" + categories[key].slug;
   categoriesList.push(categories[key]);
 }
 
 let profileCategoriesList = [];
 for (const key in profileCategories) {
-  profileCategories[key].url = "/directorio/" + profileCategories[key].slug;
+  profileCategories[key].url = "/empleos/" + profileCategories[key].slug;
   profileCategoriesList.push(profileCategories[key]);
 }
 ---
@@ -29,7 +29,10 @@ for (const key in profileCategories) {
   <div class={sidebarClass}>
     <ul class="space-y-2">
       <Item text="Todos" ico="/assets/img/icons/all.svg" url="/empleos" />
-      {categoriesList.map((category) => <Item text={category.text} ico={category.ico} url={category.url} />)}
+      <hr class="my-3" />
+      {categoriesList.slice(0, 3).map((category) => <Item text={category.text} ico={category.ico} url={category.url} />)}
+      <hr class="my-3" />
+      {categoriesList.slice(3, 6).map((category) => <Item text={category.text} ico={category.ico} url={category.url} />)}
     </ul>
   </div>
 
@@ -38,8 +41,6 @@ for (const key in profileCategories) {
       {profileCategoriesList.map((category) => <Item text={category.text} ico={category.ico} url={category.url} />)}
     </ul>
   </div>
-
-
 
   <a
     href="/nuevo-empleo"

@@ -1,17 +1,17 @@
 {
-  "freelance": {
-    "slug": "freelance",
-    "text": "Freelance",
+  "freelancer": {
+    "slug": "freelancer",
+    "text": "Freelancer",
     "ico": "/assets/img/icons/freelancer.svg"
   },
   "fulltime": {
-    "slug": "full-time",
-    "text": "Full-time",
+    "slug": "tiempo-completo",
+    "text": "Tiempo Completo",
     "ico": "/assets/img/icons/full-time.svg"
   },
   "parttime": {
-    "slug": "part-time",
-    "text": "Part-time",
+    "slug": "tiempo-parcial",
+    "text": "Tiempo Parcial",
     "ico": "/assets/img/icons/part-time.svg"
   },
   "remote": {
@@ -25,8 +25,8 @@
     "ico": "/assets/img/icons/map.svg"
   },
   "relocate": {
-    "slug": "relocate",
-    "text": "Relocate",
+    "slug": "reubicacion",
+    "text": "Reubicación",
     "ico": "/assets/img/icons/relocate.svg"
   }
 }

@@ -1,0 +1,64 @@
+---
+import profileCategories from "../../data/profileCategories.json";
+import jobsCategories from "../../data/jobsCategories.json";
+import JobCardCategory from "./jobCardCategory.astro";
+
+const { job } = Astro.props;
+---
+
+<div class="inline-flex items-center w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg">
+  <div class="ml-1">
+    <a href={job.slug} class="w-full ml-2 text-lg text-gray-800 font-semibold line-clamp-2">{job.title}</a>
+    <a href={job.slug} class="w-full ml-2 text-sm md:text:base text-gray-700 line-clamp-3 md:line-clamp-2"
+      >{job.description}</a
+    >
+    <div class="mt-1 flex flex-wrap mx-2">
+      {
+        job.remote && (
+          <JobCardCategory text={jobsCategories["remote"].text} ico="remote" url={jobsCategories["remote"].slug} />
+        )
+      }
+      {
+        job.presential && (
+          <JobCardCategory text={jobsCategories["presential"].text} ico="map" url={jobsCategories["presential"].slug} />
+        )
+      }
+      {
+        job.relocate && (
+          <JobCardCategory text={jobsCategories["relocate"].text} ico="relocate" url={jobsCategories["relocate"].slug} />
+        )
+      }
+      <div class="w-0.5 h-5 mr-2 bg-gray-400 place-self-center"></div>
+      {
+        job.freelancer && (
+          <JobCardCategory
+            text={jobsCategories["freelancer"].text}
+            ico="freelancer"
+            url={jobsCategories["freelancer"].slug}
+          />
+        )
+      }
+      {
+        job.fulltime && (
+          <JobCardCategory text={jobsCategories["fulltime"].text} ico="full-time" url={jobsCategories["fulltime"].slug} />
+        )
+      }
+      {
+        job.parttime && (
+          <JobCardCategory text={jobsCategories["parttime"].text} ico="part-time" url={jobsCategories["parttime"].slug} />
+        )
+      }
+      <div class="w-0.5 h-5 mr-2 bg-gray-400 place-self-center"></div>
+      {
+        job.categories.map((category) => (
+          <a
+            href={"/apps/" + jobsCategories[category].slug}
+            class="text-gray-500 text-sm mr-2 px-2 border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-normal rounded  py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+          >
+            {"#" + jobsCategories[category].text}
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</div>
