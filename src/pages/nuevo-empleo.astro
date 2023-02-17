@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/baseLayout.astro";
 import CheckboxInput from "../components/forms/checkboxInput.astro";
+import RadioButtonInput from "../components/forms/radioButtonInput.astro";
 import UsernameInput from "../components/forms/usernameInput.astro";
 import TextInput from "../components/forms/textInput.astro";
 import Toast from "../components/toast/toast.astro";
@@ -56,14 +57,14 @@ for (const key in categories) {
       </div>
 
       <div class="grid gap-6 mb-6 md:grid-cols-3">
-        <CheckboxInput id="freelancer" label="Freelancer" />
-        <CheckboxInput id="fulltime" label="Full-time" />
-        <CheckboxInput id="parttime" label="Part-time" />
+        <RadioButtonInput id="fulltime" label="Tiempo Competo" />
+        <RadioButtonInput id="parttime" label="Tiempo Parcial" />
+        <RadioButtonInput id="freelancer" label="Freelancer" />
       </div>
       <div class="grid gap-6 mb-6 md:grid-cols-3">
         <CheckboxInput id="remote" label="Remoto" />
         <CheckboxInput id="presential" label="Presencial" />
-        <CheckboxInput id="relocate" label="Relocate" />
+        <CheckboxInput id="relocate" label="Reubicación" />
       </div>
 
       <div class="grid gap-6 mb-6 md:grid-cols-1">
@@ -97,7 +98,7 @@ for (const key in categories) {
 <script is:inline src="https://cdn.jsdelivr.net/npm/tom-select/dist/js/tom-select.complete.min.js"></script>
 
 <script is:inline>
-  var control = new TomSelect("#categories", { maxItems: 5 });
+  var control = new TomSelect("#categories", { maxItems: 3 });
 </script>
 
 <script>
