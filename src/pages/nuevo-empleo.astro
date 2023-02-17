@@ -59,7 +59,7 @@ for (const key in categories) {
       <div class="grid gap-6 mb-6 md:grid-cols-3">
         <RadioButtonInput id="fulltime" label="Tiempo Competo" />
         <RadioButtonInput id="parttime" label="Tiempo Parcial" />
-        <RadioButtonInput id="freelancer" label="Freelancer" />
+        <RadioButtonInput id="freelance" label="Freelance" />
       </div>
       <div class="grid gap-6 mb-6 md:grid-cols-3">
         <CheckboxInput id="remote" label="Remoto" />
@@ -134,7 +134,7 @@ for (const key in categories) {
       salary: getElem("salary").value,
       description: getElem("description").value,
       categories: [],
-      freelancer: getElem("freelancer").checked,
+      freelance: getElem("freelance").checked,
       fulltime: getElem("fulltime").checked,
       parttime: getElem("parttime").checked,
       remote: getElem("remote").checked,

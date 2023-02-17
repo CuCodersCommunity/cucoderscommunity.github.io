@@ -9,9 +9,9 @@
     "text": "Tiempo Parcial",
     "ico": "/assets/img/icons/part-time.svg"
   },
-  "freelancer": {
-    "slug": "freelancer",
-    "text": "Freelancer",
+  "freelance": {
+    "slug": "freelance",
+    "text": "Freelance",
     "ico": "/assets/img/icons/freelancer.svg"
   },
   "remote": {
