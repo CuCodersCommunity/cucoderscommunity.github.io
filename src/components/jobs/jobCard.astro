@@ -8,31 +8,22 @@ const { job } = Astro.props;
 
 <div class="inline-flex items-center w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg">
   <div class="ml-2">
-    <a href={job.slug} class="w-full text-lg text-gray-800 font-semibold line-clamp-2 md:line-clamp-1">{job.title}</a>
-    <a href={job.slug} class="w-full my-2 text-base md:text:base text-gray-600 line-clamp-4 md:line-clamp-2"
+    <a href={job.slug} class="w-full text-base md:text:lg text-gray-800 font-semibold line-clamp-2 md:line-clamp-1"
+      >{job.title}</a
+    >
+    <a href={job.slug} class="w-full my-2 text-sm md:text:base text-gray-600 line-clamp-4 md:line-clamp-2"
       >{job.description}</a
     >
-    <div class="mt-1 flex flex-wrap -ml-2">
+    <div class="flex flex-wrap -ml-2">
       {
         job.salary && (
           <>
-            <JobCardCategory text={job.salary} ico="money2" />
-            <div class="w-0.5 h-5 mr-2 bg-gray-400 place-self-center" />
-          </>
-        )
-      }
-
-      {
-        job.remote && (
-          <JobCardCategory text={jobsCategories["remote"].text} ico="remote" url={jobsCategories["remote"].slug} />
-        )
-      }
-      {job.presential && <JobCardCategory text={job.location} ico="map" url={jobsCategories["presential"].slug} />}
-      <div class="w-0.5 h-5 mr-2 bg-gray-400 place-self-center"></div>
-      {
-        job.relocate && (
-          <>
-            <JobCardCategory text={jobsCategories["relocate"].text} ico="relocate" url={jobsCategories["relocate"].slug} />
+            <div class="flex items-center mr-2 px-2 py-1 rounded">
+              <img src={`/assets/img/icons/money2.svg`} class="w-4 h-4 inline" />
+              <p class="ml-1 text-sm max-w-[10rem] truncate">
+                {job.salary} asda sd asd asd asd asd asd ad asd as dasd asd asd asd asd asd as d
+              </p>
+            </div>
             <div class="w-0.5 h-5 mr-2 bg-gray-400 place-self-center" />
           </>
         )
@@ -56,8 +47,23 @@ const { job } = Astro.props;
           <JobCardCategory text={jobsCategories["parttime"].text} ico="part-time" url={jobsCategories["parttime"].slug} />
         )
       }
+      <div class="w-0.5 h-5 mr-2 bg-gray-400 place-self-center"></div>
+      {
+        job.remote && (
+          <JobCardCategory text={jobsCategories["remote"].text} ico="remote" url={jobsCategories["remote"].slug} />
+        )
+      }
+      {job.presential && <JobCardCategory text={job.location} ico="map" url={jobsCategories["presential"].slug} />}
+      <div class="w-0.5 h-5 mr-2 bg-gray-400 place-self-center"></div>
+      {
+        job.relocate && (
+          <>
+            <JobCardCategory text={jobsCategories["relocate"].text} ico="relocate" url={jobsCategories["relocate"].slug} />
+          </>
+        )
+      }
     </div>
-    <div class="mt-1 flex flex-wrap mx-1">
+    <div class="mt-1 flex flex-wrap">
       {
         job.categories.map((category) => (
           <a
