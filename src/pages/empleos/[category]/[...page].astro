@@ -17,15 +17,15 @@ export async function getStaticPaths({ paginate }) {
     allCategories.push({ key: key, slug: profileCategories[key].slug, type: "profile" });
   }
 
-  const response = await fetch(backend_url + "api/jobs/get-all-jobs" );
+  const response = await fetch(backend_url + "api/jobs/get-all-jobs");
   const allJobs = await response.json();
 
   return allCategories.map((categoryObj) => {
     let filteredJobs =
       categoryObj.type == "job"
         ? allJobs.filter((job) => job[categoryObj.key])
-        : allJobs.filter((job) => job.categories.includes(categoryObj.key));
-    filteredJobs.sort((a, b) => b.pubDate.valueOf() - a.pubDate.valueOf());
+        : allJobs.filter((job) => job.categories && job.categories.includes(categoryObj.key));
+    filteredJobs = filteredJobs.sort((a, b) => new Date(b.pubDate).valueOf() - new Date(a.pubDate).valueOf());
     const category = categoryObj.slug;
     return paginate(filteredJobs, {
       params: { category },

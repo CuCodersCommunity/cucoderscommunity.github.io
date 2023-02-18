@@ -28,11 +28,7 @@ const { job } = Astro.props;
       }
       {
         job.freelance && (
-          <JobCardCategory
-            text={jobsCategories["freelance"].text}
-            ico="freelancer"
-            url={jobsCategories["freelance"].slug}
-          />
+          <JobCardCategory text={jobsCategories["freelance"].text} ico="freelancer" url={jobsCategories["freelance"].slug} />
         )
       }
       {
@@ -47,11 +43,15 @@ const { job } = Astro.props;
       }
       <div class="w-0.5 h-5 mr-2 bg-gray-400 place-self-center hidden md:block"></div>
       {
+        job.presential && (
+          <JobCardCategory text={job.location} ico="map" url={jobsCategories["presential"].slug} />
+        )
+      }
+      {
         job.remote && (
           <JobCardCategory text={jobsCategories["remote"].text} ico="remote" url={jobsCategories["remote"].slug} />
         )
       }
-      {job.presential && <JobCardCategory text={job.location} ico="map" url={jobsCategories["presential"].slug} />}
       {
         job.relocate && (
           <>
@@ -61,17 +61,18 @@ const { job } = Astro.props;
         )
       }
       {
-        job.categories.map((category) => (
-          <>
-            <div class="w-0.5 h-5 mr-2 bg-gray-400 place-self-center hidden md:block" />
-            <a
-              href={"/empleos/" + profileCategories[category].slug}
-              class="text-gray-500 text-sm mr-2 px-2 border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-normal rounded  py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
-            >
-              {"#" + profileCategories[category].text}
-            </a>
-          </>
-        ))
+        job.categories &&
+          job.categories.map((category) => (
+            <>
+              <div class="w-0.5 h-5 mr-2 bg-gray-400 place-self-center hidden md:block" />
+              <a
+                href={"/empleos/" + profileCategories[category].slug}
+                class="text-gray-500 text-sm mr-2 px-2 border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-normal rounded  py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+              >
+                {"#" + profileCategories[category].text}
+              </a>
+            </>
+          ))
       }
     </div>
     <div class="mt-1 flex flex-wrap"></div>
