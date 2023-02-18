@@ -19,7 +19,7 @@ for (const key in categories) {
   title="Publicar Nuevo Empleo | CuCoders"
   description="Atrae al mejor talento de la tecnología con nuestras ofertas de empleo en CuCoders. Publica una nueva oferta y encuentra al candidato perfecto para tu empresa. ¡Descubre cómo puedes conectarte con la comunidad de programadores de Cuba y atraer al mejor talento hoy mismo en CuCoders!"
 >
-  <div
+  <form
     id="job-form"
     class="bg-white border md:mx-auto mb-5 md:mt-12 p-8 lg:max-w-[58rem] border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 w-full"
   >
@@ -31,7 +31,7 @@ for (const key in categories) {
 
     <div>
       <div class="mb-6">
-        <TextInput id="title" label="Título *" maxlength="150" />
+        <TextInput id="title" label="Título *" maxlength="100" required={true} />
       </div>
 
       <div class="mb-6">
@@ -83,12 +83,12 @@ for (const key in categories) {
 
     <div class="flex justify-center">
       <button
-        id="addJob"
+        id="addJobBtn"
         class="text-white mt-4 mx-2 bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
         >Publicar Empleo</button
       >
     </div>
-  </div>
+  </form>
 
   <Toast />
 </BaseLayout>
@@ -104,10 +104,12 @@ for (const key in categories) {
   import { backend_url } from "../data/conf.json";
   import dayjs from "dayjs";
   import { showToast } from "../components/toast/toast";
-  const resourceBtn = document.getElementById("addJob");
-  resourceBtn.addEventListener("click", addJob, true);
 
-  async function addJob() {
+  const jobForm = document.getElementById("job-form");
+  jobForm.addEventListener("submit", addJob, true);
+
+  async function addJob(e) {
+    e.preventDefault();
     const data = createJobData();
     disableBtn();
     try {
@@ -156,12 +158,12 @@ for (const key in categories) {
   }
 
   function disableBtn() {
-    resourceBtn.disabled = true;
-    resourceBtn.textContent = "Publicando...";
+    addJobBtn.disabled = true;
+    addJobBtn.textContent = "Publicando...";
   }
 
   function enableBtn() {
-    resourceBtn.disabled = false;
-    resourceBtn.textContent = "Publicar Empleo";
+    addJobBtn.disabled = false;
+    addJobBtn.textContent = "Publicar Empleo";
   }
 </script>
