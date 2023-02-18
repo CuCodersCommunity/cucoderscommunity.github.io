@@ -1,0 +1,26 @@
+---
+import { backend_url } from "../../data/conf.json";
+import BaseLayout from "../../layouts/baseLayout.astro";
+import JobHeader from "../../components/jobs/jobHeader.astro";
+
+export async function getStaticPaths() {
+  const response = await fetch(backend_url + "api/jobs/get-all-jobs");
+  const allJobs = await response.json();
+
+  return allJobs.map((job) => ({ params: { slug: `${job.pubDate}/${job.slug}` }, props: { job } }));
+}
+
+const { job } = Astro.props;
+---
+
+<BaseLayout title={`${job.title} | CuCoders Jobs`}>
+  <JobHeader job={job} />
+  <div
+    class="bg-white border md:mx-auto mb-5 py-7 px-9 lg:max-w-[58rem] border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 w-full"
+  >
+    <div
+      class="prose lg:prose-lg prose-img:mx-auto max-w-none whitespace-pre-wrap break-words"
+      set:html={job.description}
+    />
+  </div>
+</BaseLayout>
