@@ -7,21 +7,20 @@ const { job } = Astro.props;
 const jobUrl = `/empleos/${job.pubDate}/${job.slug}`;
 ---
 
-<div class="inline-flex items-center w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg">
+<div class="inline-flex items-center w-full p-4 pb-1 md:pb-4 text-gray-500 bg-white border border-gray-200 rounded-lg">
   <div class="ml-2">
     <a href={jobUrl} class="w-full text-base md:text:lg text-gray-800 font-semibold line-clamp-2 md:line-clamp-1"
       >{job.title}</a
     >
-    <a href={jobUrl} class="w-full my-2 text-sm md:text:base text-gray-600 line-clamp-4 md:line-clamp-2"
-      >{job.description}</a
+    <a href={jobUrl} class="w-full my-2 text-sm md:text:base text-gray-600 line-clamp-3 md:line-clamp-2">{job.description}</a
     >
-    <div class="flex flex-wrap -ml-2 justify-center md:justify-start">
+    <div class="flex flex-wrap -ml-2 justify-center md:justify-start border-t pt-2 mt-2 md:border-none md:pt-0 md:mt-0">
       {
         job.salary && (
           <>
             <div class="flex items-center mr-2 px-2 py-1 rounded">
               <img src={`/assets/img/icons/money2.svg`} class="w-4 h-4 inline" />
-              <p class="ml-1 text-sm max-w-[10rem] truncate"> {job.salary} </p>
+              <p class="ml-1 text-xs md:text-sm max-w-[10rem] truncate"> {job.salary} </p>
             </div>
             <div class="w-0.5 h-5 mr-2 bg-gray-400 place-self-center hidden md:block" />
           </>
@@ -43,11 +42,7 @@ const jobUrl = `/empleos/${job.pubDate}/${job.slug}`;
         )
       }
       <div class="w-0.5 h-5 mr-2 bg-gray-400 place-self-center hidden md:block"></div>
-      {
-        job.presential && (
-          <JobCardCategory text={job.location} ico="map" url={jobsCategories["presential"].slug} />
-        )
-      }
+      {job.presential && <JobCardCategory text={job.location} ico="map" url={jobsCategories["presential"].slug} />}
       {
         job.remote && (
           <JobCardCategory text={jobsCategories["remote"].text} ico="remote" url={jobsCategories["remote"].slug} />
@@ -68,7 +63,7 @@ const jobUrl = `/empleos/${job.pubDate}/${job.slug}`;
               <div class="w-0.5 h-5 mr-2 bg-gray-400 place-self-center hidden md:block" />
               <a
                 href={"/empleos/" + profileCategories[category].slug}
-                class="text-gray-500 text-sm mr-2 px-2 border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-normal rounded  py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+                class="text-gray-500 text-xs md:text-sm mr-2 px-2 border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-normal rounded  py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
               >
                 {"#" + profileCategories[category].text}
               </a>
