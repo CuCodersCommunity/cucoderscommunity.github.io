@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/baseLayout.astro";
 import NewPostModal from "../components/modals/newPostModal.astro";
 import categories from "../data/categories.json";
+import TextInput from "../components/forms/textInput.astro";
 import "../styles/main.css";
 
 let categoriesList = [];
@@ -77,6 +78,8 @@ for (const key in categories) {
         </select>
       </div>
 
+      <TextInput id="canonicalUrl" label="Estas republicando?" placeholder="URL del artículo original"></TextInput>
+
       <hr class="my-6" />
 
       <div class="mb-6">
@@ -131,6 +134,7 @@ for (const key in categories) {
     const username = getValue("username");
     const pubDate = new Date().toDateString();
     const description = getValue("description");
+    const canonicalUrl = getValue("canonicalUrl");
     const filename = title.replace(/\s/g, "-") + ".md";
 
     var categories = [];
@@ -147,6 +151,7 @@ image: "${image}"
 username: "${username}"
 categories: ${JSON.stringify(categories)}
 description: "${description}"
+canonicalUrl: "${canonicalUrl}"
 ---
 
 Aqui va el cuerpo de tu documento.`;

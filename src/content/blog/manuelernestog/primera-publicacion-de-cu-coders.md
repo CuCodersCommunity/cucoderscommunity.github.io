@@ -5,6 +5,7 @@ pubDate: "Jan 13 2023"
 description: "Hace unos días salí buscando opiniones sobre que tan beneficioso sería tener una comunidad de desarrolladores cubanos y qué características debería tener."
 image: "https://user-images.githubusercontent.com/53962116/211159681-f1700806-8fa9-41d0-90c2-eb4ebdd6fec4.png"
 categories: ["database","mobile","ia"]
+canonicalUrl: "https://manuelernestog.github.io/blog/CuCoders/"
 ---
 
 Hace unos días salí buscando opiniones sobre que tan beneficioso sería tener una comunidad de desarrolladores cubanos y qué características debería tener. Luego de mezclar todas las ideas que tenía y las que dieron aquí, te traigo una propuesta de como podría ser la comunidad y la ejecución.

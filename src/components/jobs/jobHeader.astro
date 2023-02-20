@@ -20,7 +20,7 @@ const { job } = Astro.props;
           >
             {job.title}
           </h1>
-          <div class="mb-1 flex justify-end">
+          <div class="my-3 md:my-1 flex justify-end">
             <div class="flex items-start ml-3">
               {
                 job.url && (
@@ -139,7 +139,7 @@ const { job } = Astro.props;
               job.categories.map((category) => (
                 <a
                   href={"/empleos/" + profileCategories[category].slug}
-                  class="inline my-1 rounded-md hover:bg-gray-50 border text-gray-800 font-normal text-sm py-1 px-2 mr-3 "
+                  class="inline my-1 rounded-md hover:bg-gray-100 bg-gray-50 text-gray-800 font-normal text-sm py-1 px-2 mr-3 "
                 >
                   {profileCategories[category].text}
                 </a>

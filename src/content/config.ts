@@ -7,6 +7,7 @@ const blogSchema = z.object({
     description: z.string().optional(),
     image: z.string().optional(),
     categories: z.array(z.string()),
+    canonicalUrl: z.string().optional(),
 });
 
 const appsSchema = z.object({
