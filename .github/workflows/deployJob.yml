@@ -1,12 +1,12 @@
-name: Github Pages Astro CI
+name: Github Pages New Job Deploy
 
 on:
   workflow_dispatch:
     inputs:
       job_id:
-        description: 'Job ID'
+        description: 'job_id'
         required: true
-        default: 'job-1234'
+        default: 'job name'
   
 # Allow this job to clone the repo and create a page deployment
 permissions:
