@@ -245,7 +245,7 @@ for (const key in categories) {
     const pubDate = new Date().toDateString();
     const description = getValue("description");
     const canonicalUrl = getValue("canonicalUrl");
-    const filename = title.replace(/\s/g, "-") + ".md";
+    const filename = title.replace(/[^a-zA-Z0-9]+/g, "-") + ".md";
 
     var categories = [];
     for (let option of document.getElementById("categories").options) {

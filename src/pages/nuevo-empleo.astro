@@ -146,7 +146,7 @@ for (const key in categories) {
       applyEmail: getElem("applyEmail").value,
       applyUrl: getElem("applyUrl").value,
       applyTelegramUser: getElem("applyTelegramUser").value,
-      slug: getElem("title").value.replace(/\s/g, "-"),
+      slug: getElem("title").value.replace(/[^a-zA-Z0-9]+/g, "-"),
     };
 
     for (let option of document.getElementById("categories").options) {

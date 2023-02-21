@@ -57,7 +57,7 @@ import "../styles/main.css";
   resourceBtn.addEventListener("click", addEvent, true);
 
   function addEvent() {
-    const fileName = getElem("name").value.replace(/\s/g, "-") + ".md";
+    const fileName = getElem("name").value.replace(/[^a-zA-Z0-9]+/g, "-") + ".md";
     const fileText = createResourceData();
     const encodedFileText = encodeURIComponent(fileText);
     const githubQueryLink = getFileRoute(fileName, encodedFileText);
