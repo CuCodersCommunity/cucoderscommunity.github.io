@@ -115,7 +115,6 @@ for (const key in categories) {
     try {
       const response = await fetch(backend_url + "api/jobs/new-job", { method: "POST", body: JSON.stringify(data) });
       const responseData = await response.json();
-      await fetch(backend_url + "api/jobs/post-job", { method: "POST", body: JSON.stringify(data) });
       window.open(`${window.location.origin}/empleo-publicado`, "_self");
     } catch (e) {
       enableBtn();
