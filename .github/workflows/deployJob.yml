@@ -39,5 +39,7 @@ jobs:
           JOB_ID: ${{ inputs.job_id }}
         run: |
           echo "Job is done. Running post-job script..."
-          echo $JOB_ID
-          echo $GITHUB_TOKEN
+          curl --request POST \
+              --url 'https://cucoders-backend.vercel.app/api/jobs/post-on-telegram' \
+              --header 'Content-Type: application/json' \
+              --data '{"param": ${$JOB_ID}}'
