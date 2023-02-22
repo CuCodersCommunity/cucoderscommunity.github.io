@@ -42,4 +42,4 @@ jobs:
           curl --request POST \
               --url 'https://cucoders-backend.vercel.app/api/jobs/post-on-telegram' \
               --header 'Content-Type: application/json' \
-              --data "{\"param\": \"${JOB_ID}\"}"
+              --data "{\"job\": \"${JOB_ID}\"}"
