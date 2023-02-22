@@ -33,3 +33,10 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
+      - name: Create Telegram Notification
+        env:
+          GITHUB_TOKEN: ${{ secrets.SECRET_GITHUB_TOKEN }}
+          JOB_ID: ${{ steps.deployment.outputs.job_id }}
+        run: |
+          echo "Job is done. Running post-job script..."
+          echo "${GITHUB_TOKEN} - ${JOB_ID}"
