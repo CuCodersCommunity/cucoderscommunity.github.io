@@ -39,5 +39,5 @@ jobs:
           JOB_ID: ${{ inputs.job_id }}
         run: |
           echo "Job is done. Running post-job script..."
-          echo "$JOB_ID"
-          echo "$GITHUB_TOKEN"
+          echo $JOB_ID
+          echo $GITHUB_TOKEN
