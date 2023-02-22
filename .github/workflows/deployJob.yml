@@ -36,7 +36,8 @@ jobs:
       - name: Create Telegram Notification
         env:
           GITHUB_TOKEN: ${{ secrets.SECRET_GITHUB_TOKEN }}
-          JOB_ID: ${{ steps.deployment.outputs.job_id }}
+          JOB_ID: ${{ inputs.job_id }}
         run: |
           echo "Job is done. Running post-job script..."
-          echo "${GITHUB_TOKEN} - ${JOB_ID}"
+          echo "$JOB_ID"
+          echo "$GITHUB_TOKEN"
