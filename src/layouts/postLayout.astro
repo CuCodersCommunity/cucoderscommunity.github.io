@@ -1,4 +1,5 @@
 ---
+import ReportModal from "../components/modals/reportModal.astro";
 import BaseLayout from "./baseLayout.astro";
 import ShareThisModal from "../components/helpers/shareThisModal.astro";
 import dayjs from "dayjs";
@@ -83,8 +84,9 @@ if (!post_data.image) {
           </ul>
           <div class="py-1">
             <a
-              href="#"
-              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+              data-modal-target="reportModal"
+              data-modal-toggle="reportModal"
+              class="block px-4 cursor-pointer py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
               >Reportar</a
             >
           </div>
@@ -115,3 +117,4 @@ if (!post_data.image) {
 </BaseLayout>
 
 <ShareThisModal />
+<ReportModal />
