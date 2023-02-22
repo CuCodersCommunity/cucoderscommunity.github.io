@@ -1,9 +1,9 @@
 ---
-import LinkIcon from "../../components/helpers/linkIcon.astro";
 import profileCategories from "../../data/profileCategories.json";
 import jobsCategories from "../../data/jobsCategories.json";
 import JobCardCategory from "./jobCardCategory.astro";
 import ShareThisModal from "../helpers/shareThisModal.astro";
+import ReportModal from "../../components/modals/reportModal.astro";
 
 const { job } = Astro.props;
 ---
@@ -166,8 +166,9 @@ const { job } = Astro.props;
   </ul>
   <div class="py-1">
     <a
-      href="#"
-      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
+      data-modal-target="reportModal"
+      data-modal-toggle="reportModal"
+      class="block px-4 cursor-pointer py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
       >Reportar</a
     >
   </div>
@@ -191,33 +192,34 @@ const { job } = Astro.props;
         </li>
       )
     }
-   {
-    job.applyUrl && (
-      <li>
-        <a
-          href={job.applyUrl}
-          target="_blank"
-          class="block px-4 cursor-pointer py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-        >
-          Visitar Pagina web
-        </a>
-      </li>
-    )
-  }
-  {
-    job.applyTelegramUser && (
-      <li>
-        <a
-          href={`https://t.me/${job.applyTelegramUser}`}
-          target="_blank"
-          class="block px-4 cursor-pointer py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-        >
-          Contactar en Telegram
-        </a>
-      </li>
-    )
-  }
+    {
+      job.applyUrl && (
+        <li>
+          <a
+            href={job.applyUrl}
+            target="_blank"
+            class="block px-4 cursor-pointer py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+          >
+            Visitar Pagina web
+          </a>
+        </li>
+      )
+    }
+    {
+      job.applyTelegramUser && (
+        <li>
+          <a
+            href={`https://t.me/${job.applyTelegramUser}`}
+            target="_blank"
+            class="block px-4 cursor-pointer py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+          >
+            Contactar en Telegram
+          </a>
+        </li>
+      )
+    }
   </ul>
 </div>
 
 <ShareThisModal />
+<ReportModal />

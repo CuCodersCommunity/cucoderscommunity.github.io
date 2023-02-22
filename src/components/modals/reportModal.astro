@@ -67,14 +67,16 @@ import Toast from "../toast/toast.astro";
     fetch(backend_url + "api/report/new-report", {
       method: "POST",
       body: JSON.stringify(report),
-    }).then((response) => {
-      const alert = `Reporte enviado satisfactoriamente. Gracias por contactarnos.`;
-      (<HTMLInputElement>document.getElementById("reportDescription")).value = "";
-      showToast(alert);
-    }).catch(() => {
-      const alert = `Ocurrió un problema inesperado. Por favor intente nuevamente más tarde.`;
-      (<HTMLInputElement>document.getElementById("reportDescription")).value = "";
-      showToast(alert, true);
-    });
+    })
+      .then((response) => {
+        const alert = `Reporte enviado satisfactoriamente. Gracias por contactarnos.`;
+        (<HTMLInputElement>document.getElementById("reportDescription")).value = "";
+        showToast(alert);
+      })
+      .catch(() => {
+        const alert = `Ocurrió un problema inesperado. Por favor intente nuevamente más tarde.`;
+        (<HTMLInputElement>document.getElementById("reportDescription")).value = "";
+        showToast(alert, true);
+      });
   }
 </script>
