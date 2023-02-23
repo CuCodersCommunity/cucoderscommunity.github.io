@@ -1,7 +1,7 @@
 ---
 title: "Entendiendo el impacto social del «Código Abierto»"
 pubDate: "Thu Feb 23 2023"
-image: "!https://user-images.githubusercontent.com/9829547/221013753-6e8b2e6d-4d8b-4079-b96d-4288513a319b.png"
+image: "https://user-images.githubusercontent.com/9829547/221013753-6e8b2e6d-4d8b-4079-b96d-4288513a319b.png"
 username: "andyromerodev"
 categories: ["software"]
 description: ""
