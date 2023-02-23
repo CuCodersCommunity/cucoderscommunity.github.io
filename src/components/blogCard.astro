@@ -23,8 +23,8 @@ if (!post.data.image) {
 ---
 
 <div class="bg-white border border-gray-200 rounded-lg mb-5 dark:bg-gray-800 dark:border-gray-700 w-full">
-  <a href={'/publicaciones/'+post.slug}>
-    <div class="bg-cover bg-center h-[13rem] md:h-[14rem] lg:h-[20rem] rounded-t-lg" style={BannerSyle}></div>
+  <a href={"/publicaciones/" + post.slug}>
+    <div class="bg-cover bg-center h-[13rem] md:h-[14rem] lg:h-[16rem] xl:h-[20rem] 2xl:h-[28rem] rounded-t-lg" style={BannerSyle}></div>
   </a>
 
   <div class="p-5">
@@ -42,7 +42,7 @@ if (!post.data.image) {
       </a>
     </div>
 
-    <a href={'/publicaciones/'+post.slug}>
+    <a href={"/publicaciones/" + post.slug}>
       <h5 class="mb-2 text-xl md:text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
         {post.data.title}
       </h5>
