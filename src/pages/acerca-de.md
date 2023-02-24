@@ -4,7 +4,7 @@ title: "Acerca de CuCoders"
 description: "Conoce a Cucoders, la comunidad de desarrolladores líderes en Cuba. ¡Descubre que es nuestra plataforma en la página Acerca de para entender cómo podemos ayudarte a alcanzar tus metas profesionales!"
 ---
 
-Bienvenidos a CuCoders, la plataforma de la comunidad de programadores cubanos. Si eres un dev o emprendedor en el ámbito tecnológico, ¡estás en el lugar correcto! En CuCoders, nuestro objetivo principal es potenciar el desarrollo de software en Cuba y apoyar a los desarrolladores y emprendedores en su carrera profesional.
+Bienvenidos a CuCoders, la una plataforma para potenciar el desarrollo de software en Cuba y apoyar a los desarrolladores y emprendedores en su carrera profesional. Si eres un dev o emprendedor en el ámbito tecnológico, ¡estás en el lugar correcto! En CuCoders, nuestro objetivo principal es potenciar el desarrollo de software en Cuba y apoyar a los desarrolladores y emprendedores en su carrera profesional.
 
 La plataforma fue desarrollada por [Manuel Ernesto García](https://cucoderscommunity.github.io/dev/manuelernestog/) a inicios del 2023 con el fin de crear un espacio para que los programadores cubanos puedan promover sus productos, servicios y ofertas laborales, aclarar dudas y colaborar entre ellos. Además, CuCoders es una plataforma completamente de código abierto, mantenida por la comunidad. Esto significa que todos los miembros pueden participar en su desarrollo y mejora, y que la plataforma está disponible para cualquier persona que desee utilizarla.
 
