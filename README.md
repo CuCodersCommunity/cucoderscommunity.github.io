@@ -1,35 +1,43 @@
-# CuCoders Web
+# CuCoders | La Plataforma de los devs cubanos
 
-> Esta página web se encuentra en desarrollo y aún no está lista para ser utilizada por los usuarios finales. Actualmente, se encuentra hosteada y puede ser probada para tener una idea de su funcionamiento, pero tenga en cuenta que al estar en desarrollo va a encontrar muchas faltas o errores. Las funcionalidades se irán informando por el canal de telegram a medida que se liberen. El código está abierto y puede ser utilizado como material de estudio, pero aún no se han establecido las directrices para contribuir al proyecto. Por lo tanto, por el momento no se aceptarán solicitudes de pull request. Se informará a través del canal de Telegram cuando se permitan contribuciones.
+![image](https://user-images.githubusercontent.com/53962116/221084096-8354bbea-77dd-416e-8154-581f279ada27.png)
+
+CuCoders es una plataforma creada con el fin de potenciar el desarrollo de software en Cuba y apoyar a los desarrolladores y emprendedores en su carrera profesional. En CuCoders puedes descubrir recursos, aplicaciones, artículos, perfiles de programadores y ofertas laborales. CuCoders es el lugar perfecto para encontrar oportunidades y mantenerse actualizado en el mundo de la programación.
+
+## Stack
+
+- [Astro](https://astro.build/)
+- [Taildwind](https://tailwindcss.com/)
+- [Flowbyte](https://flowbite.com/)
 
 ## 🚀 Estructura del Proyecto
 
-Dentro del proyecto verás las estructura de carpetas y archivos:
+Dentro del proyecto encontrarás las estructura de carpetas siguientes:
 
 ```
 /
-├── public/
+├── .github/workflows  # Workflows de Github Actions para compilar el proyecto
+├── public/            # Directorio con los ficheros publicos del proyecto
 │   └── assets/
 |       └── img/
 ├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
+│   ├── components/   # Todos los compoenentes reutilizables de la web
+│   ├── content/   # Aqui se almacena el conenido que se muestra en la web, organizado por categorias y usuarios
+|       └── apps/
+|       └── blogs/
+|       └── events/
+|       └── resources/
+│   ├── layouts/     
 │   └── pages/
-│       └── index.astro
+│   └── templates/   # Las plantillas utilizadas para la generacion de ciertos documentos .md
 └── package.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
+Cualquier activo estático, como imágenes, se puede colocar en el directorio `público/`.
 
 ## CLI
 
-All commands are run from the root of the project, from a terminal:
+Todos los comandos se ejecutan desde la raíz del proyecto, desde una terminal:
 
 | Command                | Action                                             |
 | :--------------------- | :------------------------------------------------- |
@@ -39,3 +47,38 @@ All commands are run from the root of the project, from a terminal:
 | `npm run preview`      | Preview your build locally, before deploying       |
 | `npm run astro ...`    | Run CLI commands like `astro add`, `astro preview` |
 | `npm run astro --help` | Get help using the Astro CLI                       |
+
+## Arquitectura
+
+CuCoders funciona con una arquitectura descentralizada utilizando como backend a GitHub. Los datos de los artículos, las aplicaciones y los eventos se almacenan en los ficheros físicos del repositorio público y los datos de cada usuario están en su poder en los repositorios especiales de cada usuario. La información más volátil que no necesita ser conservada en el tiempo como las ofertas laborales se encuentran almacenadas en microservicios que se acceden mediante una API, para los cuales en primera versión se crearon utilizando Airtable.
+
+El sitio se recompila utilizando las GitHub Actions nutriéndose de la información almacenada en GitHub y utilizando el [backend serverless](https://github.com/CuCodersCommunity/cucoders-backend) desarrollado con Astro, el cual se encarga de conectarse y consumir información de los servicios de empleos y próximamente de los servicios y aplicaciones destacadas en la web.
+
+El usuario visualiza la información en el sitio web estático construido con Astro y mediante el bot de Telegram con la publicación de las nuevas ofertas laborales.
+
+Arquitectura permite mantener los costos del mantenimiento del proyecto casi nulos así como permite que la información se mantenga pública y siempre accesible para garantizar la continuidad del proyecto.
+
+![image](https://user-images.githubusercontent.com/53962116/221088113-980b185a-0241-4388-a94f-92fc59178853.png)
+
+## Despliegue
+
+CuCoders puede ser desplegado en cualquier proveedor que permita la construcción de páginas estáticas. En estos momentos estamos utilizando GitHub Pages para la cual hay una serie de configuraciones específicas en los ficheros de configuración de las GitHub Actions y los ficheros de configuración de Astro.
+
+## Contribuyendo
+
+CuCoders es una solución de código abierto. Los Pull Requests y las contribuciones son bienvenidos! Para contribuir con el proyecto puedes informar de algún error, sugerir una nueva característica o comenzar a trabar solucionando algún Issue que haya sido marcado como "aceptado".
+
+Para más información lea el fichero [Contributing.md](/CONTRIBUTING.md).
+
+## Autor
+
+- [Manuel Ernesto Garcia](https://manuelernestog.github.io/)
+
+## Contribuidores
+
+<a href="https://github.com/CuCodersCommunity/cucoderscommunity.github.io/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=CuCodersCommunity/cucoderscommunity.github.io" />
+</a>
+
+Made with [contrib.rocks](https://contrib.rocks).
+
