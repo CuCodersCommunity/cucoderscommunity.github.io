@@ -64,9 +64,9 @@ Arquitectura permite mantener los costos del mantenimiento del proyecto casi nul
 
 CuCoders puede ser desplegado en cualquier proveedor que permita la construcción de páginas estáticas. En estos momentos estamos utilizando GitHub Pages para la cual hay una serie de configuraciones específicas en los ficheros de configuración de las GitHub Actions y los ficheros de configuración de Astro.
 
-## Contribuyendo
+## Constribuir
 
-CuCoders es una solución de código abierto. Los Pull Requests y las contribuciones son bienvenidos! Para contribuir con el proyecto puedes informar de algún error, sugerir una nueva característica o comenzar a trabar solucionando algún Issue que haya sido marcado como "aceptado".
+CuCoders es una solución de código abierto. Los Pull Requests y las contribuciones son bienvenidas! Para contribuir con el proyecto puedes informar de algún [error](https://github.com/CuCodersCommunity/cucoderscommunity.github.io/issues/new), sugerir una [nueva característica](https://github.com/CuCodersCommunity/cucoderscommunity.github.io/issues/new) o comenzar a trabar solucionando algún Issue que haya sido marcado como "[aceptado](https://github.com/CuCodersCommunity/cucoderscommunity.github.io/labels/Accepted)".
 
 Para más información lea el fichero [Contributing.md](/CONTRIBUTING.md).
 
