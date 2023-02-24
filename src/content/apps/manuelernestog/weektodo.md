@@ -2,7 +2,7 @@
 name: "Weektodo"
 id: "weektodo"
 description: "WeekToDo is a free and Open Source Minimalist Weekly Planner and To Do list App for simple and effective people. Schedule your tasks, set reminders and handle projects with To Do list."
-logo: "https://weektodo.me/logo.svg"
+logo: "https://d4.alternativeto.net/TfxzKE1B-MoFtjdTZaik0JDI8mftbd9vsn2crhjwlvU/rs:fill:140:140:0/g:ce:0:0/YWJzOi8vZGlzdC9pY29ucy93ZWVrdG9kb18xODYxNDUucG5n.png"
 website: "https://weektodo.me"
 repository_url: "https://github.com/manuelernestog/weektodo"
 is_open_source: true
