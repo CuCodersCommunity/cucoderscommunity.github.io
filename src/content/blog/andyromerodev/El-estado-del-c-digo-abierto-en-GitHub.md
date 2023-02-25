@@ -8,9 +8,8 @@ description: ""
 canonicalUrl: "https://www.tecnoblog.org/noticias/estado-codigo-abierto-github/"
 ---
 
-<p>En un <a href="https://www.cucoders.dev/publicaciones/andyromerodev/entendiendo-el-impacto-social-del-c-digo-abierto-/"> artículo </a> 
-anterior explicaba el impacto social del «Código abierto» y su importancia para la sociedad. Hoy les traigo El estado del código abierto en GitHub según el sitio 
-oficial <a href="https://octoverse.github.com/2022/state-of-open-source" >Octoverse</a> de Github.</p>
+En un [artículo](https://www.cucoders.dev/publicaciones/andyromerodev/entendiendo-el-impacto-social-del-c-digo-abierto-) anterior explicaba el impacto social del **«Código abierto»** y su importancia para la sociedad. Hoy les traigo El estado del código abierto en GitHub según el sitio 
+oficial [Octoverse](https://octoverse.github.com/2022/state-of-open-source) de Github.
 
 ![image](https://user-images.githubusercontent.com/9829547/221332663-1ef9e2de-4e1b-449e-92fd-2b8df910ad2e.png)
 
@@ -36,13 +35,13 @@ Una notable excepción es el popular proyecto de automatización del hogar de c�
 
 ![image](https://user-images.githubusercontent.com/9829547/221332758-5d52582a-c073-4ed1-a551-9d39aeb744fb.png)
 
-Los motores, kits y marcos de trabajo registraron uno de los mayores crecimientos interanuales en el número de colaboradores. En particular, el proyecto home-assistant/core creció rápidamente durante el año pasado, mostrando un creciente interés entre los desarrolladores en la automatización del hogar.
+Los motores, kits y marcos de trabajo registraron uno de los mayores crecimientos interanuales en el número de colaboradores. En particular, el proyecto [home-assistant/core](https://github.com/home-assistant/core) creció rápidamente durante el año pasado, mostrando un creciente interés entre los desarrolladores en la automatización del hogar.
 
-También hubo un notable aumento de contribuyentes al proyecto de gestión de acceso keycloak/keycloak, que se utiliza habitualmente para permitir el inicio de sesión único, el inicio de sesión a través de una cuenta de redes sociales y la autenticación de dos factores en aplicaciones móviles y de escritorio.
+También hubo un notable aumento de contribuyentes al proyecto de gestión de acceso [keycloak/keycloak](https://github.com/keycloak/keycloak), que se utiliza habitualmente para permitir el inicio de sesión único, el inicio de sesión a través de una cuenta de redes sociales y la autenticación de dos factores en aplicaciones móviles y de escritorio.
 
 ![image](https://user-images.githubusercontent.com/9829547/221332780-6d360dcb-ada6-4369-b8f4-fc13b16d0dd9.png)
 
-Un dato interesante: El motor de generación de arte digital HashLips/hashlips_art_engine y el proyecto de herramientas NFT metaplex-foundation/metaplex experimentaron un crecimiento significativo, y ambos tienen sus raíces en el espacio de los NFT (tokens no fungibles), cuya popularidad subió y bajó a lo largo de 2022.
+**Un dato interesante:** El motor de generación de arte digital [HashLips/hashlips_art_engine](https://github.com/HashLips/hashlips_art_engine) y el proyecto de herramientas NFT [metaplex-foundation/metaplex](https://github.com/metaplex-foundation/metaplex) experimentaron un crecimiento significativo, y ambos tienen sus raíces en el espacio de los NFT (tokens no fungibles), cuya popularidad subió y bajó a lo largo de 2022.
 
 <H1>Proyectos de código abierto con el mayor número de contribuyentes por primera vez</H1>
 
@@ -50,5 +49,5 @@ Un dato interesante: El motor de generación de arte digital HashLips/hashlips_a
 
 Los desarrolladores que contribuyeron por primera vez a proyectos de código abierto en GitHub se decantaron mayoritariamente por los repositorios más grandes, dirigidos por empresas, en 2022, y esto incluye a desarrolladores de dentro y fuera de las empresas que están detrás de esos proyectos.
 
-Esto subraya cómo las empresas están utilizando el «Software de Código Abierto» para escalar más rápido, obtener mayor visibilidad y comprometerse con un grupo mucho más grande de desarrolladores.
+Esto subraya cómo las empresas están utilizando el **«Software de Código Abierto»** para escalar más rápido, obtener mayor visibilidad y comprometerse con un grupo mucho más grande de desarrolladores.
 
