@@ -278,6 +278,12 @@
         "parentId": "formation",
         "slug": "formacion-programacion",
         "text": "Programación"
+      },
+      {
+        "id": "formationDesing",
+        "parentId": "formation",
+        "slug": "formacion-diseño",
+        "text": "Diseño"
       }
     ]
   },
