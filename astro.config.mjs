@@ -8,6 +8,6 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://www.cucoders.dev/',
+  site: 'https://cucoders.dev/',
   integrations: [tailwind(), sitemap()]
 });
