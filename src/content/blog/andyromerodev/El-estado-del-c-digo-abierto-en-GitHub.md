@@ -4,7 +4,7 @@ pubDate: "Fri Feb 24 2023"
 image: "https://www.tecnoblog.org/wp-content/uploads/2022/11/GitHub.png"
 username: "andyromerodev"
 categories: ["software"]
-description: ""
+description: "En un artículo anterior explicaba el impacto social del «Código abierto» y su importancia para la sociedad. Hoy les traigo El estado del código abierto en GitHub según el sitio oficial Octoverse de Github."
 canonicalUrl: "https://www.tecnoblog.org/noticias/estado-codigo-abierto-github/"
 ---
 
