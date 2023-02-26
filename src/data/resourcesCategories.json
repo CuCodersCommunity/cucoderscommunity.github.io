@@ -188,6 +188,12 @@
         "parentId": "devTools",
         "slug": "monitoreadores",
         "text": "Monitoreadores"
+      },
+      {
+        "id": "devUtilities",
+        "parentId": "devTools",
+        "slug": "utilidades-desarrollo",
+        "text": "Utilidades"
       }
     ]
   },
