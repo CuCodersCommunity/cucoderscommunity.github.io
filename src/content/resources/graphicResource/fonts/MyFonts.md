@@ -1,4 +1,3 @@
-![MyFonts](https://user-images.githubusercontent.com/70978816/218130394-caeaac3f-27b2-4d25-95ca-2f17b98c59bc.PNG)
 ---
 name: "MyFonts"
 url: "https://www.myfonts.com/"
