@@ -9,6 +9,7 @@ CuCoders es una plataforma creada con el fin de potenciar el desarrollo de softw
 - [Astro](https://astro.build/)
 - [Taildwind](https://tailwindcss.com/)
 - [Flowbyte](https://flowbite.com/)
+- [Giscus](https://giscus.app/) for comments box
 
 ## 🚀 Estructura del Proyecto
 
@@ -29,6 +30,7 @@ Dentro del proyecto encontrarás las estructura de carpetas siguientes:
 |       └── resources/
 │   ├── layouts/     
 │   └── pages/
+│   └── data/  # Data config and static site data like categories.
 │   └── templates/   # Las plantillas utilizadas para la generacion de ciertos documentos .md
 └── package.json
 ```
