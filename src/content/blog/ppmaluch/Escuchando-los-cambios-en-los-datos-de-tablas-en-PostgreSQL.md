@@ -1,7 +1,7 @@
 ---
 title: "Escuchando los cambios en los datos de tablas en PostgreSQL"
 pubDate: "Mon Feb 27 2023"
-image: "https://www.lifewire.com/thmb/XY3_2wo4WEKRFbWNpAnm8Hc9rXc=/768x0/filters:no_upscale():max_bytes(150000):strip_icc()/sql-code-on-black-183029104-599b4ac60d327a00119b7053-f998acddfcd0428d9b6a37eebc3c3bf4.jpg"
+image: "https://user-images.githubusercontent.com/53962116/221750863-ff8b2f5a-022e-409b-a7d6-83b31721591b.png"
 username: "ppmaluch"
 categories: ["tutorials","database","software"]
 description: "Cómo podemos escuchar y reaccionar a eventos en la base de datos que creen o modifiquen datos, para luego ser procesados o manipulados."
