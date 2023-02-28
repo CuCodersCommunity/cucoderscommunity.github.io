@@ -3,7 +3,7 @@
  * https://github.com/primer/primitives/blob/main/LICENSE
  */
 
- main {
+main {
   --color-prettylights-syntax-comment: #6e7781;
   --color-prettylights-syntax-constant: #0550ae;
   --color-prettylights-syntax-entity: #8250df;
@@ -95,10 +95,31 @@ main .gsc-loading-image {
   background-image: url("https://github.githubassets.com/images/mona-loading-default.gif");
 }
 
-main .gsc-header{
+main .gsc-header {
   display: none !important;
 }
 
-main .gsc-reactions-count{
+main .gsc-reactions-count {
   display: none !important;
+}
+
+main .gsc-reaction{
+  margin-bottom: 1.5rem;
+}
+
+
+main .gsc-social-reaction-summary-item {
+  font-size: 0.86rem;
+  line-height: 25px;
+
+}
+
+
+main .gsc-direct-reaction-buttons {
+  gap: 0.5rem;
+}
+
+
+main .gsc-social-reaction-summary-item-count {
+  margin-inline-start: 4px;
 }
