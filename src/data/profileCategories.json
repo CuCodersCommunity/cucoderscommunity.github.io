@@ -49,6 +49,16 @@
     "text": "VR / AR Developer",
     "ico": "/assets/img/icons/vr.svg"
   },
+  "noCodeDev": {
+    "slug": "no-code-developer",
+    "text": "No-code Developer",
+    "ico": "/assets/img/icons/no-code.svg"
+  },
+  "designer": {
+    "slug": "graphic-designer",
+    "text": "Graphic Designer",
+    "ico": "/assets/img/icons/uiux.svg"
+  },
   "devOpsEng": {
     "slug": "devops-engineer",
     "text": "DevOps Engineer",
