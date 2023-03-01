@@ -1,30 +1,30 @@
 ---
 title: "Escuchando los cambios en los datos de tablas en PostgreSQL"
 pubDate: "Mon Feb 27 2023"
-image: "https://www.lifewire.com/thmb/XY3_2wo4WEKRFbWNpAnm8Hc9rXc=/768x0/filters:no_upscale():max_bytes(150000):strip_icc()/sql-code-on-black-183029104-599b4ac60d327a00119b7053-f998acddfcd0428d9b6a37eebc3c3bf4.jpg"
+image: "https://user-images.githubusercontent.com/53962116/221750863-ff8b2f5a-022e-409b-a7d6-83b31721591b.png"
 username: "ppmaluch"
 categories: ["tutorials","database","software"]
 description: "Cómo podemos escuchar y reaccionar a eventos en la base de datos que creen o modifiquen datos, para luego ser procesados o manipulados."
 canonicalUrl: ""
 ---
 
-# El problema
+## El problema
 
-Un día necesitaba enviar datos a un broker de Kafka cada vez que se insertaba una nueva fila en una tabla de la base de datos. Después de que el equipo abordó diferentes soluciones, decidí escribir una aplicación de consola simple en C# que "escuchara" las notificaciones de la base de datos y las enviara a Kafka. Se pudiera haber usado para ello algún conector de Kafka para Postgres pero era necesario hacer lógica sobre los datos antes de enviarlos a Kafka, así que.... tocaba codear!
+A partir de la necesidad de enviar datos a un broker de Kafka cada vez que se insertaba una nueva fila en una tabla de la base de datos, surge el problema de cómo hacerlo de una manera lo más inmediata posible y eficiente. Después de que el equipo abordó diferentes soluciones, se decidió escribir una aplicación de consola simple que "escuchara" las notificaciones de la base de datos y las enviara a Kafka. Se pudiera haber usado para ello algún conector de Kafka para Postgres pero era necesario hacer lógica sobre los datos antes de enviarlos a Kafka, así que.... tocaba codear!
 
-# La solución
+## La solución
 
-Para poder usar event listening, estaré usando los comandos NOTIFY/LISTEN a lo largo de este artículo.
+Para poder usar event listening, se estarán usando los comandos NOTIFY/LISTEN a lo largo de este artículo.
 
-Primero nececsitamos una base de datos, y luego crear una tabla con algunos datos (paso que asumiré que tienes o sabes hacer, de manera de no salirnos del tópico de este post)
+Primero nececsitamos una base de datos, y luego crear una tabla con algunos datos (paso que asumiré que tienes o sabes hacer, de manera de no salirnos del tópico de este post, aquí puedes consultar referencias [aquí](https://lifewithdata.com/2021/12/08/sql-create-a-database-and-a-table-in-postgresql/))
 
-Despues de ello necesitamos enviar un evento a nuestra app a la escucha cada vez que ocurre un cambio en la tabla. En este caso en particular, solo necesitaba los eventos de inserción, pero bien pudieran ser otros.
+Después de ello necesitamos enviar un evento a nuestra app a la escucha cada vez que ocurre un cambio en la tabla. En este caso en particular, solo se necesitaban los eventos de inserción, pero bien pudieran ser otros.
 
 Entonces, el primer paso para el objetivo, es crear en nuestra base de datos una función PSQL.
 
-## Creando una función de notificación en PSQL
+### Creando una función de notificación en PSQL
 
-Cualquier tabla de la que querramos "observar" los cambios en sus datos, tendrá asociado un trigger para reenviar estos cambios a una función (la función trigger que tenemos a continuación 😁) que use la sentencia ``notify``.
+Cualquier tabla de la que querramos "observar" los cambios en sus datos, tendrá asociado un trigger para reenviar estos cambios a una función (la función trigger que tenemos a continuación 😁) que use la sentencia ``NOTIFY``.
 
 ```SQL
 CREATE FUNCTION public.NotifyOnDataChange()
@@ -49,13 +49,13 @@ END
 $BODY$;
 ```
 
+Para explicar un poco de que va el snippet anterior, primeramente declaramos la variabla _data_, la cuál contedrá el resultado final que se emite a través de un evento de notificación, luego, se define la lógica a tratar según la operación que se está realizando por la base de datos, esto se conoce mediante la variable _TG_OP_. _row_to_json_ permite parsear los campos de la tabla en formato JSON. Finalmente se tiene que emitir el evento, para ello se usa _pg_notify()_, la función de Postgres que emite estos cambios a través de un channel.
+
 **Nótese que podemos escuchar todos los cambios, si solo quisiéramos escuchar uno de ellos, entonces no se especificaría aquí con la sentencia _IF (TG_OP)_**
 
-_row_to_json nos permite parsear los campos de la tabla en formato JSON._
+### Creando el trigger
 
-## Creando el trigger
-
-Después de eso necesitamos crear nuestro trigger que se dispare según la operación de la tabla que definamos (_INSERT, DELETE_, etc) y ejecute nuestra función **NotifyOnDataChange**
+Después de eso se necesita crear un trigger que se dispare según la operación de la tabla que se defina (_INSERT, DELETE_, etc) y ejecute la función **NotifyOnDataChange()** creada anteriormente.
 
 ```SQL
 CREATE TRIGGER OnDataChange
@@ -65,11 +65,11 @@ CREATE TRIGGER OnDataChange
   EXECUTE PROCEDURE public.NotifyOnDataChange();
 ```
 
-**Nótese otra vez, hemos especificado INSERT, DELETE y UPDATE. Es tu decisión según tu caso de uso usar una o más operaciones.**
+**Nótese otra vez, que hemos especificado INSERT, DELETE y UPDATE. Es tu decisión según tu caso de uso usar una o más operaciones.**
 
-Ok, ya lo tenemos todo, pero, qué pasa si tenemos más tablas y queremos escuchar los cambios en todas ellas?
+Ok, ya tenemos todo, pero, qué pasa si tenemos más tablas y queremos escuchar los cambios en todas ellas?
 
-En nuestro entorno de trabajo teníamos una tabla con particiones físicas, asi que necesitabamos tener todos los eventos en todas ellas.
+En nuestro entorno de trabajo, existía particularmente una tabla con particiones físicas, asi que era necesario tener todos los eventos de todas ellas.
 
 La siguiente función itera sobre todas las tablas y crea los triggers en cada una de ellas.
 
@@ -100,11 +100,13 @@ BEGIN
 END$BODY$;
 ```
 
-💪 Y eso es todo!. Ya tenemos listo todo en nuestro servidor para enviar las notificaciones en los cambios de datos.
+💪 Y eso es todo!. Ya está listo nuestro servidor para enviar las notificaciones en los cambios de datos.
 
-## Crear un cliente para recibir los cambios generados
+### Crear un cliente para recibir los cambios generados
 
 Para nuestra aplicación de pruebas en consola, usamos .NET 7.0 con Npgsql.
+
+En este caso muy simple, establecemos una conexión a Postgres a través del cliente Npgsql y se le asigna una acción al evento ``notification`` del objeto conexión ``conn`` de Npgsql. Aquí solo se está imprimiendo por consola el payload de la notificación proveniente de la base de datos por motivos educativos.  
 
 ```c#
 using Npgsql;
