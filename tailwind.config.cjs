@@ -5,5 +5,12 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [require("flowbite/plugin"), require("@tailwindcss/typography"), require('@tailwindcss/line-clamp')],
+  plugins: [
+    function ({ addVariant }) {
+      addVariant("children", "& > *");
+    },
+    require("flowbite/plugin"),
+    require("@tailwindcss/typography"),
+    require("@tailwindcss/line-clamp"),
+  ],
 };
