@@ -26,6 +26,9 @@ pero igual te explico un poco a continuación :)
 
 # ¿Qué puedo hacer con BTCPay?
 
+![Tienda en minutos](https://github.com/osmely/profilehub/blob/main/storebtc.png)
+
+
 - **¿Quieres crear una tienda online en minutos pero no eres programador?**
 	En BTCPay armas una tienda en minutos agregando tus productos y vinculándola a tu propia billetera de Bitcoin... ¿dije 1 tienda? disculpen, realmente puedes crear cuantas tiendas desees :P
 	
@@ -39,10 +42,3 @@ pero igual te explico un poco a continuación :)
 
 Son muchísimas las posibilidades de BTCPay y ahora podría estar al alcance de tu mano mediante [nuestro servidor](https://btcpayserver.nicepage.io).
 
-
-![Tienda en minutos](https://github.com/osmely/profilehub/blob/main/storebtc.png)
-
-![Punto de venta](https://github.com/osmely/profilehub/blob/main/Captura%20de%20pantalla%202023-03-05%20a%20la(s)%206.40.57%20p.m..png)
-
-![links de pago](https://github.com/osmely/profilehub/blob/main/Captura%20de%20pantalla%202023-03-05%20a%20la(s)%201.52.06%20a.m..png)
-	
