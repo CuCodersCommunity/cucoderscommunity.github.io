@@ -1,7 +1,7 @@
 ---
 title: "BTCPay: Bitcoin te libera!"
 pubDate: "Sun Mar 05 2023"
-image: ""
+image: "https://github.com/osmely/profilehub/blob/main/storebtc.png"
 username: "osmely"
 categories: ["software"]
 description: "Un acercamiento a BTCBay como pasarela de pagos en Bitcoin lista para usar."
