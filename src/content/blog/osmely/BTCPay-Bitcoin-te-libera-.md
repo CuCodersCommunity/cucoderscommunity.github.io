@@ -31,17 +31,13 @@ pero igual te explico un poco a continuación :)
 	
 	![enter image description here](https://github.com/osmely/profilehub/blob/main/storebtc.png)
 	
-- **¿Tienes una tienda física y quieres admitir pagos en BTC y no tienes infraestructura ni capital para hacerlo?**
-  BTCPay te crea un 'Punto de venta' al estilo de una caja registradora donde el vendedor o los clientes seleccionan productos y pagan al instante.
+- **¿Tienes una tienda física y quieres admitir pagos en BTC y no tienes infraestructura ni capital para hacerlo?**: BTCPay te crea un 'Punto de venta' al estilo de una caja registradora donde el vendedor o los clientes seleccionan productos y pagan al instante.
 
-- **¿Necesitas una vía para recibir donaciones o hacer campañas Crowdfund?**
-	En BTCPay puedes generar y manejar dichas donaciones de forma transparente.
+- **¿Necesitas una vía para recibir donaciones o hacer campañas Crowdfund?**: En BTCPay puedes generar y manejar dichas donaciones de forma transparente.
 
-- **¿Eres freelancer y quieres enviar link de pagos a tus clientes?**
-	EN BTCPay generas links de pagos directos a tu wallet, creas vías para realizar devoluciones, suscripciones y mucho más.
+- **¿Eres freelancer y quieres enviar link de pagos a tus clientes?**: EN BTCPay generas links de pagos directos a tu wallet, creas vías para realizar devoluciones, suscripciones y mucho más.
 
-- **¿Eres programador y quieres agregar una pasarela de pagos totalmente automatizada, probada y manejada por una amplia comunidad?**
-BTCPay te ofrece una API así como clientes nativos en las tecnologías más utilizadas.
+- **¿Eres programador y quieres agregar una pasarela de pagos totalmente automatizada, probada y manejada por una amplia comunidad?**: BTCPay te ofrece una API así como clientes nativos en las tecnologías más utilizadas.
 
 Son muchísimas las posibilidades de BTCPay y ahora podría estar al alcance de tu mano mediante [nuestro servidor](https://btcpayserver.nicepage.io).
 
