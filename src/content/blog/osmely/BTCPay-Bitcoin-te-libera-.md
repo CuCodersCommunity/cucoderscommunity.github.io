@@ -20,7 +20,7 @@ Es aquí cuando el software libre viene a darnos una mano y dejarnos muy claro a
 
 BTCPayServer es un software de tipo self-hosted, que bajo ciertos requerimientos te permite tener un servidor propio para procesamiento de pagos con Bitcoin con todas las ventajas que esto implica aunque, por su puesto, corre por cuenta del administrador el pago de la infraestructura en servidores que sostiene la plataforma. 
 
-Actualmente y como parte de un proyecto en desarrollando (ProfileHub) decidimos compartir nuestro servidor de BTCPay para brindar el servicio (lo más económicamente posible) a todos aquellos que quieran abrir su negocio al empleo de Bitcoin. Para más detalles de contratación acceder a [este link](https://btcpayserver.nicepage.io/)
+Actualmente y como parte de un proyecto en desarrollando ([ProfileHub](https://www.profilehub.org)) decidimos compartir nuestro servidor de BTCPay para brindar el servicio (lo más económicamente posible) a todos aquellos que quieran abrir su negocio al empleo de Bitcoin. Para más detalles de contratación acceder a [este link](https://btcpayserver.nicepage.io/)
 
 pero igual te explico un poco a continuación :)  
 
