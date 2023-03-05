@@ -29,6 +29,8 @@ pero igual te explico un poco a continuación :)
 - **¿Quieres crear una tienda online en minutos pero no eres programador?**
 	En BTCPay armas una tienda en minutos agregando tus productos y vinculándola a tu propia billetera de Bitcoin... ¿dije 1 tienda? disculpen, realmente puedes crear cuantas tiendas desees :P
 	
+	![enter image description here](https://github.com/osmely/profilehub/blob/main/storebtc.png)
+	
 - **¿Tienes una tienda física y quieres admitir pagos en BTC y no tienes infraestructura ni capital para hacerlo?**
   BTCPay te crea un 'Punto de venta' al estilo de una caja registradora donde el vendedor o los clientes seleccionan productos y pagan al instante.
 
