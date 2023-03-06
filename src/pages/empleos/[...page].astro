@@ -3,13 +3,13 @@ import { backend_url } from "../../data/conf.json";
 import JobLayout from "../../layouts/jobLayout.astro";
 import Pagination from "../../components/pagination.astro";
 import JobCard from "../../components/jobs/jobCard.astro";
+import TelegramJobsChannelAlert from "../../components/jobs/telegramJobsChannelAlert.astro";
 
 export async function getStaticPaths({ paginate }) {
-  const response = await fetch(backend_url + "api/jobs/get-all-jobs" );
+  const response = await fetch(backend_url + "api/jobs/get-all-jobs");
   const allJobs = await response.json();
 
-  let filterJobs = allJobs
-    .sort((a, b) => new Date(b.pubDate).valueOf() - new Date(a.pubDate).valueOf());
+  let filterJobs = allJobs.sort((a, b) => new Date(b.pubDate).valueOf() - new Date(a.pubDate).valueOf());
 
   return paginate(filterJobs, {
     pageSize: 20,
@@ -22,6 +22,7 @@ const { page } = Astro.props;
   title={`Directorio de Empleos para Programadores | Página ${page.currentPage} | CuCoders`}
   description="Encuentra las mejores oportunidades laborales en tecnología en Cucoders. Explora nuestro directorio de empleos para programadores y encuentra el trabajo perfecto para ti. Únete a nuestra comunidad de programadores en Cuba y lleva tu carrera al siguiente nivel."
 >
+  <TelegramJobsChannelAlert />
   {page.data.length == 0 && <img src="/assets/img/emptyList.webp" class="md:w-2/3 w-full mx-auto my-4" />}
 
   <div class="grid mb-6 w-full gap-4 md:grid-cols-1 mx-auto">

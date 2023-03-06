@@ -6,6 +6,7 @@ import { backend_url } from "../../../data/conf.json";
 import JobLayout from "../../../layouts/jobLayout.astro";
 import JobCard from "../../../components/jobs/jobCard.astro";
 import Pagination from "../../../components/pagination.astro";
+import TelegramJobsChannelAlert from "../../../components/jobs/telegramJobsChannelAlert.astro";
 
 export async function getStaticPaths({ paginate }) {
   let allCategories = [];
@@ -57,6 +58,7 @@ for (const [key, value] of Object.entries(profileCategories)) {
   title={`Directorio de Empleos | ${category.text} | Página ${page.currentPage}`}
   description="Encuentra las mejores oportunidades laborales en tecnología en Cucoders. Explora nuestro directorio de empleos para programadores y encuentra el trabajo perfecto para ti. Únete a nuestra comunidad de programadores en Cuba y lleva tu carrera al siguiente nivel."
 >
+  <TelegramJobsChannelAlert />
   {page.data.length == 0 && <img src="/assets/img/emptyList.webp" class="md:w-2/3 w-full mx-auto my-4" />}
 
   <div class="grid mb-6 w-full gap-4 md:grid-cols-1 mx-auto">
