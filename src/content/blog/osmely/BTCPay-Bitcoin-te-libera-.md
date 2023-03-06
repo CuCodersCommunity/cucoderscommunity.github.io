@@ -1,14 +1,16 @@
 ---
 title: "BTCPay: Bitcoin te libera!"
 pubDate: "Sun Mar 05 2023"
-image: "https://github.com/osmely/profilehub/blob/main/storebtc.png?raw=true"
+image: "https://user-images.githubusercontent.com/4676408/223221688-c6198bc6-86bb-4d43-8d9a-765d2440113d.png"
 username: "osmely"
 categories: ["software"]
 description: "Un acercamiento a BTCBay como pasarela de pagos en Bitcoin lista para usar."
 canonicalUrl: ""
 ---
 
+
 # BTCPay: Bitcoin te libera!
+
 
 Hoy más que nunca los emprendedores cubanos necesitan de Bitcoin. Más allá de las bondades intrínsecas de la tecnología que representa, y de su valor ético y práctico, hoy los emprendedores cubanos requieren de mecanismos más ágiles para llegar a sus clientes, nacionales o extranjeros.
 
@@ -24,7 +26,10 @@ Actualmente y como parte de un proyecto en desarrollando ([ProfileHub](https://w
 
 pero igual te explico un poco a continuación :)  
 
+
 # ¿Qué puedo hacer con BTCPay?
+
+
 
 - **¿Quieres crear una tienda online en minutos pero no eres programador?**
 	En BTCPay armas una tienda en minutos agregando tus productos y vinculándola a tu propia billetera de Bitcoin... ¿dije 1 tienda? disculpen, realmente puedes crear cuantas tiendas desees :P
@@ -38,4 +43,33 @@ pero igual te explico un poco a continuación :)
 - **¿Eres programador y quieres agregar una pasarela de pagos totalmente automatizada, probada y manejada por una amplia comunidad?**: BTCPay te ofrece una API así como clientes nativos en las tecnologías más utilizadas.
 
 Son muchísimas las posibilidades de BTCPay y ahora podría estar al alcance de tu mano mediante [nuestro servidor](https://btcpayserver.nicepage.io).
+
+# Una imagen más que mil palabras
+
+
+
+El poder de BTCPay en imágenes:
+
+
+<p align="center">
+
+   <img width="274" alt="Link de pago" src="https://user-images.githubusercontent.com/4676408/223223185-de97552a-85c4-44f9-932c-4925e4f87799.png">
+   
+   <img width="300" alt="Punto de venta" src="https://user-images.githubusercontent.com/4676408/223223228-604daceb-de1c-4586-93cd-1ef327c46036.png">   
+   
+   <img width="700" alt="Listo para imprimir" src="https://user-images.githubusercontent.com/4676408/223223284-d27aa9ea-1949-431e-828f-f08d8077bf22.png">
+
+   <img width="514" alt="Dashboard" src="https://user-images.githubusercontent.com/4676408/223224506-b555972c-dc09-4339-a5df-d7036e3a46f6.png">
+
+</p>
+
+
+
+
+
+
+
+
+
+
 
