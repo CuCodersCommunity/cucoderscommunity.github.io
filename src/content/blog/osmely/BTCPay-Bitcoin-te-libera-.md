@@ -1,7 +1,7 @@
 ---
 title: "BTCPay: Bitcoin te libera!"
 pubDate: "Sun Mar 05 2023"
-image: "https://github.com/osmely/profilehub/blob/main/storebtc.png"
+image: "https://github.com/osmely/profilehub/blob/main/storebtc.png?raw=true"
 username: "osmely"
 categories: ["software"]
 description: "Un acercamiento a BTCBay como pasarela de pagos en Bitcoin lista para usar."
@@ -25,9 +25,6 @@ Actualmente y como parte de un proyecto en desarrollando ([ProfileHub](https://w
 pero igual te explico un poco a continuación :)  
 
 # ¿Qué puedo hacer con BTCPay?
-
-![Tienda en minutos](https://github.com/osmely/profilehub/blob/main/storebtc.png)
-
 
 - **¿Quieres crear una tienda online en minutos pero no eres programador?**
 	En BTCPay armas una tienda en minutos agregando tus productos y vinculándola a tu propia billetera de Bitcoin... ¿dije 1 tienda? disculpen, realmente puedes crear cuantas tiendas desees :P
