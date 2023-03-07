@@ -8,10 +8,6 @@ description: "Un acercamiento a BTCBay como pasarela de pagos en Bitcoin lista p
 canonicalUrl: ""
 ---
 
-
-# BTCPay: Bitcoin te libera!
-
-
 Hoy más que nunca los emprendedores cubanos necesitan de Bitcoin. Más allá de las bondades intrínsecas de la tecnología que representa, y de su valor ético y práctico, hoy los emprendedores cubanos requieren de mecanismos más ágiles para llegar a sus clientes, nacionales o extranjeros.
 
 Hasta hace relativamente poco tiempo, el tema crypto estaba demasiado alejado de la cotidianeidad nacional como para siquiera pensar en que podría formarse una comunidad activa a su alrededor. Sin embargo en los últimos tiempos esta brecha se ha acortado dramáticamente principalmente impulsado por las remesas y las formas de pago alternativas tan necesarias para el desarrollo endógeno, luego de tantos y tantos 'accidentes' e 'incidentes' que han afectado directamente al emprendedor cubano.
