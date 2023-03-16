@@ -13,13 +13,21 @@ La inteligencia artificial (IA) está revolucionando la forma en que interactuam
 
 Una forma de acceder a ChatGPT desde Cuba es a través de la página oficial de OpenAI. En este videotutorial, Erich Garcia explica cómo hacerlo paso a paso. Esta opción puede ser un poco más complicada para aquellos que no tienen experiencia técnica, pero es la forma más directa de acceder a ChatGPT.
 
-![](https://www.youtube.com/watch?v=3OBnjvCXyzM&ab_channel=BacheCubano)
+[![bache cubano Video](https://i.ytimg.com/vi/3OBnjvCXyzM/hq720.jpg?sqp=-oaymwEcCOgCEMoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAt1se752O2lm_rTxyGcq4341VHeg
+)]([https://www.youtube.com/watch?v=UmX4kyB2wfg](https://www.youtube.com/watch?v=3OBnjvCXyzM&ab_channel=BacheCubano))
 
-##Poe
+
+## Poe
 
 [Poe](https://poe.com) es una aplicación que agrupa varios modelos de lenguajes de IA y se puede acceder como una app nativa de iOS o web. En este videotutorial, Cubageek explica cómo funciona Poe y cómo se puede acceder a ChatGPT desde Cuba a través de esta aplicación. Poe también tiene una interfaz amigable para los usuarios y ofrece varias opciones para interactuar con la IA.
 
-![](https://youtu.be/AF7TOkktWHs)
+[![CubaGeek Video](https://user-images.githubusercontent.com/53962116/225694390-bb38f229-597b-4266-bcbe-3b070633d8b7.png)]([https://www.youtube.com/watch?v=UmX4kyB2wfg](https://youtu.be/AF7TOkktWHs))
+
+
+
+
+
+
 
 ## Bing Chat
 
