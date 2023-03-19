@@ -636,7 +636,7 @@ for (const key in categories) {
     const encodedFileData = encodeURIComponent(newFileContent);
     let rawUrl = `https://raw.githubusercontent.com/${username}/${username}/main/cucoders_data/${file_name}`;
     let newUrl = `https://github.com/${username}/${username}/new/main/cucoders_data/new?value=${encodedFileData}&filename=${file_name}`;
-    let editUrl = `ttps://github.com/${username}/${username}/edit/main/cucoders_data/${file_name}`;
+    let editUrl = `https://github.com/${username}/${username}/edit/main/cucoders_data/${file_name}`;
 
     if (id == "overview") {
       rawUrl = `https://raw.githubusercontent.com/${username}/${username}/main/README.md`;
