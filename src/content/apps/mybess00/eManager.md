@@ -34,5 +34,5 @@ Puedes realizar consultas sobre las cuentas y tarjetas bancarias que tengas asoc
 **Notificaciones Inteligentes**    
 Olvídate de recibir mensajes ilegibles. Con eManager recibirás notificaciones fáciles de entender sobre transferencias de saldo móvil, operaciones bancarias y notificaciones de los demás servicios de Etecsa.  
 
-**Práctica y minimalista**
+**Práctica y minimalista**  
 eManager ha sido diseñada para ser minimalista y práctica lo que se traduce en un acceso rápido y fácil a todas las opciones disponibles sin tener que lidiar con complicadas interfaces o procesos engorrosos.  
