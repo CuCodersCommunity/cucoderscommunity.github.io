@@ -2,7 +2,7 @@
 name: "SIMple"
 id: "SIMple"
 description: "SIMple es una aplicación pensada para simplificar y mejorar tu vida. SIMple ofrece una serie de herramientas útiles para el usuario; como recargar, transferir saldo móvil o comprar paquetes de datos, "
-logo: "https://github.com/esalessandrxx/simple-cuba/blob/master/template/IMG_20230321_165509_392.jpg"
+logo: "https://github.com/esalessandrxx/simple-cuba/blob/master/template/IMG_20230321_165509_392.jpg?raw=true"
 email: "simpleapp@zohomail.com"
 website: "https://apklis.cu/application/com.nova.simple"
 is_open_source: true
