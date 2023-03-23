@@ -4,6 +4,7 @@ import ShareThisModal from "../components/helpers/shareThisModal.astro";
 import ReportModal from "../components/modals/reportModal.astro";
 import dayjs from "dayjs";
 import "dayjs/locale/es";
+import { Image } from "@astrojs/image/components";
 
 dayjs.locale("es");
 
@@ -24,7 +25,21 @@ if (!eventData.image) {
   <div
     class="bg-white border md:mx-auto mb-5 -mt-6 md:mt-12 lg:max-w-[58rem] border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 w-full"
   >
-    <div class="bg-cover bg-center h-[12rem] md:h-[22rem] lg:h-[28rem] rounded-t-lg" style={banner_syle}></div>
+    {
+      eventData.image && (
+        <Image
+          class="bg-center h-[15rem] md:h-[22rem] lg:h-[28rem] rounded-t-lg object-cover"
+          src={eventData.image}
+          alt={eventData.name + " cover"}
+          format="webp"
+          quality={85}
+          width={925}
+          aspectRatio={16 / 9}
+          fit="cover"
+          position="center"
+        />
+      )
+    }
 
     <div class="p-8 md:px-15 lg:px-20">
       <div class="flex flex-col md:flex-row md:justify-between items-center">
