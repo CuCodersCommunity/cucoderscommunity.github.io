@@ -1,6 +1,7 @@
 ---
 import dayjs from "dayjs";
 import "dayjs/locale/es";
+import { Image } from "@astrojs/image/components";
 
 dayjs.locale("es");
 
@@ -8,11 +9,6 @@ const { event } = Astro.props;
 
 const display_date = `${dayjs(event.data.startDate).format("DD/MM/YY")} - ${dayjs(event.data.endDate).format("DD/MM/YY")}`;
 
-let BannerSyle = "background-image: url(" + event.data.image + ")";
-
-if (!event.data.image) {
-  BannerSyle = "display: none";
-}
 ---
 
 <a
@@ -20,7 +16,21 @@ if (!event.data.image) {
   class="bg-white border border-gray-200 rounded-lg mb-5 dark:bg-gray-800 dark:border-gray-700 w-full"
 >
   <div>
-    <div class="bg-cover bg-center h-[11rem] md:h-[8rem] lg:h-[11rem] 2xl:h-[13rem] rounded-t-lg" style={BannerSyle}></div>
+    {
+      event.data.image && (
+        <Image
+          class="h-[11rem] md:h-[8rem] lg:h-[11rem] 2xl:h-[13rem] rounded-t-lg object-cover"
+          src={event.data.image}
+          alt={event.data.title + " logo"}
+          format="webp"
+          quality={85}
+          width={420}
+          aspectRatio={16 / 9}
+          fit="cover"
+          position="center"
+        />
+      )
+    }
   </div>
 
   <div class="p-5">
