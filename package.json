@@ -11,11 +11,12 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/image": "^0.16.1",
     "@astrojs/partytown": "^1.0.3",
     "@astrojs/rss": "^2.1.0",
     "@astrojs/sitemap": "^1.0.1",
     "@astrojs/tailwind": "^3.0.1",
-    "astro": "^2.0.4",
+    "astro": "^2.1.5",
     "dayjs": "^1.11.7",
     "flowbite": "^1.6.0",
     "marked": "^4.2.12",

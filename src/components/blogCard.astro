@@ -5,6 +5,7 @@ dayjs.locale("es");
 import readingTime from "reading-time";
 import categories from "../data/categories.json";
 import { members_api_url } from "../data/conf.json";
+import { Image } from "@astrojs/image/components";
 
 const { post } = Astro.props;
 const response = await fetch(members_api_url + "/members/" + post.data.username);
@@ -24,7 +25,21 @@ if (!post.data.image) {
 
 <div class="bg-white border border-gray-200 rounded-lg mb-5 dark:bg-gray-800 dark:border-gray-700 w-full">
   <a href={"/publicaciones/" + post.slug}>
-    <div class="bg-cover bg-center h-[13rem] md:h-[14rem] lg:h-[16rem] xl:h-[20rem] 2xl:h-[28rem] rounded-t-lg" style={BannerSyle}></div>
+    {
+      post.data.image && (
+        <Image
+          class="rounded-t-lg h-[13rem] md:h-[14rem] lg:h-[16rem] xl:h-[20rem] 2xl:h-[28rem] object-cover"
+          src={post.data.image}
+          alt={post.data.title + " logo"}
+          format="webp"
+          quality={85}
+          width={908}
+          aspectRatio={16 / 9}
+          fit="cover"
+          position="center"
+        />
+      )
+    }
   </a>
 
   <div class="p-5">

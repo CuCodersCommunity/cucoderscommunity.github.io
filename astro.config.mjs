@@ -10,15 +10,14 @@ import sitemap from "@astrojs/sitemap";
 import partytown from "@astrojs/partytown";
 
 // https://astro.build/config
+import image from "@astrojs/image";
+
+// https://astro.build/config
 export default defineConfig({
   site: "https://cucoders.dev/",
-  integrations: [
-    tailwind(),
-    sitemap(),
-    partytown({
-      config: {
-        forward: ["dataLayer.push"],
-      },
-    }),
-  ],
+  integrations: [tailwind(), sitemap(), partytown({
+    config: {
+      forward: ["dataLayer.push"]
+    }
+  }), image()]
 });

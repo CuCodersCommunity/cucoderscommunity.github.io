@@ -1,10 +1,21 @@
 ---
 const { img, title, desc, url, target="_blank" } = Astro.props;
+import { Image } from "@astrojs/image/components";
 ---
 
 <div class="overflow-y-auto rounded-md mb-5 bg-white border-solid border-[1px] border-gray-200">
   <a href={url} target={target}>
-    <img class="rounded-t-lg" src={img} alt="title" />
+    <Image
+      class="rounded-t-lg"
+      src={img}
+      alt={title + " Image"}
+      format="webp"
+      quality={85}
+      width={254}
+      aspectRatio={16 / 9}
+      fit="cover"
+      position="center"
+    />
   </a>
   <div class="p-5">
     <a href={url} target={target}>
