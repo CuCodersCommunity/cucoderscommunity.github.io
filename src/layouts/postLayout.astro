@@ -15,15 +15,11 @@ const post_data = post.data;
 const display_date = dayjs(post_data.pubDate).format("D MMM. YYYY");
 const stats = readingTime(post.body);
 const read_time = stats.text.replace("read", "");
-let banner_syle = "background-image: url(" + post_data.image + ")";
 const response = await fetch(members_api_url + "/members/" + post_data.username);
 const user_data = await response.json();
+import { Image } from "@astrojs/image/components";
 
 const description = post_data.description ? post_data.description : post.body.slice(0, 160) + "...";
-
-if (!post_data.image) {
-  banner_syle = "display: none";
-}
 ---
 
 <BaseLayout
@@ -35,7 +31,21 @@ if (!post_data.image) {
   <div
     class="bg-white border md:mx-auto mb-5 -mt-6 md:mt-12 lg:max-w-[58rem] border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 w-full"
   >
-    <div class="bg-cover bg-center h-[15rem] md:h-[22rem] lg:h-[28rem] rounded-t-lg" style={banner_syle}></div>
+    {
+      post_data.image && (
+        <Image
+          class="bg-center h-[15rem] md:h-[22rem] lg:h-[28rem] rounded-t-lg object-cover"
+          src={post_data.image}
+          alt={post_data.title + " cover"}
+          format="webp"
+          quality={85}
+          width={925}
+          aspectRatio={16 / 9}
+          fit="cover"
+          position="center"
+        />
+      )
+    }
 
     <div class="p-8 md:px-15 lg:px-20">
       <div class="mb-5 flex justify-between">

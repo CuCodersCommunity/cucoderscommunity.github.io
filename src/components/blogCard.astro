@@ -15,12 +15,6 @@ const read_time = stats.text.replace("read", "");
 const description = post.data.description ? post.data.description : post.body.slice(0, 160) + "...";
 
 const display_date = dayjs(post.data.pubDate).format("D MMM. YYYY");
-
-let BannerSyle = "background-image: url(" + post.data.image + ")";
-
-if (!post.data.image) {
-  BannerSyle = "display: none";
-}
 ---
 
 <div class="bg-white border border-gray-200 rounded-lg mb-5 dark:bg-gray-800 dark:border-gray-700 w-full">
