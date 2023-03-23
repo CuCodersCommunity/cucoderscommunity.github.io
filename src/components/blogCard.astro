@@ -45,7 +45,7 @@ if (!post.data.image) {
   <div class="p-5">
     <div class="mb-3 flex justify-between">
       <a href={"/dev/" + user_data.username} class="flex items-center space-x-4">
-        <img class="w-10 h-10 rounded-full" src={user_data.avatar_url_small} alt={user_data.name + " avatar"} />
+        <img class="w-10 h-10 rounded-full" src={user_data.avatar_url_small} alt={user_data.name + " avatar"} loading="lazy" decoding="async" />
         <div class="font-medium dark:text-white">
           <div>
             {user_data.name}
