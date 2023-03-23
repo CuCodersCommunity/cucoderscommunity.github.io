@@ -2,7 +2,7 @@
 name: "BTCPayServer.Cloud"
 id: "BTCPayServer-Cloud"
 description: "Servicio de pasarela de pagos en Bitcoin con 0 comisiones, sin KYC, dificil de censurar, lista para usar en negocios físicos o virtuales."
-logo: "https://blog.btcpayserver.org/images/btcpay-logo.svg"
+logo: "https://user-images.githubusercontent.com/53962116/227338916-6fe2bd09-78d5-4e07-aebc-f06a8d57f390.png"
 email: "osmelyf@live.com"
 website: "https://btcpayserver.nicepage.io/"
 is_open_source: false

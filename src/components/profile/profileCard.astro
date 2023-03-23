@@ -11,6 +11,7 @@ const { profile } = Astro.props;
         class="w-24 h-24 my-3 rounded-full"
         src={profile["avatar_url_medium"]}
         alt={profile["name"] + " profile picture"}
+        loading="lazy" decoding="async"
       />
       {
         profile["hireable"] && (

@@ -1,5 +1,6 @@
 ---
 import appCategories from "../../data/appsCategories.json";
+import { Image } from "@astrojs/image/components";
 
 const {
   url,
@@ -13,7 +14,17 @@ const {
 
 <div class={classes}>
   <a href={url} class="p-3 border md:mr-2 rounded-2xl bg-white self-start">
-    <img class="w-10 h-10 md:w-12 md:h-12 md:min-w-[3rem] min-w-[2.5rem] rounded-xl" src={logo} alt={title + " logo"} />
+    <Image
+      class="w-10 h-10 md:w-12 md:h-12 md:min-w-[3rem] min-w-[2.5rem] rounded-xl"
+      src={logo}
+      alt={title + " logo"}
+      format="webp"
+      quality={85}
+      width={48}
+      aspectRatio={1}
+      fit="cover"
+      position="center"
+    />
   </a>
   <div class="ml-1">
     <a href={url} class="w-full ml-2 text-lg text-gray-800 font-semibold">{title}</a>
