@@ -2,7 +2,7 @@
 name: "Karbonized"
 id: "Karbonized"
 description: "⭐ Make amazing images of your screenshots or your code and share them with the world 🌎"
-logo: "https://raw.githubusercontent.com/yossTheDev/karbonized/9198171830ba70d432e5aa4e402036bfa2a79a76/logo.svg"
+logo: "https://user-images.githubusercontent.com/53962116/227294212-da16af81-47bc-49d6-bd64-2be2026409a8.png"
 email: "yossthedev@gmail.com"
 website: "https://karbonized.onrender.com/"
 is_open_source: true
