@@ -1,7 +1,19 @@
 ---
-const { url = "#", img, text, target="_blank" } = Astro.props;
+const { url = "#", img, text, target = "_blank" } = Astro.props;
+import { getImage } from "@astrojs/image";
 
-const promoStyle = `background-image: url(${img})`;
+const { src } = await getImage({
+  src: img,
+  alt: text,
+  format: "webp",
+  quality: 85,
+  width: 254,
+  aspectRatio: 16 / 9,
+  fit: "cover",
+  position: "center",
+});
+
+const promoStyle = `background-image: url(${src})`;
 ---
 
 <a
