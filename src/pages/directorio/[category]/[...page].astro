@@ -14,7 +14,8 @@ export async function getStaticPaths({ paginate }) {
 
   const response = await fetch(members_api_url + "members-data");
   const members_data = await response.json();
-  const members_array = Object.values(members_data);
+  let members_array = Object.values(members_data);
+  members_array = members_array.filter((member) => "bio" in member);
 
   return allCategories.map((categoryObj) => {
     let filteredMembers =
