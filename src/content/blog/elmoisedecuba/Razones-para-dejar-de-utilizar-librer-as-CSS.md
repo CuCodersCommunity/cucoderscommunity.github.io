@@ -8,8 +8,6 @@ description: "Las CSS son amplias y pueden ser pesadas para nuestras aplicacione
 canonicalUrl: "https://www.linkedin.com/posts/elmoisedecuba_razones-para-dejar-de-utilizar-librer%C3%ADas-activity-7048869400761765888-kUIm?utm_source=share&utm_medium=member_desktop"
 ---
 
-Razones para dejar de utilizar librerías CSS
-
 1. Dependencia pesada
 
 Las librerías CSS son amplias y pueden ser pesadas para nuestras aplicaciones. Muchas veces, terminamos utilizando sólo una pequeña parte de la librería para nuestra aplicación, lo que se traduce en un exceso de clases y estilos cargados en el navegador. Esto puede ser perjudicial para el rendimiento de la aplicación y la experiencia del usuario.
