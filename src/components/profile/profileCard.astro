@@ -42,7 +42,7 @@ const { profile } = Astro.props;
     <div class="flex mt-2 line-clamp-2 text-center overflow-hidden text-sm font-normal text-gray-600 space-x-3 px-5">
       {profile["bio"]}
     </div>
-    <div class="px-5 flex justify-center w-full">
+    <div class="px-5 flex justify-center w-full flex-wrap">
       {
         profile["categories"].map((role) => (
           <LinkIcon
