@@ -74,6 +74,11 @@
     "text": "Cloud Engineer",
     "ico": "/assets/img/icons/cloud.svg"
   },
+  "functionalAnalyst": {
+    "slug": "functional-analyst",
+    "text": "Functional Analyst",
+    "ico": "/assets/img/icons/analyst.svg"
+  },
   "sysAdmin": {
     "slug": "system-administrator",
     "text": "System Administrator",
