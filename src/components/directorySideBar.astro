@@ -3,7 +3,9 @@ import PromoSection from "./sidebarComponents/promoSection.astro";
 import Item from "./sidebarComponents/sidebarItem.astro";
 import categories from "../data/profileCategories.json";
 
-const { isSideMenu = false } = Astro.props;
+const { isSideMenu = false, openToWork = false } = Astro.props;
+
+const ulrPrefix = openToWork ? "/directorio/open-to-work/" : "/directorio/";
 
 let sidebarClass = "px-3 mb-5 py-4 overflow-y-auto rounded-md bg-white border-solid border-[1px] border-gray-200";
 
@@ -13,7 +15,7 @@ if (isSideMenu) {
 
 let categoriesList = [];
 for (const key in categories) {
-  categories[key].url = "/directorio/" + categories[key].slug;
+  categories[key].url = ulrPrefix + categories[key].slug;
   categoriesList.push(categories[key]);
 }
 ---
@@ -21,6 +23,18 @@ for (const key in categories) {
 <aside class="w-64" aria-label="Sidebar">
   <div class={sidebarClass}>
     <ul class="space-y-2">
+      {
+        openToWork ? (
+          <Item text="Open To Work" ico="/assets/img/icons/check-box-outline.svg" url="/directorio" />
+        ) : (
+          <Item
+            text="Open To Work"
+            ico="/assets/img/icons/check-box-outline-blank.svg"
+            url="/directorio/open-to-work/todos"
+          />
+        )
+      }
+      <hr class="my-3" />
       <Item text="Mostrar Todos" ico="/assets/img/icons/all.svg" url="/directorio" />
       {categoriesList.map((category) => <Item text={category.text} ico={category.ico} url={category.url} />)}
     </ul>

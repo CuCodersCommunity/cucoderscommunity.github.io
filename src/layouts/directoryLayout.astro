@@ -8,13 +8,14 @@ const {
   title,
   description = "Conecta con los mejores programadores cubanos en el directorio de programadores de Cucoders. Descubre sus habilidades y experiencias y encuentra el colaborador perfecto para tu próximo proyecto. ¡Explora nuestro directorio de programadores y expande tu red profesional hoy en Cucoders!",
   image,
+  openToWork = false,
 } = Astro.props;
 ---
 
 <BaseLayout title={title} description={description} image={image} hasRightSidebar={true}>
   <div class="grid w-full gap-8 grid-cols-1 md:grid-cols-[16rem_1fr] mt-8">
     <div class="hidden md:block">
-      <DirectorySideBar />
+      <DirectorySideBar openToWork={openToWork} />
     </div>
     <div class="px-5 md:px-0">
       <slot />

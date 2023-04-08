@@ -42,8 +42,7 @@ for (const [key, value] of Object.entries(categories)) {
 ---
 
 <DirectoryLayout
-  title=<DirectoryLayout title={`Directorio de Desarrolladores Cubanos Disponibles para Trabajar | ${category.text} | Página ${page.currentPage} | CuCoders`}>
->
+  title=<DirectoryLayout title={`Directorio de Desarrolladores Cubanos Disponibles para Trabajar | ${category.text} | Página ${page.currentPage} | CuCoders`} openToWork={true}>
   {page.data.length == 0 && <img src="/assets/img/emptyList.webp" class="md:w-2/3 w-full mx-auto my-4" />}
   <div class="grid gap-6 w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-7">
     {page.data.map((profile) => <ProfileCard profile={profile} />)}
