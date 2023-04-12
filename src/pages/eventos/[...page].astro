@@ -19,7 +19,14 @@ const { page } = Astro.props;
 ---
 
 <EventLayout title={`Proximos Eventos Tech | Página ${page.currentPage} | CuCoders`}>
-  {page.data.length == 0 && <img src="/assets/img/emptyList.webp" class="md:w-2/3 w-full mx-auto my-4" />}
+  {
+    page.data.length == 0 && (
+      <>
+        <img src="/assets/img/emptyList.webp" class="md:w-2/3 w-full mx-auto my-4" />
+        <p class="mt-2 text-center text-gray-700"> No hay proximos eventos Disponibles </p>
+      </>
+    )
+  }
   <div class="grid gap-6 w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-7">
     {page.data.map((event) => <EventCard event={event} />)}
   </div>
