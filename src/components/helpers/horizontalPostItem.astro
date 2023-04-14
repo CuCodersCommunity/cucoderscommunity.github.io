@@ -2,13 +2,25 @@
 const { post } = Astro.props;
 const postData = post.data;
 const description = postData.description ? postData.description : post.body.slice(0, 160) + "...";
+import { Image } from "@astrojs/image/components";
 ---
 
 <a
   href={"/publicaciones/" + post.slug}
   class="flex flex-col md:flex-row items-center bg-white border-b border-gray-200 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
 >
-  <img class="object-cover w-full mr-5 rounded-lg h-40 md:h-auto md:w-48" src={postData.image} alt="" />
+  <Image
+  class="object-cover w-full mr-5 rounded-lg h-40 md:h-auto md:w-48"
+  src={postData.image}
+  alt={postData.title + " logo"}
+  format="webp"
+  quality={85}
+  width={360}
+  aspectRatio={16 / 9}
+  fit="cover"
+  position="center"
+/>
+
   <div class="flex flex-col justify-between p-4 leading-normal">
     <h5 class="mb-2 text-lg font-medium tracking-tight text-gray-900 dark:text-white">
       {postData.title}
