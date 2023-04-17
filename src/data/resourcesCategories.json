@@ -47,6 +47,12 @@
         "parentId": "cloudProvider",
         "slug": "dominios",
         "text": "Dominios"
+      },
+      {
+        "id": "email",
+        "parentId": "cloudProvider",
+        "slug": "email",
+        "text": "Email"
       }
     ]
   },
@@ -119,12 +125,6 @@
         "parentId": "teams",
         "slug": "chat",
         "text": "Chat"
-      },
-      {
-        "id": "email",
-        "parentId": "teams",
-        "slug": "email",
-        "text": "Email"
       }
     ]
   },
