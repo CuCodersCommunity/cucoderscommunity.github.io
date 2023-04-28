@@ -7,9 +7,6 @@ categories: ["tutorials","mobile","software"]
 description: "Agregue la capacidad de reanudar las descargas en su aplicación Flutter"
 canonicalUrl: "https://medium.com/flutter-espa%C3%B1a/continuar-descargas-en-flutter-con-dio-8d611c115cf2"
 ---
-
-Agregue la capacidad de reanudar las descargas en su aplicación Flutter
-
 ## Resumen
 
 Al final de esta publicación, podrá descargar archivos, manejar descargas incompletas, reanudar descargas, cancelar, obtener el estado actual de la descarga (porcentaje o tamaño restante) y fusionar todos los fragmentos en un solo archivo.
