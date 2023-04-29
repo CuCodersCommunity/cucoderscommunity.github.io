@@ -39,7 +39,7 @@ function itemStyle(item) {
                 />
               </svg>
             )}
-            <span class="md:ml-2">{item.label}</span>
+            {item.home ? <span>{item.label}</span> : <span class="md:ml-2">{item.label}</span>}
           </a>
         </li>
       ))
