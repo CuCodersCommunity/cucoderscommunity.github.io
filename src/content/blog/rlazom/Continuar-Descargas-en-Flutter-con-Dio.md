@@ -36,7 +36,7 @@ import 'package:path/path.dart' as path;
 
 Recibiremos la url remota del archivo (fileUrl) a descargar y la ruta local del archivo (fileLocalRouteStr) en el almacenamiento local de nuestro usuario.
 
-```
+``` dart
 Future<File?> getItemFileWithProgress({
   required String fileUrl, 
   required String fileLocalRouteStr,
@@ -49,7 +49,7 @@ Future<File?> getItemFileWithProgress({
 
 Primero creemos una instancia de la clase Dio y las variables necesarias para manejar la ruta del archivo para que podamos “jugar” con el nombre del archivo.
 
-```
+``` dart
 Dio dio = new Dio();
 File localFile = File(fileLocalRouteStr);
 String dir = path.dirname(fileLocalRouteStr);
@@ -71,7 +71,7 @@ Si el archivo local NO EXISTE, entonces estamos en el mejor de los casos donde v
 
 Primero, obtengamos el tamaño del archivo remoto, luego el tamaño del archivo local y lo agregamos a una lista que contendrá todos los tamaños de los fragmentos (partes del archivo).
 
-```
+``` dart
 if(existsSync) {
   Response response = await dio.head(fileUrl);
   int totalBytes = int.parse(response.headers.value('content-length')!);
@@ -82,7 +82,7 @@ if(existsSync) {
 
 Crearemos tantos fragmentos del archivo como sea necesario y, por supuesto, este número será desconocido, por lo que iteraremos hasta que el nombre del fragmento no exista y cada iteración modificará el nombre del fragmento y agregará el tamaño del fragmento a nuestra lista de tamaños (necesitaremos saber la suma de todos los tamaños eventualmente).
 
-```
+``` dart
 int i = 1;
 localRouteToSaveFileStr = '$dir/$basename''_$i$extension';
 File _f = File(localRouteToSaveFileStr);
@@ -95,7 +95,7 @@ while (_f.existsSync()) {
 ```
 Cuando el código sale del ciclo while, tenemos el nuevo fragmento listo para almacenar los bytes restantes del archivo. Así que tendremos que sumar los tamaños hasta ahora y crear las Opciones para el encabezado en la descarga.
 
-```
+``` dart
 int sumSizes = sizes.fold(0, (p, c) => p + c);
   Options options = Options(
     headers: {'Range': 'bytes=$sumSizes-'},
@@ -119,7 +119,7 @@ Hemos terminado, ¿verdad?… ¿¿verdad??
 
 Espera, todavía tenemos que hacer algunas cosas con todos los fragmentos del fichero. Si existe el archivo local, entonces debemos fusionar todas las partes pequeñas del archivo original en un solo fichero y eliminar los fragmentos después.
 
-```
+``` dart
 if (existsSync) {
   var raf = await localFile.open(mode: FileMode.writeOnlyAppend);
   
@@ -154,7 +154,7 @@ final percentNotifier = ValueNotifier<double?>(null);
 El primero será “cancelToken” para darnos la posibilidad de cancelar la descarga actual, y el “percentNotifier” nos ayudará a escuchar solo los cambios porcentuales para que no tengamos que volver a dibujar toda la pantalla, en lugar de solo el widget deseado.
 Ahora necesitaremos 2 procedimientos más para manejar esta nueva lógica.
 
-```
+``` dart
 _cancel() {
   cancelToken.cancel();
   percentNotifier.value = null;
@@ -170,7 +170,7 @@ _onReceiveProgress(int received, int total) {
 ```
 Antes de ejecutar la descarga, debemos verificar si el token de cancelación ya se usó y, de ser así, actualizar la variable con un nuevo valor.
 
-```
+``` dart
 if (cancelToken.isCancelled) {
   cancelToken = CancelToken();
 }
@@ -189,7 +189,7 @@ El parámetro “deleteOnError” en falso nos permitirá cancelar la descarga y
 Ahora escucharemos la devolución de llamada (callback) proporcionada por Dio en “onReceiveProgress” para actualizar nuestro notificador.
 
 
-```
+``` dart
 await dio.download(
   fileUrl,
   localRouteToSaveFileStr,
@@ -203,7 +203,7 @@ await dio.download(
 ```
 Código Completo
 
-```
+``` dart
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:path/path.dart' as path;
