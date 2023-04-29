@@ -4,6 +4,7 @@ import JobLayout from "../../layouts/jobLayout.astro";
 import Pagination from "../../components/pagination.astro";
 import JobCard from "../../components/jobs/jobCard.astro";
 import TelegramJobsChannelAlert from "../../components/jobs/telegramJobsChannelAlert.astro";
+import Breadcrumb from "../../components/ui/breadcrumb.astro";
 
 export async function getStaticPaths({ paginate }) {
   const response = await fetch(backend_url + "api/jobs/get-all-jobs");
@@ -23,6 +24,18 @@ const { page } = Astro.props;
   description="Encuentra las mejores oportunidades laborales en tecnología en Cucoders. Explora nuestro directorio de empleos para programadores y encuentra el trabajo perfecto para ti. Únete a nuestra comunidad de programadores en Cuba y lleva tu carrera al siguiente nivel."
 >
   <TelegramJobsChannelAlert />
+
+  <div class="pl-2 mb-3.5 flex justify-between flex-wrap">
+    <Breadcrumb items={[{ label: "Empleos", url: "/empleos", home: true }, { label: "Tiempo parcial" }]} />
+    <a
+      href="/nuevo-empleo"
+      class="text-gray-800 border hidden md:inline-flex border-gray-200 focus:outline-none hover:bg-gray-100 rounded-md text-sm font-normal px-3 py-2 text-center justify-center items-center dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+    >
+      <img src="/assets/img/icons/business.svg" class="w-5 h-5 mr-2" />
+      Publicar Empleo
+    </a>
+  </div>
+
   {page.data.length == 0 && <img src="/assets/img/emptyList.webp" class="md:w-2/3 w-full mx-auto my-4" />}
 
   <div class="grid mb-6 w-full gap-4 md:grid-cols-1 mx-auto">
