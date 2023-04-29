@@ -35,18 +35,17 @@ for (const key in categories) {
         )
       }
       <hr class="my-3" />
-      <Item text="Mostrar Todos" ico="/assets/img/icons/all.svg" url="/directorio" />
+      {
+        openToWork ? (
+          <Item text="Mostrar Todos" ico="/assets/img/icons/all.svg" url="/directorio/open-to-work/todos" />
+        ) : (
+          <Item text="Mostrar Todos" ico="/assets/img/icons/all.svg" url="/directorio" />
+        )
+      }
+
       {categoriesList.map((category) => <Item text={category.text} ico={category.ico} url={category.url} />)}
     </ul>
   </div>
-
-  <a
-    href="/registro"
-    class="text-gray-900 bg-white w-full border border-gray-200 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 rounded-full text-base font-normal px-5 py-3 text-center inline-flex justify-center items-center mr-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
-  >
-    <img src="/assets/img/icons/profile.svg" class="w-6 h-6 mr-2" />
-    Regístrate
-  </a>
 
   <div class="border-t my-5 h-1 border-gray-200"></div>
 

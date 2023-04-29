@@ -3,6 +3,7 @@ import DirectoryLayout from "../../../layouts/directoryLayout.astro";
 import categories from "../../../data/profileCategories.json";
 import ProfileCard from "../../../components/profile/profileCard.astro";
 import Pagination from "../../../components/pagination.astro";
+import Breadcrumb from "../../../components/ui/breadcrumb.astro";
 import { members_api_url } from "../../../data/conf.json";
 
 export async function getStaticPaths({ paginate }) {
@@ -43,6 +44,18 @@ for (const [key, value] of Object.entries(categories)) {
 ---
 
 <DirectoryLayout title={`Directorio de Desarrolladores Cubanos | ${category.text} | Página ${page.currentPage} | CuCoders`}>
+ 
+  <div class="pl-2 mb-3.5 flex justify-between flex-wrap">
+    <Breadcrumb items={[{ label: "Directorio", url: "/directorio", home: true }, { label: category.text }]} />
+    <a
+      href="/registro"
+      class="text-gray-800 border hidden md:inline-flex border-gray-200 focus:outline-none hover:bg-gray-100 rounded-md text-sm font-normal px-3 py-2 text-center justify-center items-center dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+    >
+      <img src="/assets/img/icons/profile.svg" class="w-5 h-5 mr-2" />
+      Regístrate
+    </a>
+  </div>
+
   {page.data.length == 0 && <img src="/assets/img/emptyList.webp" class="md:w-2/3 w-full mx-auto my-4" />}
   <div class="grid gap-6 w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-7">
     {page.data.map((profile) => <ProfileCard profile={profile} />)}
