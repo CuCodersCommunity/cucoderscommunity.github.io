@@ -2,7 +2,7 @@
 name: "Gazelles Cuba"
 id: "Gazelles-Cuba"
 description: "Gazelles Cuba es la app de MWRuteros para iOS... Soon OpenSource"
-logo: "https://pbs.twimg.com/profile_images/1574233598798041088/O85fjsbf_400x400.jpg"
+logo: "https://user-images.githubusercontent.com/53962116/235522145-aaa645f7-8ab2-4ea0-9b4c-d3741aced70d.png"
 email: ""
 website: "https://apps.apple.com/us/app/gazelles-cuba/id6443519984"
 is_open_source: false
