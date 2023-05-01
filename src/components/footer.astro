@@ -1,3 +1,7 @@
+---
+import SidebarItem from "./sidebarComponents/sidebarItem.astro";
+---
+
 <footer class="hidden sm:block p-4 mt-8 bg-white border border-x-0 shadow md:px-6 md:py-8 dark:bg-gray-900">
   <div class="flex items-center justify-center flex-col container mx-auto">
     <a href="#" class="flex items-center mb-6">
@@ -47,7 +51,52 @@
 >
   <a href="/"> <img src="/assets/img/icons/round-home.svg" class="h-7 w-7 m-3" /></a>
   <a href="/directorio"> <img src="/assets/img/icons/people2.svg" class="h-7 w-7 m-3" /></a>
-  <!-- <a href="/apps"> <img src="/assets/img/icons/apps-fill.svg" class="h-7 w-7" /></a> -->
+  <a
+    href="#"
+    data-drawer-target="drawer-bottom-example"
+    data-drawer-show="drawer-bottom-example"
+    data-drawer-placement="bottom"
+    aria-controls="drawer-bottom-example"
+  >
+    <img src="/assets/img/icons/add.svg" class="h-7 w-7 m-3" /></a
+  >
   <a href="/eventos"> <img src="/assets/img/icons/event-menu.svg" class="h-7 w-7 m-3" /></a>
   <a href="/empleos"> <img src="/assets/img/icons/briefcase.svg" class="h-7 w-7 m-3" /></a>
 </footer>
+
+<!-- drawer component -->
+<div
+  id="drawer-bottom-example"
+  class="fixed bottom-0 left-0 right-0 rounded-t-lg z-40 w-full p-4 overflow-y-auto transition-transform bg-white dark:bg-gray-800 translate-y-full"
+  tabindex="-1"
+  aria-labelledby="drawer-bottom-label"
+>
+  <h5
+    id="drawer-bottom-label"
+    class="inline-flex items-center mb-4 text-base font-semibold text-gray-500 dark:text-gray-400"
+  >
+    Publicar
+  </h5>
+  <button
+    type="button"
+    data-drawer-hide="drawer-bottom-example"
+    aria-controls="drawer-bottom-example"
+    class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+  >
+    <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"
+      ><path
+        fill-rule="evenodd"
+        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+        clip-rule="evenodd"></path></svg
+    >
+    <span class="sr-only">Close menu</span>
+  </button>
+
+  <ul class="space-y-2 dark:border-gray-700">
+    <SidebarItem text="Publicar Artículo" url="/nueva-publicacion" />
+    <SidebarItem text="Publicar Empleo" url="/nuevo-empleo" />
+    <SidebarItem text="Crear Evento" url="/nuevo-evento" />
+    <SidebarItem text="Adicionar Aplicación" url="/nueva-app" />
+    <SidebarItem text="Adicionar Recurso" url="/nuevo-recurso" />
+  </ul>
+</div>
