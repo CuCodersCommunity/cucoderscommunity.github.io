@@ -36,7 +36,7 @@ const display_date = dayjs(post.data.pubDate).format("D MMM. YYYY");
     }
   </a>
 
-  <div class="p-5">
+  <div class="p-5 pb-3">
     <div class="mb-3 flex justify-between">
       <a href={"/dev/" + user_data.username} class="flex items-center space-x-4">
         <img class="w-10 h-10 rounded-full" src={user_data.avatar_url_small} alt={user_data.name + " avatar"} loading="lazy" decoding="async" />
@@ -44,7 +44,7 @@ const display_date = dayjs(post.data.pubDate).format("D MMM. YYYY");
           <div>
             {user_data.name}
             <spam class="mx-2 text-gray-700">•</spam>
-            <spam class="text-gray-500 font-normal capitalize"> {display_date}</spam>
+            <spam class="text-gray-500 font-normal text-sm capitalize"> {display_date}</spam>
           </div>
           <div class="text-sm text-gray-500 dark:text-gray-400">{user_data.headline}</div>
         </div>
@@ -52,7 +52,7 @@ const display_date = dayjs(post.data.pubDate).format("D MMM. YYYY");
     </div>
 
     <a href={"/publicaciones/" + post.slug}>
-      <h5 class="mb-2 text-xl md:text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+      <h5 class="mb-2 text-lg md:text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
         {post.data.title}
       </h5>
     </a>
