@@ -3,6 +3,7 @@ import ResourcesLayout from "../../layouts/resourcesLayout.astro";
 import SideBar from "../../components/mainSideBar.astro";
 import RightDrawer from "../../components/rightDrawer.astro";
 import ResourceCard from "../../components/resourceCard.astro";
+import Breadcrumb from "../../components/ui/breadcrumb.astro";
 import { getCollection } from "astro:content";
 
 const resources = (await getCollection("resources")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
@@ -13,7 +14,16 @@ const lastResources = resources.slice(0, 20);
   hasRightSidebar={true}
 >
 
-<h2 class="mb-3 text-xl mx-2 font-semibold text-gray-700"> Últimos recursos</h2>
+<div class="pl-2 mb-3.5 flex justify-between flex-wrap">
+  <Breadcrumb items={[{ label: "Recursos",  home: true, url: "/recursos"}, {label: "Ultimos Recursos"}]} />
+  <a
+    href="/nuevo-recurso"
+    class="text-gray-800 border hidden md:inline-flex border-gray-200 focus:outline-none hover:bg-gray-100 rounded-md text-sm font-normal px-3 py-2 text-center justify-center items-center dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+  >
+    <img src="/assets/img/icons/add.svg" class="w-5 h-5 mr-2" />
+    Publicar Recurso
+  </a>
+</div>
 <div class="grid mb-6 w-full gap-4 md:grid-cols-1 mx-auto px-3 sm:px-0">
   {
     lastResources.map((resource) => (
