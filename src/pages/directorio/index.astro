@@ -3,7 +3,7 @@ import DirectoryLayout from "../../layouts/directoryLayout.astro";
 import { members_api_url } from "../../data/conf.json";
 import ProfileCard from "../../components/profile/profileCard.astro";
 import Pagination from "../../components/pagination.astro";
-import Breadcrumb from "../../components/ui/breadcrumb.astro";
+import BreadcrumbContainer from "../../components/ui/breadcrumbContainer.astro";
 
 const response = await fetch(members_api_url + "members-data");
 const members_data = await response.json();
@@ -14,18 +14,13 @@ const members = members_array.slice(0, 21);
 const showPagination = Object.keys(members_array).length > 21;
 ---
 
-<DirectoryLayout title="Directorio de Desarrolladores Cubanos" >
-
-  <div class="pl-2 mb-3.5 flex justify-between flex-wrap">
-    <Breadcrumb items={[{ label: "Directorio",  home: true }]} />
-    <a
-      href="/registro"
-      class="text-gray-800 border hidden md:inline-flex border-gray-200 focus:outline-none hover:bg-gray-100 rounded-md text-sm font-normal px-3 py-2 text-center justify-center items-center dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
-    >
-      <img src="/assets/img/icons/profile.svg" class="w-5 h-5 mr-2" />
-      Regístrate
-    </a>
-  </div>
+<DirectoryLayout title="Directorio de Desarrolladores Cubanos">
+  <BreadcrumbContainer
+    breadcrumbItems={[{ label: "Directorio", home: true }]}
+    btnLabel="Regístrate"
+    btnUrl="/registro"
+    btnIcon="/assets/img/icons/profile.svg"
+  />
 
   <div class="grid gap-6 w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-7">
     {members.map((profile) => <ProfileCard profile={profile} />)}

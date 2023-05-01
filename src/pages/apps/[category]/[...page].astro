@@ -3,7 +3,7 @@ import categories from "../../../data/appsCategories.json";
 import AppsLayout from "../../../layouts/appsLayout.astro";
 import AppCard from "../../../components/apps/appCard.astro";
 import Pagination from "../../../components/pagination.astro";
-import Breadcrumb from "../../../components/ui/breadcrumb.astro";
+import BreadcrumbContainer from "../../../components/ui/breadcrumbContainer.astro";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths({ paginate }) {
@@ -40,17 +40,12 @@ for (const [key, value] of Object.entries(categories)) {
   title={`Directorio de Aplicaciones Cubanas | ${category.text} | Página ${page.currentPage}`}
   description="Explora el futuro de la tecnología cubana en el directorio de aplicaciones de Cucoders. Descubre las aplicaciones creadas por desarrolladores locales y apóyalos en su camino hacia el éxito. ¡Navega en nuestro directorio de aplicaciones y descubre las soluciones innovadoras desarrolladas en Cuba!"
 >
-
-<div class="pl-2 mb-3.5 flex justify-between flex-wrap">
-  <Breadcrumb items={[{ label: "Aplicaciones",  home: true, url: "/apps" }, {label: category.text}]} />
-  <a
-    href="/nueva-app"
-    class="text-gray-800 border hidden md:inline-flex border-gray-200 focus:outline-none hover:bg-gray-100 rounded-md text-sm font-normal px-3 py-2 text-center justify-center items-center dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
-  >
-    <img src="/assets/img/icons/add.svg" class="w-5 h-5 mr-2" />
-    Publicar Aplicación
-  </a>
-</div>
+  <BreadcrumbContainer
+    breadcrumbItems={[{ label: "Aplicaciones", home: true, url: "/apps" }, { label: category.text }]}
+    btnLabel="Publicar Aplicación"
+    btnUrl="/nueva-app"
+    btnIcon="/assets/img/icons/add.svg"
+  />
 
   {page.data.length == 0 && <img src="/assets/img/emptyList.webp" class="md:w-2/3 w-full mx-auto my-4" />}
 

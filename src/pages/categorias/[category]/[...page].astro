@@ -3,7 +3,7 @@ import MainLayout from "../../../layouts/mainLayout.astro";
 import categories from "../../../data/categories.json";
 import BlogCard from "../../../components/blogCard.astro";
 import Pagination from "../../../components/pagination.astro";
-import Breadcrumb from "../../../components/ui/breadcrumb.astro";
+import BreadcrumbContainer from "../../../components/ui/breadcrumbContainer.astro";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths({ paginate }) {
@@ -28,7 +28,7 @@ export async function getStaticPaths({ paginate }) {
 const { page } = Astro.props;
 const params = Astro.params;
 
-let category = { text: 'Artículos', slug: 'articulos' };
+let category = { text: "Artículos", slug: "articulos" };
 
 for (const [key, value] of Object.entries(categories)) {
   if (value.slug == params.category) {
@@ -42,16 +42,12 @@ for (const [key, value] of Object.entries(categories)) {
   title={`${category.text} | Página ${page.currentPage}  | CuCoders`}
   description="Mantente al día con las últimas tendencias y conocimientos en la industria de la programación y tecnología en nuestra sección de artículos. Leer contenido escrito por los miembros de la comunidad y aprender de sus experiencias. ¡Explora nuestros de artículos y amplía tus conocimientos hoy en Cucoders!"
 >
-<div class="pl-2 mb-3.5 flex justify-between flex-wrap">
-  <Breadcrumb items={[{ label: "Publicaciones", home: true, url: "/" }, {label: category.text}]} />
-  <a
-    href="/nueva-publicacion"
-    class="text-gray-800 border hidden md:inline-flex border-gray-200 focus:outline-none hover:bg-gray-100 rounded-md text-sm font-normal px-3 py-2 text-center justify-center items-center dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
-  >
-    <img src="/assets/img/icons/write.svg" class="w-5 h-5 mr-2" />
-    Publicar Artículo
-  </a>
-</div>
+  <BreadcrumbContainer
+    breadcrumbItems={[{ label: "Publicaciones", home: true, url: "/" }, { label: category.text }]}
+    btnLabel="Publicar Artículo"
+    btnUrl="/nueva-publicacion"
+    btnIcon="/assets/img/icons/write.svg"
+  />
   {page.data.length == 0 && <img src="/assets/img/emptyList.webp" class="md:w-5/6 w-full mx-auto my-4" />}
   {page.data.map((post) => <BlogCard post={post} />)}
   <Pagination prev={page.url.prev} next={page.url.next} />

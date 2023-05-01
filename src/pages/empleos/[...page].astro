@@ -4,7 +4,7 @@ import JobLayout from "../../layouts/jobLayout.astro";
 import Pagination from "../../components/pagination.astro";
 import JobCard from "../../components/jobs/jobCard.astro";
 import TelegramJobsChannelAlert from "../../components/jobs/telegramJobsChannelAlert.astro";
-import Breadcrumb from "../../components/ui/breadcrumb.astro";
+import BreadcrumbContainer from "../../components/ui/breadcrumbContainer.astro";
 
 export async function getStaticPaths({ paginate }) {
   const response = await fetch(backend_url + "api/jobs/get-all-jobs");
@@ -25,16 +25,12 @@ const { page } = Astro.props;
 >
   <TelegramJobsChannelAlert />
 
-  <div class="pl-2 mb-3.5 flex justify-between flex-wrap">
-    <Breadcrumb items={[{ label: "Empleos", home: true }]} />
-    <a
-      href="/nuevo-empleo"
-      class="text-gray-800 border hidden md:inline-flex border-gray-200 focus:outline-none hover:bg-gray-100 rounded-md text-sm font-normal px-3 py-2 text-center justify-center items-center dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
-    >
-      <img src="/assets/img/icons/business.svg" class="w-5 h-5 mr-2" />
-      Publicar Empleo
-    </a>
-  </div>
+  <BreadcrumbContainer
+    breadcrumbItems={[{ label: "Empleos", home: true }]}
+    btnLabel="Publicar Empleo"
+    btnUrl="/nuevo-empleo"
+    btnIcon="/assets/img/icons/business.svg"
+  />
 
   {page.data.length == 0 && <img src="/assets/img/emptyList.webp" class="md:w-2/3 w-full mx-auto my-4" />}
 
