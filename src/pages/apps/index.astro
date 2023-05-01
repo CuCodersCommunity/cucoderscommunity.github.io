@@ -3,6 +3,7 @@ import AppsLayout from "../../layouts/appsLayout.astro";
 import SideBar from "../../components/mainSideBar.astro";
 import RightDrawer from "../../components/rightDrawer.astro";
 import AppCard from "../../components/apps/appCard.astro";
+import Breadcrumb from "../../components/ui/breadcrumb.astro";
 import { getCollection } from "astro:content";
 
 const apps = (await getCollection("apps")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
@@ -14,7 +15,17 @@ const lastApps = apps.slice(0, 12);
   hasRightSidebar={true}
 >
 
-<h2 class="mb-3 text-xl mx-2 font-semibold text-gray-700"> Últimos lanzamientos</h2>
+<div class="pl-2 mb-3.5 flex justify-between flex-wrap">
+  <Breadcrumb items={[{ label: "Aplicaciones",  home: true }]} />
+  <a
+    href="/nueva-app"
+    class="text-gray-800 border hidden md:inline-flex border-gray-200 focus:outline-none hover:bg-gray-100 rounded-md text-sm font-normal px-3 py-2 text-center justify-center items-center dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+  >
+    <img src="/assets/img/icons/app2.svg" class="w-5 h-5 mr-2" />
+    Publicar Aplicación
+  </a>
+</div>
+
 <div class="grid mb-6 w-full gap-4 md:grid-cols-1 mx-auto px-3 sm:px-0">
   {
     lastApps.map((app) => (
