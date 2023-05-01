@@ -9,13 +9,23 @@ const lastApps = await getLastApps();
 const featuredApps = await getFeaturedApps();
 ---
 
-<div>
-  <div class="border-solid border-b-[1px] mb-3 pb-3">
-    <EventsTimeLine />
-  </div>
-  <!-- <div class="border-solid border-b-[1px] mb-3 pb-3">
-    <MembersList title="Miembros Destacados" />
-  </div> -->
+<div class="pt-2">
+  <!-- <a
+    href="/nueva-publicacion"
+    class="text-gray-900 bg-white w-full border border-gray-200 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 rounded-3xl text-base font-normal px-5 py-3 text-center inline-flex justify-center items-center mr-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+  >
+    <img src="/assets/img/icons/write.svg" class="w-6 h-6 mr-2" />
+    Crear Publicación
+  </a> -->
+
+  <!-- <a href="/nuevo-evento" class="text-gray-800 w-full border hidden md:inline-flex border-gray-200 focus:outline-none hover:bg-gray-100 rounded-md text-sm font-normal px-3 py-2 text-center justify-center items-center dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700 keychainify-checked">
+    <img src="/assets/img/icons/event-add.svg" class="w-5 h-5 mr-2">
+    Publicar Evento
+  </a>
+
+  <div class="border-t my-4 h-1 border-gray-200"></div> -->
+
+  <EventsTimeLine />
   <div class="border-solid border-b-[1px] mb-3 pb-3">
     <div class="font-medium text-gray-800 mb-4">Últimos Lanzamientos</div>
     {

@@ -4,7 +4,7 @@ async function getLastApps(url, type = "json") {
   const allApps = await getCollection("apps");
   let filterApps = await allApps
     .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-    .slice(0, 3);
+    .slice(0, 5);
 
   let lastApps = [];
 

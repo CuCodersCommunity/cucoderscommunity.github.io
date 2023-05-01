@@ -5,6 +5,7 @@ import BlogCard from "../components/blogCard.astro";
 import RightSideBar from "../components/rightSideBar.astro";
 import RightDrawer from "../components/rightDrawer.astro";
 import Pagination from "../components/pagination.astro";
+import Breadcrumb from "../components/ui/breadcrumb.astro";
 import { getCollection } from "astro:content";
 
 const allPosts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
@@ -23,6 +24,16 @@ const showPagination = Object.keys(allPosts).length > 6;
       <SideBar />
     </div>
     <div class="px-5 md:px-0">
+      <div class="pl-2 mb-3.5 flex justify-between flex-wrap">
+        <Breadcrumb items={[{ label: "Publicaciones", home: true, url: "/" }, {label: "Últimas Publicaciones"}]} />
+        <a
+          href="/nueva-publicacion"
+          class="text-gray-800 border hidden md:inline-flex border-gray-200 focus:outline-none hover:bg-gray-100 rounded-md text-sm font-normal px-3 py-2 text-center justify-center items-center dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+        >
+          <img src="/assets/img/icons/write.svg" class="w-5 h-5 mr-2" />
+          Publicar Artículo
+        </a>
+      </div>
       {posts.map((post) => <BlogCard post={post} />)}
       {showPagination && <Pagination next="/categorias/todo/2" />}
     </div>
