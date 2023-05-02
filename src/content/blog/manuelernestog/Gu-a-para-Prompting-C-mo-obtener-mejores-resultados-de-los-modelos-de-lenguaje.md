@@ -20,9 +20,9 @@ Una de las claves para un buen prompting es proporcionar instrucciones claras y 
 
 -   Utilizar delimitadores: Es importante usar delimitadores para que el modelo pueda distinguir entre el texto que está proporcionando como entrada y el prompt que le está diciendo qué hacer. Los delimitadores pueden ser comillas, triple comillas, signos <> o cualquier otro que definamos.
     
--   Pedir salidas estructuradas: Es útil pedirle al modelo que produzca salidas estructuradas en lugar de texto sin procesar. Por ejemplo, puede pedirle que produzca un archivo JSON, XML o HTML.
+-   Pedir salidas estructuradas: Es útil pedirle al modelo que produzca salidas estructuradas en lugar de texto sin procesar. Por ejemplo, puedes pedirle que utilice formato JSON, XML o HTML.
     
--   Pedirle al modelo que haga algo cuando se cumplan ciertas condiciones: En lugar de simplemente pedirle al modelo que genere un texto, también puede pedirle que haga algo en función de ciertas condiciones. Por ejemplo, puede pedirle que genere un texto si ciertas palabras o frases están presentes, o que realice una acción específica si se cumplen ciertas condiciones.
+-   Utilizar condiciones: En lugar de simplemente pedirle al modelo que genere un texto, también puedes pedirle que haga algo en función de ciertas condiciones. Por ejemplo, puedes pedirle que genere un texto si ciertas palabras o frases están presentes, o que realice una acción específica si se cumplen ciertas condiciones.
     
 -   Few-shot Prompting: Otra técnica útil es el few-shot prompting, que implica darle al modelo algunos ejemplos satisfactorios de una tarea completada y luego preguntarle qué hacer en función de esos ejemplos. Esto puede ser útil para tareas que no tienen una respuesta única o para las que es difícil proporcionar instrucciones precisas.
     
@@ -33,7 +33,7 @@ Otra consideración importante para el prompting es darle tiempo al modelo para 
 
 -   Especificar los pasos para cumplir una tarea: En lugar de simplemente pedirle al modelo que realice una tarea, especifique los pasos que debe seguir para cumplir esa tarea. Por ejemplo, puedes proporcionar una lista de pasos numerados, como "Paso 1: identificar los problemas, Paso 2: proponer soluciones, etc."
     
--   Instruir al modelo a que trabaje en sus propias conclusiones: En lugar de decirle al modelo qué hacer en cada paso, puede pedirle que trabaje en sus propias conclusiones antes de presentar una respuesta. Por ejemplo, en lugar de decirle "¿Es correcta esta solución?" Puede pedirle que solucione el problema primero, y luego que compare su solución con la que se quiere abordar.
+-   Instruir al modelo a que trabaje en sus propias conclusiones: En lugar de pedirle al modelo que verifique por ejemplo si una solución es correcta, puede pedirle que trabaje en sus propias conclusiones antes de presentar una respuesta. Por ejemplo, en lugar de decirle "¿Es correcta esta solución?" Puede pedirle que solucione el problema primero, y luego que compare su solución con la que se quiere abordar.
 
 ### Limitaciones del modelo
 
