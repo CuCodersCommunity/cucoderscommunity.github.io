@@ -18,7 +18,7 @@ En este artículo, discutiremos algunas guías para el prompting efectivo, inclu
 
 Una de las claves para un buen prompting es proporcionar instrucciones claras y específicas al modelo. Aquí hay algunas sugerencias para lograr esto:
 
--   Utilizar delimitadores: Es importante usar delimitadores para que el modelo pueda distinguir entre el texto que está proporcionando como entrada y el prompt que le está diciendo qué hacer. Los delimitadores comunes incluyen comillas, etiquetas HTML y triple comillas.
+-   Utilizar delimitadores: Es importante usar delimitadores para que el modelo pueda distinguir entre el texto que está proporcionando como entrada y el prompt que le está diciendo qué hacer. Los delimitadores pueden ser comillas, triple comillas, signos <> o cualquier otro que definamos.
     
 -   Pedir salidas estructuradas: Es útil pedirle al modelo que produzca salidas estructuradas en lugar de texto sin procesar. Por ejemplo, puede pedirle que produzca un archivo JSON, XML o HTML.
     
