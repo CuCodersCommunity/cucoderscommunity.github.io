@@ -39,7 +39,13 @@ const display_date = dayjs(post.data.pubDate).format("D MMM. YYYY");
   <div class="p-5 pb-3">
     <div class="mb-3 flex justify-between">
       <a href={"/dev/" + user_data.username} class="flex items-center space-x-4">
-        <img class="w-10 h-10 rounded-full" src={user_data.avatar_url_small} alt={user_data.name + " avatar"} loading="lazy" decoding="async" />
+        <img
+          class="w-10 h-10 rounded-full"
+          src={user_data.avatar_url_small}
+          alt={user_data.name + " avatar"}
+          loading="lazy"
+          decoding="async"
+        />
         <div class="font-medium dark:text-white">
           <div>
             {user_data.name}
@@ -56,9 +62,11 @@ const display_date = dayjs(post.data.pubDate).format("D MMM. YYYY");
         {post.data.title}
       </h5>
     </a>
-    <p class="mb-5 font-normal text-gray-700 dark:text-gray-400 line-clamp-3 md:line-clamp-3">
-      {description}
-    </p>
+    <a href={"/publicaciones/" + post.slug}>
+      <p class="mb-5 font-normal text-gray-700 dark:text-gray-400 line-clamp-3 md:line-clamp-3">
+        {description}
+      </p>
+    </a>
     <div class="my-2 flex justify-between">
       <div>
         {
