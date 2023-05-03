@@ -7,8 +7,10 @@ dayjs.locale("es");
 
 const { event } = Astro.props;
 
-const display_date = `${dayjs(event.data.startDate).format("DD/MM/YY")} - ${dayjs(event.data.endDate).format("DD/MM/YY")}`;
-
+let display_date = `${dayjs(event.data.startDate).format("DD/MM/YY")}`;
+if (!isNaN(event.data.endDate.getTime()) && !dayjs(event.data.startDate).isSame(event.data.endDate, "day")) {
+  display_date += ` - ${dayjs(event.data.endDate).format("DD/MM/YY")}`;
+}
 ---
 
 <a

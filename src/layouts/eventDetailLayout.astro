@@ -10,9 +10,11 @@ dayjs.locale("es");
 
 const { event } = Astro.props;
 const eventData = event.data;
-const display_date = `${dayjs(eventData.startDate).format("D MMM. YYYY hh:mm a")} - ${dayjs(eventData.endDate).format(
-  "D MMM. YYYY hh:mm a"
-)} `;
+
+let display_date = `${dayjs(eventData.startDate).format("D MMM. YYYY hh:mm a")}`;
+if (!isNaN(event.data.endDate.getTime()) && !dayjs(event.data.startDate).isSame(event.data.endDate, "day")) {
+  display_date += ` - ${dayjs(eventData.endDate).format("D MMM. YYYY hh:mm a")} `;
+}
 
 let banner_syle = "background-image: url(" + eventData.image + ")";
 

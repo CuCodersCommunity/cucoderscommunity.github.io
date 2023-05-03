@@ -9,18 +9,24 @@ export async function getStaticPaths({ paginate }) {
   const allEvents = await getCollection("events");
 
   let filterEvents = allEvents
-    .filter((event) => event.data.endDate >= new Date())
+    .filter((event) => {
+      if (isNaN(event.data.endDate.getTime())) {
+        return event.data.startDate >= new Date();
+      } else {
+        return event.data.endDate >= new Date();
+      }
+    })
     .sort((a, b) => a.data.startDate.valueOf() - b.data.startDate.valueOf());
 
   return paginate(filterEvents, {
     pageSize: 12,
   });
 }
+
 const { page } = Astro.props;
 ---
 
 <EventLayout title={`Proximos Eventos Tech | Página ${page.currentPage} | CuCoders`}>
-
   <BreadcrumbContainer
     breadcrumbItems={[{ label: "Eventos", home: true, url: "/eventos" }, { label: "Próximos Eventos" }]}
     btnLabel="Publicar Evento"
