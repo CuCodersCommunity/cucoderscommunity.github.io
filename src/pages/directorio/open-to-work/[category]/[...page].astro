@@ -61,7 +61,11 @@ for (const [key, value] of Object.entries(categories)) {
       />
     ) : (
       <BreadcrumbContainer
-        breadcrumbItems={[{ label: "Directorio", url: "/directorio", home: true }, { label: "Open To Work" }]}
+        breadcrumbItems={[
+          { label: "Directorio", url: "/directorio", home: true },
+          { label: "Open To Work", url: "/directorio/open-to-work/todos" },
+          { label: "Todos" },
+        ]}
         btnLabel="Regístrate"
         btnUrl="/registro"
         btnIcon="/assets/img/icons/profile.svg"
