@@ -8,8 +8,8 @@
   "categories": ["social", "business", "education"],
   "icons": [
     {
-      "src": "https://cucoders.dev/assets/img/app_icons/64.png",
-      "sizes": "64x64",
+      "src": "https://cucoders.dev/assets/img/app_icons/48.png",
+      "sizes": "48x48",
       "type": "image/png"
     },
     {
