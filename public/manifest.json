@@ -28,13 +28,5 @@
       "type": "image/png"
     }
   ],
-  "start_url": "https://cucoders.dev/",
-  "shortcuts": [
-    {
-      "name": "Empleos",
-      "short_name": "Empleos",
-      "description": "Descubre ofertas laborales",
-      "url": "/empleos/"
-    }
-  ]
+  "start_url": "https://cucoders.dev/"
 }
