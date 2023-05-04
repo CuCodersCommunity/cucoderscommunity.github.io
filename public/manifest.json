@@ -6,6 +6,8 @@
   "name": "CuCoders",
   "orientation": "portrait",
   "categories": ["social", "business", "education"],
+  "scope": "https://cucoders.dev/",
+  "start_url": "https://cucoders.dev/",
   "icons": [
     {
       "src": "https://cucoders.dev/assets/img/app_icons/64.png",
@@ -27,6 +29,5 @@
       "sizes": "256x256",
       "type": "image/png"
     }
-  ],
-  "start_url": "https://cucoders.dev/"
+  ]
 }
