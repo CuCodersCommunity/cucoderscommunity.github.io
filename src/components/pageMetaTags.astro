@@ -1,12 +1,11 @@
 ---
-
 export interface Props {
-	title: string;
-	description: string;
-	image?: string;
+  title: string;
+  description: string;
+  image?: string;
 }
 
-const { title, description, image = '/assets/img/cucoders_social.webp' } = Astro.props;
+const { title, description, image = "/assets/img/cucoders_social.webp" } = Astro.props;
 ---
 
 <!-- Global Metadata -->
@@ -14,6 +13,7 @@ const { title, description, image = '/assets/img/cucoders_social.webp' } = Astro
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="icon" href="/assets/img/favicon.png" />
 <meta name="generator" content={Astro.generator} />
+<link rel="manifest" href="/manifest.json" />
 
 <!-- Primary Meta Tags -->
 <title>{title}</title>
