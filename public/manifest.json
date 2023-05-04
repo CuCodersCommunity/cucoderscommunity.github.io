@@ -1,0 +1,39 @@
+{
+  "background_color": "white",
+  "theme_color": "white",
+  "description": "CuCoders | La plataforma de los programadores cubanos",
+  "display": "Standalone",
+  "name": "CuCoders",
+  "short_name": "CuCoders",
+  "icons": [
+    {
+      "src": "https://www.google.com/s2/favicons?sz=64&domain=cucoders.dev",
+      "sizes": "64x64",
+      "type": "image/png"
+    },
+    {
+      "src": "https://www.google.com/s2/favicons?sz=128&domain=cucoders.dev",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "https://www.google.com/s2/favicons?sz=16&domain=cucoders.dev",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "https://www.google.com/s2/favicons?sz=256&domain=cucoders.dev",
+      "sizes": "256x256",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "https://cucoders.dev/",
+  "shortcuts": [
+    {
+      "name": "Empleos",
+      "short_name": "Empleos",
+      "description": "Encuentra oportunidades laborales",
+      "url": "https://cucoders.dev/empleos/"
+    }
+  ]
+}
