@@ -6,7 +6,6 @@
   "name": "CuCoders",
   "orientation": "portrait",
   "categories": ["social", "business", "education"],
-  "scope": "https://cucoders.dev/",
   "start_url": "https://cucoders.dev/",
   "icons": [
     {
