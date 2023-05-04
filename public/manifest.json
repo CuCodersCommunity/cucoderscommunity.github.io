@@ -8,22 +8,22 @@
   "categories": ["social", "business", "education"],
   "icons": [
     {
-      "src": "https://www.google.com/s2/favicons?sz=64&domain=cucoders.dev",
+      "src": "https://cucoders.dev/assets/img/app_icons/64.png",
       "sizes": "64x64",
       "type": "image/png"
     },
     {
-      "src": "https://www.google.com/s2/favicons?sz=128&domain=cucoders.dev",
+      "src": "https://cucoders.dev/assets/img/app_icons/128.png",
       "sizes": "128x128",
       "type": "image/png"
     },
     {
-      "src": "https://www.google.com/s2/favicons?sz=16&domain=cucoders.dev",
+      "src": "https://cucoders.dev/assets/img/app_icons/16.png",
       "sizes": "16x16",
       "type": "image/png"
     },
     {
-      "src": "https://www.google.com/s2/favicons?sz=256&domain=cucoders.dev",
+      "src": "https://cucoders.dev/assets/img/app_icons/256.png",
       "sizes": "256x256",
       "type": "image/png"
     }
