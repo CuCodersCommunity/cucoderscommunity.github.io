@@ -1,10 +1,12 @@
 {
-  "background_color": "white",
-  "theme_color": "white",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
   "description": "La plataforma de los programadores cubanos",
-  "display": "Standalone",
+  "display": "standalone",
   "name": "CuCoders",
+  "short_name": "CuCoders",
   "orientation": "portrait",
+  "lang": "es",
   "categories": ["social", "business", "education"],
   "start_url": "https://cucoders.dev/",
   "icons": [
@@ -26,6 +28,11 @@
     {
       "src": "https://cucoders.dev/assets/img/app_icons/256.png",
       "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "https://cucoders.dev/assets/img/app_icons/512.png",
+      "sizes": "512x512",
       "type": "image/png"
     }
   ]
