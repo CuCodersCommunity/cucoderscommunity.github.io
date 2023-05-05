@@ -15,9 +15,21 @@ import image from "@astrojs/image";
 // https://astro.build/config
 export default defineConfig({
   site: "https://cucoders.dev/",
-  integrations: [tailwind(), sitemap(), partytown({
-    config: {
-      forward: ["dataLayer.push"]
-    }
-  }), image()]
+  integrations: [
+    tailwind(),
+    sitemap({
+      serialize(item) {
+        if (/^https:\/\/cucoders\.dev\/dev\/[^\/]+\/[^\/]+$/.test(item.url)) {
+          return undefined;
+        }
+        return item;
+      },
+    }),
+    partytown({
+      config: {
+        forward: ["dataLayer.push"],
+      },
+    }),
+    image(),
+  ],
 });
