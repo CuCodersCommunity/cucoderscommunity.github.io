@@ -3,10 +3,10 @@ import BaseLayout from "./baseLayout.astro";
 import ProfileHeader from "../components/profile/profileHeader.astro";
 import ProfileTabs from "../components/profile/profileTabs.astro";
 
-const { profile, activeTab, pageTitle } = Astro.props;
+const { profile, activeTab, pageTitle, noIndex = false } = Astro.props;
 ---
 
-<BaseLayout title={`${profile.name} | ${pageTitle} | CuCoders`} description={profile.bio} image={profile.avatar_url}>
+<BaseLayout title={`${profile.name} | ${pageTitle} | CuCoders`} description={profile.bio} image={profile.avatar_url} noIndex = {noIndex}>
   <ProfileHeader profile={profile} />
 
   <div
