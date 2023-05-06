@@ -223,7 +223,7 @@ let platformList = ["Windows", "Linux", "macOS", "Web", "Android", "iOS", "Naveg
     const fileName = getElem("name").value.replace(/[^a-zA-Z0-9]+/g, "-") + ".md";
     const fileText = createAppData();
     const encodedFileText = encodeURIComponent(fileText);
-    const githubQueryLink = `https://github.com/CuCodersCommunity/cucoderscommunity.github.io/new/main/src/content/apps/${username}/new?value=${encodedFileText}&filename=${fileName}`;
+    const githubQueryLink = `https://github.com/CuCodersCommunity/cucoderscommunity.github.io/new/main/src/content/apps/${username}?value=${encodedFileText}&filename=${fileName}`;
     window.open(githubQueryLink);
   }
 
