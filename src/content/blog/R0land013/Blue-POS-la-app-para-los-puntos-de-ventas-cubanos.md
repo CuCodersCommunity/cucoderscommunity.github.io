@@ -7,9 +7,6 @@ categories: ["software"]
 description: "Una introducción a Blue POS."
 canonicalUrl: ""
 ---
-
-# Blue POS: la app para los puntos de ventas cubanos
-
 **Blue POS** es una **aplicación de escritorio** creada con el fin de optimizar el trabajo de los puntos de ventas cubanos. Es una herramienta que facilita la **gestión de inventarios**, las **ventas** y los **gastos**. Además permite realizar análisis sobre los datos generados por el negocio a través de **reportes de ventas** y **gráficos** de comportamientos de algunas variables.
 
 **Blue POS** es gratis y **open source**. Por el momento se encuentra disponible sólo para **Windows**. En este artículo daremos un vistazo a las principales funcionalidades que tiene **Blue POS**.
