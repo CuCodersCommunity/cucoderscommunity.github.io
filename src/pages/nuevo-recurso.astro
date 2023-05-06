@@ -149,7 +149,7 @@ pubDate: "${new Date().toDateString()}"
     const category = getElem("category").value;
     const parentCategory = getElem("category").options[getElem("category").selectedIndex].getAttribute("data-parent");
     let subRoute = parentCategory ? `${parentCategory}/${category}` : `${category}`;
-    let route = `https://github.com/CuCodersCommunity/cucoderscommunity.github.io/new/main/src/content/resources/${subRoute}/new?value=${encodedFileText}&filename=${fileName}`;
+    let route = `https://github.com/CuCodersCommunity/cucoderscommunity.github.io/new/main/src/content/resources/${subRoute}?value=${encodedFileText}&filename=${fileName}`;
     return route;
   }
 </script>
