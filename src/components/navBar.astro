@@ -24,7 +24,7 @@ import LinkIcon from "./helpers/linkIcon.astro";
 
     <div class="md:hidden w-11 h-11">
       {
-        hasRightSidebar && (
+        hasRightSidebar ? (
           <button
             data-drawer-target="drawer-right"
             data-drawer-show="drawer-right"
@@ -38,6 +38,15 @@ import LinkIcon from "./helpers/linkIcon.astro";
             <span class="sr-only">Open right menu</span>
             <img src="/assets/img/icons/filter-list.svg" class="h-7 w-7" />
           </button>
+        ) : (
+          <button
+            id="back-button"
+            type="button"
+            onclick="history.back()"
+            class="inline-flex hidden items-center p-2 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+          >
+            <img src="/assets/img/icons/arrow-back.svg" class="h-7 w-7" />
+          </button>
         )
       }
     </div>
@@ -49,7 +58,7 @@ import LinkIcon from "./helpers/linkIcon.astro";
           id="nav-community-icon"
           target="_blank"
           img="/assets/img/icons/people2.svg"
-        >  <!-- <a href=""> <img src="/assets/img/icons/briefcase.svg" class="h-7 w-7" /></a> -->
+        >
           <span class="mr-2 font-medium md:hidden lg:inline"> Comunidad</span>
         </LinkIcon>
       </div>
@@ -103,18 +112,42 @@ import LinkIcon from "./helpers/linkIcon.astro";
           >
         </li>
         <li>
-          <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-gray-700 md:p-0 md:w-auto dark:text-gray-400 dark:hover:text-white dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">Formación <svg class="w-5 h-5 ml-1" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></button>
-          <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
-              <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
-                <li>
-                  <a href="/formacion/rutas" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Rutas</a>
-                </li>
-                <li>
-                  <a href="/recursos/formacion-integral" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Recursos</a>
-                </li>
-              </ul>
+          <button
+            id="dropdownNavbarLink"
+            data-dropdown-toggle="dropdownNavbar"
+            class="flex items-center justify-between w-full py-2 pl-3 pr-4 font-medium text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-gray-700 md:p-0 md:w-auto dark:text-gray-400 dark:hover:text-white dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
+            >Formación <svg
+              class="w-5 h-5 ml-1"
+              aria-hidden="true"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+              ><path
+                fill-rule="evenodd"
+                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                clip-rule="evenodd"></path></svg
+            ></button
+          >
+          <div
+            id="dropdownNavbar"
+            class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
+          >
+            <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
+              <li>
+                <a
+                  href="/formacion/rutas"
+                  class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Rutas</a
+                >
+              </li>
+              <li>
+                <a
+                  href="/recursos/formacion-integral"
+                  class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Recursos</a
+                >
+              </li>
+            </ul>
           </div>
-      </li>
+        </li>
         <li>
           <a
             href="/recursos"
@@ -164,13 +197,19 @@ import LinkIcon from "./helpers/linkIcon.astro";
       >
     </li>
     <li>
-      <a href="/nuevo-empleo" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Publicar Empleo</a>
+      <a href="/nuevo-empleo" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+        >Publicar Empleo</a
+      >
     </li>
     <li>
-      <a href="/nuevo-evento" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Publicar Evento</a>
+      <a href="/nuevo-evento" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+        >Publicar Evento</a
+      >
     </li>
     <li>
-      <a href="/nuevo-recurso" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Adicionar Recurso</a>
+      <a href="/nuevo-recurso" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+        >Adicionar Recurso</a
+      >
     </li>
   </ul>
 
@@ -182,3 +221,10 @@ import LinkIcon from "./helpers/linkIcon.astro";
     </a>
   </div>
 </div>
+
+<script is:inline>
+  let historyListlength = history.length;
+  if (historyListlength != 0 && document.referrer.includes("cucoders.dev")) {
+    document.getElementById("back-button").classList.remove("hidden");
+  }
+</script>
