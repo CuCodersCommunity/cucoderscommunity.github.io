@@ -1,0 +1,21 @@
+---
+const { jobs } = Astro.props;
+---
+
+<div
+  class="bg-white border md:mx-auto mb-5 mt-5 py-7 px-9 lg:max-w-[58rem] border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 w-full"
+>
+  <h3 class="text-xl mb-3 font-semibold">Tambien te puede interesar</h3>
+  <ul>
+    {
+      jobs.map((job) => (
+        <li class="w-full py-3">
+          <a href={`/empleos/${job.pubDate}/${job.slug}`}>
+            <div class="font-medium text-base pb-1 text-gray-900">{job.title}</div>
+            <div class="text-sm text-gray-600 line-clamp-1">{job.description.substring(0, 256)}</div>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>
