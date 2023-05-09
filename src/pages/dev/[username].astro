@@ -30,9 +30,11 @@ const fileData = await getRemoteFileData(
 if (fileData) {
   content = marked.parse(fileData);
 }
+
+const noIndex = !('headline' in members_data[params.username])
 ---
 
-<ProfileLayout profile={members_data[params.username]} activeTab="profile" pageTitle="Perfil">
+<ProfileLayout profile={members_data[params.username]} activeTab="profile" pageTitle="Perfil" noIndex={noIndex}>
   <article
     class="my-5 prose-sm mx-auto px-10 py-6 prose-h2:mt-3 overflow-auto prose-a:underline prose-ul:list-disc prose-img:m-0 prose-img:inline break-words"
     set:html={content}
