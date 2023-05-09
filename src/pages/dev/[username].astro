@@ -31,7 +31,7 @@ if (fileData) {
   content = marked.parse(fileData);
 }
 
-const noIndex = !('headline' in members_data[params.username])
+const noIndex = !("headline" in members_data[params.username]);
 ---
 
 <ProfileLayout profile={members_data[params.username]} activeTab="profile" pageTitle="Perfil" noIndex={noIndex}>
