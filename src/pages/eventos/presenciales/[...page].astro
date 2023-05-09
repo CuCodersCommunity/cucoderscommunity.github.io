@@ -9,7 +9,13 @@ export async function getStaticPaths({ paginate }) {
   const allEvents = await getCollection("events");
 
   let filterEvents = allEvents
-    .filter((event) => event.data.endDate >= new Date() && event.data.presential)
+    .filter((event) => {
+      if (isNaN(event.data.endDate.getTime())) {
+        return event.data.startDate >= new Date() && event.data.presential;
+      } else {
+        return event.data.endDate >= new Date() && event.data.presential;
+      }
+    })
     .sort((a, b) => a.data.startDate.valueOf() - b.data.startDate.valueOf());
 
   return paginate(filterEvents, {

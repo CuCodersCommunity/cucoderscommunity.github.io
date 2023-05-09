@@ -8,7 +8,13 @@ import { getCollection } from "astro:content";
 export async function getStaticPaths({ paginate }) {
   const allEvents = await getCollection("events");
   let filterEvents = allEvents
-    .filter((event) => event.data.endDate < new Date())
+    .filter((event) => {
+      if (isNaN(event.data.endDate.getTime())) {
+        return event.data.startDate < new Date();
+      } else {
+        return event.data.endDate < new Date();
+      }
+    })
     .sort((a, b) => b.data.startDate.valueOf() - a.data.startDate.valueOf());
 
   return paginate(filterEvents, {
