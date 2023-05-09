@@ -7,7 +7,7 @@ import categories from "../data/categories.json";
 import { members_api_url } from "../data/conf.json";
 import { Image } from "@astrojs/image/components";
 
-const { post } = Astro.props;
+const { post, index } = Astro.props;
 const response = await fetch(members_api_url + "/members/" + post.data.username);
 const user_data = await response.json();
 const stats = readingTime(post.body);
@@ -15,6 +15,7 @@ const read_time = stats.text.replace("read", "");
 const description = post.data.description ? post.data.description : post.body.slice(0, 160) + "...";
 
 const display_date = dayjs(post.data.pubDate).format("D MMM. YYYY");
+let imgLoading = (index === 0 || index === 1) ? "eager" : "lazy";
 ---
 
 <div class="bg-white border border-gray-200 rounded-lg mb-5 dark:bg-gray-800 dark:border-gray-700 w-full">
@@ -28,6 +29,7 @@ const display_date = dayjs(post.data.pubDate).format("D MMM. YYYY");
           format="webp"
           quality={85}
           width={908}
+          loading={imgLoading}
           aspectRatio={16 / 9}
           fit="cover"
           position="center"
