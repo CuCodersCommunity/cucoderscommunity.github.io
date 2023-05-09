@@ -3,7 +3,7 @@ import SidebarItem from "./sidebarComponents/sidebarItem.astro";
 ---
 
 <footer class="hidden sm:block p-4 mt-8 bg-white border border-x-0 shadow md:px-6 md:py-8 dark:bg-gray-900">
-  <div class="flex items-center justify-center flex-col container mx-auto">
+  <nav class="flex items-center justify-center flex-col container mx-auto">
     <a href="#" class="flex items-center mb-6">
       <img src="/assets/img/cucoders-logo.webp" class="h-7 mr-3 sm:h-8" alt="CuCoderes Logo" />
     </a>
@@ -40,7 +40,7 @@ import SidebarItem from "./sidebarComponents/sidebarItem.astro";
         <a href="/rss.xml" target="_blank" class="hover:underline">RSS</a>
       </li>
     </ul>
-  </div>
+  </nav>
   <hr class="my-5 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-6" />
   <span class="block text-sm text-gray-500 text-center dark:text-gray-400">© 2023 CuCoders. Hecho con ❤️ en Cuba 🇨🇺</span>
 </footer>
@@ -49,18 +49,19 @@ import SidebarItem from "./sidebarComponents/sidebarItem.astro";
 <footer
   class="sm:hidden px-3 py-1 bg-white -mb-[2px] bottom-0 border border-b-0 border-x-0 shadow fixed justify-around flex left-0 z-20 w-full"
 >
-  <a href="/"> <img src="/assets/img/icons/outline-home.svg" class="h-7 w-7 m-3" /></a>
-  <a href="/directorio"> <img src="/assets/img/icons/people-group-outline.svg" class="h-7 w-7 m-3" /></a>
-  <a
+  <a href="/"> <img src="/assets/img/icons/outline-home.svg" class="h-7 w-7 m-3" alt="Inicio" /></a>
+  <a href="/directorio"> <img src="/assets/img/icons/people-group-outline.svg" class="h-7 w-7 m-3" alt="Directorio" /></a>
+  <button
     data-drawer-target="drawer-bottom-example"
     data-drawer-show="drawer-bottom-example"
     data-drawer-placement="bottom"
     aria-controls="drawer-bottom-example"
+    aria-label="Open new menu"
   >
-    <img src="/assets/img/icons/add-menu.svg" class="h-7 w-7 m-3" /></a
+    <img src="/assets/img/icons/add-menu.svg" class="h-7 w-7 m-3" alt="Nuevo" /></button
   >
-  <a href="/eventos"> <img src="/assets/img/icons/event-available-outline.svg" class="h-7 w-7 m-3" /></a>
-  <a href="/empleos"> <img src="/assets/img/icons/briefcase-line.svg" class="h-7 w-7 m-3" /></a>
+  <a href="/eventos"> <img src="/assets/img/icons/event-available-outline.svg" class="h-7 w-7 m-3" alt="Eventos" /></a>
+  <a href="/empleos"> <img src="/assets/img/icons/briefcase-line.svg" class="h-7 w-7 m-3" alt="Empleos" /></a>
 </footer>
 
 <!-- drawer component -->
