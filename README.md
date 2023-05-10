@@ -7,7 +7,7 @@ CuCoders es una plataforma creada con el fin de potenciar el desarrollo de softw
 ## Stack
 
 - [Astro](https://astro.build/)
-- [Taildwind](https://tailwindcss.com/)
+- [Tailwind](https://tailwindcss.com/)
 - [Flowbyte](https://flowbite.com/)
 - [Giscus](https://giscus.app/) for comments box
 
