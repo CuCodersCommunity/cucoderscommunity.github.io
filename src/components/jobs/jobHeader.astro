@@ -9,6 +9,14 @@ import dayjs from "dayjs";
 const { job } = Astro.props;
 
 const display_date = dayjs(job.pubDate).format("DD/MM/YY");
+
+if (
+  job.organizationWebsite &&
+  !job.organizationWebsite.includes("https://") &&
+  !job.organizationWebsite.includes("http://")
+) {
+  job.organizationWebsite = "https://" + job.organizationWebsite;
+}
 ---
 
 <div
@@ -132,6 +140,17 @@ const display_date = dayjs(job.pubDate).format("DD/MM/YY");
                   url={jobsCategories["relocate"].slug}
                 />
               </>
+            )
+          }
+          {
+            job.organization && (
+              <div class="flex">
+                <div class="w-0.5 h-5 mr-2 bg-gray-400 place-self-center hidden md:block" />
+                <a href={job.organizationWebsite} target="_blank" class="flex items-center mr-2 px-2 py-1 rounded">
+                  <img src={`/assets/img/icons/company.svg`} class="w-4 h-4 inline" />
+                  <p class="ml-1 text-xs md:text-sm">{job.organization}</p>
+                </a>
+              </div>
             )
           }
           <div class="flex">
