@@ -228,6 +228,19 @@ const display_date = dayjs(job.pubDate).format("DD/MM/YY");
         </li>
       )
     }
+    {
+      job.applyPhone && (
+        <li>
+          <a
+            href={`tel:${job.applyPhone}`}
+            target="_blank"
+            class="block px-4 cursor-pointer py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+          >
+            Tel: {job.applyPhone}
+          </a>
+        </li>
+      )
+    }
   </ul>
 </div>
 
