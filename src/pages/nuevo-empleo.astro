@@ -86,7 +86,7 @@ for (const key in categories) {
       </div>
 
       <div class="mb-6">
-        <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Descripción</label>
+        <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Descripción *</label>
         <textarea
           id="description"
           rows="6"
@@ -116,15 +116,20 @@ for (const key in categories) {
       <div class="grid gap-6 mb-6 md:grid-cols-1">
         <TextInput id="location" label="Ubicación" maxlength="250" />
       </div>
+      <div class="grid gap-6 mb-6 md:grid-cols-2">
+        <TextInput id="organization" label="Empresa" maxlength="250" type="email" />
+        <TextInput id="organizationWebsite" label="Sitio web de la empresa" maxlength="300" type="url" />
+      </div>
 
       <div class="flex justify-between">
         <h1 class="text-xl font-bold">Datos de Contacto</h1>
       </div>
       <hr class="my-4" />
-      <div class="grid gap-6 mb-6 md:grid-cols-3">
+      <div class="grid gap-6 mb-6 md:grid-cols-2">
         <TextInput id="applyEmail" label="Correo Electronico" maxlength="250" type="email" />
         <TextInput id="applyUrl" label="URL para aplicar" maxlength="250" type="url" />
-        <UsernameInput id="applyTelegramUser" label="Usuario de Telegram" maxlength="250" />
+        <UsernameInput id="applyTelegramUser" label="Nombre de usuario de Telegram" maxlength="250" />
+        <TextInput id="applyPhone" label="Número Telefónico" maxlength="250" type="tel" />
       </div>
     </div>
 
@@ -200,6 +205,9 @@ for (const key in categories) {
       applyEmail: getElem("applyEmail").value,
       applyUrl: getElem("applyUrl").value,
       applyTelegramUser: getElem("applyTelegramUser").value,
+      applyPhone: getElem("applyPhone").value,
+      organization: getElem("organization").value,
+      organizationWebsite: getElem("organizationWebsite").value,
       slug: getElem("title").value.replace(/[^a-zA-Z0-9]+/g, "-"),
     };
 
