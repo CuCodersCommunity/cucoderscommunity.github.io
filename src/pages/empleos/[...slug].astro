@@ -50,7 +50,6 @@ if (job.organization) {
   }
 }
 
-let jobTitle = job.categories.map((category) => profileCategories[category].text).join(", ");
 let jobType;
 
 if (job.fulltime) {
@@ -66,7 +65,15 @@ if (job.freelance) {
   jobType = "Freelance";
 }
 
-seoSchema["title"] = jobType ? jobType + " " + jobTitle : jobTitle;
+let jobTitle = job.title;
+
+if (job.categories) {
+  jobTitle = job.categories.map((category) => profileCategories[category].text).join(", ");
+  if (jobType) {
+    jobTitle = jobType + " " + jobTitle;
+  }
+}
+seoSchema["title"] = jobTitle;
 ---
 
 <BaseLayout title={`${job.title} | CuCoders Jobs`} seoSchema={seoSchema} description={job.description.slice(0, 180)}>
