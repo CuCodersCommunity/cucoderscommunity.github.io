@@ -3,6 +3,8 @@ import { backend_url } from "../../data/conf.json";
 import BaseLayout from "../../layouts/baseLayout.astro";
 import JobHeader from "../../components/jobs/jobHeader.astro";
 import OthersJobsCta from "../../components/jobs/othersJobsCta.astro";
+import dayjs from "dayjs";
+import profileCategories from "../../data/profileCategories.json";
 
 export async function getStaticPaths() {
   const response = await fetch(backend_url + "api/jobs/get-all-jobs");
@@ -15,9 +17,59 @@ export async function getStaticPaths() {
 }
 
 const { job, nextJobs } = Astro.props;
+
+let seoSchema = {
+  "@context": "https://schema.org/",
+  "@type": "JobPosting",
+  description: `<p>${job.title} \n\n ${job.description}</p>`,
+  datePosted: dayjs(job.pubDate).format("YYYY-MM-DD"),
+  applicantLocationRequirements: {
+    "@type": "Country",
+    name: "CUBA",
+  },
+};
+
+if (job.remote) {
+  seoSchema["jobLocationType"] = "TELECOMMUTE";
+}
+
+if (job.presential && job.location) {
+  seoSchema["jobLocation"] = {
+    "@type": "Place",
+    name: job.location,
+  };
+}
+
+if (job.organization) {
+  seoSchema["hiringOrganization"] = {
+    "@type": "Organization",
+    name: job.organization,
+  };
+  if (job.organization_site) {
+    seoSchema["hiringOrganization"]["sameAs"] = job.organization_site;
+  }
+}
+
+let jobTitle = job.categories.map((category) => profileCategories[category].text).join(", ");
+let jobType;
+
+if (job.fulltime) {
+  seoSchema["employmentType"] = "FULL_TIME";
+  jobType = "Full-time";
+}
+if (job.parttime) {
+  seoSchema["employmentType"] = "PART_TIME";
+  jobType = "Part-time";
+}
+if (job.freelance) {
+  seoSchema["employmentType"] = "CONTRACTOR";
+  jobType = "Freelance";
+}
+
+seoSchema["title"] = jobType ? jobType + " " + jobTitle : jobTitle;
 ---
 
-<BaseLayout title={`${job.title} | CuCoders Jobs`}>
+<BaseLayout title={`${job.title} | CuCoders Jobs`} seoSchema={seoSchema} description={job.description.slice(0, 180)}>
   <JobHeader job={job} />
   <div
     class="bg-white border md:mx-auto mb-5 py-7 px-9 lg:max-w-[58rem] border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 w-full"

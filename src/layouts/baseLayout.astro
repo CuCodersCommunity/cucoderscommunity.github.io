@@ -3,6 +3,7 @@ import PageMetaTags from "../components/pageMetaTags.astro";
 import NavBar from "../components/navBar.astro";
 import Footer from "../components/footer.astro";
 import MainDrawer from "../components/mainDrawer.astro";
+import { Schema } from "astro-seo-schema";
 
 const {
   title,
@@ -11,6 +12,7 @@ const {
   hasRightSidebar = false,
   noIndex = false,
   canonicalUrl,
+  seoSchema,
 } = Astro.props;
 ---
 
@@ -32,7 +34,8 @@ const {
     <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.png" />
     <meta name="generator" content={Astro.generator} />
     {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
-    {noIndex && <meta name="robots" content="noindex">}
+    {noIndex && <meta name="robots" content="noindex" />}
+    {seoSchema && <Schema item={seoSchema} />}
     <PageMetaTags title={title} description={description} image={image} />
   </head>
   <body class="bg-gray-50">
