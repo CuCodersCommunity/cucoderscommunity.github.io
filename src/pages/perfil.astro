@@ -580,7 +580,7 @@ for (const key in categories) {
     const username = (<HTMLInputElement>document.getElementById("github-username")).value;
     const data = createProfileData();
     const encodedFileData = encodeURIComponent(JSON.stringify(data));
-    const githubQueryLink = `https://github.com/${username}/${username}/new/main/cucoders_data/new?value=${encodedFileData}&filename=profile-data.json`;
+    const githubQueryLink = `https://github.com/${username}/${username}/new/main/cucoders_data?value=${encodedFileData}&filename=profile-data.json`;
     window.open(githubQueryLink);
   }
 
@@ -635,12 +635,12 @@ for (const key in categories) {
   async function setLinkAttr(username, id, file_name, newFileContent = "") {
     const encodedFileData = encodeURIComponent(newFileContent);
     let rawUrl = `https://raw.githubusercontent.com/${username}/${username}/main/cucoders_data/${file_name}`;
-    let newUrl = `https://github.com/${username}/${username}/new/main/cucoders_data/new?value=${encodedFileData}&filename=${file_name}`;
+    let newUrl = `https://github.com/${username}/${username}/new/main/cucoders_data?value=${encodedFileData}&filename=${file_name}`;
     let editUrl = `https://github.com/${username}/${username}/edit/main/cucoders_data/${file_name}`;
 
     if (id == "overview") {
       rawUrl = `https://raw.githubusercontent.com/${username}/${username}/main/README.md`;
-      newUrl = `https://github.com/${username}/${username}/new/main/new?value=${encodedFileData}&filename=README.md`;
+      newUrl = `https://github.com/${username}/${username}/new/main?value=${encodedFileData}&filename=README.md`;
       editUrl = `https://github.com/${username}/${username}/edit/main/README.md`;
     }
 
