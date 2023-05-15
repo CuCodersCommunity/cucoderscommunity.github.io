@@ -1,28 +1,29 @@
 ---
 name: "Karbonized"
 id: "Karbonized"
-description: "⭐ Make amazing images of your screenshots or your code and share them with the world 🌎"
-logo: "https://user-images.githubusercontent.com/53962116/227294212-da16af81-47bc-49d6-bd64-2be2026409a8.png"
+description: "⭐ Awesome Image Generator for Code Snippets and Screenshots"
+logo: "https://raw.githubusercontent.com/yossTheDev/karbonized/master/logo.svg" 
 email: "yossthedev@gmail.com"
 website: "https://karbonized.onrender.com/"
 is_open_source: true
 repository_url: "https://github.com/yossTheDev/karbonized/"
 twitter_username: "karbonized_app"
-telegram_username: ""
+telegram_username: "yossthedev"
 dev_username: "yossTheDev"
 pubDate: "Wed Feb 08 2023"
 categories: ["artAndDesign","dev","toolsAndUtilities"]
-platforms: ["Web"]
+platforms: ["Web", "Windows","Linux","Mac" ]
 ---
 
 <h1 align="center">Karbonized</h1>
 
 ![carbonizedlogo](https://raw.githubusercontent.com/yossTheDev/karbonized/master/img/banner.png)
 
-<p align="center">
-⭐ Make amazing images of your screenshots or your code and share them with the world 🌎</p>
 
-<p align="center"><b>Free</b> and <b>Open Source</b>  Carbon App. Made with ❤️ and ReactJS in 🇨🇺.</p>
+<p align="center">
+⭐ Awesome Image Generator for Code Snippets and Screenshots 🖼️</p>
+
+<p align="center"><b>Free</b> and <b>Open Source</b>. Made with ❤️ and ReactJS in 🇨🇺.</p>
 
 ![carbonizedscreen](https://raw.githubusercontent.com/yossTheDev/karbonized/master/img/newscreen.png)
 
@@ -30,11 +31,15 @@ platforms: ["Web"]
 
 ## 🚀 Features
 
-* 🤖 Based on **blocks** (Code,Text,QR, Mobile Mockup, Icons and more)
+* 🤖 Based on **blocks** (Code,Text,QR, Mobile Mockup, Icons, Tweet and more)
 * 🆓 Completely **Free** and **Open Source**
+* ✈️ Works Offline
 * 😍 Without Registration
 * 🤩 Without Limits
-* 😎 Made with ReactJS 😎
+* 😎 Made with ReactJS
+
+## 💻 Multiplatform
+Karbonized is now available as compiled app for Windows, Linux and Mac see [releases](https://github.com/yossTheDev/karbonized/releases) to download it
 
 ## 👥 Contribution
 
