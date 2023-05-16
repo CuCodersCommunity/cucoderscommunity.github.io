@@ -1,7 +1,7 @@
 ---
 title: "Trucos para aprender lenguajes de programación"
 pubDate: "Sat Feb 18 2023"
-image: "https://i.imgur.com/SW7H8VC.png"
+image: "https://github-production-user-asset-6210df.s3.amazonaws.com/53962116/238668011-20e11a6d-7479-44da-8ef1-649130456787.png"
 username: "Luamcho"
 categories: ["tutorials"]
 description: "Aprender a programar no es difícil, pero puede resultar tedioso y generalmente nos cuesta ver el sentido del progreso. Estos son una serie de trucos que nos pueden ayudar."
