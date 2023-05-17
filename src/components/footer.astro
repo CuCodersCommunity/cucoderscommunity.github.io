@@ -52,10 +52,10 @@ import SidebarItem from "./sidebarComponents/sidebarItem.astro";
   <a href="/"> <img src="/assets/img/icons/outline-home.svg" class="h-7 w-7 m-3" alt="Inicio" /></a>
   <a href="/directorio"> <img src="/assets/img/icons/people-group-outline.svg" class="h-7 w-7 m-3" alt="Directorio" /></a>
   <button
-    data-drawer-target="drawer-bottom-example"
-    data-drawer-show="drawer-bottom-example"
+    data-drawer-target="drawer-footer"
+    data-drawer-show="drawer-footer"
     data-drawer-placement="bottom"
-    aria-controls="drawer-bottom-example"
+    aria-controls="drawer-footer"
     aria-label="Open new menu"
   >
     <img src="/assets/img/icons/add-menu.svg" class="h-7 w-7 m-3" alt="Nuevo" /></button
@@ -66,7 +66,7 @@ import SidebarItem from "./sidebarComponents/sidebarItem.astro";
 
 <!-- drawer component -->
 <div
-  id="drawer-bottom-example"
+  id="drawer-footer"
   class="fixed bottom-0 left-0 right-0 rounded-t-lg z-40 w-full p-4 overflow-y-auto transition-transform bg-white dark:bg-gray-800 translate-y-full"
   tabindex="-1"
   aria-labelledby="drawer-bottom-label"
@@ -79,8 +79,8 @@ import SidebarItem from "./sidebarComponents/sidebarItem.astro";
   </h5>
   <button
     type="button"
-    data-drawer-hide="drawer-bottom-example"
-    aria-controls="drawer-bottom-example"
+    data-drawer-hide="drawer-footer"
+    aria-controls="drawer-footer"
     class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
   >
     <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"
