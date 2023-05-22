@@ -23,6 +23,7 @@ let seoSchema = {
   "@type": "JobPosting",
   description: `<p>${job.title} \n\n ${job.description}</p>`,
   datePosted: dayjs(job.pubDate).format("YYYY-MM-DD"),
+  validThrough: dayjs(job.pubDate).add(3, "month").format("YYYY-MM-DD"),
   applicantLocationRequirements: {
     "@type": "Country",
     name: "CUBA",
@@ -36,7 +37,11 @@ if (job.remote) {
 if (job.presential && job.location) {
   seoSchema["jobLocation"] = {
     "@type": "Place",
-    name: job.location,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: job.location,
+      addressCountry: "CU",
+    },
   };
 }
 
@@ -48,6 +53,8 @@ if (job.organization) {
   if (job.organization_site) {
     seoSchema["hiringOrganization"]["sameAs"] = job.organization_site;
   }
+} else {
+  seoSchema["hiringOrganization"] = "confidential";
 }
 
 let jobType;
