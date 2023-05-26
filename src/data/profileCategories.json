@@ -44,6 +44,11 @@
     "text": "Blockchain Developer",
     "ico": "/assets/img/icons/blockchain.svg"
   },
+  "projectManager": {
+    "slug": "project-manager",
+    "text": "Project Manager",
+    "ico": "/assets/img/icons/project.svg"
+  },
   "vrDev": {
     "slug": "vr-ar-developer",
     "text": "VR / AR Developer",
