@@ -16,7 +16,7 @@ platforms: ["Web","Navegador Web"]
 ---
 # Polkadot Staking Calculator
 
-![]![screenshot](https://github.com/erickDevUp/cucoderscommunity.github.io/assets/104710949/8f2fa395-b03e-4f07-a071-d31a0ac2651f)
+![screenshot](https://github.com/erickDevUp/cucoderscommunity.github.io/assets/104710949/8f2fa395-b03e-4f07-a071-d31a0ac2651f)
 
 ## How To Use
 - Add The Annual Reward % (APY) 
