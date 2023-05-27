@@ -14,5 +14,15 @@ pubDate: "Sun May 21 2023"
 categories: ["finances","business","toolsAndUtilities"]
 platforms: ["Web","Navegador Web"]
 ---
+# Polkadot Staking Calculator
 
-Aquí va la descripción general de tu app en formato MarkDown.
+![]![screenshot](https://github.com/erickDevUp/cucoderscommunity.github.io/assets/104710949/8f2fa395-b03e-4f07-a071-d31a0ac2651f)
+
+## How To Use
+- Add The Annual Reward % (APY) 
+- Add The Amount To Invest 
+- Discover The Return On Your Investment
+
+## Author
+
+- [Erick Garcia (ErickDevUp)](https://erickdevup.netlify.app/)
