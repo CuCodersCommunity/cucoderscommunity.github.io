@@ -15,4 +15,12 @@ categories: ["finances","business","toolsAndUtilities"]
 platforms: ["Web","Navegador Web"]
 ---
 
-Aquí va la descripción general de tu app en formato MarkDown.
+# Ethereum Staking Calculator
+
+![shot](https://github.com/erickDevUp/cucoderscommunity.github.io/assets/104710949/77ed1079-2306-4623-939e-0ea60e001508)
+
+## How to use
+
+1- Add The Annual Reward % (APY)
+2-Add The Amount To Invest
+2-Discover The Return On Your Investment
