@@ -2,7 +2,7 @@
 name: "Ethereum Staking Calculator"
 id: "Ethereum-Staking-Calculator"
 description: "Get the most out of your ethereum staking with our efficient and distraction-free calculator. Calculate your rewards hassle-free with our easy-to-use tool."
-logo: "	https://eth-staking-calculator.vercel.app/Logo.png"
+logo: "https://eth-staking-calculator.vercel.app/Logo.png"
 email: "erickgarciap779@gmail.com"
 website: "https://eth-staking-calculator.vercel.app/"
 is_open_source: true
