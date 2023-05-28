@@ -40,12 +40,12 @@ const {
     <PageMetaTags title={title} description={description} image={image} />
   </head>
   <body class="bg-gray-50">
+    <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
     <NavBar hasRightSidebar={hasRightSidebar} backUrl={backUrl} />
     <MainDrawer />
     <div class="container flex flex-wrap items-center justify-between mx-auto lg:px-4 pt-14">
       <slot />
     </div>
     <Footer />
-    <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
   </body>
 </html>
