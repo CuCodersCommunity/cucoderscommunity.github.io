@@ -13,6 +13,7 @@ const {
   noIndex = false,
   canonicalUrl,
   seoSchema,
+  backUrl = false,
 } = Astro.props;
 ---
 
@@ -39,7 +40,7 @@ const {
     <PageMetaTags title={title} description={description} image={image} />
   </head>
   <body class="bg-gray-50">
-    <NavBar hasRightSidebar={hasRightSidebar} />
+    <NavBar hasRightSidebar={hasRightSidebar} backUrl={backUrl} />
     <MainDrawer />
     <div class="container flex flex-wrap items-center justify-between mx-auto lg:px-4 pt-14">
       <slot />

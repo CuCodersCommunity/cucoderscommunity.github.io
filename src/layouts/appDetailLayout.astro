@@ -5,7 +5,7 @@ import AppHeader from "../components/apps/appHeader.astro";
 const { app } = Astro.props;
 ---
 
-<BaseLayout title={app.data.name + " | CuCoders"} description={app.data.description} image={app.data.logo}>
+<BaseLayout title={app.data.name + " | CuCoders"} description={app.data.description} image={app.data.logo} backUrl="/apps">
   <AppHeader app={app} />
   <div
     class="bg-white border md:mx-auto mb-5 lg:max-w-[58rem] border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 w-full"

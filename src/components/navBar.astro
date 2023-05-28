@@ -12,7 +12,7 @@ import LinkIcon from "./helpers/linkIcon.astro";
         <button
           id="back-button"
           type="button"
-          class="inline-flex hidden items-center p-2 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+          class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
         >
           <img src="/assets/img/icons/arrow-back.svg" class="h-7 w-7" />
         </button>
@@ -231,7 +231,7 @@ import LinkIcon from "./helpers/linkIcon.astro";
   const backBtn = document.querySelector("#back-button");
 
   backBtn &&
-    backBtn.querySelector("#back-button").addEventListener("click", function () {
+    backBtn.addEventListener("click", function () {
       if (history.length != 0 && document.referrer.includes("cucoders.dev")) {
         history.back();
       } else {

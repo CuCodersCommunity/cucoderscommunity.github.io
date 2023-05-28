@@ -83,7 +83,7 @@ if (job.categories) {
 seoSchema["title"] = jobTitle;
 ---
 
-<BaseLayout title={`${job.title} | CuCoders Jobs`} seoSchema={seoSchema} description={job.description.slice(0, 180)}>
+<BaseLayout title={`${job.title} | CuCoders Jobs`} seoSchema={seoSchema} description={job.description.slice(0, 180)} backUrl="/empleos">
   <JobHeader job={job} />
   <div
     class="bg-white border md:mx-auto mb-5 py-7 px-9 lg:max-w-[58rem] border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 w-full"
