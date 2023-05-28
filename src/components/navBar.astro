@@ -1,5 +1,5 @@
 ---
-const { hasRightSidebar } = Astro.props;
+const { hasRightSidebar, backUrl } = Astro.props;
 import LinkIcon from "./helpers/linkIcon.astro";
 ---
 
@@ -7,24 +7,37 @@ import LinkIcon from "./helpers/linkIcon.astro";
   class="bg-white/90 backdrop-blur-md px-2 sm:px-4 py-1.5 dark:bg-gray-900 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600"
 >
   <div class="container flex flex-wrap items-center justify-between mx-auto">
-    <button
-      data-drawer-target="drawer-navigation"
-      data-drawer-show="drawer-navigation"
-      data-drawer-placement="navigation"
-      aria-controls="drawer-navigation"
-      type="button"
-      class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-    >
-      <span class="sr-only">Open main menu</span>
-      <img src="/assets/img/icons/menu1.svg" class="h-7 w-7" />
-    </button>
+    {
+      backUrl ? (
+        <button
+          id="back-button"
+          type="button"
+          class="inline-flex hidden items-center p-2 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+        >
+          <img src="/assets/img/icons/arrow-back.svg" class="h-7 w-7" />
+        </button>
+      ) : (
+        <button
+          data-drawer-target="drawer-navigation"
+          data-drawer-show="drawer-navigation"
+          data-drawer-placement="navigation"
+          aria-controls="drawer-navigation"
+          type="button"
+          class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+        >
+          <span class="sr-only">Open main menu</span>
+          <img src="/assets/img/icons/menu1.svg" class="h-7 w-7" />
+        </button>
+      )
+    }
+
     <a href="/" class="flex items-center">
       <img src="/assets/img/cucoders-logo.webp" class="h-8 mr-3 sm:h-9" alt="Cucoders Logo" />
     </a>
 
     <div class="md:hidden w-11 h-11">
       {
-        hasRightSidebar ? (
+        hasRightSidebar && (
           <button
             data-drawer-target="drawer-right"
             data-drawer-show="drawer-right"
@@ -37,15 +50,6 @@ import LinkIcon from "./helpers/linkIcon.astro";
           >
             <span class="sr-only">Open right menu</span>
             <img src="/assets/img/icons/filter-list.svg" class="h-7 w-7" />
-          </button>
-        ) : (
-          <button
-            id="back-button"
-            type="button"
-            onclick="history.back()"
-            class="inline-flex hidden items-center p-2 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-          >
-            <img src="/assets/img/icons/arrow-back.svg" class="h-7 w-7" />
           </button>
         )
       }
@@ -223,9 +227,15 @@ import LinkIcon from "./helpers/linkIcon.astro";
   </div>
 </div>
 
-<script is:inline>
-  let historyListlength = history.length;
-  if (historyListlength != 0 && document.referrer.includes("cucoders.dev")) {
-    document.getElementById("back-button").classList.remove("hidden");
-  }
+<script define:vars={{ backUrl }}>
+  const backBtn = document.querySelector("#back-button");
+
+  backBtn &&
+    backBtn.querySelector("#back-button").addEventListener("click", function () {
+      if (history.length != 0 && document.referrer.includes("cucoders.dev")) {
+        history.back();
+      } else {
+        window.location.href = backUrl;
+      }
+    });
 </script>
