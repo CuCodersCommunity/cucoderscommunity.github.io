@@ -1,5 +1,6 @@
 import { marked } from "marked";
 
+// custom Renderer for marked
 class Renderer {
     constructor(options) {
         this.options = options || {};
@@ -60,16 +61,19 @@ class Renderer {
         return text;
     }
     text(text) {
-        return text;
+       return text
     }
 }
 
+/* avoid sanitizing, as that could cause encoding issues. 
+   Plus, it's deprecated */
 const plaintextOptions = {
     sanitize: false
 };
-  
+
 function convertToPlainText(markdownText) {
     const renderer = new Renderer();
+    // set checkbox option for checkbox markdown
     renderer.checkbox = (text) => {
       return text
     };
