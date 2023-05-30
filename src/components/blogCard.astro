@@ -6,8 +6,8 @@ import readingTime from "reading-time";
 import categories from "../data/categories.json";
 import { members_api_url } from "../data/conf.json";
 import { Image } from "@astrojs/image/components";
-import { convertToPlainText } from "./helpers/convertMarkdownToText";
-import { convertASCIItoText } from "./helpers/convertASCIItoText";
+import { convertMarkdownToPlainText } from "./helpers/convertMarkdownToText";
+import { convertASCIICharsToText } from "./helpers/convertASCIItoText";
 
 const { post, index } = Astro.props;
 const response = await fetch(members_api_url + "/members/" + post.data.username);
@@ -68,7 +68,7 @@ let imgLoading = (index === 0 || index === 1) ? "eager" : "lazy";
     </a>
     <a href={"/publicaciones/" + post.slug}>
       <p class="mb-5 font-normal text-gray-700 dark:text-gray-400 line-clamp-3 md:line-clamp-3">
-        {convertASCIItoText( convertToPlainText(description) )}
+        {convertASCIICharsToText( convertMarkdownToPlainText(description) )}
       </p>
     </a>
     <div class="my-2 flex justify-between">

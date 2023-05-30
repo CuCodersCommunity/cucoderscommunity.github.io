@@ -71,7 +71,7 @@ const plaintextOptions = {
     sanitize: false
 };
 
-function convertToPlainText(markdownText) {
+function convertMarkdownToPlainText(markdownText) {
     const renderer = new Renderer();
     // set checkbox option for checkbox markdown
     renderer.checkbox = (text) => {
@@ -82,4 +82,4 @@ function convertToPlainText(markdownText) {
   }
 
 
-export { convertToPlainText }
+export { convertMarkdownToPlainText }
