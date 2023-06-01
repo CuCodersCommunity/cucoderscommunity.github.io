@@ -1,7 +1,7 @@
 ---
 title: "Lanzando en Product Hunt: cosas que he aprendido a la mala"
 pubDate: "Tue May 30 2023"
-image: "https://github.com/noakmilo/noakmilo/blob/main/cucoders_data/phl.png"
+image: "https://github.com/noakmilo/noakmilo/blob/main/cucoders_data/phl.png?raw=true"
 username: "noakmilo"
 categories: ["startups"]
 description: "Este artículo es un compendio de notas sobre mis últimos lanzamientos en Product Hunt: Freemance (#12) XFX (#13)."
