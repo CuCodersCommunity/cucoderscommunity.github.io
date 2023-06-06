@@ -31,7 +31,14 @@ if (fileData) {
   content = marked.parse(fileData);
 }
 
-const noIndex = !("headline" in members_data[params.username]);
+let noIndex = !("headline" in members_data[params.username]);
+
+if (!noIndex) {
+  noIndex =
+    members_data[params.username].bio == "" &&
+    members_data[params.username].categories.length === 0 &&
+    members_data[params.username].headline == "";
+}
 ---
 
 <ProfileLayout profile={members_data[params.username]} activeTab="profile" pageTitle="Perfil" noIndex={noIndex}>
