@@ -1,11 +1,11 @@
 ---
 title: "Nodejs y Apache Kafka"
-pubDate: "Sun May 14 2023"
-image: ""
+pubDate: "Sun Jun 6 2023"
+image: "https://i.pinimg.com/564x/c2/12/4b/c2124be06ded5d423a398df32a6d41c9.jpg"
 username: "aprezcuba24"
 categories: ["tutorials","software"]
 description: "En el desarrollo de aplicaciones basados en microservicios, uno de los puntos claves es la transmisión de mensajes entre todos los componentes. Y es ahí donde Apache kafka entra en acción. Kafka fue desarrollada por LinkedIn es open source."
-canonicalUrl: "https://i.pinimg.com/564x/c2/12/4b/c2124be06ded5d423a398df32a6d41c9.jpg"
+canonicalUrl: ""
 ---
 
 ## Introducción
