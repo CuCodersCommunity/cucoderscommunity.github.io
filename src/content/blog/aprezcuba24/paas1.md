@@ -1,5 +1,5 @@
 ---
-title: "Creando mi propipo PAAS, al estilo Heroku, parte 1"
+title: "Creando mi propio PAAS, al estilo Heroku, parte 1"
 pubDate: "Sun Jun 15 2023"
 image: "https://i.pinimg.com/564x/7a/24/db/7a24db5cf388617f86b0b1462120eea3.jpg"
 username: "aprezcuba24"
@@ -53,7 +53,7 @@ services:
 - Docker: En la actualidad todas las aplicaciones que desarrollo las monto sobre docker. Lo que me permite empaquetar mejor las aplicaciones.
 - Kafka: Es un sistema de mensajería para la gestión de mensajes en un sistema basado en microservicios. Nuestro PAAS tendrá este tipo de arquitectura.
 
-Python: Para el desarrollo usaremos este lenguaje de programación. Quizás para exista otro más adecuado, pero para los objetivos de la prueba de concepto me parece perfecto python.
+Python: Para el desarrollo usaremos este lenguaje de programación. Quizás exista otro más adecuado, pero para los objetivos de la prueba de concepto me parece perfecto python.
 
 ### Roadmap
 
