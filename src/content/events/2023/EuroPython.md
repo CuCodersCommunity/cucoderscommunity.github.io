@@ -3,7 +3,7 @@ name: "EuroPython"
 description: "¡Somos la conferencia de programación de Python dirigida por voluntarios más antigua y de mayor duración en el planeta! Únase a nosotros en julio en la vibrante ciudad bohemia de Praga. ¡Estaremos juntos, celebrando nuestra pasión compartida por Pyth"
 startDate: "2023-07-17T08:00"
 endDate: "2023-07-23T17:07"
-location: ""
+location: "https://github.com/CuCodersCommunity/cucoderscommunity.github.io/assets/53962116/e199937c-8be2-4f9f-bf72-ae6df38d9674"
 image: ""
 url: "https://ep2023.europython.eu/"
 virtual: true
