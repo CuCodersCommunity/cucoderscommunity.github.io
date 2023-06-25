@@ -12,7 +12,7 @@ const featuredApps = await getFeaturedApps();
 <div class="pt-2">
   <EventsTimeLine />
   <div class="border-solid border-b-[1px] mb-3 pb-3">
-    <div class="font-medium text-gray-800 mb-4">Últimos Lanzamientos</div>
+    <div class="font-medium text-gray-800 dark:text-gray-100 mb-4">Últimos Lanzamientos</div>
     {
       lastApps.map((app) => (
         <AppItem name={app.name} img={app.logo} description={app.description} url={"/apps/" + app.url} />
@@ -21,7 +21,7 @@ const featuredApps = await getFeaturedApps();
   </div>
 
   <div class="border-solid mb-3 pb-3">
-    <div class="font-medium text-gray-800 mb-4">Aplicaciones Destacadas</div>
+    <div class="font-medium text-gray-800 dark:text-gray-100 mb-4">Aplicaciones Destacadas</div>
     {
       featuredApps.map((app) => (
         <AppItem name={app.name} img={app.logo} description={app.description} url={"/apps/" + app.url} />
