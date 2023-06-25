@@ -57,7 +57,7 @@ const {
     {seoSchema && <Schema item={seoSchema} />}
     <PageMetaTags title={title} description={description} image={image} />
   </head>
-  <body class="bg-gray-50">
+  <body class="bg-gray-50 dark:bg-gray-900">
     <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
     <NavBar hasRightSidebar={hasRightSidebar} backUrl={backUrl} />
     {!backUrl && <MainDrawer />}
