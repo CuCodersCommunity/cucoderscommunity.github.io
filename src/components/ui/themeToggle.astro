@@ -5,7 +5,7 @@ console.log("toggle")
     id="themeToggle" 
     data-toggle-theme="dark,light" 
     data-act-class="ACTIVECLASS"
-    class="mx-2 text-gray-900"
+    class="mx-2 text-gray-700 dark:text-gray-400"
     type="button">
     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-sun-moon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -19,7 +19,7 @@ console.log("toggle")
 </button>
 
 <script>
-    
+
     let themeToggleBtn = document.getElementById('themeToggle');
     
     themeToggleBtn.addEventListener('click', function() {
