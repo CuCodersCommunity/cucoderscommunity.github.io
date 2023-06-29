@@ -9,12 +9,12 @@ const jobUrl = `/empleos/${job.pubDate}/${job.slug}`;
 const locationLabel = job.location ? job.location : "Presencial";
 ---
 
-<div class="inline-flex items-center w-full p-4 pb-1 md:pb-2 text-gray-500 bg-white border border-gray-200 rounded-lg">
+<div class="inline-flex items-center w-full p-4 pb-1 md:pb-2 text-gray-500 dark:text-gray-100 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg">
   <div class="ml-2 inline-grid">
-    <a href={jobUrl} class="w-full text-base md:text:lg text-gray-800 font-semibold line-clamp-2 md:line-clamp-1"
+    <a href={jobUrl} class="w-full text-base md:text:lg text-gray-800 dark:text-gray-300 font-semibold line-clamp-2 md:line-clamp-1"
       >{job.title}</a
     >
-    <a href={jobUrl} class="w-full my-2 text-sm md:text:base text-gray-600 line-clamp-3 md:line-clamp-2">{job.description}</a
+    <a href={jobUrl} class="w-full my-2 text-sm md:text:base text-gray-600 dark:text-gray-300 line-clamp-3 md:line-clamp-2">{job.description}</a
     >
     <div
       class="flex categories flex-wrap -ml-2 justify-center md:justify-start border-t pt-2 mt-2 md:border-none md:pt-0 md:mt-0"
