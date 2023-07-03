@@ -47,7 +47,7 @@ if (!eventData.image) {
     <div class="p-8 md:px-15 lg:px-20">
       <div class="flex flex-col md:flex-row md:justify-between items-center">
         <h1
-          class="mb-1 text-3xl md:text-4xl text-center md:text-left font-bold tracking-tight text-gray-900 dark:text-white"
+          class="mb-1 text-3xl md:text-4xl text-center md:text-left font-bold tracking-tight text-gray-900 dark:text-gray-100"
         >
           {eventData.name}
         </h1>
@@ -58,7 +58,7 @@ if (!eventData.image) {
                 <a
                   href={eventData.url}
                   target="_blank"
-                  class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                  class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-gray-100 focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                   type="button"
                 >
                   <img src="/assets/img/icons/url.svg" class="h-6 w-6 min-w-[1.5rem]" />
@@ -68,7 +68,7 @@ if (!eventData.image) {
             <button
               id="dropdownMenuIconHorizontalButton"
               data-dropdown-toggle="dropdownDotsHorizontal"
-              class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+              class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-gray-100 focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
               type="button"
             >
               <img src="/assets/img/icons/menu-vertical-black.svg" class="h-6 w-6 min-w-[1.5rem]" />
@@ -113,7 +113,7 @@ if (!eventData.image) {
         <div>
           <div class="flex items-center md:mr-5 mr-3">
             <img src="/assets/img/icons/event.svg" class="w-6 h-6 inline" />
-            <spam class="ml-1 text-gray-600">{display_date}</spam>
+            <spam class="ml-1 text-gray-600 dark:text-gray-300">{display_date}</spam>
           </div>
         </div>
       </div>
@@ -122,15 +122,15 @@ if (!eventData.image) {
           eventData.location && (
             <div class="flex items-center md:mr-5 mr-3">
               <img src="/assets/img/icons/map.svg" class="w-6 h-6 inline" />
-              <spam class="ml-1 text-gray-600">{eventData.location}</spam>
+              <spam class="ml-1 text-gray-600 dark:text-gray-300">{eventData.location}</spam>
             </div>
           )
         }
-        {eventData.virtual && <spam class="mr-5 text-gray-600">#Virtual</spam>}
-        {eventData.presential && <spam class="mr-5 text-gray-600">#Presencial</spam>}
+        {eventData.virtual && <spam class="mr-5 text-gray-600 dark:text-gray-300">#Virtual</spam>}
+        {eventData.presential && <spam class="mr-5 text-gray-600 dark:text-gray-300">#Presencial</spam>}
       </div>
       <hr class="my-5" />
-      <article class="my-5 prose lg:prose-lg prose-img:mx-auto max-w-none break-words">
+      <article class="my-5 prose lg:prose-lg prose-img:mx-auto max-w-none break-words dark:text-gray-100">
         <slot />
       </article>
     </div>
