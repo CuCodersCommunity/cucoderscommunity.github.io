@@ -1,13 +1,24 @@
 ---
 const { url, text, img, target = "_self", id, size = "w-6 h-6", padding = "p-2.5" } = Astro.props;
+
+// this links will be exempted from some dark mode classes. 
+// The intention is that the majority of this items, which are social media links, 
+// have a different aesthetic than other more specific items like the Telegram Community link. 
+let linksWithoutDarkMode = ["Comunidad en Telegram"]
+if (linksWithoutDarkMode.includes(Astro.props.text)) {
+  // don't apply dark mode classes'
+  var classes = "md:inline-block text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm keychainify-checked";
+} else {
+  // apply dark mode classes
+  var classes = "md:inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-900 rounded-lg text-sm keychainify-checked";
+}
 ---
 
 <a
   href={url}
   target={target}
   data-tooltip-target={id}
-  class={padding +
-    " md:inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm keychainify-checked"}
+  class={padding + " " + classes}
 >
   <slot />
   <img src={img} class={size + " inline"} alt={text}/>
