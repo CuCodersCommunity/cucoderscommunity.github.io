@@ -3,6 +3,7 @@ import LinkIcon from "../../components/helpers/linkIcon.astro";
 import categories from "../../data/appsCategories.json";
 import ShareThisModal from "../helpers/shareThisModal.astro";
 import ReportModal from "../../components/modals/reportModal.astro";
+import DropdownMenuVerticalDots from "../ui/dropdownMenuVerticalDots.astro";
 
 const { app } = Astro.props;
 const appData = app.data;
@@ -92,14 +93,7 @@ const appData = app.data;
                   />
                 )
               }
-              <button
-                id="dropdownMenuIconHorizontalButton"
-                data-dropdown-toggle="dropdownDotsHorizontal"
-                class="p-2 md:inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm keychainify-checked"
-                type="button"
-              >
-                <img src="/assets/img/icons/menu-vertical-black.svg" class="md:w-5 md:h-5 w-6 h-6 inline" />
-              </button>
+              <DropdownMenuVerticalDots/>
             </div>
           </div>
 
