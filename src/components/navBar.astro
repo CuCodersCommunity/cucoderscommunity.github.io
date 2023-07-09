@@ -1,7 +1,7 @@
 ---
 const { hasRightSidebar, backUrl } = Astro.props;
 import LinkIcon from "./helpers/linkIcon.astro";
-import ThemeToggle from "../components/ui/themeToggle.astro";
+import ThemeToggle from "./ui/themeToggle.astro";
 
 ---
 <nav
@@ -86,7 +86,7 @@ class="bg-white/90 backdrop-blur-md px-2 sm:px-4 py-1.5 dark:bg-gray-900 fixed w
           <path d="M6 8a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V8Zm0 13a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2v-6Zm0 13a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2v-6ZM19 8a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-6a2 2 0 0 1-2-2V8Zm0 13a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-6a2 2 0 0 1-2-2v-6Zm0 13a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-6a2 2 0 0 1-2-2v-6ZM32 8a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-6a2 2 0 0 1-2-2V8Zm0 13a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-6a2 2 0 0 1-2-2v-6Zm0 13a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-6a2 2 0 0 1-2-2v-6Z"/>
         </svg>
       </button>
-      <ThemeToggle/>
+      <ThemeToggle id="navBarToggle" layout="non-mobile" />
     </div>
     <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
       <ul
@@ -248,5 +248,34 @@ class="bg-white/90 backdrop-blur-md px-2 sm:px-4 py-1.5 dark:bg-gray-900 fixed w
       } else {
         window.location.href = backUrl;
       }
+    });
+
+
+    // theme toggle script
+    let themeToggleBtn = document.getElementById('navBarToggle');
+    
+    themeToggleBtn.addEventListener('click', function() {
+
+    // if set via local storage previously
+    if (localStorage.getItem('color-theme')) {
+        if (localStorage.getItem('color-theme') === 'light') {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('color-theme', 'dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('color-theme', 'light');
+        }
+        
+        // if NOT set via local storage previously
+    } else {
+        if (document.documentElement.classList.contains('dark')) {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('color-theme', 'light');
+        } else {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('color-theme', 'dark');
+        }
+    }
+        
     });
 </script>

@@ -1,6 +1,7 @@
 ---
 import SidebarItem from "./sidebarComponents/sidebarItem.astro";
 import SidebarMultiLevelItem from "./sidebarComponents/sidebarMultiLevelItem.astro";
+import ThemeToggle from "./ui/themeToggle.astro";
 ---
 
 <div
@@ -10,11 +11,12 @@ import SidebarMultiLevelItem from "./sidebarComponents/sidebarMultiLevelItem.ast
   aria-labelledby="drawer-navigation-label"
 >
   <h5 id="drawer-navigation-label" class="text-base font-semibold text-gray-500 uppercase dark:text-gray-400">Menu</h5>
+  <ThemeToggle id="mainDrawerToggle" layout="mobile"/>
   <button
     type="button"
     data-drawer-hide="drawer-navigation"
     aria-controls="drawer-navigation"
-    class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+    class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-3.5 right-2.5 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
   >
     <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"
       ><path
@@ -72,4 +74,32 @@ import SidebarMultiLevelItem from "./sidebarComponents/sidebarMultiLevelItem.ast
   document.getElementById("close-install-app-cta").addEventListener("click", () => {
     localStorage.hideInstallAppCta = true;
   });
+
+  // theme toggle script
+  let themeToggleBtn = document.getElementById('mainDrawerToggle');
+    
+    themeToggleBtn.addEventListener('click', function() {
+
+    // if set via local storage previously
+    if (localStorage.getItem('color-theme')) {
+        if (localStorage.getItem('color-theme') === 'light') {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('color-theme', 'dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('color-theme', 'light');
+        }
+        
+        // if NOT set via local storage previously
+    } else {
+        if (document.documentElement.classList.contains('dark')) {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('color-theme', 'light');
+        } else {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('color-theme', 'dark');
+        }
+    }
+        
+    });
 </script>

@@ -1,11 +1,19 @@
 ---
-console.log("toggle")
+const { id, layout } = Astro.props
+
+let classes: string;
+
+if (layout == "mobile") {
+    classes = "text-gray-500 dark:text-gray-400 rounded-lg absolute top-4 inline-flex left-1/2"
+} else {
+    classes = "mx-2 text-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg p-2"
+}
 ---
 <button 
-    id="themeToggle" 
+    id={ id }
     data-toggle-theme="dark,light" 
     data-act-class="ACTIVECLASS"
-    class="mx-2 text-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg p-2"
+    class={ classes }
     type="button">
     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-sun-moon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -17,33 +25,3 @@ console.log("toggle")
       <path d="M3 21l18 -18" />
     </svg>
 </button>
-
-<script>
-
-    let themeToggleBtn = document.getElementById('themeToggle');
-    
-    themeToggleBtn.addEventListener('click', function() {
-
-    // if set via local storage previously
-    if (localStorage.getItem('color-theme')) {
-        if (localStorage.getItem('color-theme') === 'light') {
-            document.documentElement.classList.add('dark');
-            localStorage.setItem('color-theme', 'dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-            localStorage.setItem('color-theme', 'light');
-        }
-
-    // if NOT set via local storage previously
-    } else {
-        if (document.documentElement.classList.contains('dark')) {
-            document.documentElement.classList.remove('dark');
-            localStorage.setItem('color-theme', 'light');
-        } else {
-            document.documentElement.classList.add('dark');
-            localStorage.setItem('color-theme', 'dark');
-        }
-    }
-        
-    });
-</script>
