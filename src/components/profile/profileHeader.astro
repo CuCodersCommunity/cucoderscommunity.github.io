@@ -6,6 +6,9 @@ import ReportModal from "../../components/modals/reportModal.astro";
 import DropdownMenuVerticalDots from "../ui/dropdownMenuVerticalDots.astro";
 
 const { profile } = Astro.props;
+
+let profileIconsSizeClasses = "md:w-5 md:h-5 w-6 h-6"
+let profileIconsPaddingClasses= "p-2 dark:p-3.5"
 ---
 <div
   class="bg-white border md:mx-auto mb-5 -mt-6 md:mt-12 lg:max-w-[58rem] border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:text-gray-100 w-full"
@@ -49,7 +52,7 @@ const { profile } = Astro.props;
             <h1 class="text-gray-900 dark:text-gray-100">
               {profile.name}
             </h1>
-            <div class="py-2 md:py-0">
+            <div class="py-2 md:py-0 mt-2">
               {
                 profile["blog"] && (
                   <LinkIcon
@@ -58,8 +61,8 @@ const { profile } = Astro.props;
                     text="Web"
                     target="_blank"
                     id="profile-web"
-                    size="md:w-5 md:h-5 w-6 h-6"
-                    padding="p-2"
+                    size={ profileIconsSizeClasses }
+                    padding={ profileIconsPaddingClasses }
                   />
                 )
               }
@@ -72,8 +75,8 @@ const { profile } = Astro.props;
                     text="Email"
                     target="_blank"
                     id="profile-email"
-                    size="md:w-5 md:h-5 w-6 h-6"
-                    padding="p-2"
+                    size={ profileIconsSizeClasses }
+                    padding={ profileIconsPaddingClasses }
                   />
                 )
               }
@@ -85,8 +88,8 @@ const { profile } = Astro.props;
                     text="Twitter"
                     target="_blank"
                     id="profile-twitter"
-                    size="md:w-5 md:h-5 w-6 h-6"
-                    padding="p-2"
+                    size={ profileIconsSizeClasses }
+                    padding={ profileIconsPaddingClasses }
                   />
                 )
               }
@@ -98,8 +101,8 @@ const { profile } = Astro.props;
                     text="Telegram"
                     target="_blank"
                     id="profile-telegram"
-                    size="md:w-5 md:h-5 w-6 h-6"
-                    padding="p-2"
+                    size={ profileIconsSizeClasses }
+                    padding={ profileIconsPaddingClasses }
                   />
                 )
               }
@@ -111,8 +114,8 @@ const { profile } = Astro.props;
                     text="Linkedin"
                     target="_blank"
                     id="profile-linkedin"
-                    size="md:w-5 md:h-5 w-6 h-6"
-                    padding="p-2"
+                    size={ profileIconsSizeClasses }
+                    padding={ profileIconsPaddingClasses }
                   />
                 )
               }
@@ -124,8 +127,8 @@ const { profile } = Astro.props;
                     text="Github"
                     target="_blank"
                     id="profile-github"
-                    size="md:w-5 md:h-5 w-6 h-6"
-                    padding="p-2"
+                    size={ profileIconsSizeClasses }
+                    padding={ profileIconsPaddingClasses }
                   />
                 )
               }
