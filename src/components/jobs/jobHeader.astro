@@ -209,6 +209,19 @@ if (
 >
   <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownMenuIconHorizontalButton">
     {
+      job.applyUrl && (
+        <li>
+          <a
+            href={job.applyUrl}
+            target="_blank"
+            class="block px-4 cursor-pointer py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+          >
+            Enlace para aplicar
+          </a>
+        </li>
+      )
+    }
+    {
       job.applyEmail && (
         <li>
           <a
@@ -217,19 +230,6 @@ if (
             class="block px-4 cursor-pointer py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
           >
             Enviar Email
-          </a>
-        </li>
-      )
-    }
-    {
-      job.applyUrl && (
-        <li>
-          <a
-            href={job.applyUrl}
-            target="_blank"
-            class="block px-4 cursor-pointer py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-          >
-            Visitar Pagina web
           </a>
         </li>
       )
