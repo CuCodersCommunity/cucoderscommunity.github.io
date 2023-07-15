@@ -4,9 +4,9 @@ const { id, layout } = Astro.props
 let classes: string;
 
 if (layout == "mobile") {
-    classes = "text-gray-500 dark:text-gray-400 rounded-lg absolute top-4 inline-flex left-1/2"
+    classes = "rounded-lg absolute top-4 inline-flex left-1/2"
 } else {
-    classes = "text-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg p-0 lg:p-2"
+    classes = "hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg p-0 lg:p-2"
 }
 ---
 <button 
@@ -15,7 +15,7 @@ if (layout == "mobile") {
     data-act-class="ACTIVECLASS"
     class={ classes }
     type="button">
-    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-sun-moon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-sun-moon dark:invert dark:contrast-200 dark:saturate-0" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
       <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
       <path d="M9.173 14.83a4 4 0 1 1 5.657 -5.657" />
       <path d="M11.294 12.707l.174 .247a7.5 7.5 0 0 0 8.845 2.492a9 9 0 0 1 -14.671 2.914" />
