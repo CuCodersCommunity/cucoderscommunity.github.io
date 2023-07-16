@@ -23,14 +23,14 @@ import { Image } from "@astrojs/image/components";
 const description = post_data.description ? post_data.description : post.body.slice(0, 160) + "...";
 
 /*
-specific tailwind variants will be added for all this elements
-when the page is rendered. If done globally, the images get inverted colors.
-If any type of element is not rendering correctly, add it's HTML tag to the "elems" list'
+applying dark mode text color for each of these
+element types, since using a generic tailwind class 
+doesn't affect them
 */
-let elems = ["strong", "i", "a", "em"]
+let elems = ["i", "a", "em", "h1", "h2", "h3", "h4"]
 var postBodyClasses = ""; 
 elems.forEach(element => {
-  postBodyClasses += `dark:[&_${element}]:invert dark:[&_${element}]:saturate-0 dark:[&_${element}]:contrast-200 `
+  postBodyClasses += `dark:[&_${element}]:text-gray-100 `
 });
 
 ---
@@ -133,11 +133,10 @@ elems.forEach(element => {
         </div>
       </div>
       <!-- 
-        clases dedicadas para h1,h2,h3,h4 para el modo oscuro pq invert,
-        saturate y contrast no logran cambiar su color 
+        las etuqietas "strong" no se afectan con text-gray-100, por eso se usa invert, contrast, saturate
       -->
       <article
-        class={postBodyClasses + " my-5 prose lg:prose-lg prose-img:mx-auto max-w-none break-words prose-h1:text-3xl md:prose-h1:!text-4xl dark:text-gray-100 dark:[&_h1]:text-gray-100 dark:[&_h2]:text-gray-100 dark:[&_h3]:text-gray-100 dark:[&_h4]:text-gray-100"}
+        class={postBodyClasses + " my-5 prose lg:prose-lg prose-img:mx-auto max-w-none break-words prose-h1:text-3xl md:prose-h1:!text-4xl dark:text-gray-100 dark:[&_strong]:invert dark:[&_strong]:contrast-200 dark:[&_strong]:saturate-0"}
       >
         <slot />
       </article>
