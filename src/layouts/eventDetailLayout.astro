@@ -117,7 +117,7 @@ if (!eventData.image) {
         {
           eventData.location && (
             <div class="flex items-center md:mr-5 mr-3">
-              <img src="/assets/img/icons/map.svg" class="w-6 h-6 inline" />
+              <img src="/assets/img/icons/map.svg" class="w-6 h-6 inline dark:invert dark:contrast-200 dark:saturate-0" />
               <spam class="ml-1 text-gray-600 dark:text-gray-300">{eventData.location}</spam>
             </div>
           )
@@ -126,7 +126,7 @@ if (!eventData.image) {
         {eventData.presential && <spam class="mr-5 text-gray-600 dark:text-gray-300">#Presencial</spam>}
       </div>
       <hr class="my-5" />
-      <article class="my-5 prose lg:prose-lg prose-img:mx-auto max-w-none break-words dark:text-gray-100">
+      <article class="my-5 prose lg:prose-lg prose-img:mx-auto max-w-none break-words dark:text-gray-100 dark:[&_h1]:text-gray-100 dark:[&_h2]:text-gray-100 dark:[&_h3]:text-gray-100 dark:[&_h4]:text-gray-100 dark:[&_a]:text-gray-100 dark:[&_i]:text-gray-100 dark:[&_em]:text-gray-100 dark:[&_u]:text-gray-100 dark:[&_strong]:invert dark:[&_strong]:contrast-200 dark:[&_strong]:saturate-0">
         <slot />
       </article>
     </div>
