@@ -21,18 +21,6 @@ const user_data = await response.json();
 import { Image } from "@astrojs/image/components";
 
 const description = post_data.description ? post_data.description : post.body.slice(0, 160) + "...";
-
-/*
-applying dark mode text color for each of these
-element types, since using a generic tailwind class 
-doesn't affect them
-*/
-let elems = ["i", "a", "em", "h1", "h2", "h3", "h4"]
-var postBodyClasses = ""; 
-elems.forEach(element => {
-  postBodyClasses += `dark:[&_${element}]:text-gray-100 `
-});
-
 ---
 
 <BaseLayout
@@ -134,9 +122,12 @@ elems.forEach(element => {
       </div>
       <!-- 
         las etuqietas "strong" no se afectan con text-gray-100, por eso se usa invert, contrast, saturate
+        al resto de etiquetas se les aplica estilo con un selector específico porque de otra forma no cambian
+        con el modo oscuro
+        info: https://tailwindcss.com/blog/tailwindcss-v3-1#arbitrary-values-but-for-variants  
       -->
       <article
-        class={postBodyClasses + " my-5 prose lg:prose-lg prose-img:mx-auto max-w-none break-words prose-h1:text-3xl md:prose-h1:!text-4xl dark:text-gray-100 dark:[&_strong]:invert dark:[&_strong]:contrast-200 dark:[&_strong]:saturate-0"}
+        class="my-5 prose lg:prose-lg prose-img:mx-auto max-w-none break-words prose-h1:text-3xl md:prose-h1:!text-4xl dark:text-gray-100 dark:[&_h1]:text-gray-100 dark:[&_h2]:text-gray-100 dark:[&_h3]:text-gray-100 dark:[&_h4]:text-gray-100 dark:[&_a]:text-gray-100 dark:[&_i]:text-gray-100 dark:[&_em]:text-gray-100 dark:[&_u]:text-gray-100 dark:[&_strong]:invert dark:[&_strong]:contrast-200 dark:[&_strong]:saturate-0"
       >
         <slot />
       </article>
