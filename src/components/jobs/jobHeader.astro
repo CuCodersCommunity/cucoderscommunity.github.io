@@ -204,19 +204,6 @@ if (
 >
   <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownMenuIconHorizontalButton">
     {
-      job.applyEmail && (
-        <li>
-          <a
-            href={`mailto:${job.applyEmail}`}
-            target="_blank"
-            class="block px-4 cursor-pointer py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-          >
-            Enviar Email
-          </a>
-        </li>
-      )
-    }
-    {
       job.applyUrl && (
         <li>
           <a
@@ -224,7 +211,7 @@ if (
             target="_blank"
             class="block px-4 cursor-pointer py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
           >
-            Visitar Pagina web
+            Enlace para Aplicar
           </a>
         </li>
       )
@@ -238,6 +225,19 @@ if (
             class="block px-4 cursor-pointer py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
           >
             Contactar en Telegram
+          </a>
+        </li>
+      )
+    }
+    {
+      job.applyEmail && (
+        <li>
+          <a
+            href={`mailto:${job.applyEmail}`}
+            target="_blank"
+            class="block px-4 cursor-pointer py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+          >
+            Enviar Correo Electronico
           </a>
         </li>
       )
