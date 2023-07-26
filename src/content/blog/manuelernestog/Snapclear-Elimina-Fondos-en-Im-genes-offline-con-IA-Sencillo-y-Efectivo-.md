@@ -1,5 +1,5 @@
 ---
-title: "Snapclear: Elimina Fondos en Imágenes offline con IA ¡Sencillo y Efectivo!"
+title: "Snapclear: Elimina Fondos en Imágenes offline con IA"
 pubDate: "Wed Jul 26 2023"
 image: "https://github.com/CuCodersCommunity/cucoderscommunity.github.io/assets/53962116/ba4f291d-098f-42c7-be18-114513664413"
 username: "manuelernestog"
