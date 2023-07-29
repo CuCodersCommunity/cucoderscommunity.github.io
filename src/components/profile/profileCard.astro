@@ -33,13 +33,13 @@ const { profile } = Astro.props;
 
     {
       profile["headline"] && (
-        <span class="text-sm text-gray-500 text-center line-clamp-1 border rounded-full mx-5 dark:text-gray-400 px-3 py-0.5 ">
+        <span class="text-sm text-gray-500 text-center line-clamp-1 border rounded-full mx-5 dark:text-gray-100 dark:border-gray-700 px-3 py-0.5 ">
           {profile["headline"]}
         </span>
       )
     }
 
-    <div class="flex mt-2 line-clamp-2 text-center overflow-hidden text-sm font-normal text-gray-600 space-x-3 px-5">
+    <div class="flex mt-2 line-clamp-2 text-center overflow-hidden text-sm font-normal text-gray-600 space-x-3 px-5 dark:text-gray-100">
       {profile["bio"]}
     </div>
     <div class="px-5 flex justify-center w-full flex-wrap">

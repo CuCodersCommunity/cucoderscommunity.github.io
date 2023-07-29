@@ -8,7 +8,7 @@ const {
   subtitle,
   logo,
   categories,
-  classes = "inline-flex items-center w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg",
+  classes = "inline-flex items-center w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700",
 } = Astro.props;
 ---
 
@@ -27,8 +27,8 @@ const {
     />
   </a>
   <div class="ml-1">
-    <a href={url} class="w-full ml-2 text-lg text-gray-800 font-semibold">{title}</a>
-    <a href={url} class="w-full ml-2 text-sm md:text:base text-gray-700 line-clamp-2 md:line-clamp-1">{subtitle}</a>
+    <a href={url} class="w-full ml-2 text-lg text-gray-800 font-semibold dark:text-gray-100">{title}</a>
+    <a href={url} class="w-full ml-2 text-sm md:text:base text-gray-700 dark:text-gray-200 line-clamp-2 md:line-clamp-1">{subtitle}</a>
     <div class="mt-1 hidden md:block">
       {
         categories.map((category) => (

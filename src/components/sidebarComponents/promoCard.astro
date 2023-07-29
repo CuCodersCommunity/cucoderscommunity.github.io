@@ -3,7 +3,7 @@ const { img, title, desc, url, target="_blank" } = Astro.props;
 import { Image } from "@astrojs/image/components";
 ---
 
-<div class="overflow-y-auto rounded-md mb-5 bg-white border-solid border-[1px] border-gray-200">
+<div class="overflow-y-auto rounded-md mb-5 bg-white border-solid border-[1px] border-gray-200 dark:bg-gray-800 dark:border-gray-700">
   <a href={url} target={target}>
     <Image
       class="rounded-t-lg"

@@ -54,10 +54,10 @@ let imgLoading = index === 0 || index === 1 ? "eager" : "lazy";
         <div class="font-medium dark:text-white">
           <div>
             {user_data.name}
-            <spam class="mx-2 text-gray-700">•</spam>
-            <spam class="text-gray-500 font-normal text-sm capitalize"> {display_date}</spam>
+            <spam class="mx-2 text-gray-700 dark:text-gray-300">•</spam>
+            <spam class="text-gray-500 dark:text-gray-300 font-normal text-sm capitalize"> {display_date}</spam>
           </div>
-          <div class="text-sm text-gray-500 dark:text-gray-400">{user_data.headline}</div>
+          <div class="text-sm text-gray-500 dark:text-gray-300">{user_data.headline}</div>
         </div>
       </a>
     </div>
@@ -68,7 +68,7 @@ let imgLoading = index === 0 || index === 1 ? "eager" : "lazy";
       </h5>
     </a>
     <a href={"/publicaciones/" + post.slug}>
-      <p class="mb-5 font-normal text-gray-700 dark:text-gray-400 line-clamp-3 md:line-clamp-3">
+      <p class="mb-5 font-normal text-gray-700 dark:text-gray-300 line-clamp-3 md:line-clamp-3">
         {description}
       </p>
     </a>

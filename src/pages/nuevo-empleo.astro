@@ -71,7 +71,7 @@ for (const key in categories) {
     class="bg-white border md:mx-auto mb-5 p-8 lg:max-w-[58rem] border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 w-full"
   >
     <div class="flex justify-between">
-      <h1 class="text-xl font-bold">Nuevo Empleo</h1>
+      <h1 class="text-xl font-bold dark:text-gray-100">Nuevo Empleo</h1>
     </div>
 
     <hr class="my-4" />
@@ -96,6 +96,7 @@ for (const key in categories) {
 
       <div class="mb-6">
         <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Categorias *</label>
+        <!-- styles for this element are defined in styles/main.css-->
         <select id="categories" name="state[]" multiple placeholder="Categorias" autocomplete="off">
           <option value="">Select a state...</option>
           {categoriesList.map((category) => <option value={category.key}>{category.text}</option>)}
@@ -122,7 +123,7 @@ for (const key in categories) {
       </div>
 
       <div class="flex justify-between">
-        <h1 class="text-xl font-bold">Datos de Contacto</h1>
+        <h1 class="text-xl font-bold dark:text-gray-100">Datos de Contacto</h1>
       </div>
       <hr class="my-4" />
       <div class="grid gap-6 mb-6 md:grid-cols-2">

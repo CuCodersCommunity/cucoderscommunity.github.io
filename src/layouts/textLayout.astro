@@ -12,7 +12,14 @@ const { title, description } = Astro.props.frontmatter;
       <h1 class="my-10 text-3xl md:text-4xl text-center font-bold tracking-tight text-gray-900 dark:text-white">
         {title}
       </h1>
-      <article class="my-5 prose lg:prose-lg prose-img:mx-auto max-w-none break-words">
+      <!-- 
+        la sintaxis " [&_p] " se usa en Tailwind para simular lo que en CSS vanilla sería " div p ".
+        info: https://tailwindcss.com/blog/tailwindcss-v3-1#arbitrary-values-but-for-variants
+        en este caso se usa porque si se aplica el invert a todo el `article`, a las imagenes 
+        que puedan aparecer en el contenido tambien se les invertirá el color.
+        No se usa simplemente dark:text-gray-100 pq eso no aplica a etiquetas como <a/> o <em/>, solo a <p/>
+       -->
+      <article class="my-5 prose lg:prose-lg prose-img:mx-auto max-w-none break-words dark:[&_p]:invert dark:[&_p]:contrast-200 dark:[&_p]:saturate-0">
         <slot />
       </article>
     </div>
