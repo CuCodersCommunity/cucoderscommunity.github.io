@@ -3,11 +3,11 @@ import PromoSection from "./sidebarComponents/promoSection.astro";
 import Item from "./sidebarComponents/sidebarItem.astro";
 import SidebarMultiLevelItem from "./sidebarComponents/sidebarMultiLevelItem.astro";
 import categories from "../data/resourcesCategories.json";
-import {getSidebarClasses} from "../components/helpers/sideBar"
+import { getSidebarClasses } from "../components/helpers/sideBar";
 
 const { isSideMenu = false, openCategory = null } = Astro.props;
 
-let sidebarClass = getSidebarClasses(isSideMenu)
+let sidebarClass = getSidebarClasses(isSideMenu);
 let sidebarIdComplement = isSideMenu ? "-sidebar" : "";
 
 function isOpenCategory(categoryId) {
@@ -40,8 +40,6 @@ function isOpenCategory(categoryId) {
       }
     </ul>
   </div>
-
-  <div class="border-t my-5 h-1 border-gray-200"></div>
 
   <PromoSection />
 </aside>
