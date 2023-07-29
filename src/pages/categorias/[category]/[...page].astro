@@ -48,7 +48,7 @@ for (const [key, value] of Object.entries(categories)) {
     btnUrl="/nueva-publicacion"
     btnIcon="/assets/img/icons/write.svg"
   />
-  {page.data.length == 0 && <img src="/assets/img/emptyList.webp" class="md:w-5/6 w-full mx-auto my-4" />}
+  {page.data.length == 0 && <img src="/assets/img/emptyList.webp" class="md:w-5/6 w-full mx-auto my-4 dark:opacity-50" />}
   {page.data.map((post, index) => <BlogCard post={post} index={index} />)}
   <Pagination prev={page.url.prev} next={page.url.next} />
 </MainLayout>
