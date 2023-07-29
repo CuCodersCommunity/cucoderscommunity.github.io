@@ -2,16 +2,13 @@
 import PromoSection from "./sidebarComponents/promoSection.astro";
 import Item from "./sidebarComponents/sidebarItem.astro";
 import categories from "../data/profileCategories.json";
+import {getSidebarClasses} from "../components/helpers/sideBar"
 
 const { isSideMenu = false, openToWork = false } = Astro.props;
 
 const ulrPrefix = openToWork ? "/directorio/open-to-work/" : "/directorio/";
 
-let sidebarClass = "px-3 mb-5 py-4 overflow-y-auto rounded-md bg-white border-solid border-[1px] border-gray-200 dark:bg-gray-900 dark:border-gray-800";
-
-if (isSideMenu) {
-  sidebarClass = "mb-5 overflow-y-auto";
-}
+let sidebarClass = getSidebarClasses(isSideMenu)
 
 let categoriesList = [];
 for (const key in categories) {
