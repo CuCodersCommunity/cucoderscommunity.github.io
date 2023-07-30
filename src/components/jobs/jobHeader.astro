@@ -140,16 +140,16 @@ if (
           {
             job.organization && (
               <div class="flex">
-                <div class="w-0.5 h-5 mr-2 bg-gray-400 place-self-center hidden md:block" />
-                <a href={job.organizationWebsite} target="_blank" class="flex items-center mr-2 px-2 py-1 rounded">
-                  <img src={`/assets/img/icons/company.svg`} class="w-4 h-4 inline" />
+                <div class="w-0.5 h-5 mr-2  bg-gray-400 place-self-center hidden md:block" />
+                <a href={job.organizationWebsite} target="_blank" class="flex items-center hover:bg-gray-100 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 px-2 py-1 rounded">
+                  <img src={`/assets/img/icons/company.svg`} class="w-4 h-4 inline dark:invert dark:contrast-200 dark:saturate-0" />
                   <p class="ml-1 text-xs md:text-sm">{job.organization}</p>
                 </a>
               </div>
             )
           }
           <div class="flex">
-            <div class="w-0.5 h-5 mr-2 bg-gray-400 place-self-center hidden md:block"></div>
+            <div class="w-0.5 h-5 mx-2 bg-gray-400 place-self-center hidden md:block"></div>
             <div class="flex items-center mr-2 px-2 py-1 rounded">
               <img src={`/assets/img/icons/event-date.svg`} class="w-4 h-4 inline dark:invert dark:contrast-200 dark:saturate-0" />
               <p class="ml-1 text-xs md:text-sm dark:text-gray-100">{display_date}</p>
