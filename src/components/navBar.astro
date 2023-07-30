@@ -3,6 +3,7 @@ const { hasRightSidebar, backUrl } = Astro.props;
 import LinkIcon from "./helpers/linkIcon.astro";
 import ThemeToggle from "./ui/themeToggle.astro";
 import CucodersLogo from "./ui/cucodersLogo.astro";
+import { toggleTheme } from "./ui/themeToggle.astro";
 ---
 
 <nav
@@ -238,6 +239,12 @@ import CucodersLogo from "./ui/cucodersLogo.astro";
   </div>
 </div>
 
+<script>
+  import { toggleTheme } from "../components/helpers/darkTheme";
+  let themeToggleBtn = document.getElementById("navBarToggle");
+  themeToggleBtn && themeToggleBtn.addEventListener("click", toggleTheme);
+</script>
+
 <script define:vars={{ backUrl }}>
 const backBtn = document.querySelector("#back-button");
 
@@ -249,30 +256,4 @@ backBtn &&
       window.location.href = backUrl;
     }
   });
-
-// theme toggle script
-let themeToggleBtn = document.getElementById("navBarToggle");
-
-themeToggleBtn.addEventListener("click", function () {
-  // if set via local storage previously
-  if (localStorage.getItem("color-theme")) {
-    if (localStorage.getItem("color-theme") === "light") {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("color-theme", "dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("color-theme", "light");
-    }
-
-    // if NOT set via local storage previously
-  } else {
-    if (document.documentElement.classList.contains("dark")) {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("color-theme", "light");
-    } else {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("color-theme", "dark");
-    }
-  }
-});
 </script>

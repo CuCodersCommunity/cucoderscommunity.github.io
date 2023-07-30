@@ -21,11 +21,9 @@ const {
 <html lang="en">
   <head>
     <script>
-      if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-          document.documentElement.classList.add('dark');
-      } else {
-          document.documentElement.classList.remove('dark')
-      }
+      import { initializeTheme } from "../components/helpers/darkTheme";
+      if (!("color-theme" in localStorage)) initializeTheme();
+      if (localStorage.getItem("color-theme") === "dark") document.documentElement.classList.add("dark");
     </script>
 
     <script type="text/partytown" src="https://www.googletagmanager.com/gtag/js?id=G-PX2S82TBFB"></script>
