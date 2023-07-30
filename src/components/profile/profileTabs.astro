@@ -1,8 +1,10 @@
 ---
+import TabItem from "./tabItem.astro";
+
 const { activeTab, profile } = Astro.props;
 
 const activeTabClasses =
-  "inline-flex p-4 text-gray-600 border-b-2 border-gray-600 rounded-t-lg active dark:text-gray-500 dark:border-gray-500 group";
+  "inline-flex p-4 text-gray-700 border-b-2 border-gray-600 rounded-t-lg active dark:text-gray-100 dark:border-gray-300 group active-tab";
 const tabClasses =
   "inline-flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group";
 
@@ -16,108 +18,67 @@ for (const tab of tabsNames) {
 
 <div>
   <div class="border-b border-gray-200 dark:border-gray-700">
-    <ul class="flex flex-wrap -mb-px text-sm justify-center font-medium text-center text-gray-500 dark:text-gray-100">
-      <li class="mr-2">
-        <a href={"/dev/"+profile.username} class={tabsClasses["profile"]} aria-current="page">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="currentColor"
-            class="w-5 h-5 mr-2 text-gray-600 dark:text-gray-100"
-            viewBox="0 0 24 24"
-            ><g fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"
-              ><path d="M16 9a4 4 0 1 1-8 0a4 4 0 0 1 8 0Zm-2 0a2 2 0 1 1-4 0a2 2 0 0 1 4 0Z"></path><path
-                d="M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11s11-4.925 11-11S18.075 1 12 1ZM3 12c0 2.09.713 4.014 1.908 5.542A8.986 8.986 0 0 1 12.065 14a8.984 8.984 0 0 1 7.092 3.458A9 9 0 1 0 3 12Zm9 9a8.963 8.963 0 0 1-5.672-2.012A6.992 6.992 0 0 1 12.065 16a6.991 6.991 0 0 1 5.689 2.92A8.964 8.964 0 0 1 12 21Z"
-              ></path></g
-            ></svg
-          >
-          Perfil
-        </a>
-      </li>
-      <li class="mr-2">
-        <a href={"/dev/"+profile.username+"/curriculo"} class={tabsClasses["cv"]}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="w-5 h-5 mr-2 text-gray-400 group-hover:text-gray-500 dark:text-gray-100 dark:group-hover:text-gray-300"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            ><g fill="currentColor"
-              ><path d="M7.8 6.35c.56 0 1.01-.45 1.01-1.01S8.36 4.33 7.8 4.33s-1.01.45-1.01 1.01s.45 1.01 1.01 1.01Z"
-              ></path><path
-                fill-rule="evenodd"
-                d="M9.83 8.55c0-1.08-.91-1.86-2.03-1.86c-1.12 0-2.03.78-2.03 1.86v.51c0 .09.04.18.1.24c.06.06.15.1.24.1h3.38c.09 0 .18-.04.24-.1c.06-.06.1-.15.1-.24v-.51ZM5.75 11.5a.75.75 0 0 1 .75-.75h7a.75.75 0 0 1 0 1.5h-7a.75.75 0 0 1-.75-.75Zm0 3a.75.75 0 0 1 .75-.75h7a.75.75 0 0 1 0 1.5h-7a.75.75 0 0 1-.75-.75Z"
-                clip-rule="evenodd"></path><path
-                fill-rule="evenodd"
-                d="M2.5 2.5c0-1.102.898-2 2-2h6.69c.562 0 1.092.238 1.465.631l.006.007l4.312 4.702c.359.383.527.884.527 1.36v10.3c0 1.102-.898 2-2 2h-11c-1.102 0-2-.898-2-2v-15Zm8.689 0H4.5v15h11V7.192l-4.296-4.685l-.003-.001a.041.041 0 0 0-.012-.006Z"
-                clip-rule="evenodd"></path><path
-                fill-rule="evenodd"
-                d="M11.19.5a1 1 0 0 1 1 1v4.7h4.31a1 1 0 1 1 0 2h-5.31a1 1 0 0 1-1-1V1.5a1 1 0 0 1 1-1Z"
-                clip-rule="evenodd"></path></g
-            ></svg
-          >
-          Currículo
-        </a>
-      </li>
-      <li class="mr-2">
-        <a href={"/dev/"+profile.username+"/blog"} class={tabsClasses["blog"]}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="w-5 h-5 mr-2 text-gray-400 group-hover:text-gray-500 dark:text-gray-100 dark:group-hover:text-gray-300"
-            fill="currentColor"
-            viewBox="-0.5 -0.5 24 24"
-            ><path
-              fill="currentColor"
-              d="m21.289.98l.59.59c.813.814.69 2.257-.277 3.223L9.435 16.96l-3.942 1.442c-.495.182-.977-.054-1.075-.525a.928.928 0 0 1 .045-.51l1.47-3.976L18.066 1.257c.967-.966 2.41-1.09 3.223-.276zM8.904 2.19a1 1 0 1 1 0 2h-4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4a1 1 0 0 1 2 0v4a4 4 0 0 1-4 4h-12a4 4 0 0 1-4-4v-12a4 4 0 0 1 4-4h4z"
-            ></path></svg
-          >
-          Blog
-        </a>
-      </li>
-      <li class="mr-2">
-        <a href={"/dev/"+profile.username+"/proyectos"} class={tabsClasses["projects"]}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="w-5 h-5 mr-2 text-gray-400 group-hover:text-gray-500 dark:text-gray-100 dark:group-hover:text-gray-300"
-            fill="currentColor"
-            viewBox="0 0 32 32"
-            ><path
-              fill="currentColor"
-              d="M24 21c-.5 0-1-.2-1.4-.6l-3-3c-.4-.4-.6-.9-.6-1.4s.2-1 .6-1.4l3-3c.4-.4.9-.6 1.4-.6c.5 0 1 .2 1.4.6l3 3c.4.4.6.9.6 1.4c0 .5-.2 1-.6 1.4l-3 3c-.4.4-.9.6-1.4.6zm0-8l-3 3l3 3l3-3l-3-3zm-8 0c-.5 0-1-.2-1.4-.6l-3-3C11.2 9 11 8.5 11 8s.2-1 .6-1.4l3-3c.4-.4.9-.6 1.4-.6c.5 0 1 .2 1.4.6l3 3c.4.4.6.9.6 1.4c0 .5-.2 1-.6 1.4l-3 3c-.4.4-.9.6-1.4.6zm0-8l-3 3l3 3l3-3l-3-3zm0 24c-.5 0-1-.2-1.4-.6l-3-3c-.4-.4-.6-.9-.6-1.4s.2-1 .6-1.4l3-3c.4-.4.9-.6 1.4-.6c.5 0 1 .2 1.4.6l3 3c.4.4.6.9.6 1.4c0 .5-.2 1-.6 1.4l-3 3c-.4.4-.9.6-1.4.6zm0-8l-3 3l3 3l3-3l-3-3zm-8 0c-.5 0-1-.2-1.4-.6l-3-3C3.2 17 3 16.5 3 16s.2-1 .6-1.4l3-3c.4-.4.9-.6 1.4-.6c.5 0 1 .2 1.4.6l3 3c.4.4.6.9.6 1.4c0 .5-.2 1-.6 1.4l-3 3c-.4.4-.9.6-1.4.6zm0-8l-3 3l3 3l3-3l-3-3z"
-            ></path></svg
-          >
-          Proyectos
-        </a>
-      </li>
-      <li class="mr-2">
-        <a href={"/dev/"+profile.username+"/apps"} class={tabsClasses["apps"]}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="w-5 h-5 mr-2 text-gray-400 group-hover:text-gray-500 dark:text-gray-100 dark:group-hover:text-gray-300"
-            fill="currentColor"
-            viewBox="0 0 16 16"
-            ><g fill="currentColor"
-              ><path
-                d="M5.5 2A3.5 3.5 0 0 0 2 5.5v5A3.5 3.5 0 0 0 5.5 14h5a3.5 3.5 0 0 0 3.5-3.5V8a.5.5 0 0 1 1 0v2.5a4.5 4.5 0 0 1-4.5 4.5h-5A4.5 4.5 0 0 1 1 10.5v-5A4.5 4.5 0 0 1 5.5 1H8a.5.5 0 0 1 0 1H5.5z"
-              ></path><path d="M16 3a3 3 0 1 1-6 0a3 3 0 0 1 6 0z"></path></g
-            ></svg
-          >
-          Aplicaciones
-        </a>
-      </li>
-      <li class="mr-2">
-        <a href={"/dev/"+profile.username+"/servicios"} class={tabsClasses["services"]}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="w-5 h-5 mr-2 text-gray-400 group-hover:text-gray-500 dark:text-gray-100 dark:group-hover:text-gray-300"
-            fill="currentColor"
-            viewBox="0 0 24 24"
-            ><path
-              fill="currentColor"
-              d="M4 21q-.825 0-1.412-.587Q2 19.825 2 19V8q0-.825.588-1.412Q3.175 6 4 6h4V4q0-.825.588-1.413Q9.175 2 10 2h4q.825 0 1.413.587Q16 3.175 16 4v2h4q.825 0 1.413.588Q22 7.175 22 8v11q0 .825-.587 1.413Q20.825 21 20 21Zm6-15h4V4h-4Z"
-            ></path></svg
-          >
-          Servicios
-        </a>
-      </li>
+    <ul class="flex flex-wrap -mb-px text-sm justify-center font-medium text-center text-gray-400 dark:text-gray-400">
+      <TabItem label="Perfil" url={"/dev/" + profile.username} tabClasses={tabsClasses["profile"]}>
+        <path d="M16 9a4 4 0 1 1-8 0a4 4 0 0 1 8 0Zm-2 0a2 2 0 1 1-4 0a2 2 0 0 1 4 0Z"></path><path
+          d="M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11s11-4.925 11-11S18.075 1 12 1ZM3 12c0 2.09.713 4.014 1.908 5.542A8.986 8.986 0 0 1 12.065 14a8.984 8.984 0 0 1 7.092 3.458A9 9 0 1 0 3 12Zm9 9a8.963 8.963 0 0 1-5.672-2.012A6.992 6.992 0 0 1 12.065 16a6.991 6.991 0 0 1 5.689 2.92A8.964 8.964 0 0 1 12 21Z"
+        ></path>
+      </TabItem>
+
+      <TabItem label="Currículo" url={"/dev/" + profile.username + "/curriculo"} tabClasses={tabsClasses["cv"]}>
+        <path d="M7.8 6.35c.56 0 1.01-.45 1.01-1.01S8.36 4.33 7.8 4.33s-1.01.45-1.01 1.01s.45 1.01 1.01 1.01Z"></path><path
+          fill-rule="evenodd"
+          d="M9.83 8.55c0-1.08-.91-1.86-2.03-1.86c-1.12 0-2.03.78-2.03 1.86v.51c0 .09.04.18.1.24c.06.06.15.1.24.1h3.38c.09 0 .18-.04.24-.1c.06-.06.1-.15.1-.24v-.51ZM5.75 11.5a.75.75 0 0 1 .75-.75h7a.75.75 0 0 1 0 1.5h-7a.75.75 0 0 1-.75-.75Zm0 3a.75.75 0 0 1 .75-.75h7a.75.75 0 0 1 0 1.5h-7a.75.75 0 0 1-.75-.75Z"
+          clip-rule="evenodd"></path><path
+          fill-rule="evenodd"
+          d="M2.5 2.5c0-1.102.898-2 2-2h6.69c.562 0 1.092.238 1.465.631l.006.007l4.312 4.702c.359.383.527.884.527 1.36v10.3c0 1.102-.898 2-2 2h-11c-1.102 0-2-.898-2-2v-15Zm8.689 0H4.5v15h11V7.192l-4.296-4.685l-.003-.001a.041.041 0 0 0-.012-.006Z"
+          clip-rule="evenodd"></path><path
+          fill-rule="evenodd"
+          d="M11.19.5a1 1 0 0 1 1 1v4.7h4.31a1 1 0 1 1 0 2h-5.31a1 1 0 0 1-1-1V1.5a1 1 0 0 1 1-1Z"
+          clip-rule="evenodd"></path>
+      </TabItem>
+
+      <TabItem label="Blog" url={"/dev/" + profile.username + "/blog"} tabClasses={tabsClasses["blog"]}>
+        <path
+          fill="currentColor"
+          d="m21.289.98l.59.59c.813.814.69 2.257-.277 3.223L9.435 16.96l-3.942 1.442c-.495.182-.977-.054-1.075-.525a.928.928 0 0 1 .045-.51l1.47-3.976L18.066 1.257c.967-.966 2.41-1.09 3.223-.276zM8.904 2.19a1 1 0 1 1 0 2h-4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4a1 1 0 0 1 2 0v4a4 4 0 0 1-4 4h-12a4 4 0 0 1-4-4v-12a4 4 0 0 1 4-4h4z"
+        ></path>
+      </TabItem>
+
+      <TabItem
+        label="Proyectos"
+        url={"/dev/" + profile.username + "/proyectos"}
+        viewBox="0 0 32 32"
+        tabClasses={tabsClasses["projects"]}
+      >
+        <path
+          fill="currentColor"
+          d="M24 21c-.5 0-1-.2-1.4-.6l-3-3c-.4-.4-.6-.9-.6-1.4s.2-1 .6-1.4l3-3c.4-.4.9-.6 1.4-.6c.5 0 1 .2 1.4.6l3 3c.4.4.6.9.6 1.4c0 .5-.2 1-.6 1.4l-3 3c-.4.4-.9.6-1.4.6zm0-8l-3 3l3 3l3-3l-3-3zm-8 0c-.5 0-1-.2-1.4-.6l-3-3C11.2 9 11 8.5 11 8s.2-1 .6-1.4l3-3c.4-.4.9-.6 1.4-.6c.5 0 1 .2 1.4.6l3 3c.4.4.6.9.6 1.4c0 .5-.2 1-.6 1.4l-3 3c-.4.4-.9.6-1.4.6zm0-8l-3 3l3 3l3-3l-3-3zm0 24c-.5 0-1-.2-1.4-.6l-3-3c-.4-.4-.6-.9-.6-1.4s.2-1 .6-1.4l3-3c.4-.4.9-.6 1.4-.6c.5 0 1 .2 1.4.6l3 3c.4.4.6.9.6 1.4c0 .5-.2 1-.6 1.4l-3 3c-.4.4-.9.6-1.4.6zm0-8l-3 3l3 3l3-3l-3-3zm-8 0c-.5 0-1-.2-1.4-.6l-3-3C3.2 17 3 16.5 3 16s.2-1 .6-1.4l3-3c.4-.4.9-.6 1.4-.6c.5 0 1 .2 1.4.6l3 3c.4.4.6.9.6 1.4c0 .5-.2 1-.6 1.4l-3 3c-.4.4-.9.6-1.4.6zm0-8l-3 3l3 3l3-3l-3-3z"
+        ></path>
+      </TabItem>
+
+      <TabItem
+        label="Aplicaciones"
+        url={"/dev/" + profile.username + "/apps"}
+        viewBox="0 0 16 16"
+        tabClasses={tabsClasses["apps"]}
+      >
+        <path
+          d="M5.5 2A3.5 3.5 0 0 0 2 5.5v5A3.5 3.5 0 0 0 5.5 14h5a3.5 3.5 0 0 0 3.5-3.5V8a.5.5 0 0 1 1 0v2.5a4.5 4.5 0 0 1-4.5 4.5h-5A4.5 4.5 0 0 1 1 10.5v-5A4.5 4.5 0 0 1 5.5 1H8a.5.5 0 0 1 0 1H5.5z"
+        ></path><path d="M16 3a3 3 0 1 1-6 0a3 3 0 0 1 6 0z"></path>
+      </TabItem>
+
+      <TabItem
+        label="Servicios"
+        url={"/dev/" + profile.username + "/servicios"}
+        viewBox="0 0 24 24"
+        tabClasses={tabsClasses["services"]}
+      >
+        <path
+          fill="currentColor"
+          d="M4 21q-.825 0-1.412-.587Q2 19.825 2 19V8q0-.825.588-1.412Q3.175 6 4 6h4V4q0-.825.588-1.413Q9.175 2 10 2h4q.825 0 1.413.587Q16 3.175 16 4v2h4q.825 0 1.413.588Q22 7.175 22 8v11q0 .825-.587 1.413Q20.825 21 20 21Zm6-15h4V4h-4Z"
+        ></path>
+      </TabItem>
     </ul>
   </div>
 </div>

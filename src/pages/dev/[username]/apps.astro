@@ -38,7 +38,7 @@ const userApps = await getCollection("apps", ({ id }) => {
           url={"/apps/" + app.slug}
           logo={app.data.logo}
           categories={app.data.categories}
-          classes = "inline-flex items-center p-5 text-gray-500 bg-white border-gray-200 border-b px-10"
+          classes = "inline-flex items-center p-5 text-gray-500 bg-white border-gray-200 dark:bg-gray-800 border-b dark:border-gray-700 px-10"
         />
       ))
     }
