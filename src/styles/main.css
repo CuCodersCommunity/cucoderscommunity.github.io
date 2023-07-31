@@ -42,3 +42,13 @@
   color: white !important;
   border-color: rgb(75 85 99 / var(--tw-border-opacity)) !important;
 }
+
+.dark input:-webkit-autofill {
+  -webkit-box-shadow:0 0 0 50px #374151 inset; /* Change the color to your own background color */
+  -webkit-text-fill-color: white;
+}
+
+.dark input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 50px #374151 inset;/*your box-shadow*/
+  -webkit-text-fill-color: white;
+} 
