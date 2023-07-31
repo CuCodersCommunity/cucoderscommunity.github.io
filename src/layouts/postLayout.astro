@@ -68,7 +68,7 @@ const description = post_data.description ? post_data.description : post.body.sl
 
         <div class="flex items-center">
           <div class="text-sm hidden md:block text-gray-500 dark:text-gray-400 mr-3">{read_time} lectura</div>
-          <DropdownMenuVerticalDots/>
+          <DropdownMenuVerticalDots />
         </div>
 
         <!-- Dropdown menu -->
@@ -154,9 +154,44 @@ const description = post_data.description ? post_data.description : post.body.sl
   data-reactions-enabled="1"
   data-emit-metadata="0"
   data-input-position="top"
-  data-theme="https://cucoders.dev/assets/styles/giscus_custom_style.css"
+  data-theme="http://localhost:3000/assets/styles/giscus_style.css"
   data-lang="es"
   data-loading="lazy"
   crossorigin="anonymous"
   async
 ></script>
+
+<script is:inline>
+function handleMessage(event) {
+  if (event.origin !== "https://giscus.app") return;
+  if (!(typeof event.data === "object" && event.data.giscus)) return;
+  setGiscusTheme(localStorage.getItem("color-theme"));
+  window.removeEventListener("message", handleMessage);
+}
+
+function sendMessage(message) {
+  const iframe = document.querySelector("iframe.giscus-frame");
+  if (!iframe) return;
+  iframe.contentWindow.postMessage({ giscus: message }, "https://giscus.app");
+}
+
+function setGiscusTheme(theme) {
+  const themeStyle =
+    theme === "light"
+      ? "http://localhost:3000/assets/styles/giscus_style.css"
+      : "http://localhost:3000/assets/styles/giscus_dark_style.css";
+  sendMessage({
+    setConfig: {
+      theme: themeStyle,
+    },
+  });
+}
+
+window.addEventListener("message", handleMessage);
+
+document.querySelector("#navBarToggle").addEventListener("click", function () {
+  setTimeout(function () {
+    setGiscusTheme(localStorage.getItem("color-theme"));
+  }, 50);
+});
+</script>
