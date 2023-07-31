@@ -63,7 +63,10 @@ import UserProfileMenu from "./userProfileMenu.astro";
         type="button"
         aria-label="Open main menu"
       >
-        <img src="/assets/img/icons/add-squared2.svg" class="h-7 w-7 dark:invert opacity-60 dark:contrast-200 dark:saturate-0" />
+        <img
+          src="/assets/img/icons/add-squared2.svg"
+          class="h-7 w-7 dark:invert opacity-60 dark:contrast-200 dark:saturate-0"
+        />
       </button>
       <UserProfileMenu />
     </div>
@@ -156,28 +159,8 @@ import UserProfileMenu from "./userProfileMenu.astro";
 <!-- Main menu dropdown -->
 <div
   id="dropdownMainMenu"
-  class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
+  class="z-50 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
 >
-  <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownMenuIconButton">
-    <li>
-      <a
-        href="/perfil"
-        class="inline-flex w-full items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-      >
-        <img src="/assets/img/icons/profile.svg" class="w-5 h-5 mr-2 dark:invert dark:contrast-200 dark:saturate-0" />
-        Perfil
-      </a>
-    </li>
-    <li>
-      <a
-        href="/registro"
-        class="inline-flex w-full items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-      >
-        <img src="/assets/img/icons/login.svg" class="w-5 h-5 mr-2 dark:invert dark:contrast-200 dark:saturate-0" />
-        Regístrate
-      </a>
-    </li>
-  </ul>
   <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownMenuIconButton">
     <li>
       <a href="/nueva-publicacion" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
@@ -189,6 +172,8 @@ import UserProfileMenu from "./userProfileMenu.astro";
         >Publicar Aplicación</a
       >
     </li>
+  </ul>
+  <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownMenuIconButton">
     <li>
       <a href="/nuevo-empleo" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
         >Publicar Empleo</a
@@ -206,12 +191,6 @@ import UserProfileMenu from "./userProfileMenu.astro";
     </li>
   </ul>
 </div>
-
-<script>
-  import { toggleTheme } from "../components/helpers/darkTheme";
-  let themeToggleBtn = document.getElementById("navBarToggle");
-  themeToggleBtn && themeToggleBtn.addEventListener("click", toggleTheme);
-</script>
 
 <script define:vars={{ backUrl }}>
 const backBtn = document.querySelector("#back-button");
