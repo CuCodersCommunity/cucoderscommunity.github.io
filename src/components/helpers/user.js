@@ -22,4 +22,4 @@ async function loggingUser(username) {
   }
 }
 
-export { isUserLogged, initializeUser, loggoutUser, loggingUser };
+export { isUserLogged, loggoutUser, loggingUser };

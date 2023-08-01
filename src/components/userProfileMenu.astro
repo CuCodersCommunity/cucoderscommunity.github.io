@@ -5,8 +5,12 @@
   type="button"
 >
   <span class="sr-only">Open user menu</span>
-  <!-- <img src="/assets/img/icons/profile.svg" class="w-8 h-8 opacity-70 dark:invert dark:contrast-200 dark:saturate-0" /> -->
-  <img class="w-9 h-9 rounded-full" src="https://avatars.githubusercontent.com/u/53962116?v=4" alt="user photo" />
+  <img
+    id="noUserAvatar"
+    src="/assets/img/icons/account-circle-baseline.svg"
+    class="w-8 h-8 opacity-70 dark:invert dark:contrast-200 dark:saturate-0"
+  />
+  <img id="userAvatar" class="w-9 h-9 rounded-full hidden" src="" alt="user photo" />
 </button>
 
 <!-- Dropdown menu -->
@@ -76,4 +80,17 @@
   import { toggleTheme } from "../components/helpers/darkTheme";
   let themeToggleBtn = document.getElementById("navBarToggle");
   themeToggleBtn && themeToggleBtn.addEventListener("click", toggleTheme);
+</script>
+
+<script>
+  import { isUserLogged } from "./helpers/user";
+
+  const noUserAvatar = document.getElementById("noUserAvatar");
+  const userAvatar = document.getElementById("userAvatar");
+
+  if (isUserLogged() && userAvatar) {
+    userAvatar.src = localStorage.getItem("user_avatar_url");
+    userAvatar.classList.remove("hidden");
+    noUserAvatar && noUserAvatar.classList.add("hidden");
+  }
 </script>
