@@ -20,6 +20,7 @@ async function loggingUser(username) {
     localStorage.setItem("user_url", "https://cucoders.dev/dev/" + username);
     localStorage.setItem("user_avatar_url", `https://avatars.githubusercontent.com/u/${userdata.id}?s=36&v=`);
   }
+  return userdata;
 }
 
 export { isUserLogged, loggoutUser, loggingUser };

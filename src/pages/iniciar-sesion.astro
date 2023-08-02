@@ -83,7 +83,7 @@ import "../styles/main.css";
             >
 
             <p class="text-sm font-light text-gray-500 dark:text-gray-400">
-              ¿No tienes cuenta aún? <a
+              ¿No eres miembro aún? <a
                 href="/registro"
                 class="ml-2 font-medium text-primary-600 hover:underline dark:text-primary-500"
               >
@@ -101,6 +101,7 @@ import "../styles/main.css";
 <script>
   import { backend_url } from "../data/conf.json";
   import { showToast } from "../components/toast/toast";
+  import { loggingUser } from "../components/helpers/user";
 
   const logginBtn = document.getElementById("logginBtn");
   logginBtn.addEventListener("click", logginUser, true);
@@ -111,13 +112,21 @@ import "../styles/main.css";
     disableInput();
     const isMember = await isCommunityMemeber(username);
     if (!isMember) {
-      const alert = `El usuario ${username} no es miembro de la Comunidad. Necesitas registrarte primero para actualizar tu perfil.`;
+      const alert = `El usuario ${username} no es miembro de la Comunidad. Necesitas registrarte primero para iniciar tu sesión.`;
       showToast(alert, true);
       enableInput();
       return;
     }
 
-    loadGithubUserData(username);
+    loggingUser(username)
+      .then((data) => {
+        enableInput();
+        window.location.href = "/perfil";
+      })
+      .catch((e) => {
+        showToast("Ocurrió un error inesperado. Por favor vuelva a intentarlo más tarde.", true);
+        enableInput();
+      });
   }
 
   async function isCommunityMemeber(username) {
@@ -129,21 +138,6 @@ import "../styles/main.css";
     } catch {
       return false;
     }
-  }
-
-  function loadGithubUserData(username) {
-    fetch("https://api.github.com/users/" + username, {
-      method: "GET",
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        enableInput();
-        showToast("Datos de usuario cargados satisfactoriamente.");
-      })
-      .catch((e) => {
-        showToast("Ocurrió un error inesperado. Por favor vuelva a intentarlo más tarde.", true);
-        enableInput();
-      });
   }
 
   function showForm() {
@@ -160,9 +154,9 @@ import "../styles/main.css";
   }
 
   function enableInput() {
-    (<HTMLInputElement>document.getElementById("logginBtn")).removeAttribute("disabled");
-    (<HTMLInputElement>document.getElementById("spinner-ico")).classList.add("hidden");
-    (<HTMLInputElement>document.getElementById("spinner-ico")).classList.remove("inline");
-    (<HTMLInputElement>document.getElementById("github-ico")).classList.remove("hidden");
+    (document.getElementById("logginBtn") as HTMLInputElement).removeAttribute("disabled");
+    (document.getElementById("spinner-ico") as HTMLInputElement).classList.add("hidden");
+    (document.getElementById("spinner-ico") as HTMLInputElement).classList.remove("inline");
+    (document.getElementById("github-ico") as HTMLInputElement).classList.remove("hidden");
   }
 </script>
