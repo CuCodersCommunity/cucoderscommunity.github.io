@@ -123,11 +123,22 @@ import CucodersLogo from "./ui/cucodersLogo.astro";
     <span class="sr-only">Close menu</span>
   </button>
 
-  <ul class="space-y-2 dark:border-gray-700">
+  <ul class="space-y-2 mb-2 dark:border-gray-700 pointer-events-none opacity-50" id="footer-logged-user-actions">
     <SidebarItem text="Publicar Artículo" url="/nueva-publicacion" />
+    <SidebarItem text="Adicionar Aplicación" url="/nueva-app" />
+  </ul>
+  <ul class="space-y-2 dark:border-gray-700">
     <SidebarItem text="Publicar Empleo" url="/nuevo-empleo" />
     <SidebarItem text="Crear Evento" url="/nuevo-evento" />
-    <SidebarItem text="Adicionar Aplicación" url="/nueva-app" />
     <SidebarItem text="Adicionar Recurso" url="/nuevo-recurso" />
   </ul>
 </div>
+
+<script>
+  import { isUserLogged } from "./helpers/user";
+
+  if (isUserLogged()) {
+    const actionsMenu = document.getElementById("footer-logged-user-actions");
+    actionsMenu && actionsMenu.classList.remove("opacity-50", "pointer-events-none");
+  }
+</script>
