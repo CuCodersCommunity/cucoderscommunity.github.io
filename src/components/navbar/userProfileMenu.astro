@@ -90,13 +90,13 @@
 </ul>
 
 <script>
-  import { toggleTheme } from "../components/helpers/darkTheme";
+  import { toggleTheme } from "../../components/helpers/darkTheme";
   let themeToggleBtn = document.getElementById("navBarToggle");
   themeToggleBtn && themeToggleBtn.addEventListener("click", toggleTheme);
 </script>
 
 <script>
-  import { isUserLogged, loggoutUser } from "./helpers/user";
+  import { isUserLogged, loggoutUser } from "../helpers/user";
 
   const noUserAvatar = document.getElementById("noUserAvatar");
   const userAvatar = document.getElementById("userAvatar");

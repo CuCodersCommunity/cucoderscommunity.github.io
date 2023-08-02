@@ -1,0 +1,57 @@
+<button
+  id="maninMenuDropdown"
+  data-dropdown-toggle="dropdownMainMenu"
+  class="inline-flex items-center p-1 text-sm font-medium text-center text-gray-900 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+  type="button"
+  aria-label="Open main menu"
+>
+  <img src="/assets/img/icons/add-squared2.svg" class="h-7 w-7 dark:invert opacity-60 dark:contrast-200 dark:saturate-0" />
+</button>
+
+<div
+  id="dropdownMainMenu"
+  class="z-50 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
+>
+  <ul
+    id="logged-user-actions"
+    class="py-2 text-sm text-gray-700 dark:text-gray-200 opacity-50 pointer-events-none"
+    aria-labelledby="dropdownMenuIconButton"
+  >
+    <li>
+      <a href="/nueva-publicacion" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+        >Crear Publicación</a
+      >
+    </li>
+    <li>
+      <a href="/nueva-app" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+        >Publicar Aplicación</a
+      >
+    </li>
+  </ul>
+  <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownMenuIconButton">
+    <li>
+      <a href="/nuevo-empleo" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+        >Publicar Empleo</a
+      >
+    </li>
+    <li>
+      <a href="/nuevo-evento" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+        >Publicar Evento</a
+      >
+    </li>
+    <li>
+      <a href="/nuevo-recurso" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+        >Adicionar Recurso</a
+      >
+    </li>
+  </ul>
+</div>
+
+<script>
+  import { isUserLogged } from "../helpers/user";
+
+  if (isUserLogged()) {
+    const actionsMenu = document.getElementById("logged-user-actions");
+    actionsMenu && actionsMenu.classList.remove("opacity-50", "pointer-events-none");
+  }
+</script>
