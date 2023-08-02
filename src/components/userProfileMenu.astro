@@ -18,7 +18,7 @@
   id="dropdownAvatar"
   class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
 >
-  <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownMenuIconButton">
+  <ul class="py-2 text-sm text-gray-700 dark:text-gray-200 user-not-logged" aria-labelledby="dropdownMenuIconButton">
     <li>
       <a
         href="/registro"
@@ -39,14 +39,15 @@
     </li>
   </ul>
 
-  <!-- <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">
-    <div>Manuel Ernesto</div>
-    <div class="font-medium truncate">@manuelernestog</div>
+  <div class="px-4 py-3 text-sm text-gray-900 dark:text-white user-logged hidden">
+    <div id="user_name">Manuel Ernesto</div>
+    <div id="user_username" class="font-medium truncate">@manuelernestog</div>
   </div>
 
-  <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownMenuIconButton">
+  <ul class="py-2 text-sm text-gray-700 dark:text-gray-200 user-logged hidden" aria-labelledby="dropdownMenuIconButton">
     <li>
       <a
+        id="viewUserProfileLink"
         href="#"
         class="inline-flex w-full items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
       >
@@ -64,7 +65,7 @@
       </a>
     </li>
   </ul>
-   -->
+
   <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownUserAvatarButton">
     <li>
       <a
@@ -77,15 +78,15 @@
       </a>
     </li>
   </ul>
-  <!-- <div class="py-2 text-gray-700 dark:text-gray-200">
-    <a
-      href="#"
+  <div class="py-2 text-gray-700 dark:text-gray-200 user-logged hidden">
+    <button
+      id="loggout-btn"
       class="inline-flex w-full items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
     >
       <img src="/assets/img/icons/log-out.svg" class="w-5 h-5 mr-2 dark:invert dark:contrast-200 dark:saturate-0" />
       Salir
-    </a>
-  </div> -->
+    </button>
+  </div>
 </ul>
 
 <script>
@@ -95,14 +96,33 @@
 </script>
 
 <script>
-  import { isUserLogged } from "./helpers/user";
+  import { isUserLogged, loggoutUser } from "./helpers/user";
 
   const noUserAvatar = document.getElementById("noUserAvatar");
   const userAvatar = document.getElementById("userAvatar");
+  const userUsername = document.getElementById("user_username");
+  const userName = document.getElementById("user_name");
+  const viewUserProfileLink = document.getElementById("viewUserProfileLink");
+  const userLoggedElements = document.querySelectorAll(".user-logged");
+  const userNotLoggedElements = document.querySelectorAll(".user-not-logged");
 
-  if (isUserLogged() && userAvatar) {
-    userAvatar.src = localStorage.getItem("user_avatar_url");
-    userAvatar.classList.remove("hidden");
+  const loggoutBtn = document.getElementById("loggout-btn");
+  loggoutBtn &&
+    loggoutBtn.addEventListener("click", () => {
+      loggoutUser();
+      location.reload();
+    });
+
+  if (isUserLogged()) {
+    if (userAvatar) {
+      userAvatar.src = localStorage.getItem("user_avatar_url");
+      userAvatar.classList.remove("hidden");
+    }
     noUserAvatar && noUserAvatar.classList.add("hidden");
+    userLoggedElements.forEach((element) => element.classList.remove("hidden"));
+    userNotLoggedElements.forEach((element) => element.classList.add("hidden"));
+    userName && (userName.innerHTML = localStorage.getItem("user_name") || "");
+    userUsername && (userUsername.innerHTML = "@" + localStorage.getItem("user_username"));
+    viewUserProfileLink && viewUserProfileLink.setAttribute("href", "/dev/" + localStorage.getItem("user_username"));
   }
 </script>
