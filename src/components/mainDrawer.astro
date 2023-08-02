@@ -13,26 +13,26 @@ import ThemeToggle from "./ui/themeToggle.astro";
   <h5 id="drawer-navigation-label" class="text-base font-semibold text-gray-500 uppercase dark:text-gray-400">Menu</h5>
   <ThemeToggle id="mainDrawerToggle" layout="mobile" />
   <div class="py-4 overflow-y-auto">
-    <div class="px-4 py-2 flex text-sm text-gray-900 dark:text-white items-center user-logged">
+    <div id="drawer-avatar" class="px-4 py-2 hidden text-sm text-gray-900 dark:text-white items-center user-logged">
       <img
-        id="userAvatar"
+        id="drawer_user_avatar"
         class="w-12 h-12 mr-3 rounded-full inline"
         src="https://avatars.githubusercontent.com/u/53962116?s=48&v="
         alt="user photo"
       />
       <div class="inline-block">
-        <div id="user_name">Manuel Ernesto</div>
-        <div id="user_username" class="font-medium truncate">@manuelernestog</div>
+        <div id="drawer_user_name" class="truncate"></div>
+        <div id="drawer_user_username" class="font-medium truncate"></div>
       </div>
     </div>
 
-    <ul class="space-y-2 pt-4 mt-4 border-t border-gray-200 dark:border-gray-700">
+    <ul class="space-y-2 dark:border-gray-700 user-not-logged">
       <SidebarItem ico="/assets/img/icons/login.svg" text="Regístrate" url="/registro" />
       <SidebarItem ico="/assets/img/icons/account.svg" text=" Iniciar Sesión" url="/iniciar-sesion" />
     </ul>
 
-    <ul class="space-y-2 pt-4 mt-4 border-t border-gray-200 dark:border-gray-700">
-      <SidebarItem ico="/assets/img/icons/profile.svg" text="Ver Perfil" />
+    <ul class="space-y-2 pt-4 mt-4 border-t border-gray-200 dark:border-gray-700 user-logged hidden">
+      <SidebarItem ico="/assets/img/icons/profile.svg" text="Ver Perfil" id="drawer-view-profile-link" />
       <SidebarItem ico="/assets/img/icons/account-edit.svg" text="Editar Perfil" url="/perfil" />
     </ul>
     <ul class="space-y-2 pt-4 mt-4 border-t border-gray-200 dark:border-gray-700">
@@ -53,8 +53,8 @@ import ThemeToggle from "./ui/themeToggle.astro";
     <ul class="pt-4 mt-4 space-y-2 border-t border-gray-200 dark:border-gray-700">
       <SidebarItem text="Acerca de CuCoders" url="/acerca-de" ico="/assets/img/icons/about-circle.svg" />
     </ul>
-    <ul class="pt-4 mt-4 space-y-2 border-t border-gray-200 dark:border-gray-700">
-      <SidebarItem text="Salir" ico="/assets/img/icons/log-out.svg" />
+    <ul class="pt-4 mt-4 space-y-2 border-t border-gray-200 dark:border-gray-700 user-logged hidden">
+      <SidebarItem text="Salir" ico="/assets/img/icons/log-out.svg" id="drawer-loggout-btn" />
     </ul>
     <div id="install-app-cta" class="p-4 hidden mt-6 rounded-lg bg-blue-50 dark:bg-blue-900" role="alert">
       <div class="flex items-center mb-3">
@@ -108,29 +108,26 @@ document.getElementById("close-install-app-cta").addEventListener("click", () =>
 <script>
   import { isUserLogged, loggoutUser } from "./helpers/user";
 
-  const userAvatar = document.getElementById("userAvatar");
-  const userUsername = document.getElementById("user_username");
-  const userName = document.getElementById("user_name");
-  const userLoggedElements = document.querySelectorAll(".user-logged");
-  const userNotLoggedElements = document.querySelectorAll(".user-not-logged");
+  const drawerAvatar = document.getElementById("drawer-avatar");
+  const drawerUserAvatar = document.getElementById("drawer_user_avatar");
+  const drawerUserUsername = document.getElementById("drawer_user_username");
+  const drawerUserName = document.getElementById("drawer_user_name");
+  const drawerViewProfileLink = document.getElementById("drawer-view-profile-link");
 
-  const loggoutBtn = document.getElementById("loggout-btn");
-  loggoutBtn &&
-    loggoutBtn.addEventListener("click", () => {
+  const drawerLoggoutBtn = document.getElementById("drawer-loggout-btn");
+  drawerLoggoutBtn &&
+    drawerLoggoutBtn.addEventListener("click", () => {
       loggoutUser();
       location.reload();
     });
 
   if (isUserLogged()) {
-    if (userAvatar) {
-      userAvatar.src = localStorage.getItem("user_avatar_url");
-      userAvatar.classList.remove("hidden");
-    }
-    noUserAvatar && noUserAvatar.classList.add("hidden");
-    userLoggedElements.forEach((element) => element.classList.remove("hidden"));
-    userNotLoggedElements.forEach((element) => element.classList.add("hidden"));
-    userName && (userName.innerHTML = localStorage.getItem("user_name") || "");
-    userUsername && (userUsername.innerHTML = "@" + localStorage.getItem("user_username"));
-    viewUserProfileLink && viewUserProfileLink.setAttribute("href", "/dev/" + localStorage.getItem("user_username"));
+    drawerAvatar && drawerAvatar.classList.add("flex");
+
+    drawerUserAvatar && (drawerUserAvatar.src = localStorage.getItem("user_avatar_url"));
+    drawerUserName && (drawerUserName.innerHTML = localStorage.getItem("user_name") || "");
+    drawerUserUsername && (drawerUserUsername.innerHTML = "@" + localStorage.getItem("user_username"));
+
+    drawerViewProfileLink && drawerViewProfileLink.setAttribute("href", "/dev/" + localStorage.getItem("user_username"));
   }
 </script>
