@@ -102,6 +102,7 @@ import "../styles/main.css";
   import { backend_url } from "../data/conf.json";
   import { showToast } from "../components/toast/toast";
   import { loggingUser } from "../components/helpers/user";
+  import { getRemoteFileData } from "../components/helpers/getRemoteFile";
 
   const logginBtn = document.getElementById("logginBtn");
   logginBtn.addEventListener("click", logginUser, true);
@@ -120,13 +121,24 @@ import "../styles/main.css";
 
     loggingUser(username)
       .then((data) => {
-        enableInput();
-        window.location.href = "/perfil";
+        checkIfProfileExistAndRedirect(username);
       })
       .catch((e) => {
         showToast("Ocurrió un error inesperado. Por favor vuelva a intentarlo más tarde.", true);
         enableInput();
       });
+  }
+
+  async function checkIfProfileExistAndRedirect(username) {
+    const data = await getRemoteFileData(
+      `https://raw.githubusercontent.com/${username}/${username}/main/cucoders_data/profile-data.json`,
+      "json"
+    );
+    if (data) {
+      window.location.href = "/";
+    } else {
+      window.location.href = "/perfil";
+    }
   }
 
   async function isCommunityMemeber(username) {
