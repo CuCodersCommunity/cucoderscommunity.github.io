@@ -18,7 +18,7 @@ async function loggingUser(username) {
     localStorage.setItem("user_username", userdata.login);
     localStorage.setItem("user_name", userdata.name);
     localStorage.setItem("user_url", "https://cucoders.dev/dev/" + username);
-    localStorage.setItem("user_avatar_url", `https://avatars.githubusercontent.com/u/${userdata.id}?s=36&v=`);
+    localStorage.setItem("user_avatar_url", `https://avatars.githubusercontent.com/u/${userdata.id}?s=48&v=`);
   }
   return userdata;
 }

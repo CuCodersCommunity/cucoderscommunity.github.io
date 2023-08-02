@@ -1,9 +1,10 @@
 ---
-const { ico, text, url = "#" } = Astro.props;
+const { ico, text, url = "#", id = null } = Astro.props;
 ---
 
 <li>
   <a
+    id={id}
     href={url}
     class="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
   >
