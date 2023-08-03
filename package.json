@@ -16,7 +16,7 @@
     "@astrojs/rss": "^2.1.0",
     "@astrojs/sitemap": "^1.0.1",
     "@astrojs/tailwind": "^3.0.1",
-    "astro": "^2.1.5",
+    "astro": "^2.10.0",
     "astro-seo-schema": "^2.0.0",
     "dayjs": "^1.11.7",
     "flowbite": "^1.6.0",
