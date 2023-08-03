@@ -85,8 +85,6 @@ for (const key in categories) {
         </select>
       </div>
 
-      <input type="hidden" id="github-username" />
-
       <TextInput id="canonicalUrl" label="Estas republicando?" placeholder="URL del artículo original" />
     </div>
 
@@ -122,62 +120,6 @@ new TomSelect("#categories", {
   submitBtn.addEventListener("click", validateSubmission, true);
 
   !isUserLogged() && (window.location.href = "/iniciar-sesion");
-  loadUserData();
-
-  async function loadUserData() {
-    const username = localStorage.getItem("user_username");
-
-    disableInput();
-    const isMember = await isCommunityMemeber(username);
-    if (!isMember) {
-      const alert = `El usuario ${username} no es miembro de la Comunidad. Necesitas registrarte primero para crear una publicación.`;
-      showToast(alert, true);
-      enableInput();
-      return;
-    }
-    await getGithubCaseUsername(username);
-    enableInput();
-    document.getElementById("post-form").classList.remove("hidden");
-  }
-
-  async function isCommunityMemeber(username) {
-    const url = backend_url + "api/members/is-member?username=" + username;
-    try {
-      const response = await fetch(url, { method: "GET" });
-      const data = await response.json();
-      return data.is_member;
-    } catch {
-      return false;
-    }
-  }
-
-  async function getGithubCaseUsername(username) {
-    fetch("https://api.github.com/users/" + username, {
-      method: "GET",
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        document.getElementById("github-username").value = data.login;
-      })
-      .catch((e) => {
-        showToast("Ocurrió un error inesperado. Por favor vuelva a intentarlo más tarde.", true);
-        enableInput();
-      });
-  }
-
-  function disableInput() {
-    document.getElementById("loadUserBtn").setAttribute("disabled", "");
-    document.getElementById("spinner-ico").classList.remove("hidden");
-    document.getElementById("spinner-ico").classList.add("inline");
-    document.getElementById("github-ico").classList.add("hidden");
-  }
-
-  function enableInput() {
-    document.getElementById("loadUserBtn").removeAttribute("disabled");
-    document.getElementById("spinner-ico").classList.add("hidden");
-    document.getElementById("spinner-ico").classList.remove("inline");
-    document.getElementById("github-ico").classList.remove("hidden");
-  }
 
   function getValue(name) {
     return document.getElementById(name).value;
@@ -186,7 +128,7 @@ new TomSelect("#categories", {
   function validateSubmission() {
     const title = getValue("title");
     const image = getValue("thumbnail-url");
-    const username = getValue("github-username");
+    const username = localStorage.getItem("user_username");
     const pubDate = new Date().toDateString();
     const description = getValue("description");
     const canonicalUrl = getValue("canonicalUrl");
