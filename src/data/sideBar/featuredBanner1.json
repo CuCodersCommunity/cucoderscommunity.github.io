@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Crea tu Web Personal gratis",
+    "desc": "Crea gratis tu web personal con blog, servicios, currículo, temas y más con esta plantilla de Astro.",
+    "url": "https://astro-modern-personal-website.netlify.app/",
+    "img": "/assets/img/promo/promo_website.webp"
+  },
+  {
+    "title": "Organiza tu semana con WeekToDo",
+    "desc": "WeekToDo es un planificador semanal gratuito y de código abierto. Mejora tu productividad organizando tus tareas de forma fácil e intuitiva.",
+    "url": "https://weektodo.me/es/",
+    "img": "/assets/img/promo/weektodo_promo.webp"
+  }
+]

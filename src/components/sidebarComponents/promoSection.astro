@@ -6,23 +6,42 @@ import PromoImage from "./promoImage.astro";
 <div class="border-t my-5 h-1 border-gray-200 dark:border-gray-700"></div>
 
 <div>
-  <PromoCard
-    img="/assets/img/promo/promo_website.webp"
-    title="Crea tu Web Personal gratis"
-    desc="Crea gratis tu web personal con blog, servicios, currículo, temas y más con esta plantilla de Astro."
-    url="https://astro-modern-personal-website.netlify.app/"
-  />
-
-  <PromoCard
-    img="/assets/img/promo/weektodo_promo.webp"
-    title="Organiza tu semana con WeekToDo"
-    desc="WeekToDo es un planificador semanal gratuito y de código abierto. Mejora tu productividad organizando tus tareas de forma fácil e intuitiva"
-    url="https://weektodo.me/es/"
-  />
-
-  <PromoImage
-    text="Crea imágenes asombrosas de tus capturas de pantalla o tu código"
-    img="/assets/img/promo/karbonized_promo.webp"
-    url="https://karbonized.onrender.com/"
-  />
+  <PromoCard id="first-promo-card" />
+  <PromoCard id="second-promo-card" />
+  <PromoImage id="img-promo-card" />
 </div>
+
+<script>
+  import fisrtBannerData from "../../data/sideBar/featuredBanner1.json";
+  import secondBannerData from "../../data/sideBar/featuredBanner2.json";
+  import thirdBannerData from "../../data/sideBar/featuredBanner3.json";
+
+  const firstPromoData = fisrtBannerData[randomNumber(0, fisrtBannerData.length - 1).toString()];
+  const secondPromoData = secondBannerData[randomNumber(0, secondBannerData.length - 1).toString()];
+  const thirdPromoData = thirdBannerData[randomNumber(0, thirdBannerData.length - 1).toString()];
+
+  showPromoData("first-promo-card", firstPromoData);
+  showPromoData("second-promo-card", secondPromoData);
+  showImgPromoData("img-promo-card", thirdPromoData);
+
+  function randomNumber(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  function showPromoData(elementId, data) {
+    document.getElementById(elementId + "-title").innerHTML = data.title;
+    document.getElementById(elementId + "-desc").innerHTML = data.desc;
+    document.getElementById(elementId + "-link").href = data.url;
+    document.getElementById(elementId + "-img").src = data.img;
+  }
+
+  function showImgPromoData(elementId, data) {
+    document.getElementById(elementId + "-desc").innerHTML = data.desc;
+    document.getElementById(elementId).style = `background-image: url(${data.img})`;
+    document.getElementById(elementId).src = data.url;
+  }
+
+  // const promoStyle = ;
+</script>
