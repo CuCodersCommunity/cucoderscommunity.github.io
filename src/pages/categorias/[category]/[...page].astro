@@ -36,10 +36,14 @@ for (const [key, value] of Object.entries(categories)) {
     break;
   }
 }
+
+let title = category.text;
+if (page.currentPage != 1) title += ` | Página ${page.currentPage}`;
+title +=" | CuCoders";
 ---
 
 <MainLayout
-  title={`${category.text} | Página ${page.currentPage}  | CuCoders`}
+  title={title}
   description="Mantente al día con las últimas tendencias y conocimientos en la industria de la programación y tecnología en nuestra sección de artículos. Leer contenido escrito por los miembros de la comunidad y aprender de sus experiencias. ¡Explora nuestros de artículos y amplía tus conocimientos hoy en Cucoders!"
 >
   <BreadcrumbContainer

@@ -23,9 +23,13 @@ export async function getStaticPaths({ paginate }) {
   });
 }
 const { page } = Astro.props;
+
+let title = `Proximos Eventos Tech Virtuales`;
+if (page.currentPage != 1) title += ` | Página ${page.currentPage}`;
+title += " | CuCoders";
 ---
 
-<EventLayout title={`Proximos Eventos Tech Virtuales | Página ${page.currentPage} | CuCoders`}>
+<EventLayout title={title}>
   <BreadcrumbContainer
     breadcrumbItems={[{ label: "Eventos", home: true, url: "/eventos" }, { label: "Eventos Virtuales" }]}
     btnLabel="Publicar Evento"

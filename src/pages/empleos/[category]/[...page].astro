@@ -53,10 +53,15 @@ for (const [key, value] of Object.entries(profileCategories)) {
     break;
   }
 }
+
+let title = `Directorio de Empleos`;
+if (category.text) title += ` | ${category.text}`;
+if (page.currentPage != 1) title += ` | Página ${page.currentPage}`;
+title += " | CuCoders";
 ---
 
 <JobLayout
-  title={`Directorio de Empleos | ${category.text} | Página ${page.currentPage}`}
+  title={title}
   description="Encuentra las mejores oportunidades laborales en tecnología en Cucoders. Explora nuestro directorio de empleos para programadores y encuentra el trabajo perfecto para ti. Únete a nuestra comunidad de programadores en Cuba y lleva tu carrera al siguiente nivel."
 >
   <TelegramJobsChannelAlert />

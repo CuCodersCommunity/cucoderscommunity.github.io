@@ -17,10 +17,14 @@ export async function getStaticPaths({ paginate }) {
   });
 }
 const { page } = Astro.props;
+
+let title = `Directorio de Empleos para Programadores`;
+if (page.currentPage != 1) title += ` | Página ${page.currentPage}`;
+title += " | CuCoders";
 ---
 
 <JobLayout
-  title={`Directorio de Empleos para Programadores | Página ${page.currentPage} | CuCoders`}
+  title={title}
   description="Encuentra las mejores oportunidades laborales en tecnología en Cucoders. Explora nuestro directorio de empleos para programadores y encuentra el trabajo perfecto para ti. Únete a nuestra comunidad de programadores en Cuba y lleva tu carrera al siguiente nivel."
 >
   <TelegramJobsChannelAlert />

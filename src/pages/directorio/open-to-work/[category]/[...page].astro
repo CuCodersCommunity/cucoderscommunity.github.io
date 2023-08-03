@@ -40,11 +40,15 @@ for (const [key, value] of Object.entries(categories)) {
     break;
   }
 }
+
+let title = `Directorio de Desarrolladores Cubanos Disponibles para Trabajar`;
+if (category.text) title += ` | ${category.text}`;
+if (page.currentPage != 1) title += ` | Página ${page.currentPage}`;
+title += " | CuCoders";
 ---
 
 <DirectoryLayout
-  title="<DirectoryLayout"
-  title={`Directorio de Desarrolladores Cubanos Disponibles para Trabajar | ${category.text} | Página ${page.currentPage} | CuCoders`}
+  title={title}
   openToWork={true}
 >
   {

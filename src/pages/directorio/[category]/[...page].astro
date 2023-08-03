@@ -41,9 +41,14 @@ for (const [key, value] of Object.entries(categories)) {
     break;
   }
 }
+
+let title = `Directorio de Desarrolladores Cubanos`;
+if (category.text) title += ` | ${category.text}`;
+if (page.currentPage != 1) title += ` | Página ${page.currentPage}`;
+title += " | CuCoders";
 ---
 
-<DirectoryLayout title={`Directorio de Desarrolladores Cubanos | ${category.text} | Página ${page.currentPage} | CuCoders`}>
+<DirectoryLayout title={title}>
   <BreadcrumbContainer
     breadcrumbItems={[{ label: "Directorio", url: "/directorio", home: true }, { label: category.text }]}
     btnLabel="Regístrate"

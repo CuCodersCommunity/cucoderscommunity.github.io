@@ -45,12 +45,14 @@ function getSelectedCategoryBySlug(slug) {
   }
   return null;
 }
+
+let title = `Directorio de Recursos para Programadores`;
+if (category) title += ` | ${category.text}`;
+if (page.currentPage != 1) title += ` | Página ${page.currentPage}`;
+title += " | CuCoders";
 ---
 
-<ResourcesLayout
-  title={`Directorio de Recursos para Programadores | ${category.text} | Página ${page.currentPage} | CuCoders`}
-  openCategory={category.parentId}
->
+<ResourcesLayout title={title} openCategory={category.parentId}>
   <BreadcrumbContainer
     breadcrumbItems={[{ label: "Recursos", home: true, url: "/recursos" }, { label: category.text }]}
     btnLabel=" Adicionar Recurso"
