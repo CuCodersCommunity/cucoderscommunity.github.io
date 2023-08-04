@@ -46,6 +46,18 @@ const {
     <PageMetaTags title={title} description={description} image={image} />
   </head>
   <body class="bg-gray-50 dark:bg-gray-900">
+    <script>
+      import topbar from "topbar";
+      topbar.config({
+        barColors: {
+          "0": "rgba(26,  188, 156, .7)",
+          ".3": "rgba(41,  128, 185, .7)",
+          "1.0": "rgba(231, 76,  60,  .7)",
+        },
+      });
+      topbar.show();
+      window.onload = () => topbar.hide();
+    </script>
     <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
     <NavBar hasRightSidebar={hasRightSidebar} backUrl={backUrl} />
     {!backUrl && <MainDrawer />}
