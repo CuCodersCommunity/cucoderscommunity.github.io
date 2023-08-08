@@ -17,10 +17,14 @@ export async function getStaticPaths({ paginate }) {
   });
 }
 const { page } = Astro.props;
+
+let title = `Directorio de Empleos para Programadores`;
+if (page.currentPage != 1) title += ` | Página ${page.currentPage}`;
+title += " | CuCoders";
 ---
 
 <JobLayout
-  title={`Directorio de Empleos para Programadores | Página ${page.currentPage} | CuCoders`}
+  title={title}
   description="Encuentra las mejores oportunidades laborales en tecnología en Cucoders. Explora nuestro directorio de empleos para programadores y encuentra el trabajo perfecto para ti. Únete a nuestra comunidad de programadores en Cuba y lleva tu carrera al siguiente nivel."
 >
   <TelegramJobsChannelAlert />
@@ -32,7 +36,7 @@ const { page } = Astro.props;
     btnIcon="/assets/img/icons/business.svg"
   />
 
-  {page.data.length == 0 && <img src="/assets/img/emptyList.webp" class="md:w-2/3 w-full mx-auto my-4" />}
+  {page.data.length == 0 && <img src="/assets/img/emptyList.webp" class="md:w-2/3 w-full mx-auto my-4 dark:opacity-50" />}
 
   <div class="grid mb-6 w-full gap-4 md:grid-cols-1 mx-auto">
     {page.data.map((job) => <JobCard job={job} />)}

@@ -1,0 +1,18 @@
+---
+const { url, tabClasses, label, viewBox = "0 0 24 24" } = Astro.props;
+---
+
+<li class="mr-2">
+  <a href={url} class={tabClasses} aria-current="page">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="currentColor"
+      class="w-5 h-5 mr-2 group-[.active-tab]:text-gray-700 dark:group-[.active-tab]:text-gray-100 text-gray-400 group-hover:text-gray-500 dark:text-gray-500 dark:group-hover:text-gray-300"
+      viewBox={viewBox}
+      ><g fill="currentColor" fill-rule="evenodd" clip-rule="evenodd">
+        <slot />
+      </g></svg
+    >
+    {label}
+  </a>
+</li>

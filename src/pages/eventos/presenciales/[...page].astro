@@ -23,9 +23,13 @@ export async function getStaticPaths({ paginate }) {
   });
 }
 const { page } = Astro.props;
+
+let title = `Proximos Eventos Tech Presenciales`;
+if (page.currentPage != 1) title += ` | Página ${page.currentPage}`;
+title += " | CuCoders";
 ---
 
-<EventLayout title={`Proximos Eventos Tech Presenciales | Página ${page.currentPage} | CuCoders`}>
+<EventLayout title={title}>
   <BreadcrumbContainer
     breadcrumbItems={[{ label: "Eventos", home: true, url: "/eventos" }, { label: "Eventos Presenciales" }]}
     btnLabel="Publicar Evento"
@@ -35,7 +39,7 @@ const { page } = Astro.props;
   {
     page.data.length == 0 && (
       <>
-        <img src="/assets/img/emptyList.webp" class="md:w-2/3 w-full mx-auto my-4" />
+        <img src="/assets/img/emptyList.webp" class="md:w-2/3 w-full mx-auto my-4 dark:opacity-50" />
         <p class="mt-2 text-center text-gray-500"> No hay eventos presenciales disponibles </p>
       </>
     )

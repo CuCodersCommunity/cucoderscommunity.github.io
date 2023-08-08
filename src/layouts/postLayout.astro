@@ -2,6 +2,7 @@
 import ReportModal from "../components/modals/reportModal.astro";
 import BaseLayout from "./baseLayout.astro";
 import ShareThisModal from "../components/helpers/shareThisModal.astro";
+import DropdownMenuVerticalDots from "../components/ui/dropdownMenuVerticalDots.astro";
 import dayjs from "dayjs";
 import "dayjs/locale/es";
 import readingTime from "reading-time";
@@ -30,7 +31,7 @@ const description = post_data.description ? post_data.description : post.body.sl
   backUrl="/"
 >
   <div
-    class="bg-white border md:mx-auto mb-5 -mt-6 md:mt-12 lg:max-w-[58rem] border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 w-full"
+    class="bg-white border md:mx-auto mb-5 -mt-6 md:mt-12 lg:max-w-[58rem] border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:text-gray-100 dark:te w-full"
   >
     {
       post_data.image && (
@@ -56,8 +57,8 @@ const description = post_data.description ? post_data.description : post.body.sl
           <div class="font-medium dark:text-white">
             <div>
               {user_data.name}
-              <spam class="mx-2 text-gray-700">•</spam>
-              <spam class="text-gray-500 font-normal capitalize" time-from-date>
+              <spam class="mx-2 text-gray-700 dark:text-gray-400">•</spam>
+              <spam class="text-gray-500 font-normal capitalize dark:text-gray-400" time-from-date>
                 {display_date}
               </spam>
             </div>
@@ -66,15 +67,8 @@ const description = post_data.description ? post_data.description : post.body.sl
         </a>
 
         <div class="flex items-center">
-          <div class="text-sm hidden md:block text-gray-500 mr-3">{read_time} lectura</div>
-          <button
-            id="dropdownMenuIconHorizontalButton"
-            data-dropdown-toggle="dropdownDotsHorizontal"
-            class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-            type="button"
-          >
-            <img src="/assets/img/icons/menu-vertical-black.svg" class="h-6 w-6 min-w-[1.5rem]" />
-          </button>
+          <div class="text-sm hidden md:block text-gray-500 dark:text-gray-400 mr-3">{read_time} lectura</div>
+          <DropdownMenuVerticalDots />
         </div>
 
         <!-- Dropdown menu -->
@@ -126,9 +120,7 @@ const description = post_data.description ? post_data.description : post.body.sl
           }
         </div>
       </div>
-      <article
-        class="my-5 prose lg:prose-lg prose-img:mx-auto max-w-none break-words prose-h1:text-3xl md:prose-h1:!text-4xl"
-      >
+      <article class="my-5 prose dark:prose-invert lg:prose-lg prose-img:mx-auto max-w-none break-words">
         <slot />
       </article>
     </div>
@@ -154,9 +146,42 @@ const description = post_data.description ? post_data.description : post.body.sl
   data-reactions-enabled="1"
   data-emit-metadata="0"
   data-input-position="top"
-  data-theme="https://cucoders.dev/assets/styles/giscus_custom_style.css"
   data-lang="es"
   data-loading="lazy"
   crossorigin="anonymous"
-  async
-></script>
+  async></script>
+
+<script is:inline>
+function handleMessage(event) {
+  if (event.origin !== "https://giscus.app") return;
+  if (!(typeof event.data === "object" && event.data.giscus)) return;
+  setGiscusTheme(localStorage.getItem("color-theme"));
+  window.removeEventListener("message", handleMessage);
+}
+
+function sendMessage(message) {
+  const iframe = document.querySelector("iframe.giscus-frame");
+  if (!iframe) return;
+  iframe.contentWindow.postMessage({ giscus: message }, "https://giscus.app");
+}
+
+function setGiscusTheme(theme) {
+  const themeStyle =
+    theme === "light"
+      ? "https://cucoders.dev/assets/styles/giscus_style.css"
+      : "https://cucoders.dev/assets/styles/giscus_dark_style.css";
+  sendMessage({
+    setConfig: {
+      theme: themeStyle,
+    },
+  });
+}
+
+window.addEventListener("message", handleMessage);
+
+document.querySelector("#navBarToggle").addEventListener("click", function () {
+  setTimeout(function () {
+    setGiscusTheme(localStorage.getItem("color-theme"));
+  }, 50);
+});
+</script>

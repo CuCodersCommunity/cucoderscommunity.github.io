@@ -7,7 +7,7 @@ const events = await getNextEvents();
 
 {
   events.length != 0 && (
-    <div class="border-solid border-b-[1px] mb-3 pb-3">
+    <div class="border-solid dark:border-gray-700 border-b-[1px] mb-3 pb-3">
       <div class="font-medium text-gray-800 mb-4">Próximos Eventos</div>
       <ol class="relative border-l border-gray-300 dark:border-gray-700">
         {events.map((event) => (

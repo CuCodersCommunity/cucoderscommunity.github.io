@@ -12,7 +12,7 @@ const { title, description } = Astro.props.frontmatter;
       <h1 class="my-10 text-3xl md:text-4xl text-center font-bold tracking-tight text-gray-900 dark:text-white">
         {title}
       </h1>
-      <article class="my-5 prose lg:prose-lg prose-img:mx-auto max-w-none break-words">
+      <article class="my-5 prose dark:prose-invert lg:prose-lg prose-img:mx-auto max-w-none break-words">
         <slot />
       </article>
     </div>

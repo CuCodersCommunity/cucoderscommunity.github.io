@@ -1,12 +1,14 @@
 ---
 const { hasRightSidebar, backUrl } = Astro.props;
-import LinkIcon from "./helpers/linkIcon.astro";
+import CucodersLogo from "../ui/cucodersLogo.astro";
+import UserProfileMenu from "./userProfileMenu.astro";
+import AddMenu from "./addMenu.astro";
 ---
 
 <nav
-  class="bg-white/90 backdrop-blur-md px-2 sm:px-4 py-1.5 dark:bg-gray-900 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600"
+  class="bg-white/70 backdrop-blur-md px-2 sm:px-4 py-1.5 dark:bg-gray-900/70 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600"
 >
-  <div class="container flex flex-wrap items-center justify-between mx-auto">
+  <div class="container flex flex-wrap items-center justify-between mx-auto px-4">
     {
       backUrl ? (
         <button
@@ -14,7 +16,7 @@ import LinkIcon from "./helpers/linkIcon.astro";
           type="button"
           class="inline-flex items-center md:hidden p-2 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
         >
-          <img src="/assets/img/icons/arrow-back.svg" class="h-7 w-7" />
+          <img src="/assets/img/icons/arrow-back.svg" class="h-7 w-7 dark:invert dark:contrast-200 dark:saturate-0" />
         </button>
       ) : (
         <button
@@ -26,13 +28,13 @@ import LinkIcon from "./helpers/linkIcon.astro";
           class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
         >
           <span class="sr-only">Open main menu</span>
-          <img src="/assets/img/icons/menu1.svg" class="h-7 w-7" />
+          <img src="/assets/img/icons/menu1.svg" class="h-7 w-7 dark:invert dark:contrast-200 dark:saturate-0" />
         </button>
       )
     }
 
     <a href="/" class="flex items-center">
-      <img src="/assets/img/cucoders-logo.webp" class="h-8 mr-3 sm:h-9" alt="Cucoders Logo" />
+      <CucodersLogo />
     </a>
 
     <div class="md:hidden w-11 h-11">
@@ -49,38 +51,17 @@ import LinkIcon from "./helpers/linkIcon.astro";
             aria-expanded="false"
           >
             <span class="sr-only">Open right menu</span>
-            <img src="/assets/img/icons/filter-list.svg" class="h-7 w-7" />
+            <img src="/assets/img/icons/filter-list.svg" class="h-7 w-7 dark:invert dark:contrast-200 dark:saturate-0" />
           </button>
         )
       }
     </div>
     <div class="md:order-2 hidden md:flex">
-      <div class="mr-1">
-        <LinkIcon
-          url="https://t.me/CuCodersComunidad"
-          text="Comunidad en Telegram"
-          id="nav-community-icon"
-          target="_blank"
-          img="/assets/img/icons/people2.svg"
-        >
-          <span class="mr-2 font-normal text-gray-700 md:hidden lg:inline">Comunidad</span>
-        </LinkIcon>
-      </div>
-
-      <button
-        id="maninMenuDropdown"
-        data-dropdown-toggle="dropdownMainMenu"
-        class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-        type="button"
-        aria-label="Open main menu"
-      >
-        <img class="w-6 h-6" src="/assets/img/icons/menu-grid.svg" alt="menu icon" />
-      </button>
+      <AddMenu />
+      <UserProfileMenu />
     </div>
     <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
-      <ul
-        class="flex flex-col  p-4 mt-4 rounded-lg md:flex-row lg:space-x-8 md:space-x-4 md:mt-0 md:text-sm md:font-normal dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
-      >
+      <ul class="flex flex-col p-4 mt-4 rounded-lg md:flex-row lg:space-x-8 md:space-x-4 md:mt-0 md:text-sm md:font-normal">
         <li>
           <a
             href="/"
@@ -121,7 +102,7 @@ import LinkIcon from "./helpers/linkIcon.astro";
             id="dropdownNavbarLink"
             data-dropdown-toggle="dropdownNavbar"
             class="flex items-center justify-between w-full py-2 pl-3 pr-4 font-normal text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-gray-700 md:p-0 md:w-auto dark:text-gray-400 dark:hover:text-white dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent"
-            >Formación <svg
+            >Recursos <svg
               class="w-5 h-5 ml-1"
               aria-hidden="true"
               fill="currentColor"
@@ -137,17 +118,17 @@ import LinkIcon from "./helpers/linkIcon.astro";
             id="dropdownNavbar"
             class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
           >
-            <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
+            <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownLargeButton">
               <li>
                 <a
                   href="/formacion/rutas"
-                  class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Rutas</a
+                  class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  >Rutas de Formación</a
                 >
               </li>
               <li>
-                <a
-                  href="/recursos/formacion-integral"
-                  class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Recursos</a
+                <a href="/recursos" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                  >Directorio</a
                 >
               </li>
             </ul>
@@ -155,9 +136,10 @@ import LinkIcon from "./helpers/linkIcon.astro";
         </li>
         <li>
           <a
-            href="/recursos"
+            href="https://t.me/CuCodersComunidad"
+            target="_blank"
             class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-gray-800 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-            >Recursos</a
+            >Comunidad</a
           >
         </li>
       </ul>
@@ -165,77 +147,16 @@ import LinkIcon from "./helpers/linkIcon.astro";
   </div>
 </nav>
 
-<!-- Main menu dropdown -->
-<div
-  id="dropdownMainMenu"
-  class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
->
-  <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownMenuIconButton">
-    <li>
-      <a
-        href="/perfil"
-        class="inline-flex w-full items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-      >
-        <img src="/assets/img/icons/profile.svg" class="w-5 h-5 mr-2" />
-        Perfil
-      </a>
-    </li>
-    <li>
-      <a
-        href="/registro"
-        class="inline-flex w-full items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-      >
-        <img src="/assets/img/icons/login.svg" class="w-5 h-5 mr-2" />
-        Regístrate
-      </a>
-    </li>
-  </ul>
-  <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownMenuIconButton">
-    <li>
-      <a href="/nueva-publicacion" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-        >Crear Publicación</a
-      >
-    </li>
-    <li>
-      <a href="/nueva-app" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-        >Publicar Aplicación</a
-      >
-    </li>
-    <li>
-      <a href="/nuevo-empleo" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-        >Publicar Empleo</a
-      >
-    </li>
-    <li>
-      <a href="/nuevo-evento" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-        >Publicar Evento</a
-      >
-    </li>
-    <li>
-      <a href="/nuevo-recurso" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-        >Adicionar Recurso</a
-      >
-    </li>
-  </ul>
-
-  <div class="py-2">
-    <a
-      href="/acerca-de"
-      class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-      >Acerca de CuCoders
-    </a>
-  </div>
-</div>
 
 <script define:vars={{ backUrl }}>
-  const backBtn = document.querySelector("#back-button");
+const backBtn = document.querySelector("#back-button");
 
-  backBtn &&
-    backBtn.addEventListener("click", function () {
-      if (history.length != 0 && document.referrer.includes("cucoders.dev")) {
-        history.back();
-      } else {
-        window.location.href = backUrl;
-      }
-    });
+backBtn &&
+  backBtn.addEventListener("click", function () {
+    if (history.length != 0 && document.referrer.includes("cucoders.dev")) {
+      history.back();
+    } else {
+      window.location.href = backUrl;
+    }
+  });
 </script>
