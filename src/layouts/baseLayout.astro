@@ -20,12 +20,6 @@ const {
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <script>
-      import { initializeTheme } from "../components/helpers/darkTheme";
-      if (!("color-theme" in localStorage)) initializeTheme();
-      if (localStorage.getItem("color-theme") === "dark") document.documentElement.classList.add("dark");
-    </script>
-
     <script type="text/partytown" src="https://www.googletagmanager.com/gtag/js?id=G-PX2S82TBFB"></script>
     <script type="text/partytown">
       window.dataLayer = window.dataLayer || [];
@@ -54,7 +48,7 @@ const {
           ".3": "rgba(41,  128, 185, .7)",
           "1.0": "rgba(231, 76,  60,  .7)",
         },
-        shadowColor  : 'rgba(0, 0, 0, .1)',
+        shadowColor: "rgba(0, 0, 0, .1)",
       });
       topbar.show();
       window.onload = () => topbar.hide();
@@ -66,5 +60,10 @@ const {
       <slot />
     </div>
     <Footer />
+    <script>
+      import { initializeTheme } from "../components/helpers/darkTheme";
+      if (!("color-theme" in localStorage)) initializeTheme();
+      if (localStorage.getItem("color-theme") === "dark") document.documentElement.classList.add("dark");
+    </script>
   </body>
 </html>
