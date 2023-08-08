@@ -20,9 +20,7 @@ const {
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <script>
-      import { initializeTheme } from "../components/helpers/darkTheme";
-      if (!("color-theme" in localStorage)) initializeTheme();
+    <script is:inline>
       if (localStorage.getItem("color-theme") === "dark") document.documentElement.classList.add("dark");
     </script>
 
@@ -34,6 +32,14 @@ const {
       }
       gtag("js", new Date());
       gtag("config", "G-PX2S82TBFB");
+    </script>
+
+    <script>
+      import { initializeTheme } from "../components/helpers/darkTheme";
+      if (!("color-theme" in localStorage)) {
+        initializeTheme();
+        if (localStorage.getItem("color-theme") === "dark") document.documentElement.classList.add("dark");
+      }
     </script>
 
     <meta charset="UTF-8" />
@@ -54,7 +60,7 @@ const {
           ".3": "rgba(41,  128, 185, .7)",
           "1.0": "rgba(231, 76,  60,  .7)",
         },
-        shadowColor  : 'rgba(0, 0, 0, .1)',
+        shadowColor: "rgba(0, 0, 0, .1)",
       });
       topbar.show();
       window.onload = () => topbar.hide();
