@@ -10,7 +10,7 @@ La plataforma fue desarrollada por [Manuel Ernesto García](https://cucoderscomm
 
 Únete a nosotros y forma parte de la comunidad de CuCoders. Juntos, podemos potenciar el desarrollo de software en Cuba y apoyar a los desarrolladores y emprendedores en su camino hacia el éxito.
 
-El proyecto CuCoders es posible gracias las contribuciones de todos estos increibles devs  🧑‍💻
+El proyecto CuCoders es posible gracias las contribuciones de todos estos increíbles devs  🧑‍💻
 
 
 <a href="https://github.com/CuCodersCommunity/cucoderscommunity.github.io/graphs/contributors">
