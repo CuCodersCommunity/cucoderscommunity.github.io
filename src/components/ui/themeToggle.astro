@@ -1,0 +1,12 @@
+---
+const { id, layout } = Astro.props;
+
+const classes =
+  layout == "mobile"
+    ? "rounded-lg absolute top-4 right-5 opacity-80"
+    : "hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg p-0 lg:p-2";
+---
+
+<button id={id} class={classes} type="button">
+  <img src="/assets/img/icons/dark-light.svg" class="w-6 h-6 dark:invert dark:contrast-200 dark:saturate-0" />
+</button>

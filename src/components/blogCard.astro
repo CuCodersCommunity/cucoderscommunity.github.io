@@ -6,15 +6,19 @@ import readingTime from "reading-time";
 import categories from "../data/categories.json";
 import { members_api_url } from "../data/conf.json";
 import { Image } from "@astrojs/image/components";
+import { convertASCIICharsToText, convertMarkdownToPlainText } from "markdown-to-text-renderer";
 
-const { post } = Astro.props;
+const { post, index } = Astro.props;
 const response = await fetch(members_api_url + "/members/" + post.data.username);
 const user_data = await response.json();
 const stats = readingTime(post.body);
 const read_time = stats.text.replace("read", "");
-const description = post.data.description ? post.data.description : post.body.slice(0, 160) + "...";
+const description = post.data.description
+  ? post.data.description
+  : convertASCIICharsToText(convertMarkdownToPlainText(post.body.slice(0, 160))) + "...";
 
 const display_date = dayjs(post.data.pubDate).format("D MMM. YYYY");
+let imgLoading = index === 0 || index === 1 ? "eager" : "lazy";
 ---
 
 <div class="bg-white border border-gray-200 rounded-lg mb-5 dark:bg-gray-800 dark:border-gray-700 w-full">
@@ -22,12 +26,13 @@ const display_date = dayjs(post.data.pubDate).format("D MMM. YYYY");
     {
       post.data.image && (
         <Image
-          class="rounded-t-lg h-[13rem] md:h-[14rem] lg:h-[16rem] xl:h-[20rem] 2xl:h-[28rem] object-cover"
+          class="rounded-t-lg inline h-[13rem] md:h-[14rem] lg:h-[16rem] xl:h-[20rem] 2xl:h-[28rem] object-cover"
           src={post.data.image}
           alt={post.data.title + " logo"}
           format="webp"
           quality={85}
           width={908}
+          loading={imgLoading}
           aspectRatio={16 / 9}
           fit="cover"
           position="center"
@@ -49,10 +54,10 @@ const display_date = dayjs(post.data.pubDate).format("D MMM. YYYY");
         <div class="font-medium dark:text-white">
           <div>
             {user_data.name}
-            <spam class="mx-2 text-gray-700">•</spam>
-            <spam class="text-gray-500 font-normal text-sm capitalize"> {display_date}</spam>
+            <spam class="mx-2 text-gray-700 dark:text-gray-300">•</spam>
+            <spam class="text-gray-500 dark:text-gray-300 font-normal text-sm capitalize"> {display_date}</spam>
           </div>
-          <div class="text-sm text-gray-500 dark:text-gray-400">{user_data.headline}</div>
+          <div class="text-sm text-gray-500 dark:text-gray-300">{user_data.headline}</div>
         </div>
       </a>
     </div>
@@ -63,7 +68,7 @@ const display_date = dayjs(post.data.pubDate).format("D MMM. YYYY");
       </h5>
     </a>
     <a href={"/publicaciones/" + post.slug}>
-      <p class="mb-5 font-normal text-gray-700 dark:text-gray-400 line-clamp-3 md:line-clamp-3">
+      <p class="mb-5 font-normal text-gray-700 dark:text-gray-300 line-clamp-3 md:line-clamp-3">
         {description}
       </p>
     </a>

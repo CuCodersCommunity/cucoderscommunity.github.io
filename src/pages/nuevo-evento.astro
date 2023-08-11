@@ -14,7 +14,7 @@ import "../styles/main.css";
     class="bg-white border md:mx-auto mb-5 md:mt-12 p-8 lg:max-w-[58rem] border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 w-full"
   >
     <div class="flex justify-between">
-      <h1 class="text-xl font-bold">Nuevo Evento</h1>
+      <h1 class="text-xl font-bold dark:text-gray-100">Nuevo Evento</h1>
     </div>
 
     <hr class="my-4" />
@@ -87,7 +87,7 @@ Aqui va la descripción general del evento.`;
 
   function getFileRoute(fileName, encodedFileText) {
     let year = new Date().getFullYear();
-    let route = `https://github.com/CuCodersCommunity/cucoderscommunity.github.io/new/main/src/content/events/${year}/new?value=${encodedFileText}&filename=${fileName}`;
+    let route = `https://github.com/CuCodersCommunity/cucoderscommunity.github.io/new/main/src/content/events/${year}?value=${encodedFileText}&filename=${fileName}`;
     return route;
   }
 </script>

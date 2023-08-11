@@ -6,7 +6,7 @@ import ProfileTabs from "../components/profile/profileTabs.astro";
 const { profile, activeTab, pageTitle, noIndex = false } = Astro.props;
 ---
 
-<BaseLayout title={`${profile.name} | ${pageTitle} | CuCoders`} description={profile.bio} image={profile.avatar_url} noIndex = {noIndex}>
+<BaseLayout title={`${profile.name} | ${pageTitle} | CuCoders`} description={profile.bio} image={profile.avatar_url} noIndex = {noIndex} backUrl="/directorio">
   <ProfileHeader profile={profile} />
 
   <div

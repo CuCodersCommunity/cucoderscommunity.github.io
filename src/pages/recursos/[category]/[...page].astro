@@ -45,12 +45,14 @@ function getSelectedCategoryBySlug(slug) {
   }
   return null;
 }
+
+let title = `Directorio de Recursos para Programadores`;
+if (category) title += ` | ${category.text}`;
+if (page.currentPage != 1) title += ` | Página ${page.currentPage}`;
+title += " | CuCoders";
 ---
 
-<ResourcesLayout
-  title={`Directorio de Recursos para Programadores | ${category.text} | Página ${page.currentPage} | CuCoders`}
-  openCategory={category.parentId}
->
+<ResourcesLayout title={title} openCategory={category.parentId}>
   <BreadcrumbContainer
     breadcrumbItems={[{ label: "Recursos", home: true, url: "/recursos" }, { label: category.text }]}
     btnLabel=" Adicionar Recurso"
@@ -58,7 +60,7 @@ function getSelectedCategoryBySlug(slug) {
     btnIcon="/assets/img/icons/add.svg"
   />
 
-  {page.data.length == 0 && <img src="/assets/img/emptyList.webp" class="md:w-2/3 w-full mx-auto my-4" />}
+  {page.data.length == 0 && <img src="/assets/img/emptyList.webp" class="md:w-2/3 w-full mx-auto my-4 dark:opacity-50" />}
 
   <div class="grid mb-6 w-full gap-3 md:grid-cols-1 mx-auto px-1 sm:px-0">
     {

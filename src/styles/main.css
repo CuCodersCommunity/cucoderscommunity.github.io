@@ -1,17 +1,54 @@
 .ts-control {
-    font-size: 0.875rem !important;
-    line-height: 1.25rem !important;
-    padding: 0.6rem !important;
-    background-color: #f9fafb !important;
-    border-width: 1px px !important;
-    border-radius: 0.5rem !important;
-  }
+  font-size: 0.875rem !important;
+  line-height: 1.25rem !important;
+  padding: 0.6rem !important;
+  background-color: #f9fafb !important;
+  border-width: 1px px !important;
+  border-radius: 0.5rem !important;
+}
 
-  .ts-control .item {
-    background-color: #e5e7eb !important;
-    border-radius: 0.3rem !important;
-  }
+.ts-control .item {
+  background-color: #e5e7eb !important;
+  border-radius: 0.3rem !important;
+}
 
-  .full .ts-control {
-    background-color: #f3f4f6 !important;
-  }
+.full .ts-control {
+  background-color: #f3f4f6 !important;
+}
+
+
+.dark .ts-control {
+  font-size: 0.875rem !important;
+  line-height: 1.25rem !important;
+  padding: 0.6rem !important;
+  background-color: rgb(55 65 81 / var(--tw-bg-opacity)) !important;
+  border-color: rgb(75 85 99 / var(--tw-border-opacity)) !important;
+  border-width: 1px px !important;
+  border-radius: 0.5rem !important;
+}
+
+.dark .ts-control .item {
+  background-color: rgb(31 41 55 / var(--tw-bg-opacity)) !important;
+  color: white !important;
+  border-radius: 0.3rem !important;
+}
+
+.dark .full .ts-control {
+  background-color: rgb(55 65 81 / var(--tw-bg-opacity)) !important;
+}
+
+.dark .ts-dropdown {
+  background-color: rgb(31 41 55 / var(--tw-bg-opacity)) !important;
+  color: white !important;
+  border-color: rgb(75 85 99 / var(--tw-border-opacity)) !important;
+}
+
+.dark input:-webkit-autofill {
+  -webkit-box-shadow:0 0 0 50px #374151 inset; /* Change the color to your own background color */
+  -webkit-text-fill-color: white;
+}
+
+.dark input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 50px #374151 inset;/*your box-shadow*/
+  -webkit-text-fill-color: white;
+} 

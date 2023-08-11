@@ -1,8 +1,9 @@
 ---
 import PageMetaTags from "../components/pageMetaTags.astro";
-import NavBar from "../components/navBar.astro";
+import NavBar from "../components/navbar/navBar.astro";
 import Footer from "../components/footer.astro";
 import MainDrawer from "../components/mainDrawer.astro";
+import { Schema } from "astro-seo-schema";
 
 const {
   title,
@@ -11,12 +12,18 @@ const {
   hasRightSidebar = false,
   noIndex = false,
   canonicalUrl,
+  seoSchema,
+  backUrl = false,
 } = Astro.props;
 ---
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <script is:inline>
+      if (localStorage.getItem("color-theme") === "dark") document.documentElement.classList.add("dark");
+    </script>
+
     <script type="text/partytown" src="https://www.googletagmanager.com/gtag/js?id=G-PX2S82TBFB"></script>
     <script type="text/partytown">
       window.dataLayer = window.dataLayer || [];
@@ -27,23 +34,43 @@ const {
       gtag("config", "G-PX2S82TBFB");
     </script>
 
+    <script>
+      import { initializeTheme } from "../components/helpers/darkTheme";
+      if (!("color-theme" in localStorage)) {
+        initializeTheme();
+        if (localStorage.getItem("color-theme") === "dark") document.documentElement.classList.add("dark");
+      }
+    </script>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.png" />
     <meta name="generator" content={Astro.generator} />
     {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
-    {noIndex && <meta name="robots" content="noindex">}
+    {noIndex && <meta name="robots" content="noindex" />}
+    {seoSchema && <Schema item={seoSchema} />}
     <PageMetaTags title={title} description={description} image={image} />
   </head>
-  <body class="bg-gray-50">
-    <NavBar hasRightSidebar={hasRightSidebar} />
-    <MainDrawer />
+  <body class="bg-gray-50 dark:bg-gray-900">
+    <script>
+      import topbar from "topbar";
+      topbar.config({
+        barColors: {
+          "0": "rgba(26,  188, 156, .7)",
+          ".3": "rgba(41,  128, 185, .7)",
+          "1.0": "rgba(231, 76,  60,  .7)",
+        },
+        shadowColor: "rgba(0, 0, 0, .1)",
+      });
+      topbar.show();
+      window.onload = () => topbar.hide();
+    </script>
+    <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+    <NavBar hasRightSidebar={hasRightSidebar} backUrl={backUrl} />
+    {!backUrl && <MainDrawer />}
     <div class="container flex flex-wrap items-center justify-between mx-auto lg:px-4 pt-14">
       <slot />
     </div>
     <Footer />
-    <script>
-      import "flowbite";
-    </script>
   </body>
 </html>

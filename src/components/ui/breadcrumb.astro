@@ -2,10 +2,14 @@
 const { items } = Astro.props;
 
 function itemStyle(item) {
-  let style = "inline-flex items-center text-sm font-medium dark:text-gray-400 dark:hover:text-white";
-  style += item.url ? " text-gray-700 hover:text-gray-900" : " text-gray-500";
+  let style = "inline-flex items-center text-sm font-medium dark:text-gray-400";
+  style += item.url ? " text-gray-700 hover:text-gray-900 dark:hover:text-white" : " text-gray-500 dark:text-gray-600";
   return style;
 }
+
+items.forEach((item) => {
+  item.tag = item.url ? "a" : "div";
+});
 ---
 
 <nav class="flex" aria-label="Breadcrumb">
@@ -13,7 +17,7 @@ function itemStyle(item) {
     {
       items.map((item) => (
         <li class="inline-flex items-center">
-          <a href={item.url} class={itemStyle(item)}>
+          <item.tag href={item.url} class={itemStyle(item)}>
             {item.home ? (
               <svg
                 aria-hidden="true"
@@ -40,7 +44,7 @@ function itemStyle(item) {
               </svg>
             )}
             {item.home ? <span>{item.label}</span> : <span class="md:ml-2">{item.label}</span>}
-          </a>
+          </item.tag>
         </li>
       ))
     }

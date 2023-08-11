@@ -7,16 +7,16 @@ const { url, text, img, target = "_self", id, size = "w-6 h-6", padding = "p-2.5
   target={target}
   data-tooltip-target={id}
   class={padding +
-    " md:inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm keychainify-checked"}
+    " md:inline-block text-gray-500 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm "}
 >
   <slot />
-  <img src={img} class={size + " inline"} />
+  <img src={img} class={size + " inline dark:invert dark:contrast-200 dark:saturate-0"} alt={text} />
 </a>
 
 <div
   id={id}
   role="tooltip"
-  class=" hidden absolute z-10 sm:inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm tooltip opacity-0 invisible"
+  class="hidden absolute z-10 sm:inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm tooltip opacity-0 invisible"
   style="position: absolute; inset: auto auto 0px 0px; margin: 0px; transform: translate(976px, -64px);"
   data-popper-placement="top"
 >

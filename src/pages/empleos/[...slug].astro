@@ -2,25 +2,93 @@
 import { backend_url } from "../../data/conf.json";
 import BaseLayout from "../../layouts/baseLayout.astro";
 import JobHeader from "../../components/jobs/jobHeader.astro";
+import OthersJobsCta from "../../components/jobs/othersJobsCta.astro";
+import dayjs from "dayjs";
+import profileCategories from "../../data/profileCategories.json";
 
 export async function getStaticPaths() {
   const response = await fetch(backend_url + "api/jobs/get-all-jobs");
   const allJobs = await response.json();
 
-  return allJobs.map((job) => ({ params: { slug: `${job.pubDate}/${job.slug}` }, props: { job } }));
+  return allJobs.map((job, index) => {
+    let nextJobs = allJobs.slice(index + 1, index + 5);
+    return { params: { slug: `${job.pubDate}/${job.slug}` }, props: { job, nextJobs } };
+  });
 }
 
-const { job } = Astro.props;
+const { job, nextJobs } = Astro.props;
+
+let seoSchema = {
+  "@context": "https://schema.org/",
+  "@type": "JobPosting",
+  description: `<p>${job.title} \n\n ${job.description}</p>`,
+  datePosted: dayjs(job.pubDate).format("YYYY-MM-DD"),
+  validThrough: dayjs(job.pubDate).add(3, "month").format("YYYY-MM-DD"),
+  applicantLocationRequirements: {
+    "@type": "Country",
+    name: "CUBA",
+  },
+};
+
+if (job.remote) {
+  seoSchema["jobLocationType"] = "TELECOMMUTE";
+}
+
+if (job.presential && job.location) {
+  seoSchema["jobLocation"] = {
+    "@type": "Place",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: job.location,
+      addressCountry: "CU",
+    },
+  };
+}
+
+if (job.organization) {
+  seoSchema["hiringOrganization"] = {
+    "@type": "Organization",
+    name: job.organization,
+  };
+  if (job.organization_site) {
+    seoSchema["hiringOrganization"]["sameAs"] = job.organization_site;
+  }
+} else {
+  seoSchema["hiringOrganization"] = "confidential";
+}
+
+let jobType;
+
+if (job.fulltime) {
+  seoSchema["employmentType"] = "FULL_TIME";
+  jobType = "Full-time";
+}
+if (job.parttime) {
+  seoSchema["employmentType"] = "PART_TIME";
+  jobType = "Part-time";
+}
+if (job.freelance) {
+  seoSchema["employmentType"] = "CONTRACTOR";
+  jobType = "Freelance";
+}
+
+let jobTitle = job.title;
+
+if (job.categories) {
+  jobTitle = job.categories.map((category) => profileCategories[category].text).join(", ");
+  if (jobType) {
+    jobTitle = jobType + " " + jobTitle;
+  }
+}
+seoSchema["title"] = jobTitle;
 ---
 
-<BaseLayout title={`${job.title} | CuCoders Jobs`}>
+<BaseLayout title={`${job.title} | CuCoders Jobs`} seoSchema={seoSchema} description={job.description.slice(0, 180)} backUrl="/empleos">
   <JobHeader job={job} />
   <div
     class="bg-white border md:mx-auto mb-5 py-7 px-9 lg:max-w-[58rem] border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 w-full"
   >
-    <div
-      class="prose lg:prose-lg prose-img:mx-auto max-w-none whitespace-pre-wrap break-words"
-      set:html={job.description}
-    />
+    <div class="prose lg:prose-lg prose-img:mx-auto max-w-none whitespace-pre-wrap break-words dark:text-gray-100" set:html={job.description} />
   </div>
+  <OthersJobsCta jobs={nextJobs} />
 </BaseLayout>

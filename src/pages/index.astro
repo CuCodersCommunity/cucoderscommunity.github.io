@@ -30,7 +30,7 @@ const showPagination = Object.keys(allPosts).length > 6;
         btnUrl="/nueva-publicacion"
         btnIcon="/assets/img/icons/write.svg"
       />
-      {posts.map((post) => <BlogCard post={post} />)}
+      {posts.map((post,index) => <BlogCard post={post} index={index} />)}
       {showPagination && <Pagination next="/categorias/todo/2" />}
     </div>
     <div class="hidden lg:block">

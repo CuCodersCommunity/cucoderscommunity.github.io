@@ -1,0 +1,128 @@
+<button
+  id="dropdownUserAvatarButton"
+  data-dropdown-toggle="dropdownAvatar"
+  class="flex mx-3 text-sm rounded-full self-center md:mr-0 hover:ring-4 hover:ring-gray-200 dark:hover:ring-gray-700 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700"
+  type="button"
+>
+  <span class="sr-only">Open user menu</span>
+  <img
+    id="noUserAvatar"
+    src="/assets/img/icons/account-circle-baseline.svg"
+    class="w-8 h-8 opacity-70 dark:invert dark:contrast-200 dark:saturate-0"
+  />
+  <img id="userAvatar" class="w-9 h-9 rounded-full hidden" src="" alt="user photo" />
+</button>
+
+<!-- Dropdown menu -->
+<ul
+  id="dropdownAvatar"
+  class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600"
+>
+  <ul class="py-2 text-sm text-gray-700 dark:text-gray-200 user-not-logged" aria-labelledby="dropdownMenuIconButton">
+    <li>
+      <a
+        href="/registro"
+        class="inline-flex w-full items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+      >
+        <img src="/assets/img/icons/login.svg" class="w-5 h-5 mr-2 dark:invert dark:contrast-200 dark:saturate-0" />
+        Regístrate
+      </a>
+    </li>
+    <li>
+      <a
+        href="/iniciar-sesion"
+        class="inline-flex w-full items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+      >
+        <img src="/assets/img/icons/account.svg" class="w-5 h-5 mr-2 dark:invert dark:contrast-200 dark:saturate-0" />
+        Iniciar Sesión
+      </a>
+    </li>
+  </ul>
+
+  <div class="px-4 py-3 text-sm text-gray-900 dark:text-white user-logged hidden">
+    <div id="user_name" class="truncate"></div>
+    <div id="user_username" class="font-medium truncate"></div>
+  </div>
+
+  <ul class="py-2 text-sm text-gray-700 dark:text-gray-200 user-logged hidden" aria-labelledby="dropdownMenuIconButton">
+    <li>
+      <a
+        id="viewUserProfileLink"
+        href="#"
+        class="inline-flex w-full items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+      >
+        <img src="/assets/img/icons/profile.svg" class="w-5 h-5 mr-2 dark:invert dark:contrast-200 dark:saturate-0" />
+        Ver Perfil
+      </a>
+    </li>
+    <li>
+      <a
+        href="/perfil"
+        class="inline-flex w-full items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+      >
+        <img src="/assets/img/icons/account-edit.svg" class="w-5 h-5 mr-2 dark:invert dark:contrast-200 dark:saturate-0" />
+        Editar Perfil
+      </a>
+    </li>
+  </ul>
+
+  <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownUserAvatarButton">
+    <li>
+      <a
+        href="#"
+        id="navBarToggle"
+        class="inline-flex w-full items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+      >
+        <img src="/assets/img/icons/dark-light.svg" class="w-5 h-5 mr-2 dark:invert dark:contrast-200 dark:saturate-0" />
+        Cambiar Tema
+      </a>
+    </li>
+  </ul>
+  <div class="py-2 text-gray-700 dark:text-gray-200 user-logged hidden">
+    <button
+      id="loggout-btn"
+      class="inline-flex w-full items-center px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+    >
+      <img src="/assets/img/icons/log-out.svg" class="w-5 h-5 mr-2 dark:invert dark:contrast-200 dark:saturate-0" />
+      Salir
+    </button>
+  </div>
+</ul>
+
+<script>
+  import { toggleTheme } from "../../components/helpers/darkTheme";
+  let themeToggleBtn = document.getElementById("navBarToggle");
+  themeToggleBtn && themeToggleBtn.addEventListener("click", toggleTheme);
+</script>
+
+<script>
+  import { isUserLogged, loggoutUser } from "../helpers/user";
+
+  const noUserAvatar = document.getElementById("noUserAvatar");
+  const userAvatar = document.getElementById("userAvatar");
+  const userUsername = document.getElementById("user_username");
+  const userName = document.getElementById("user_name");
+  const viewUserProfileLink = document.getElementById("viewUserProfileLink");
+  const userLoggedElements = document.querySelectorAll(".user-logged");
+  const userNotLoggedElements = document.querySelectorAll(".user-not-logged");
+
+  const loggoutBtn = document.getElementById("loggout-btn");
+  loggoutBtn &&
+    loggoutBtn.addEventListener("click", () => {
+      loggoutUser();
+      location.reload();
+    });
+
+  if (isUserLogged()) {
+    if (userAvatar) {
+      userAvatar.src = localStorage.getItem("user_avatar_url");
+      userAvatar.classList.remove("hidden");
+    }
+    noUserAvatar && noUserAvatar.classList.add("hidden");
+    userLoggedElements.forEach((element) => element.classList.remove("hidden"));
+    userNotLoggedElements.forEach((element) => element.classList.add("hidden"));
+    userName && (userName.innerHTML = localStorage.getItem("user_name") || "");
+    userUsername && (userUsername.innerHTML = "@" + localStorage.getItem("user_username"));
+    viewUserProfileLink && viewUserProfileLink.setAttribute("href", "/dev/" + localStorage.getItem("user_username"));
+  }
+</script>

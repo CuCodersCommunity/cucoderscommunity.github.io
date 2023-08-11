@@ -8,7 +8,13 @@ import { getCollection } from "astro:content";
 export async function getStaticPaths({ paginate }) {
   const allEvents = await getCollection("events");
   let filterEvents = allEvents
-    .filter((event) => event.data.endDate < new Date())
+    .filter((event) => {
+      if (isNaN(event.data.endDate.getTime())) {
+        return event.data.startDate < new Date();
+      } else {
+        return event.data.endDate < new Date();
+      }
+    })
     .sort((a, b) => b.data.startDate.valueOf() - a.data.startDate.valueOf());
 
   return paginate(filterEvents, {
@@ -16,9 +22,13 @@ export async function getStaticPaths({ paginate }) {
   });
 }
 const { page } = Astro.props;
+
+let title = `Eventos Tech Pasados`;
+if (page.currentPage != 1) title += ` | Página ${page.currentPage}`;
+title += " | CuCoders";
 ---
 
-<EventLayout title={`Eventos Tech Pasados | Página ${page.currentPage} | CuCoders`}>
+<EventLayout title={title}>
   <BreadcrumbContainer
     breadcrumbItems={[{ label: "Eventos", home: true, url: "/eventos" }, { label: "Eventos Pasados" }]}
     btnLabel="Publicar Evento"
@@ -26,7 +36,7 @@ const { page } = Astro.props;
     btnIcon="/assets/img/icons/event-add.svg"
   />
 
-  {page.data.length == 0 && <img src="/assets/img/emptyList.webp" class="md:w-2/3 w-full mx-auto my-4" />}
+  {page.data.length == 0 && <img src="/assets/img/emptyList.webp" class="md:w-2/3 w-full mx-auto my-4 dark:opacity-50" />}
   <div class="grid gap-6 w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-7">
     {page.data.map((event) => <EventCard event={event} />)}
   </div>

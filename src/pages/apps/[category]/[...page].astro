@@ -34,10 +34,13 @@ for (const [key, value] of Object.entries(categories)) {
     break;
   }
 }
+
+let title = `Directorio de Aplicaciones Cubanas | ${category.text}`;
+if (page.currentPage != 1) title += ` | Página ${page.currentPage}`;
 ---
 
 <AppsLayout
-  title={`Directorio de Aplicaciones Cubanas | ${category.text} | Página ${page.currentPage}`}
+  title={title}
   description="Explora el futuro de la tecnología cubana en el directorio de aplicaciones de Cucoders. Descubre las aplicaciones creadas por desarrolladores locales y apóyalos en su camino hacia el éxito. ¡Navega en nuestro directorio de aplicaciones y descubre las soluciones innovadoras desarrolladas en Cuba!"
 >
   <BreadcrumbContainer
@@ -47,7 +50,7 @@ for (const [key, value] of Object.entries(categories)) {
     btnIcon="/assets/img/icons/add.svg"
   />
 
-  {page.data.length == 0 && <img src="/assets/img/emptyList.webp" class="md:w-2/3 w-full mx-auto my-4" />}
+  {page.data.length == 0 && <img src="/assets/img/emptyList.webp" class="md:w-2/3 w-full mx-auto my-4 dark:opacity-50" />}
 
   <div class="grid mb-6 w-full gap-4 md:grid-cols-1 mx-auto px-3 sm:px-0">
     {

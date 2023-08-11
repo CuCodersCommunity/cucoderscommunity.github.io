@@ -1,11 +1,14 @@
 ---
 import SidebarItem from "./sidebarComponents/sidebarItem.astro";
+import CucodersLogo from "./ui/cucodersLogo.astro";
 ---
 
-<footer class="hidden sm:block p-4 mt-8 bg-white border border-x-0 shadow md:px-6 md:py-8 dark:bg-gray-900">
-  <div class="flex items-center justify-center flex-col container mx-auto">
-    <a href="#" class="flex items-center mb-6">
-      <img src="/assets/img/cucoders-logo.webp" class="h-7 mr-3 sm:h-8" alt="CuCoderes Logo" />
+<footer
+  class="hidden sm:block p-4 mt-8 bg-white border border-x-0 shadow md:px-6 md:py-8 dark:bg-gray-900 dark:border-gray-700"
+>
+  <nav class="flex items-center justify-center flex-col container mx-auto">
+    <a href="/" class="flex items-center mb-6 dar:text-white">
+      <CucodersLogo classes="h-7 mr-3 sm:h-8 dark:fill-gray-100" />
     </a>
     <ul class="flex flex-wrap items-center mb-6 justify-center text-sm text-gray-500 sm:mb-0 dark:text-gray-400">
       <li>
@@ -25,7 +28,7 @@ import SidebarItem from "./sidebarComponents/sidebarItem.astro";
         >
       </li>
       <li>
-        <a href="mailto:contac.manuelernestog@gmail.com" class="mr-4 hover:underline md:mr-6">Contactar</a>
+        <a href="mailto:contact.manuelernestog@gmail.com" class="mr-4 hover:underline md:mr-6">Contactar</a>
       </li>
       <li>
         <a href="https://github.com/cucoderscommunity" target="_blank" class="mr-4 hover:underline md:mr-6">GitHub</a>
@@ -40,32 +43,61 @@ import SidebarItem from "./sidebarComponents/sidebarItem.astro";
         <a href="/rss.xml" target="_blank" class="hover:underline">RSS</a>
       </li>
     </ul>
-  </div>
+  </nav>
   <hr class="my-5 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-6" />
   <span class="block text-sm text-gray-500 text-center dark:text-gray-400">© 2023 CuCoders. Hecho con ❤️ en Cuba 🇨🇺</span>
 </footer>
 
 <div class="sm:hidden pt-20"></div>
 <footer
-  class="sm:hidden px-3 py-1 bg-white -mb-[2px] bottom-0 border border-b-0 border-x-0 shadow fixed justify-around flex left-0 z-20 w-full"
+  class="sm:hidden px-3 py-1 bg-white/80 backdrop-blur-md dark:bg-gray-900/80 dark:border-gray-700 -mb-[1px] bottom-0 border border-b-0 border-x-0 shadow fixed justify-around flex left-0 z-20 w-full"
 >
-  <a href="/"> <img src="/assets/img/icons/outline-home.svg" class="h-7 w-7 m-3" /></a>
-  <a href="/directorio"> <img src="/assets/img/icons/people-group-outline.svg" class="h-7 w-7 m-3" /></a>
-  <a
-    data-drawer-target="drawer-bottom-example"
-    data-drawer-show="drawer-bottom-example"
+  <a href="/">
+    <img
+      src="/assets/img/icons/outline-home.svg"
+      class="h-9 w-9 m-2 rounded-md p-1 dark:invert dark:contrast-200 dark:saturate-0"
+      alt="Inicio"
+    /></a
+  >
+  <a href="/directorio">
+    <img
+      src="/assets/img/icons/people-group-outline.svg"
+      class="h-9 w-9 m-2 rounded-md p-1 dark:invert dark:contrast-200 dark:saturate-0"
+      alt="Directorio"
+    /></a
+  >
+  <button
+    data-drawer-target="drawer-footer"
+    data-drawer-show="drawer-footer"
     data-drawer-placement="bottom"
-    aria-controls="drawer-bottom-example"
+    aria-controls="drawer-footer"
+    aria-label="Open new menu"
   >
-    <img src="/assets/img/icons/add-menu.svg" class="h-7 w-7 m-3" /></a
+    <img
+      src="/assets/img/icons/add-menu.svg"
+      class="h-9 w-9 m-2 rounded-md p-1 dark:invert dark:contrast-200 dark:saturate-0"
+      alt="Nuevo"
+    /></button
   >
-  <a href="/eventos"> <img src="/assets/img/icons/event-available-outline.svg" class="h-7 w-7 m-3" /></a>
-  <a href="/empleos"> <img src="/assets/img/icons/briefcase-line.svg" class="h-7 w-7 m-3" /></a>
+  <a href="/eventos">
+    <img
+      src="/assets/img/icons/event-available-outline.svg"
+      class="h-9 w-9 m-2 rounded-md p-1 dark:invert dark:contrast-200 dark:saturate-0"
+      alt="Eventos"
+    /></a
+  >
+  <a href="/empleos">
+    <img
+      src="/assets/img/icons/briefcase-line.svg"
+      class="h-9 w-9 m-2 rounded-md p-1 dark:invert dark:contrast-200 dark:saturate-0"
+      alt="Empleos"
+    /></a
+  >
 </footer>
 
 <!-- drawer component -->
 <div
-  id="drawer-bottom-example"
+  id="drawer-footer"
   class="fixed bottom-0 left-0 right-0 rounded-t-lg z-40 w-full p-4 overflow-y-auto transition-transform bg-white dark:bg-gray-800 translate-y-full"
   tabindex="-1"
   aria-labelledby="drawer-bottom-label"
@@ -78,8 +110,8 @@ import SidebarItem from "./sidebarComponents/sidebarItem.astro";
   </h5>
   <button
     type="button"
-    data-drawer-hide="drawer-bottom-example"
-    aria-controls="drawer-bottom-example"
+    data-drawer-hide="drawer-footer"
+    aria-controls="drawer-footer"
     class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
   >
     <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"
@@ -91,11 +123,22 @@ import SidebarItem from "./sidebarComponents/sidebarItem.astro";
     <span class="sr-only">Close menu</span>
   </button>
 
-  <ul class="space-y-2 dark:border-gray-700">
+  <ul class="space-y-2 mb-2 dark:border-gray-700 pointer-events-none opacity-50" id="footer-logged-user-actions">
     <SidebarItem text="Publicar Artículo" url="/nueva-publicacion" />
+    <SidebarItem text="Adicionar Aplicación" url="/nueva-app" />
+  </ul>
+  <ul class="space-y-2 dark:border-gray-700">
     <SidebarItem text="Publicar Empleo" url="/nuevo-empleo" />
     <SidebarItem text="Crear Evento" url="/nuevo-evento" />
-    <SidebarItem text="Adicionar Aplicación" url="/nueva-app" />
     <SidebarItem text="Adicionar Recurso" url="/nuevo-recurso" />
   </ul>
 </div>
+
+<script>
+  import { isUserLogged } from "./helpers/user";
+
+  if (isUserLogged()) {
+    const actionsMenu = document.getElementById("footer-logged-user-actions");
+    actionsMenu && actionsMenu.classList.remove("opacity-50", "pointer-events-none");
+  }
+</script>

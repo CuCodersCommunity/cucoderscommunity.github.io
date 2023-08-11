@@ -4,8 +4,20 @@ import jobsCategories from "../../data/jobsCategories.json";
 import JobCardCategory from "./jobCardCategory.astro";
 import ShareThisModal from "../helpers/shareThisModal.astro";
 import ReportModal from "../../components/modals/reportModal.astro";
+import DropdownMenuVerticalDots from "../ui/dropdownMenuVerticalDots.astro";
+import dayjs from "dayjs";
 
 const { job } = Astro.props;
+
+const display_date = dayjs(job.pubDate).format("DD/MM/YY");
+
+if (
+  job.organizationWebsite &&
+  !job.organizationWebsite.includes("https://") &&
+  !job.organizationWebsite.includes("http://")
+) {
+  job.organizationWebsite = "https://" + job.organizationWebsite;
+}
 ---
 
 <div
@@ -39,15 +51,9 @@ const { job } = Astro.props;
                 class="inline-flex items-center border p-2 px-4 mx-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                 type="button"
                 >Aplicar
-                <img src="/assets/img/icons/business.svg" class="h-6 w-6 min-w-[1.5rem] ml-2" />
+                <img src="/assets/img/icons/business.svg" class="h-6 w-6 min-w-[1.5rem] ml-2 dark:invert dark:contrast-200 dark:saturate-0" />
               </button>
-              <button
-                data-dropdown-toggle="dropdownDotsHorizontal"
-                class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-                type="button"
-              >
-                <img src="/assets/img/icons/menu-vertical-black.svg" class="h-6 w-6 min-w-[1.5rem]" />
-              </button>
+              <DropdownMenuVerticalDots/>
             </div>
           </div>
         </div>
@@ -57,8 +63,8 @@ const { job } = Astro.props;
             job.salary && (
               <>
                 <div class="flex items-center mr-2 px-2 py-1 rounded">
-                  <img src={`/assets/img/icons/money4.svg`} class="w-5 h-5 inline" />
-                  <p class="ml-1 text-sm"> {job.salary} </p>
+                  <img src={`/assets/img/icons/money4.svg`} class="w-5 h-5 inline dark:invert dark:contrast-200 dark:saturate-0" />
+                  <p class="ml-1 text-sm dark:text-white"> {job.salary} </p>
                 </div>
                 <div class="w-0.5 h-5 mr-2 bg-gray-400 place-self-center hidden md:block" />
               </>
@@ -131,6 +137,24 @@ const { job } = Astro.props;
               </>
             )
           }
+          {
+            job.organization && (
+              <div class="flex">
+                <div class="w-0.5 h-5 mr-2  bg-gray-400 place-self-center hidden md:block" />
+                <a href={job.organizationWebsite} target="_blank" class="flex items-center hover:bg-gray-100 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 px-2 py-1 rounded">
+                  <img src={`/assets/img/icons/company.svg`} class="w-4 h-4 inline dark:invert dark:contrast-200 dark:saturate-0" />
+                  <p class="ml-1 text-xs md:text-sm">{job.organization}</p>
+                </a>
+              </div>
+            )
+          }
+          <div class="flex">
+            <div class="w-0.5 h-5 mx-2 bg-gray-400 place-self-center hidden md:block"></div>
+            <div class="flex items-center mr-2 px-2 py-1 rounded">
+              <img src={`/assets/img/icons/event-date.svg`} class="w-4 h-4 inline dark:invert dark:contrast-200 dark:saturate-0" />
+              <p class="ml-1 text-xs md:text-sm dark:text-gray-100">{display_date}</p>
+            </div>
+          </div>
         </div>
 
         <div class="flex flex-wrap justify-center md:justify-start">
@@ -139,7 +163,7 @@ const { job } = Astro.props;
               job.categories.map((category) => (
                 <a
                   href={"/empleos/" + profileCategories[category].slug}
-                  class="inline my-1 rounded-md hover:bg-gray-100 bg-gray-50 text-gray-800 font-normal text-sm py-1 px-2 mr-3 "
+                  class="inline my-1 rounded-md hover:bg-gray-100 bg-gray-50 text-gray-800 dark:hover:bg-gray-600 dark:bg-gray-700 dark:text-gray-100 font-normal text-sm py-1 px-2 mr-3 "
                 >
                   {profileCategories[category].text}
                 </a>
@@ -180,19 +204,6 @@ const { job } = Astro.props;
 >
   <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownMenuIconHorizontalButton">
     {
-      job.applyEmail && (
-        <li>
-          <a
-            href={`mailto:${job.applyEmail}`}
-            target="_blank"
-            class="block px-4 cursor-pointer py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-          >
-            Enviar Email
-          </a>
-        </li>
-      )
-    }
-    {
       job.applyUrl && (
         <li>
           <a
@@ -200,7 +211,7 @@ const { job } = Astro.props;
             target="_blank"
             class="block px-4 cursor-pointer py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
           >
-            Visitar Pagina web
+            Enlace para Aplicar
           </a>
         </li>
       )
@@ -214,6 +225,32 @@ const { job } = Astro.props;
             class="block px-4 cursor-pointer py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
           >
             Contactar en Telegram
+          </a>
+        </li>
+      )
+    }
+    {
+      job.applyEmail && (
+        <li>
+          <a
+            href={`mailto:${job.applyEmail}`}
+            target="_blank"
+            class="block px-4 cursor-pointer py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+          >
+            Enviar Correo Electronico
+          </a>
+        </li>
+      )
+    }
+    {
+      job.applyPhone && (
+        <li>
+          <a
+            href={`tel:${job.applyPhone}`}
+            target="_blank"
+            class="block px-4 cursor-pointer py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+          >
+            Tel: {job.applyPhone}
           </a>
         </li>
       )

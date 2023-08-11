@@ -40,11 +40,15 @@ for (const [key, value] of Object.entries(categories)) {
     break;
   }
 }
+
+let title = `Directorio de Desarrolladores Cubanos Disponibles para Trabajar`;
+if (category.text) title += ` | ${category.text}`;
+if (page.currentPage != 1) title += ` | Página ${page.currentPage}`;
+title += " | CuCoders";
 ---
 
 <DirectoryLayout
-  title="<DirectoryLayout"
-  title={`Directorio de Desarrolladores Cubanos Disponibles para Trabajar | ${category.text} | Página ${page.currentPage} | CuCoders`}
+  title={title}
   openToWork={true}
 >
   {
@@ -73,7 +77,7 @@ for (const [key, value] of Object.entries(categories)) {
     )
   }
 
-  {page.data.length == 0 && <img src="/assets/img/emptyList.webp" class="md:w-2/3 w-full mx-auto my-4" />}
+  {page.data.length == 0 && <img src="/assets/img/emptyList.webp" class="md:w-2/3 w-full mx-auto my-4 dark:opacity-50" />}
   <div class="grid gap-6 w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mb-7">
     {page.data.map((profile) => <ProfileCard profile={profile} />)}
   </div>
