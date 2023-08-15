@@ -17,7 +17,7 @@ for (const key in categories) {
 
 <BaseLayout
   title="Perfil"
-  description="Destaca tus habilidades y logros en la industria de la programación con tu perfil en Cucoders. Comparte tu rurriculo, servicios, proyectos y apps con la comunidad."
+  description="Destaca tus habilidades y logros en la industria de la programación con tu perfil en Cucoders. Comparte tu currículo, servicios, proyectos y apps con la comunidad."
 >
   <div class="lg:max-w-[58rem] mx-auto w-full md:mt-12">
     <div
@@ -60,7 +60,7 @@ for (const key in categories) {
     class="bg-white border md:mx-auto mb-5 p-8 lg:max-w-[58rem] border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 w-full"
   >
     <div class="flex justify-between">
-      <h1 class="text-xl font-bold dark:text-white">Datos de Github</h1>
+      <h1 class="text-xl font-bold dark:text-white">Datos de GitHub</h1>
 
       <div class="flex">
         <img
@@ -93,7 +93,7 @@ for (const key in categories) {
       <div class="px-3 py-2">
         <p>
           Estos datos se obtienen de tu perfil de GitHub,
-          <a class="underline" href="https://github.com/settings/profile" target="_blank">actualízalos</a> y luego recargarlos
+          <a class="underline" href="https://github.com/settings/profile" target="_blank">actualízalos</a> y luego recárgarlos
           aquí.
         </p>
       </div>
@@ -159,7 +159,7 @@ for (const key in categories) {
           </div>
         </div>
         <div>
-          <label for="company" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Compañia</label>
+          <label for="company" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Compañía</label>
           <input
             type="text"
             id="company"
@@ -227,8 +227,8 @@ for (const key in categories) {
     </div>
 
     <div class="mb-6">
-      <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Categorias</label>
-      <select id="categories" name="state[]" multiple placeholder="Categorias" autocomplete="off">
+      <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Categorías</label>
+      <select id="categories" name="state[]" multiple placeholder="Categorías" autocomplete="off">
         <option value="">Select a state...</option>
         {categoriesList.map((category) => <option value={category.key}>{category.text}</option>)}
       </select>
@@ -365,7 +365,7 @@ var control = new TomSelect("#categories", {});
     const username = localStorage.getItem("user_username");
 
     disableInput();
-    const isMember = await isCommunityMemeber(username);
+    const isMember = await isCommunityMember(username);
     if (!isMember) {
       const alert = `El usuario ${username} no es miembro de la Comunidad. Necesitas registrarte primero para actualizar tu perfil.`;
       showToast(alert, true);
@@ -392,7 +392,7 @@ var control = new TomSelect("#categories", {});
     loadCucodersUserData(username);
   }
 
-  async function isCommunityMemeber(username) {
+  async function isCommunityMember(username) {
     const url = backend_url + "api/members/is-member?username=" + username;
     try {
       const response = await fetch(url, { method: "GET" });
@@ -558,7 +558,7 @@ var control = new TomSelect("#categories", {});
     const profileData = createProfileData();
     navigator.clipboard.writeText(JSON.stringify(profileData));
     const alert =
-      "Datos copiados al portapapeles satisfactoriamente! Abra su configuración en Github y remplácela con los nuevos datos.";
+      "Datos copiados al portapapeles satisfactoriamente! Abra su configuración en GitHub y reemplácela con los nuevos datos.";
     showToast(alert);
   }
 

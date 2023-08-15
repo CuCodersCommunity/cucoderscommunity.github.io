@@ -4,7 +4,7 @@
 
 ## Código contribución
 
-Una de las mejores maneras de contribuir, es agarrar un bug o una sugerencia de nueva caracteristicas que ya se haya marcado como aceptada y trabjar en ello.
+Una de las mejores maneras de contribuir, es agarrar un bug o una sugerencia de nueva características que ya se haya marcado como aceptada y trabajar en ello.
 
 Tenga cuidado de no trabajar en una incidencia que no este marcado como aceptados. El hecho de que alguien haya creado una incidencia no significa que vayamos a aceptarla.
 
@@ -22,7 +22,7 @@ Cuando reporte un error sea lo más descriptivo posible y especifique como se pu
 
 ## Ejecución
 
-Si deseas comprender cómo funciona CuCoders o deseas solucionar algun problema, necesita clonar el codigo fuente y ejecutarlo localmente.
+Si deseas comprender cómo funciona CuCoders o deseas solucionar algún problema, necesita clonar el codigo fuente y ejecutarlo localmente.
 
 Requisitos previos
 
