@@ -65,8 +65,8 @@ let platformList = ["Windows", "Linux", "macOS", "Web", "Android", "iOS", "Naveg
     </div>
 
     <div class="mb-6">
-      <label for="categories" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Categorias</label>
-      <select id="categories" name="state[]" multiple placeholder="Categorias" autocomplete="off">
+      <label for="categories" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Categorías</label>
+      <select id="categories" name="state[]" multiple placeholder="Categorías" autocomplete="off">
         <option value="">Select a state...</option>
         {categoriesList.map((category) => <option value={category.key}>{category.text}</option>)}
       </select>

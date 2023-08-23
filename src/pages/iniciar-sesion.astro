@@ -27,7 +27,7 @@ import "../styles/main.css";
           <div class="space-y-4 md:space-y-6" id="form">
             <div>
               <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >Tu usuario de Github</label
+                >Tu usuario de GitHub</label
               >
               <div class="flex">
                 <span
@@ -111,7 +111,7 @@ import "../styles/main.css";
     const username = document.getElementById("username").value;
 
     disableInput();
-    const isMember = await isCommunityMemeber(username);
+    const isMember = await isCommunityMember(username);
     if (!isMember) {
       const alert = `El usuario ${username} no es miembro de la Comunidad. Necesitas registrarte primero para iniciar tu sesión.`;
       showToast(alert, true);
@@ -141,7 +141,7 @@ import "../styles/main.css";
     }
   }
 
-  async function isCommunityMemeber(username) {
+  async function isCommunityMember(username) {
     const url = backend_url + "api/members/is-member?username=" + username;
     try {
       const response = await fetch(url, { method: "GET" });

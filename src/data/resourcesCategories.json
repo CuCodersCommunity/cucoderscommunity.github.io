@@ -112,7 +112,7 @@
         "id": "projectManagement",
         "parentId": "teams",
         "slug": "gestion-de-proyectos",
-        "text": "Gestion de Proyectos"
+        "text": "Gestión de Proyectos"
       },
       {
         "id": "whiteboard",
@@ -151,7 +151,7 @@
         "id": "codeQuality",
         "parentId": "devTools",
         "slug": "calidad-del-codigo",
-        "text": "Calidad del Codigo"
+        "text": "Calidad del Código"
       },
       {
         "id": "codeGenaration",
@@ -181,7 +181,7 @@
         "id": "searchs",
         "parentId": "devTools",
         "slug": "busquedas",
-        "text": "Busquedas"
+        "text": "Búsquedas"
       },
       {
         "id": "monitoring",
