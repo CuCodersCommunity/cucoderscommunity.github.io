@@ -3,14 +3,15 @@ const { target = "_blank", id } = Astro.props;
 ---
 
 <a
-  id={id}
   href="#"
   target={target}
-  class="flex group p-8 mb-8 h-36 bg-gray-500 hover:bg-blend-multiply text-left bg-local bg-center bg-no-repeat bg-cover rounded-lg transition-all duration-300"
+  class={"flex group p-8 mb-8 h-36 bg-gray-500 hover:bg-blend-multiply text-left bg-local bg-center bg-no-repeat bg-cover rounded-lg transition-all duration-300 " +
+    id}
 >
   <p
-    id={id + "-desc"}
-    class="px-2 font-extrabold leading-tight tracking-tight opacity-0 text-white group-hover:opacity-100 transition-all duration-300"
+    class={"px-2 font-extrabold leading-tight tracking-tight opacity-0 text-white group-hover:opacity-100 transition-all duration-300 " +
+      id +
+      "-desc"}
   >
   </p>
 </a>

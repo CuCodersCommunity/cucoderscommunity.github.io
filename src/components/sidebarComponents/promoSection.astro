@@ -31,17 +31,19 @@ import PromoImage from "./promoImage.astro";
   }
 
   function showPromoData(elementId, data) {
-    document.getElementById(elementId + "-title").innerHTML = data.title;
-    document.getElementById(elementId + "-desc").innerHTML = data.desc;
-    document.getElementById(elementId + "-link").href = data.url;
-    document.getElementById(elementId + "-img").src = data.img;
+    document.querySelectorAll(`.${elementId}`).forEach((item) => {
+      item.querySelector(`.${elementId}-title`).innerHTML = data.title;
+      item.querySelector(`.${elementId}-desc`).innerHTML = data.desc;
+      item.querySelector(`.${elementId}-link`).href = data.url;
+      item.querySelector(`.${elementId}-img`).src = data.img;
+    });
   }
 
   function showImgPromoData(elementId, data) {
-    document.getElementById(elementId + "-desc").innerHTML = data.desc;
-    document.getElementById(elementId).style = `background-image: url(${data.img})`;
-    document.getElementById(elementId).src = data.url;
+    document.querySelectorAll(`.${elementId}`).forEach((item) => {
+      item.querySelector(`.${elementId}-desc`).innerHTML = data.desc;
+      item.style = `background-image: url(${data.img})`;
+      item.src = data.url;
+    });
   }
-
-  // const promoStyle = ;
 </script>

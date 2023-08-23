@@ -3,14 +3,14 @@ const { target = "_blank", id } = Astro.props;
 ---
 
 <div
-  id={id}
-  class="overflow-y-auto rounded-md mb-5 bg-white border-solid border-[1px] border-gray-200 dark:bg-gray-800 dark:border-gray-700"
+  class={"overflow-y-auto rounded-md mb-5 bg-white border-solid border-[1px] border-gray-200 dark:bg-gray-800 dark:border-gray-700 " +
+    id}
 >
-  <a id={id + "-link"} href="#" target={target}>
-    <img id={id + "-img"} class="rounded-t-lg" src="" />
+  <a href="#" target={target} class={id + "-link"}>
+    <img class={"rounded-t-lg " + id + "-img"} src="" />
     <div class="p-5">
-      <h5 id={id + "-title"} class="mb-2 text-base font-bold tracking-tight text-gray-900 dark:text-white line-clamp-2"></h5>
-      <p id={id + "-desc"} class="mb-3 font-normal text-gray-700 dark:text-gray-400 line-clamp-4"></p>
+      <h5 class={"mb-2 text-base font-bold tracking-tight text-gray-900 dark:text-white line-clamp-2 " + id + "-title"}></h5>
+      <p class={"mb-3 font-normal text-gray-700 dark:text-gray-400 line-clamp-4 " + id + "-desc"}></p>
     </div>
   </a>
 </div>
