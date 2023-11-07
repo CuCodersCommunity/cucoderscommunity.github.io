@@ -2,7 +2,7 @@
 name: "Nebula News"
 id: "Nebula-News"
 description: "A Next.js, Tailwind, and daisyUI template that allows you to create a newsletter site in a matter of hours"
-logo: "https://github.com/dlcastillop/dlcastillop/blob/main/logos/nebula-news-logo.png"
+logo: "https://github.com/dlcastillop/dlcastillop/blob/main/logos/nebula-news-logo.png?raw=true"
 email: ""
 website: "https://getnebula.news"
 is_open_source: false

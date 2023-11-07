@@ -2,7 +2,7 @@
 name: "Final Countdown JS"
 id: "Final-Countdown-JS"
 description: "A react hook library to handle all kinds of timers"
-logo: "https://github.com/dlcastillop/dlcastillop/blob/main/logos/final-countdown-js-logo.png"
+logo: "https://github.com/dlcastillop/dlcastillop/blob/main/logos/final-countdown-js-logo.png?raw=true"
 email: ""
 website: ""
 is_open_source: true
