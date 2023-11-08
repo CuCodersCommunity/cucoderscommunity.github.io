@@ -4,5 +4,11 @@
     "desc": "Crea imágenes asombrosas de tus capturas de pantalla o tu código.",
     "url": "https://karbonized.onrender.com/",
     "img": "/assets/img/promo/karbonized_promo.webp"
+  },
+  {
+    "title": "Crea tu Web Personal gratis",
+    "desc": "Crea gratis tu web personal con blog, servicios, currículo, temas y más con esta plantilla de Astro.",
+    "url": "https://astro-modern-personal-website.netlify.app/",
+    "img": "/assets/img/promo/promo_website.webp"
   }
 ]
