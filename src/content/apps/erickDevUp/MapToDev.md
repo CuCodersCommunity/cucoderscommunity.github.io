@@ -14,5 +14,3 @@ pubDate: "Sat Mar 30 2024"
 categories: ["education","dev"]
 platforms: ["Web"]
 ---
-
-Aquí va la descripción general de tu app en formato MarkDown.
