@@ -14,5 +14,3 @@ pubDate: "Sun Apr 28 2024"
 categories: ["dev","toolsAndUtilities"]
 platforms: ["Web","Navegador Web"]
 ---
-
-Aquí va la descripción general de tu app en formato MarkDown.
