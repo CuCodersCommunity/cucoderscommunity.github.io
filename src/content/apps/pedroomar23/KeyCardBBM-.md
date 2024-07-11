@@ -15,4 +15,4 @@ categories: ["finances"]
 platforms: ["iOS"]
 ---
 
-Aquí va la descripción general de tu app en formato MarkDown.
+KeyCardBBM es una alternativa a Trasnsfermovil desarrollada para la comunidad iOS en Cuba 
