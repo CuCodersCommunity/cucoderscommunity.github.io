@@ -2,7 +2,7 @@
 name: "KeyCardBBM "
 id: "KeyCardBBM-"
 description: "KeyCardBBM es una alternativa a Transfermovil desarrollada por la comunidad de desarrolladores InnovAppSoft con el objetivo de que la comunidad iOS en Cuba acceda a la banca electrónica"
-logo: "2024-04-27 19.44.37.jpg"
+logo: "https://pbs.twimg.com/profile_images/1776673112903335936/YHdH51Qs_400x400.jpg"
 email: "innovapp.soft@gmail.com"
 website: "https://innovappsoft.wordpress.com"
 is_open_source: false

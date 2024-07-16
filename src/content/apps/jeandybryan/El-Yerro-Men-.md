@@ -2,7 +2,7 @@
 name: "El Yerro Menú"
 id: "El-Yerro-Men-"
 description: "El catálogo digital cubano."
-logo: "https://elyerromenu.com/ic-yerromenu-home.svg"
+logo: "https://pbs.twimg.com/profile_images/1778278448416358401/0WCV1IPh_400x400.jpg"
 email: ""
 website: "https://elyerromenu.com/"
 is_open_source: false
