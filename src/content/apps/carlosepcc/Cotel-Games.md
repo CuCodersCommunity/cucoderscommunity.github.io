@@ -2,7 +2,7 @@
 name: "Cotel Games"
 id: "Cotel-Games"
 description: "A growing collection of casual games for all ages. Ranging from learning games for 5 year old kids to hard mutliplayer strategy classic games with a twist for the adults looking for a fresh challenge."
-logo: "https://ibb.co/mDfHZVJ"
+logo: "https://i.ibb.co/GxzVY47/Screenshot-from-2024-09-18-18-11-34.png"
 email: "carlosepc.com@gmail.com"
 website: "cotelgames.surge.sh"
 is_open_source: true
