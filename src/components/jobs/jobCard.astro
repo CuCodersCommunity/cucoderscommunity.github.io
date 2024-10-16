@@ -2,14 +2,16 @@
 import profileCategories from "../../data/profileCategories.json";
 import jobsCategories from "../../data/jobsCategories.json";
 import JobCardCategory from "./jobCardCategory.astro";
+import dayjs from "dayjs";
 
 const { job } = Astro.props;
 const jobUrl = `/empleos/${job.pubDate}/${job.slug}`;
 
 const locationLabel = job.location ? job.location : "Presencial";
+const display_date = dayjs(job.pubDate).format("DD/MM/YY");
 ---
 
-<div class="inline-flex items-center w-full p-4 pb-1 md:pb-2 text-gray-500 dark:text-gray-100 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg">
+<div class="inline-grid items-center w-full p-4 pb-1 md:pb-2 text-gray-500 dark:text-gray-100 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg">
   <div class="ml-2 inline-grid">
     <a href={jobUrl} class="w-full text-base md:text:lg text-gray-800 dark:text-gray-300 font-semibold line-clamp-2 md:line-clamp-1"
       >{job.title}</a
@@ -17,7 +19,7 @@ const locationLabel = job.location ? job.location : "Presencial";
     <a href={jobUrl} class="w-full my-2 text-sm md:text:base text-gray-600 dark:text-gray-300 line-clamp-3 md:line-clamp-2">{job.description}</a
     >
     <div
-      class="flex categories flex-wrap -ml-2 justify-center md:justify-start border-t pt-2 mt-2 md:border-none md:pt-0 md:mt-0"
+      class="flex categories w-full flex-wrap -ml-2 justify-center md:justify-start border-t pt-2 mt-2 md:border-none md:pt-0 md:mt-0"
     >
       {
         job.salary && (
@@ -96,13 +98,18 @@ const locationLabel = job.location ? job.location : "Presencial";
             </>
           ))
       }
-    </div>
-    <div class="mt-1 flex flex-wrap"></div>
-  </div>
+    <div class="grow"></div>
+      <div class="opacity-70 flex items-center mr-2 px-2 py-1 rounded">
+        <img src={`/assets/img/icons/event-date.svg`} class="w-4 h-4 inline dark:invert dark:contrast-200 dark:saturate-0" />
+        <p class="ml-1 text-xs md:text-sm dark:text-gray-100">{display_date}</p>
+      </div>
+      </div>
+      <div class="mt-1 flex flex-wrap"></div>
+      </div>
 </div>
 
 <style>
-  .categories div:last-child {
+  .categories div:nth-last-child(3) {
     display: none;
   }
 </style>
