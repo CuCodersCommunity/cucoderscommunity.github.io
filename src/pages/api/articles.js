@@ -11,8 +11,6 @@ let data = blogResponse.map((blog, index) => ({
   },
 }));
 
-export async function get({ params, request }) {
-  return {
-    body: JSON.stringify(data),
-  };
+export async function GET({ params, request }) {
+  return new Response(JSON.stringify(data));
 }

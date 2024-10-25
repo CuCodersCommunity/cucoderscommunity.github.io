@@ -14,7 +14,5 @@ function getLastUpdate(array) {
 }
 
 export async function get({ params, request }) {
-  return {
-    body: JSON.stringify({ updated_at: lastDate }),
-  };
+  return new Response(JSON.stringify({ updated_at: lastDate }));
 }
