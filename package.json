@@ -11,23 +11,28 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/image": "^0.16.1",
-    "@astrojs/partytown": "^1.0.3",
-    "@astrojs/rss": "^2.1.0",
-    "@astrojs/sitemap": "^1.0.1",
-    "@astrojs/tailwind": "^3.0.1",
-    "astro": "^2.10.0",
-    "astro-seo-schema": "^2.0.0",
-    "dayjs": "^1.11.7",
-    "flowbite": "^1.6.0",
+    "@astrojs/partytown": "^1.2.3",
+    "@astrojs/rss": "^2.4.4",
+    "@astrojs/sitemap": "^1.4.0",
+    "@astrojs/svelte": "^5.7.1",
+    "@astrojs/tailwind": "^5.1.0",
+    "astro": "^4.15.4",
+    "astro-seo-schema": "^4.0.2",
+    "dayjs": "^1.11.13",
+    "dexie": "^4.0.9",
+    "flowbite": "^1.8.1",
     "markdown-to-text-renderer": "^0.1.1",
-    "marked": "^4.2.12",
+    "marked": "^4.3.0",
     "reading-time": "^1.5.0",
-    "tailwindcss": "^3.0.24",
-    "topbar": "^2.0.1"
+    "svelte": "^4.2.19",
+    "svelter-search": "^0.1.0",
+    "svelter-search-ui": "^0.0.7",
+    "tailwindcss": "^3.4.10",
+    "topbar": "^2.0.2",
+    "vite": "^5.4.5"
   },
   "devDependencies": {
-    "@tailwindcss/line-clamp": "^0.4.2",
-    "@tailwindcss/typography": "^0.5.9"
+    "@tailwindcss/line-clamp": "^0.4.4",
+    "@tailwindcss/typography": "^0.5.15"
   }
 }

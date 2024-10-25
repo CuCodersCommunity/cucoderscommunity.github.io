@@ -2,7 +2,7 @@
 const { post } = Astro.props;
 const postData = post.data;
 const description = postData.description ? postData.description : post.body.slice(0, 160) + "...";
-import { Image } from "@astrojs/image/components";
+import { Image } from 'astro:assets';
 ---
 
 <a

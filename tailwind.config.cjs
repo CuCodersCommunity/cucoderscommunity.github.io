@@ -11,7 +11,6 @@ module.exports = {
       addVariant("children", "& > *");
     },
     require("flowbite/plugin"),
-    require("@tailwindcss/typography"),
-    require("@tailwindcss/line-clamp"),
+    require("@tailwindcss/typography")
   ],
 };
