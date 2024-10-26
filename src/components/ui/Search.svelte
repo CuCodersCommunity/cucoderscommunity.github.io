@@ -24,7 +24,7 @@
 
     searchDevelopers = new SvelterSearch({
       search_id: "developersSearch",
-      update_interval: 86400000,
+      update_interval: 259200000,
       data_url: "/api/members",
       auto_update: true,
     });
