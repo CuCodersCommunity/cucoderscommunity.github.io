@@ -25,7 +25,7 @@
     "marked": "^4.3.0",
     "reading-time": "^1.5.0",
     "svelte": "^4.2.19",
-    "svelter-search": "^0.1.0",
+    "svelter-search": "^0.1.1",
     "svelter-search-ui": "^0.0.7",
     "tailwindcss": "^3.4.10",
     "topbar": "^2.0.2",

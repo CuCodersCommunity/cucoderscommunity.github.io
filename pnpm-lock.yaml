@@ -51,8 +51,8 @@ importers:
         specifier: ^4.2.19
         version: 4.2.19
       svelter-search:
-        specifier: ^0.1.0
-        version: 0.1.0
+        specifier: ^0.1.1
+        version: 0.1.1
       svelter-search-ui:
         specifier: ^0.0.7
         version: 0.0.7(svelte@4.2.19)
@@ -1875,8 +1875,8 @@ packages:
     peerDependencies:
       svelte: ^4.0.0
 
-  svelter-search@0.1.0:
-    resolution: {integrity: sha512-WBxB054HcNou+HSh5C1SAt0xz4jAWWvcjlL0F73WB5HdomJt8ivfu4mQ1kg7nEBTYLvktSRSrKCYRwLZMkfXMg==}
+  svelter-search@0.1.1:
+    resolution: {integrity: sha512-ifDkJ0S+Amq4mv4RkCC7OX+u2IRIu3fUpqvvWyBjEw/J53wz32y6GDhwWadzJvwH3v9F82eTO1IF3MOp5DGmJA==}
 
   tailwindcss@3.4.10:
     resolution: {integrity: sha512-KWZkVPm7yJRhdu4SRSl9d4AK2wM3a50UsvgHZO7xY77NQr2V+fIrEuoDGQcbvswWvFGbS2f6e+jC/6WJm1Dl0w==}
@@ -4202,7 +4202,7 @@ snapshots:
     dependencies:
       svelte: 4.2.19
 
-  svelter-search@0.1.0: {}
+  svelter-search@0.1.1: {}
 
   tailwindcss@3.4.10:
     dependencies:

@@ -13,6 +13,6 @@ function getLastUpdate(array) {
   }, new Date(array[0].data.pubDate));
 }
 
-export async function get({ params, request }) {
+export async function GET({ params, request }) {
   return new Response(JSON.stringify({ updated_at: lastDate }));
 }

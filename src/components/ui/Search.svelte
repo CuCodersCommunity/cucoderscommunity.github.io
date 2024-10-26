@@ -18,24 +18,22 @@
       seacrh_id: "articlesSearch",
       update_interval: 86400000,
       data_url: "/api/articles",
-      // date_url: "/api/articles-last-update",
+      date_url: "/api/articles-last-update",
+      auto_update: true,
     });
 
     searchDevelopers = new SvelterSearch({
       search_id: "developersSearch",
       update_interval: 86400000,
       data_url: "/api/members",
+      auto_update: true,
     });
   });
 
   async function handleSearch(event) {
     isLoading = true;
-    await searchInstance.update();
     searchDataResult = await searchInstance.search(event.detail.value);
-    console.log(searchDataResult);
-    await searchDevelopers.update();
     searchDevelopersDataResult = await searchDevelopers.search(event.detail.value);
-    console.log(searchDevelopersDataResult);
     isLoading = false;
   }
 
