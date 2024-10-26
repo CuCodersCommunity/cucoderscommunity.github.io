@@ -5,7 +5,8 @@
 
   let showSearchDialog = false;
   let searchDataResult = [];
-  let searchInstance;
+  let searchDevelopersDataResult = [];
+  let searchInstance, searchDevelopers;
   let isLoading = false;
 
   onMount(async () => {
@@ -19,12 +20,22 @@
       data_url: "/api/articles",
       // date_url: "/api/articles-last-update",
     });
+
+    searchDevelopers = new SvelterSearch({
+      search_id: "developersSearch",
+      update_interval: 86400000,
+      data_url: "/api/members",
+    });
   });
 
   async function handleSearch(event) {
     isLoading = true;
     await searchInstance.update();
     searchDataResult = await searchInstance.search(event.detail.value);
+    console.log(searchDataResult);
+    await searchDevelopers.update();
+    searchDevelopersDataResult = await searchDevelopers.search(event.detail.value);
+    console.log(searchDevelopersDataResult);
     isLoading = false;
   }
 
@@ -63,7 +74,7 @@
 
 <SearchDialog
   {isLoading}
-  resultCount={searchDataResult.length}
+  resultCount={searchDataResult.length + searchDevelopersDataResult.length}
   bind:show={showSearchDialog}
   on:close={() => (showSearchDialog = false)}
   on:search={handleSearch}
@@ -84,6 +95,23 @@
                   d="M7 17h7v-2H7zm0-4h10v-2H7zm0-4h10V7H7zM5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h14q.825 0 1.413.588T21 5v14q0 .825-.587 1.413T19 21zm0-2h14V5H5zM5 5v14z"
                 /></svg
               >
+            </div>
+          </svelte:fragment>
+        </SearchItem>
+      {/each}
+    </SearchGroup>
+
+    <SearchGroup name="Developers" resultCount={searchDevelopersDataResult.length}>
+      {#each searchDevelopersDataResult as item}
+        <SearchItem
+          title={item.data.title}
+          subtitle={item.data.subtitle}
+          url={"/dev/" + item.data.url}
+          on:select={() => (showSearchDialog = false)}
+        >
+          <svelte:fragment slot="media">
+            <div class="flex-none w-7 h-7 text-gray-400">
+              <img src={item.data.img} alt={item.data.title + " avatar"} class="w-7 h-7 rounded-full" />
             </div>
           </svelte:fragment>
         </SearchItem>
