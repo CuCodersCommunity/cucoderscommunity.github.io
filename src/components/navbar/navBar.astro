@@ -3,7 +3,7 @@ const { hasRightSidebar, backUrl } = Astro.props;
 import CucodersLogo from "../ui/cucodersLogo.astro";
 import UserProfileMenu from "./userProfileMenu.astro";
 import AddMenu from "./addMenu.astro";
-import Search from "../ui/Search.svelte";
+import SearchBtn from "../ui/searchBtn.svelte";
 ---
 
 <nav
@@ -58,7 +58,7 @@ import Search from "../ui/Search.svelte";
       }
     </div>
     <div class="md:order-2 hidden md:flex">
-      <Search client:only="svelte"></Search>
+      <SearchBtn client:only="svelte"></SearchBtn>
       <AddMenu />
       <UserProfileMenu />
     </div>

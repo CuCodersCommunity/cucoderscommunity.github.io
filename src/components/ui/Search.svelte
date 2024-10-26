@@ -2,8 +2,8 @@
   import { SearchDialog, SearchItem, SearchGroup } from "svelter-search-ui";
   import SvelterSearch from "svelter-search";
   import { onMount } from "svelte";
+  import { showSearch } from "../search-store";
 
-  let showSearchDialog = false;
   let searchDataResult = [];
   let searchDevelopersDataResult = [];
   let searchInstance, searchDevelopers;
@@ -52,39 +52,17 @@
   }
 </script>
 
-<button
-  class="inline-flex mr-2 items-center p-1 text-sm font-medium text-center text-gray-900 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none dark:text-white focus:ring-gray-50 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-  type="button"
-  on:click={() => (showSearchDialog = true)}
->
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    class="w-5 h-5 mx-1 opacity-60"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    stroke-width="2"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-    data-v-301b6f53=""><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg
-  >
-</button>
-
 <SearchDialog
   {isLoading}
   resultCount={searchDataResult.length + searchDevelopersDataResult.length}
-  bind:show={showSearchDialog}
-  on:close={() => (showSearchDialog = false)}
+  bind:show={$showSearch}
+  on:close={() => ($showSearch = false)}
   on:search={handleSearch}
 >
   <svelte:fragment slot="search-results">
     <SearchGroup name="Publicaciones" resultCount={searchDataResult.length}>
       {#each searchDataResult as item}
-        <SearchItem
-          title={item.data.title}
-          url={"/publicaciones/" + item.data.url}
-          on:select={() => (showSearchDialog = false)}
-        >
+        <SearchItem title={item.data.title} url={"/publicaciones/" + item.data.url} on:select={() => ($showSearch = false)}>
           <svelte:fragment slot="media">
             <div class="flex-none w-7 h-7 text-gray-400">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
@@ -105,7 +83,7 @@
           title={item.data.title}
           subtitle={item.data.subtitle}
           url={"/dev/" + item.data.url}
-          on:select={() => (showSearchDialog = false)}
+          on:select={() => ($showSearch = false)}
         >
           <svelte:fragment slot="media">
             <div class="flex-none w-7 h-7 text-gray-400">
