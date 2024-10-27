@@ -21,6 +21,8 @@ jobs:
     steps:
       - name: Setup pnpm
         uses: pnpm/action-setup@v4.0.0
+        with:
+          version: latest
       - name: Checkout your repository using git
         uses: actions/checkout@v2          
       - name: Install, build, and upload your site
@@ -37,6 +39,8 @@ jobs:
     steps:
       - name: Setup pnpm
         uses: pnpm/action-setup@v4.0.0
+        with:
+          version: latest
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
