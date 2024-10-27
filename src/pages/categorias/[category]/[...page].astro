@@ -14,7 +14,7 @@ export async function getStaticPaths({ paginate }) {
   }
 
   const allPosts = await getCollection("blog");
-  return allCategories.map((categoryObj) => {
+  return allCategories.flatMap((categoryObj) => {
     let filteredPosts =
       categoryObj.key == "todo" ? allPosts : allPosts.filter((post) => post.data.categories.includes(categoryObj.key));
     filteredPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
