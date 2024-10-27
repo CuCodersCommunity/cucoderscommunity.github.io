@@ -1,8 +1,7 @@
 ---
 import ProfileLayout from "../../../layouts/profileLayout.astro";
 import { members_api_url } from "../../../data/conf.json";
-import { marked } from "marked";
-import { getRemoteFileData } from "../../../components/helpers/getRemoteFile";
+import TextLoader from "../../../components/helpers/textLoader.svelte";
 
 const response = await fetch(members_api_url + "members-data");
 const members_data = await response.json();
@@ -20,20 +19,15 @@ export async function getStaticPaths() {
 }
 
 const params = Astro.params;
-let content = "";
-
-const fileData = await getRemoteFileData(
-  `https://raw.githubusercontent.com/${params.username}/${params.username}/main/cucoders_data/resume.md`,
-  "text"
-);
-if (fileData) {
-  content = marked.parse(fileData);
-}
 ---
 
-<ProfileLayout profile={members_data[params.username]} activeTab="cv"  pageTitle="Currículo" noIndex={true}>
+<ProfileLayout profile={members_data[params.username]} activeTab="cv" pageTitle="Currículo" noIndex={true}>
   <article
     class="my-5 prose dark:prose-invert prose-sm mx-auto px-10 py-6 prose-h2:mt-3 prose-a:underline overflow-auto prose-ul:list-disc prose-img:m-0 prose-img:inline break-words"
-    set:html={content}
-  />
+  >
+    <TextLoader
+      client:only="svelte"
+      url={`https://raw.githubusercontent.com/${params.username}/${params.username}/main/cucoders_data/resume.md`}
+    />
+  </article>
 </ProfileLayout>
