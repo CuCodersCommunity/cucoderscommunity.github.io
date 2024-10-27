@@ -22,7 +22,7 @@ export async function getStaticPaths({ paginate }) {
   const response = await fetch(backend_url + "api/jobs/get-all-jobs");
   const allJobs = await response.json();
 
-  return allCategories.map((categoryObj) => {
+  return allCategories.flatMap((categoryObj) => {
     let filteredJobs =
       categoryObj.type == "job"
         ? allJobs.filter((job) => job[categoryObj.key])
