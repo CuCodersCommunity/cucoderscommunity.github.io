@@ -18,16 +18,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4.0.0
-        with:
-          version: latest
       - name: Checkout your repository using git
         uses: actions/checkout@v2          
       - name: Install, build, and upload your site
-        uses: withastro/action@v0
-        with:
-          node-version: 18
+        uses: withastro/action@v2
 
   deploy:
     needs: build
@@ -36,10 +30,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4.0.0
-        with:
-          version: latest
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
