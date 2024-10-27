@@ -6,7 +6,8 @@
 
   let searchDataResult = [];
   let searchDevelopersDataResult = [];
-  let searchInstance, searchDevelopers;
+  let searchAppsDataResult = [];
+  let searchInstance, searchDevelopers, searchApps;
   let isLoading = false;
 
   onMount(async () => {
@@ -28,12 +29,21 @@
       data_url: "/api/members",
       auto_update: true,
     });
+
+    searchApps = new SvelterSearch({
+      search_id: "appsSearch",
+      update_interval: 259200000,
+      data_url: "/api/apps",
+      date_url: "/api/apps-last-update",
+      auto_update: true,
+    });
   });
 
   async function handleSearch(event) {
     isLoading = true;
     searchDataResult = await searchInstance.search(event.detail.value);
     searchDevelopersDataResult = await searchDevelopers.search(event.detail.value);
+    searchAppsDataResult = await searchApps.search(event.detail.value);
     isLoading = false;
   }
 
@@ -54,7 +64,7 @@
 
 <SearchDialog
   {isLoading}
-  resultCount={searchDataResult.length + searchDevelopersDataResult.length}
+  resultCount={searchDataResult.length + searchDevelopersDataResult.length + searchAppsDataResult.length}
   bind:show={$showSearch}
   on:close={() => ($showSearch = false)}
   on:search={handleSearch}
@@ -88,6 +98,23 @@
           <svelte:fragment slot="media">
             <div class="flex-none w-7 h-7 text-gray-400">
               <img src={item.data.img} alt={item.data.title + " avatar"} class="w-7 h-7 rounded-full" />
+            </div>
+          </svelte:fragment>
+        </SearchItem>
+      {/each}
+    </SearchGroup>
+
+    <SearchGroup name="Apps" resultCount={searchAppsDataResult.length}>
+      {#each searchAppsDataResult as item}
+        <SearchItem
+          title={item.data.name}
+          url={item.data.url}
+          subtitle={item.data.subtitle}
+          on:select={() => ($showSearch = false)}
+        >
+          <svelte:fragment slot="media">
+            <div class="flex-none w-7 h-7 text-gray-400">
+              <img src={item.data.img} alt={item.data.name + " logo"} class="w-7 h-7 rounded-md" />
             </div>
           </svelte:fragment>
         </SearchItem>
