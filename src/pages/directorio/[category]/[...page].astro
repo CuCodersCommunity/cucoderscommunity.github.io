@@ -18,7 +18,7 @@ export async function getStaticPaths({ paginate }) {
   let members_array = Object.values(members_data);
   members_array = members_array.filter((member) => "bio" in member);
 
-  return allCategories.map((categoryObj) => {
+  return allCategories.flatMap((categoryObj) => {
     let filteredMembers =
       categoryObj.key == "todos"
         ? members_array
