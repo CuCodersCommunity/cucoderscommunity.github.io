@@ -18,6 +18,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4.0.0
       - name: Checkout your repository using git
         uses: actions/checkout@v2          
       - name: Install, build, and upload your site
@@ -32,6 +34,8 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4.0.0
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
