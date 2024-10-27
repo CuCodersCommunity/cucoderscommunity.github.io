@@ -4,7 +4,9 @@ import AppDetailLayout from "../../layouts/appDetailLayout.astro";
 
 export async function getStaticPaths() {
   const appEntries = await getCollection("apps");
-  return appEntries.map((entry) => ({ params: { slug: entry.slug }, props: { entry } }));
+
+  console.log(appEntries);
+  return appEntries.flatMap((entry) => ({ params: { slug: entry.slug }, props: { entry } }));
 }
 
 interface Props {
