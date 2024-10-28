@@ -108,7 +108,7 @@
       {#each searchAppsDataResult as item}
         <SearchItem
           title={item.data.name}
-          url={item.data.url}
+          url={"/apps/" + item.data.url}
           subtitle={item.data.subtitle}
           on:select={() => ($showSearch = false)}
         >
