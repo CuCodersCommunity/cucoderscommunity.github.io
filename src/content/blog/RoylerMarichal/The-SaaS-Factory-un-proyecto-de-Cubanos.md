@@ -52,7 +52,7 @@ Un boilerplate es un proyecto que te clonas y lo usas para empezar ya con mucho 
 
 **The SaaS Factory para Cuba**
 
-Debido a la repercusión de este boilerplate (Varias personas me contactaron, cerré clientes, bastantes usuarios registrados en la demo, etc ) decidí dar el siguiente paso y sacar una versión PRO del boilerplate y hoy hacerlo disponible bajo un plan de pago en [thesaasfactory.dev](thesaasfactory.dev)
+Debido a la repercusión de este boilerplate (Varias personas me contactaron, cerré clientes, bastantes usuarios registrados en la demo, etc ) decidí dar el siguiente paso y sacar una versión PRO del boilerplate y hoy hacerlo disponible bajo un plan de pago en [thesaasfactory.dev](https://thesaasfactory.dev)
 
 Sin embargo, para los desarrolladores cubanos estoy planeando desde hace tiempo crear y publicar a través de la plataforma de TheSaaSFactory.dev una incubadora de proyectos SaaS de desarrolladores que aún se encuentran en la isla.
 
