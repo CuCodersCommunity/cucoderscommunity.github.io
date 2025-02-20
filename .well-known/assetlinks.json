@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "dev.cucoders.twa",
+        "sha256_cert_fingerprints": ["DD:F4:5A:36:2D:C0:D0:DF:66:7E:BF:87:AC:3D:A9:2B:C8:82:F6:79:CE:8C:67:9A:DD:F0:07:78:C2:BF:EB:72"]
+      }
+    }]
