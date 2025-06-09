@@ -10,7 +10,7 @@ const { profile, activeTab, pageTitle, noIndex = false } = Astro.props;
   <ProfileHeader profile={profile} />
 
   <div
-    class="bg-white border md:mx-auto mb-5 lg:max-w-[58rem] border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 w-full"
+    class="bg-white border border-gray-300 md:mx-auto mb-5 lg:max-w-[58rem] border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 w-full"
   >
     <ProfileTabs activeTab={activeTab} profile={profile} />
     <slot />
