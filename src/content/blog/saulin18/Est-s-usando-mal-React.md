@@ -11,7 +11,7 @@ canonicalUrl: ""
 A lo largo de mis años en el desarrollo web con React he visto muchas veces que tienes que volver atrás a modificar componentes (o incluso rehacerlos desde 0) porque desde el inicio no se diseñó bien el componente, esto está **mal**.
 
 Imagina que necesitas un componente button:
-
+```
     // Button.tsx
     import React from 'react';
   
@@ -31,7 +31,7 @@ Imagina que necesitas un componente button:
     export default Button;
   
     <Button onClick={() => alert('Botón clickeado')} text="Click aquí" />
-
+```
 Este componente en primera instancia puede parecer que cumple para lo que fue asignado, pero a medida que crece el proyecto hay una gran posibilidad de que tengas que hacerle muchos cambios por no hacerlo más abierto a la modificación.
 
 **Problemas iniciales:**
@@ -43,7 +43,7 @@ Este componente en primera instancia puede parecer que cumple para lo que fue as
 **¿Cómo mejorar este componente?** 
 
 Sencillamente tipando correctamente el evento de onClick y usando la prop children en lugar de pasarle el text como un string por props. Así no cierras el contenido que le puedes pasar al button haciéndolo más flexible.
-
+```
     // Button.tsx
     import React, { MouseEvent, ReactNode } from 'react'; 
   
@@ -66,7 +66,7 @@ Sencillamente tipando correctamente el evento de onClick y usando la prop childr
     // <Button onClick={() => alert('¡Hola!')}>Click aquí</Button>
      // <Button onClick={() => alert('Icono!')}><img src="icon.png" alt="icono" /></Button>
      // <Button onClick={() => alert('Div!')}><div>Contenido</div></Button>
-
+```
 ## ComponentPropsWithRef, ComponentPropsWithoutRef, ComponentPropsWithChildren, la clave para hacer componentes reutilizables. 
 
 Incluso con los cambios anteriores, ese componente sigue sin ser del todo reutilizable, aún mantiene implementaciones en su estructura. Si quisieras añadir una nueva funcionalidad al botón, como cambiar su type (a submit, reset, etc.) o añadirle un handler para un evento, tendrías que ir al componente Button y añadir esas props una por una. 
@@ -74,7 +74,7 @@ Incluso con los cambios anteriores, ese componente sigue sin ser del todo reutil
  Aquí es donde React nos da una joya: ComponentPropsWithRef (o ComponentProps si no necesitas pasar referencias). Este tipo te permite heredar todas las propiedades nativas de un elemento HTML. Así tu componente de automáticamente aceptará type, onBlur, className, id, style, y todo lo que un componente HTML nativo pueda tener.
 
  El truco es hacer **spread** de esas props al elemento HTML del que se extiende. Esto debería hacerse en todos tus componentes que envuelvan elementos HTML primitivos.
-
+```
     // Button.tsx
      import React, { MouseEvent, ReactNode, ComponentPropsWithRef } from 'react';
   
@@ -103,9 +103,9 @@ Incluso con los cambios anteriores, ese componente sigue sin ser del todo reutil
     // <Button type="submit" onClick={(e) => e.preventDefault()}>Enviar Formulario</Button>
     // <Button onBlur={() => console.log('Salió del botón')} className="bg-blue-500 text-white p-2">Foco</Button>
      // <Button aria-label="Cerrar ventana">X</Button>
-  
+  ```
   Ahora nuestro componente recibe autocompletado, es cómodo para extender y está abierto a la extensión. Este mismo truco del ComponentPropsWithRef, ComponentPropsWithoutRef, ComponentPropsWithChildren, etc, lo pueden usar en cada elemento que envuelva un elemento HTML primitivo.
-  
+  ```
     // Ejemplo con Input
     import React, { ComponentPropsWithRef } from 'react';
   
@@ -122,7 +122,7 @@ Incluso con los cambios anteriores, ese componente sigue sin ser del todo reutil
     // Uso:
      // <Input type="text" placeholder="Tu nombre" onChange={(e) => console.log(e.target.value)} />
     // <Input type="email" required />
-
+```
 **Lógica Personalizada y Cómo Evitar Sobreescrituras**
 
 A veces querrás añadir tu propia lógica a las props nativas. Por ejemplo, podrías querer registrar un evento "X" cada vez que se hace clic en un botón además de la función onClick que el usuario pueda pasar.
@@ -132,7 +132,7 @@ El orden de esparcir las props importa. Si tienes una prop personalizada y una p
 **Esparce las props antes de tus propiedades personalizadas.**
 
 Ejemplo:
-
+```
     // Button.tsx
     import React, { MouseEvent, ReactNode, ComponentPropsWithRef } from 'react';
   
@@ -166,9 +166,9 @@ Ejemplo:
     // Uso:
     // <Button onClick={() => alert('El usuario hizo click!')}>Mi Botón</Button>
     // Aquí, la función 'handleInternalClick' se ejecutará primero, luego 'alert'
-
+```
 Ejemplo con el className:
-
+```
     // Button.tsx
     import React, { ReactNode, ComponentPropsWithRef } from 'react';
   
@@ -196,7 +196,7 @@ Ejemplo con el className:
     // Uso:
     // <Button className="w-full mt-4">Guardar</Button>
     // El botón tendrá las clases base Y "w-full mt-4"
-
+```
 **Props por defecto y el uso de props opcionales.**
 
 Muchos elementos HTML tienen comportamientos por defecto. Esto puede causar resultados inesperados.
@@ -208,7 +208,7 @@ Si una prop es necesaria para una nueva característica, hay dos maneras de mane
 - Definir un valor por defecto: Si no se pasa la prop, tendrá un valor predeterminado.
 
 - Manejar undefined: Si la prop no se pasa, la lógica de tu componente debe ser capaz de funcionar sin ella.
-
+```
       import React from 'react';
 
       interface ButtonProps extends React.ComponentPropsWithRef<'button'> {
@@ -245,11 +245,11 @@ Si una prop es necesaria para una nueva característica, hay dos maneras de mane
       </button>
       );
       }; 
-
+```
 **Composition** 
 
 Todos los componentes que hemos visto han sido simples, cascarones, base, pero no siempre tenemos componentes así. Muchas veces tenemos componentes que componen por ejemplo un Button, un Input y en el mismo componente manejamos el estado de error (la clave es identificar los elementos relacionados de la UI). Aquí es donde entra la Composition. Podemos hacer un componente que haga spread y extienda de varios componentes HTML para así hacerlo aún más reutilizable.
-
+```
      // InputField.tsx
     import React, { ComponentPropsWithRef, ReactNode } from 'react';
   
@@ -315,7 +315,7 @@ Todos los componentes que hemos visto han sido simples, cascarones, base, pero n
      };
   
      export default InputField;
-
+```
 Este enfoque, donde construyes componentes robustos y flexibles que se basan en los elementos HTML nativos y se pueden extender fácilmente, es una forma excelente de trabajar en React. Verás que muchas librerías de componentes modernas, como Shadcn, adoptan principios muy similares. 
 
 PD: El uso de Typescript no se aborda en este artículo por no ser una introducción a React, sino más bien a buenas prácticas. Si no estás usando Typescript **por favor**, empieza a hacerlo.
