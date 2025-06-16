@@ -7,9 +7,10 @@ import DropdownMenuVerticalDots from "../ui/dropdownMenuVerticalDots.astro";
 
 const { profile } = Astro.props;
 
-let profileIconsSizeClasses = "md:w-5 md:h-5 w-6 h-6"
-let profileIconsPaddingClasses= "p-2"
+let profileIconsSizeClasses = "md:w-5 md:h-5 w-6 h-6";
+let profileIconsPaddingClasses = "p-2";
 ---
+
 <div
   class="bg-white border md:mx-auto mb-5 -mt-6 md:mt-12 lg:max-w-[58rem] border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 dark:text-gray-100 w-full"
 >
@@ -61,8 +62,8 @@ let profileIconsPaddingClasses= "p-2"
                     text="Web"
                     target="_blank"
                     id="profile-web"
-                    size={ profileIconsSizeClasses }
-                    padding={ profileIconsPaddingClasses }
+                    size={profileIconsSizeClasses}
+                    padding={profileIconsPaddingClasses}
                   />
                 )
               }
@@ -75,8 +76,8 @@ let profileIconsPaddingClasses= "p-2"
                     text="Email"
                     target="_blank"
                     id="profile-email"
-                    size={ profileIconsSizeClasses }
-                    padding={ profileIconsPaddingClasses }
+                    size={profileIconsSizeClasses}
+                    padding={profileIconsPaddingClasses}
                   />
                 )
               }
@@ -88,8 +89,8 @@ let profileIconsPaddingClasses= "p-2"
                     text="Twitter"
                     target="_blank"
                     id="profile-twitter"
-                    size={ profileIconsSizeClasses }
-                    padding={ profileIconsPaddingClasses }
+                    size={profileIconsSizeClasses}
+                    padding={profileIconsPaddingClasses}
                   />
                 )
               }
@@ -101,8 +102,8 @@ let profileIconsPaddingClasses= "p-2"
                     text="Telegram"
                     target="_blank"
                     id="profile-telegram"
-                    size={ profileIconsSizeClasses }
-                    padding={ profileIconsPaddingClasses }
+                    size={profileIconsSizeClasses}
+                    padding={profileIconsPaddingClasses}
                   />
                 )
               }
@@ -114,8 +115,8 @@ let profileIconsPaddingClasses= "p-2"
                     text="Linkedin"
                     target="_blank"
                     id="profile-linkedin"
-                    size={ profileIconsSizeClasses }
-                    padding={ profileIconsPaddingClasses }
+                    size={profileIconsSizeClasses}
+                    padding={profileIconsPaddingClasses}
                   />
                 )
               }
@@ -127,12 +128,12 @@ let profileIconsPaddingClasses= "p-2"
                     text="GitHub"
                     target="_blank"
                     id="profile-github"
-                    size={ profileIconsSizeClasses }
-                    padding={ profileIconsPaddingClasses }
+                    size={profileIconsSizeClasses}
+                    padding={profileIconsPaddingClasses}
                   />
                 )
               }
-              <DropdownMenuVerticalDots/>
+              <DropdownMenuVerticalDots />
             </div>
           </div>
           <div
@@ -143,7 +144,10 @@ let profileIconsPaddingClasses= "p-2"
             {
               profile.location && (
                 <div class="flex items-center md:mr-5 mr-3">
-                  <img src="/assets/img/icons/map.svg" class="w-5 h-5 inline dark:invert dark:saturate-0 dark:contrast-200" />
+                  <img
+                    src="/assets/img/icons/map.svg"
+                    class="w-5 h-5 inline dark:invert dark:saturate-0 dark:contrast-200"
+                  />
                   <spam class="ml-1">{profile.location}</spam>
                 </div>
               )
@@ -151,7 +155,10 @@ let profileIconsPaddingClasses= "p-2"
             {
               profile.company && (
                 <div class="flex items-center md:mr-5 mr-3">
-                  <img src="/assets/img/icons/company.svg" class="w-5 h-5 inline dark:invert dark:saturate-0 dark:contrast-200" />
+                  <img
+                    src="/assets/img/icons/company.svg"
+                    class="w-5 h-5 inline dark:invert dark:saturate-0 dark:contrast-200"
+                  />
                   <spam class="ml-1">{profile.company}</spam>
                 </div>
               )
@@ -160,14 +167,17 @@ let profileIconsPaddingClasses= "p-2"
           <div class="text-sm mb-3 font-normal text-center md:text-left text-gray-900 dark:text-gray-100">{profile.bio}</div>
           <div class="flex flex-wrap justify-center md:justify-start">
             {
-              profile.categories.map((role) => (
-                <a
-                  href={"/directorio/" + categories[role].slug}
-                  class="inline rounded-md bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-100 my-1 font-normal text-sm py-1 px-2 mr-3 "
-                >
-                  {categories[role].text}
-                </a>
-              ))
+              profile.categories.map(
+                (role) =>
+                  categories[role] && (
+                    <a
+                      href={"/directorio/" + categories[role].slug}
+                      class="inline rounded-md bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-100 my-1 font-normal text-sm py-1 px-2 mr-3 "
+                    >
+                      {categories[role].text}
+                    </a>
+                  )
+              )
             }
           </div>
         </div>
