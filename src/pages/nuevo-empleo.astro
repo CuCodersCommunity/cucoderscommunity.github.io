@@ -8,10 +8,14 @@ import Toast from "../components/toast/toast.astro";
 import "../styles/main.css";
 import categories from "../data/profileCategories.json";
 
-let categoriesList = [];
+interface Category {
+  key: string;
+  text: string;
+}
+
+let categoriesList: Category[] = [];
 for (const key in categories) {
-  categories[key].key = key;
-  categoriesList.push(categories[key]);
+  categoriesList.push({ key: key, text: categories[key].text });
 }
 ---
 
@@ -19,37 +23,35 @@ for (const key in categories) {
   title="Publicar Nuevo Empleo | CuCoders"
   description="Atrae al mejor talento de la tecnología con nuestras ofertas de empleo en CuCoders. Publica una nueva oferta y encuentra al candidato perfecto para tu empresa. ¡Descubre cómo puedes conectarte con la comunidad de programadores de Cuba y atraer al mejor talento hoy mismo en CuCoders!"
 >
-
-
-<div class="lg:max-w-[58rem] mx-auto w-full md:mt-12">
-  <div
-    id="newJobsAlert"
-    class="flex p-4 hidden mt-5 md:mt-0 text-sm mb-6 text-blue-800 border border-blue-300 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400 dark:border-blue-800"
-    role="alert"
-  >
-    <svg
-      aria-hidden="true"
-      class="flex-shrink-0 inline w-5 h-5 mr-3"
-      fill="currentColor"
-      viewBox="0 0 20 20"
-      xmlns="http://www.w3.org/2000/svg"
-      ><path
-        fill-rule="evenodd"
-        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-        clip-rule="evenodd"></path></svg
+  <div class="lg:max-w-[58rem] mx-auto w-full md:mt-12">
+    <div
+      id="newJobsAlert"
+      class="flex p-4 hidden mt-5 md:mt-0 text-sm mb-6 text-blue-800 border border-blue-300 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400 dark:border-blue-800"
+      role="alert"
     >
-       <span class="sr-only">Info</span>
-       <div>
+      <svg
+        aria-hidden="true"
+        class="flex-shrink-0 inline w-5 h-5 mr-3"
+        fill="currentColor"
+        viewBox="0 0 20 20"
+        xmlns="http://www.w3.org/2000/svg"
+        ><path
+          fill-rule="evenodd"
+          d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+          clip-rule="evenodd"></path></svg
+      >
+      <span class="sr-only">Info</span>
+      <div>
         <span class="font-medium">Antes de publicar su anuncio, asegúrese de respetar las siguientes normas.</span>
-          <ul class="mt-1.5 ml-4 list-disc list-inside">
-            <li>Solo publicar ofertas de trabajo.</li>
-            <li>No publicar candidaturas (Que estas buscando trabajo).</li>
-            <li>No promocionar Servicios.</li>
-            <li>No repetir el mismo anuncio en el plazo de un mes.</li>
-            <li>No publicar ofertas de trabajos engañosas o inmorales.</li>
+        <ul class="mt-1.5 ml-4 list-disc list-inside">
+          <li>Solo publicar ofertas de trabajo.</li>
+          <li>No publicar candidaturas (Que estas buscando trabajo).</li>
+          <li>No promocionar Servicios.</li>
+          <li>No repetir el mismo anuncio en el plazo de un mes.</li>
+          <li>No publicar ofertas de trabajos engañosas o inmorales.</li>
         </ul>
       </div>
-    <!-- <button
+      <!-- <button
       type="button"
       class="ml-auto -mx-1.5 -my-1.5 bg-blue-50 text-blue-500 rounded-lg focus:ring-2 focus:ring-blue-400 p-1.5 hover:bg-blue-200 inline-flex h-8 w-8 dark:bg-gray-800 dark:text-blue-300 dark:hover:bg-gray-700"
       data-dismiss-target="#newJobsAlert"
@@ -64,9 +66,8 @@ for (const key in categories) {
           clip-rule="evenodd"></path></svg
       >
     </button> -->
+    </div>
   </div>
-</div>
-
 
   <form
     id="job-form"
@@ -100,7 +101,7 @@ for (const key in categories) {
       <div class="mb-6">
         <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Categorías *</label>
         <!-- styles for this element are defined in styles/main.css-->
-        <select id="categories" name="state[]" multiple placeholder="Categorías" autocomplete="off">
+        <select id="categories" name="state[]" multiple autocomplete="off">
           <option value="">Select a state...</option>
           {categoriesList.map((category) => <option value={category.key}>{category.text}</option>)}
         </select>
@@ -171,12 +172,27 @@ for (const key in categories) {
   import dayjs from "dayjs";
   import { showToast } from "../components/toast/toast";
 
-  const jobForm = document.getElementById("job-form");
-  jobForm.addEventListener("submit", addJob, true);
+  const blacklist = ["karmal1711pro@gmail.com", "karma"];
 
-  async function addJob(e) {
+  const jobForm = document.getElementById("job-form");
+  const addJobBtn = document.getElementById("addJobBtn") as HTMLButtonElement;
+
+  if (jobForm) {
+    jobForm.addEventListener("submit", addJob, true);
+  }
+
+  async function addJob(e: Event) {
     e.preventDefault();
     const data = createJobData();
+
+    if (isBlacklisted(data)) {
+      showToast(
+        "Su contacto está en la lista negra por haber incumplido anteriormente las normas para publicar un anuncio. Si cree que esto es un error, por favor contáctenos.",
+        true
+      );
+      return;
+    }
+
     disableBtn();
     try {
       const response = await fetch(backend_url + "api/jobs/new-job", { method: "POST", body: JSON.stringify(data) });
@@ -188,12 +204,47 @@ for (const key in categories) {
     }
   }
 
-  function getElem(id) {
-    return <HTMLInputElement>document.getElementById(id);
+  function isBlacklisted(data: any) {
+    const contactFields = [
+      data.applyEmail.toLowerCase(),
+      data.applyTelegramUser.toLowerCase(),
+      data.applyPhone.toLowerCase(),
+    ];
+
+    for (const field of contactFields) {
+      if (field && blacklist.includes(field.toLowerCase())) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  function getElem(id: string): HTMLInputElement {
+    return document.getElementById(id) as HTMLInputElement;
   }
 
   function createJobData() {
-    let data = {
+    let data: {
+      title: string;
+      salary: string;
+      description: string;
+      categories: string[];
+      freelance: boolean;
+      fulltime: boolean;
+      parttime: boolean;
+      remote: boolean;
+      presential: boolean;
+      relocate: boolean;
+      location: string;
+      pubDate: string;
+      applyEmail: string;
+      applyUrl: string;
+      applyTelegramUser: string;
+      applyPhone: string;
+      organization: string;
+      organizationWebsite: string;
+      slug: string;
+    } = {
       title: getElem("title").value,
       salary: getElem("salary").value,
       description: getElem("description").value,
@@ -215,21 +266,28 @@ for (const key in categories) {
       slug: getElem("title").value.replace(/[^a-zA-Z0-9]+/g, "-"),
     };
 
-    for (let option of document.getElementById("categories").options) {
-      if (option.selected) {
-        data.categories.push(option.value);
+    const categoriesSelect = document.getElementById("categories") as HTMLSelectElement;
+    if (categoriesSelect) {
+      for (let option of categoriesSelect.options) {
+        if (option.selected) {
+          data.categories.push(option.value);
+        }
       }
     }
     return data;
   }
 
   function disableBtn() {
-    addJobBtn.disabled = true;
-    addJobBtn.textContent = "Publicando...";
+    if (addJobBtn) {
+      addJobBtn.disabled = true;
+      addJobBtn.textContent = "Publicando...";
+    }
   }
 
   function enableBtn() {
-    addJobBtn.disabled = false;
-    addJobBtn.textContent = "Publicar Empleo";
+    if (addJobBtn) {
+      addJobBtn.disabled = false;
+      addJobBtn.textContent = "Publicar Empleo";
+    }
   }
 </script>
