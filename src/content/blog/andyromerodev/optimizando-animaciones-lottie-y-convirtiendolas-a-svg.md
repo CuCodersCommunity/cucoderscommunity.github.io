@@ -19,9 +19,13 @@ Permite subir el archivo .json
 Lo optimiza en segundos (ejemplo: de 52KB a solo 5KB 🤯)
 Y elimina la marca de agua 🚫💧
 
+![alt text](image.png)
+
 2️⃣ Lottie-to-SVG (https://onderk-motion.github.io/Lottie-to-Svg/)
 Conviertes el archivo Lottie optimizado a formato SVG
 Ideal para usar como logotipos, íconos o recursos estáticos en proyectos web y móviles.
+
+![alt text](image-1.png)
 
 ✨ El resultado:
 Animación limpia y sin marca de agua
