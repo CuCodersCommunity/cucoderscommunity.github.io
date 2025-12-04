@@ -184,6 +184,19 @@ for (const key in categories) {
     e.preventDefault();
     const data = createJobData();
 
+    if (
+      !data.applyEmail &&
+      !data.applyUrl &&
+      !data.applyTelegramUser &&
+      !data.applyPhone
+    ) {
+      showToast(
+        "Debe proporcionar al menos un método de contacto.",
+        true
+      );
+      return;
+    }
+
     if (isBlacklisted(data)) {
       showToast(
         "Su contacto está en la lista negra por haber incumplido anteriormente las normas para publicar un anuncio. Si cree que esto es un error, por favor contáctenos.",
