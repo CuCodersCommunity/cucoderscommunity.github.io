@@ -191,7 +191,19 @@ for (const key in categories) {
       !data.applyPhone
     ) {
       showToast(
-        "Debe proporcionar al menos un método de contacto.",
+        "Debe proporcionar al menos un método de contacto (Correo Electrónico, URL, Usuario de Telegram o Número Telefónico).",
+        true
+      );
+      return;
+    }
+
+    const telegramUser = data.applyTelegramUser;
+    const isUrl = telegramUser.startsWith("http://") || telegramUser.startsWith("https://");
+    const startsWithAt = telegramUser.startsWith("@");
+
+    if (telegramUser && (isUrl || startsWithAt)) {
+      showToast(
+        "El campo 'Usuario de Telegram' no debe ser una URL ni empezar con '@'. Por favor, introduzca solo el nombre de usuario.",
         true
       );
       return;
