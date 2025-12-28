@@ -72,13 +72,9 @@ if (job.freelance) {
   jobType = "Freelance";
 }
 
-const job_categories = (job.categories ?? "")
-  .split(",")
-  .map((x) => x.trim())
-  .filter(Boolean);
 let jobTitle = job.title;
-if (job_categories.length > 0) {
-  jobTitle = job_categories.map((category) => profileCategories[category].text).join(", ");
+if (job.categories.length > 0) {
+  jobTitle = job.categories.map((category) => profileCategories[category].text).join(", ");
   if (jobType) {
     jobTitle = jobType + " " + jobTitle;
   }
