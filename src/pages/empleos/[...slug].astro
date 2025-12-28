@@ -72,10 +72,13 @@ if (job.freelance) {
   jobType = "Freelance";
 }
 
+const job_categories = (job.categories ?? "")
+  .split(",")
+  .map((x) => x.trim())
+  .filter(Boolean);
 let jobTitle = job.title;
-
-if (job.categories) {
-  jobTitle = job.categories.map((category) => profileCategories[category].text).join(", ");
+if (job_categories.length > 0) {
+  jobTitle = job_categories.map((category) => profileCategories[category].text).join(", ");
   if (jobType) {
     jobTitle = jobType + " " + jobTitle;
   }
@@ -83,12 +86,20 @@ if (job.categories) {
 seoSchema["title"] = jobTitle;
 ---
 
-<BaseLayout title={`${job.title} | CuCoders Jobs`} seoSchema={seoSchema} description={job.description.slice(0, 180)} backUrl="/empleos">
+<BaseLayout
+  title={`${job.title} | CuCoders Jobs`}
+  seoSchema={seoSchema}
+  description={job.description.slice(0, 180)}
+  backUrl="/empleos"
+>
   <JobHeader job={job} />
   <div
     class="bg-white border md:mx-auto mb-5 py-7 px-9 lg:max-w-[58rem] border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 w-full"
   >
-    <div class="prose lg:prose-lg prose-img:mx-auto max-w-none whitespace-pre-wrap break-words dark:text-gray-100" set:html={job.description} />
+    <div
+      class="prose lg:prose-lg prose-img:mx-auto max-w-none whitespace-pre-wrap break-words dark:text-gray-100"
+      set:html={job.description}
+    />
   </div>
   <OthersJobsCta jobs={nextJobs} />
 </BaseLayout>

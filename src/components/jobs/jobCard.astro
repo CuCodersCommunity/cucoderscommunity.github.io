@@ -4,6 +4,7 @@ import jobsCategories from "../../data/jobsCategories.json";
 import JobCardCategory from "./jobCardCategory.astro";
 
 const { job } = Astro.props;
+const job_categories = (job.categories ?? "") .split(",") .map(x => x.trim()) .filter(Boolean);
 const jobUrl = `/empleos/${job.pubDate}/${job.slug}`;
 
 const locationLabel = job.location ? job.location : "Presencial";
@@ -83,8 +84,7 @@ const locationLabel = job.location ? job.location : "Presencial";
         )
       }
       {
-        job.categories &&
-          job.categories.map((category) => (
+          job_categories.map((category) => (
             <>
               <a
                 href={"/empleos/" + profileCategories[category].slug}
