@@ -17,6 +17,21 @@ for (const key in categories) {
 
 <BaseLayout title="Editar Empleo | CuCoders" description="Edita tu oferta de empleo en CuCoders.">
   <div class="lg:max-w-[58rem] mx-auto w-full md:mt-12">
+    <div
+      id="loading-container"
+      class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-white bg-opacity-80 dark:bg-gray-900 dark:bg-opacity-80"
+    >
+      <div
+        class="inline-block h-12 w-12 animate-spin rounded-full border-4 border-solid border-gray-800 border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite] dark:border-white dark:border-r-transparent"
+        role="status"
+      >
+        <span class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
+          >Cargando...</span
+        >
+      </div>
+      <p class="mt-4 text-lg font-medium text-gray-900 dark:text-white">Cargando datos del empleo...</p>
+    </div>
+
     <form
       id="job-form"
       class="bg-white border md:mx-auto mb-5 p-8 lg:max-w-[58rem] border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 w-full"
@@ -120,6 +135,7 @@ for (const key in categories) {
 
   const urlParams = new URLSearchParams(window.location.search);
   const jobId = urlParams.get("id");
+  const loadingContainer = document.getElementById("loading-container");
   const jobForm = document.getElementById("job-form");
   const deleteJobBtn = document.getElementById("deleteJobBtn");
 
@@ -128,7 +144,10 @@ for (const key in categories) {
 
   // Load Job Logic
   window.addEventListener("load", async () => {
-    if (!jobId) return;
+    if (!jobId) {
+      if (loadingContainer) loadingContainer.classList.add("hidden");
+      return;
+    }
     try {
       const response = await fetch(`${backend_url}api/jobs/get-job?id=${jobId}`);
       if (!response.ok) throw new Error("Failed to load job");
@@ -137,6 +156,8 @@ for (const key in categories) {
     } catch (e) {
       showToast("Error cargando la información del empleo.", true);
       console.error(e);
+    } finally {
+      if (loadingContainer) loadingContainer.classList.add("hidden");
     }
   });
 
