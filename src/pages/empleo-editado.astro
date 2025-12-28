@@ -1,0 +1,22 @@
+---
+import BaseLayout from "../layouts/baseLayout.astro";
+
+const title = "Empleo actualizado satisfactoriamente!";
+const description = "Tu oferta de empleo ha sido actualizada con éxito.";
+---
+
+<BaseLayout title={title} description={description}>
+  <div
+    class="bg-white border md:mx-auto mb-5 -mt-6 md:mt-12 lg:max-w-[58rem] border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 w-full"
+  >
+    <div class="p-8 md:px-15 lg:px-20">
+      <h1 class="my-10 text-3xl md:text-4xl text-center font-bold tracking-tight text-gray-900 dark:text-white">
+        {title}
+      </h1>
+      <article class="my-5 prose dark:prose-invert lg:prose-lg prose-img:mx-auto max-w-none break-words text-center">
+        <p>Los cambios reralizados en su oferta de empleo se han guardado correctamente.</p>
+        <a href="/" class="text-blue-600 hover:text-blue-800 underline">Volver al inicio</a>
+      </article>
+    </div>
+  </div>
+</BaseLayout>

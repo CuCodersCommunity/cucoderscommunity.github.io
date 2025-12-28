@@ -1,0 +1,88 @@
+---
+import BaseLayout from "../layouts/baseLayout.astro";
+
+const title = "Empleo publicado satisfactoriamente!";
+const description =
+  "Felicidades, has publicado tu oferta de empleo con éxito en Cucoders. Ahora puedes encontrar al candidato perfecto entre nuestra comunidad de programadores en Cuba. ¡Empieza a recibir solicitudes de talentosos programadores hoy mismo!";
+---
+
+<BaseLayout title={title} description={description}>
+  <div
+    class="bg-white border md:mx-auto mb-5 -mt-6 md:mt-12 lg:max-w-[58rem] border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 w-full"
+  >
+    <div class="p-8 md:px-15 lg:px-20">
+      <h1 class="my-10 text-3xl md:text-4xl text-center font-bold tracking-tight text-gray-900 dark:text-white">
+        {title}
+      </h1>
+      <article class="my-5 prose dark:prose-invert lg:prose-lg prose-img:mx-auto max-w-none break-words">
+        <p>
+          Felicidades, has publicado tu oferta de empleo con éxito en Cucoders. Su oferta de empleo se reflejara en el sitio
+          y sera publicada en redes sociales tan pronto sea moderada. Ahora puedes encontrar al candidato perfecto entre
+          nuestra comunidad de programadores en Cuba. ¡Empieza a recibir solicitudes de talentosos programadores hoy mismo!
+        </p>
+
+        <div
+          id="edit-link-container"
+          class="hidden p-4 mb-4 text-blue-800 border border-blue-300 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400 dark:border-blue-800"
+          role="alert"
+        >
+          <div class="flex items-center">
+            <svg
+              class="flex-shrink-0 w-4 h-4 mr-2"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"
+              ></path>
+            </svg>
+            <span class="sr-only">Info</span>
+            <h3 class="text-lg font-medium">Información importante</h3>
+          </div>
+          <div class="mt-2 mb-4 text-sm">
+            Guarde el siguiente enlace para poder editar o eliminar esta oferta de trabajo en el futuro. Si pierde este
+            enlace no podrá realizar cambios.
+          </div>
+          <div class="flex">
+            <a
+              id="edit-link"
+              href="#"
+              class="text-white bg-blue-800 hover:bg-blue-900 focus:ring-4 focus:outline-none focus:ring-blue-200 font-medium rounded-lg text-xs px-3 py-1.5 mr-2 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            >
+              <svg
+                class="-ml-0.5 mr-2 h-3 w-3"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 20 14"
+              >
+                <path
+                  d="M10 0C4.612 0 0 5.336 0 7c0 1.742 3.546 7 10 7 6.454 0 10-5.258 10-7 0-1.664-4.612-7-10-7Zm0 10a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z"
+                ></path>
+              </svg>
+              Editar Empleo
+            </a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  const urlParams = new URLSearchParams(window.location.search);
+  const id = urlParams.get("id");
+
+  if (id) {
+    const editLinkContainer = document.getElementById("edit-link-container");
+    const editLink = document.getElementById("edit-link");
+
+    if (editLinkContainer && editLink) {
+      editLinkContainer.classList.remove("hidden");
+      editLink.setAttribute("href", `/editar-empleo?id=${id}`);
+      editLink.innerText = `${window.location.origin}/editar-empleo?id=${id}`;
+    }
+  }
+</script>

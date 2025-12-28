@@ -1,0 +1,267 @@
+---
+import BaseLayout from "../layouts/baseLayout.astro";
+import CheckboxInput from "../components/forms/checkboxInput.astro";
+import RadioButtonInput from "../components/forms/radioButtonInput.astro";
+import UsernameInput from "../components/forms/usernameInput.astro";
+import TextInput from "../components/forms/textInput.astro";
+import Toast from "../components/toast/toast.astro";
+import "../styles/main.css";
+import categories from "../data/profileCategories.json";
+
+let categoriesList: any[] = [];
+for (const key in categories) {
+  (categories as any)[key].key = key;
+  categoriesList.push((categories as any)[key]);
+}
+---
+
+<BaseLayout title="Editar Empleo | CuCoders" description="Edita tu oferta de empleo en CuCoders.">
+  <div class="lg:max-w-[58rem] mx-auto w-full md:mt-12">
+    <form
+      id="job-form"
+      class="bg-white border md:mx-auto mb-5 p-8 lg:max-w-[58rem] border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700 w-full"
+    >
+      <div class="flex justify-between">
+        <h1 class="text-xl font-bold dark:text-gray-100">Editar Empleo</h1>
+      </div>
+
+      <hr class="my-4" />
+
+      <div>
+        <div class="mb-6">
+          <TextInput id="title" label="Título *" maxlength="100" required={true} />
+        </div>
+
+        <div class="mb-6">
+          <TextInput id="salary" label="Salario" maxlength="60" />
+        </div>
+
+        <div class="mb-6">
+          <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Descripción *</label>
+          <textarea
+            id="description"
+            required={true}
+            rows="6"
+            class="block p-2.5 w-full text-sm bg-gray-50 text-gray-900 rounded-lg border border-gray-300 focus:ring-gray-500 focus:border-gray-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-gray-500 dark:focus:border-gray-500"
+          ></textarea>
+        </div>
+
+        <div class="mb-6">
+          <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Categorías *</label>
+          <select id="categories" name="state[]" multiple placeholder="Categorías" autocomplete="off">
+            <option value="">Select a state...</option>
+            {categoriesList.map((category: any) => <option value={category.key}>{category.text}</option>)}
+          </select>
+        </div>
+
+        <div class="grid gap-6 mb-6 md:grid-cols-3">
+          <CheckboxInput id="fulltime" label="Tiempo Competo" />
+          <CheckboxInput id="parttime" label="Tiempo Parcial" />
+          <CheckboxInput id="freelance" label="Freelance" />
+        </div>
+        <div class="grid gap-6 mb-6 md:grid-cols-3">
+          <CheckboxInput id="remote" label="Remoto" />
+          <CheckboxInput id="presential" label="Presencial" />
+          <CheckboxInput id="relocate" label="Reubicación" />
+        </div>
+
+        <div class="grid gap-6 mb-6 md:grid-cols-1">
+          <TextInput id="location" label="Ubicación" maxlength="250" />
+        </div>
+        <div class="grid gap-6 mb-6 md:grid-cols-2">
+          <TextInput id="organization" label="Empresa" maxlength="250" type="text" />
+          <TextInput id="organizationWebsite" label="Sitio web de la empresa" maxlength="300" type="url" />
+        </div>
+
+        <div class="flex justify-between">
+          <h1 class="text-xl font-bold dark:text-gray-100">Datos de Contacto</h1>
+        </div>
+        <hr class="my-4" />
+        <div class="grid gap-6 mb-6 md:grid-cols-2">
+          <TextInput id="applyEmail" label="Correo Electronico" maxlength="250" type="email" />
+          <TextInput id="applyUrl" label="URL para aplicar" maxlength="250" type="url" />
+          <UsernameInput id="applyTelegramUser" label="Usuario de Telegram" maxlength="250" />
+          <TextInput id="applyPhone" label="Número Telefónico" maxlength="250" type="tel" />
+        </div>
+      </div>
+
+      <div class="flex justify-between items-center mt-4">
+        <button
+          type="button"
+          id="deleteJobBtn"
+          class="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900"
+        >
+          Eliminar Empleo
+        </button>
+
+        <button
+          id="updateJobBtn"
+          class="text-white bg-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
+        >
+          Guardar Cambios
+        </button>
+      </div>
+    </form>
+
+    <Toast />
+  </div>
+</BaseLayout>
+
+<link href="https://cdn.jsdelivr.net/npm/tom-select/dist/css/tom-select.css" rel="stylesheet" />
+<script is:inline src="https://cdn.jsdelivr.net/npm/tom-select/dist/js/tom-select.complete.min.js"></script>
+
+<script is:inline>
+  var control = new TomSelect("#categories", { maxItems: 5 });
+</script>
+
+<script>
+  import { backend_url } from "../data/conf.json";
+  import { showToast } from "../components/toast/toast";
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const jobId = urlParams.get("id");
+  const jobForm = document.getElementById("job-form");
+  const deleteJobBtn = document.getElementById("deleteJobBtn");
+
+  if (jobForm) jobForm.addEventListener("submit", updateJob, true);
+  if (deleteJobBtn) deleteJobBtn.addEventListener("click", deleteJob, true);
+
+  // Load Job Logic
+  window.addEventListener("load", async () => {
+    if (!jobId) return;
+    try {
+      const response = await fetch(`${backend_url}api/jobs/get-job?id=${jobId}`);
+      if (!response.ok) throw new Error("Failed to load job");
+      const data = await response.json();
+      populateForm(data);
+    } catch (e) {
+      showToast("Error cargando la información del empleo.", true);
+      console.error(e);
+    }
+  });
+
+  function populateForm(data) {
+    if (!data) return;
+
+    setValue("title", data.title);
+    setValue("salary", data.salary);
+    setValue("description", data.description);
+    setValue("location", data.location);
+    setValue("organization", data.organization);
+    setValue("organizationWebsite", data.organizationWebsite);
+    setValue("applyEmail", data.applyEmail);
+    setValue("applyUrl", data.applyUrl);
+    setValue("applyTelegramUser", data.applyTelegramUser);
+    setValue("applyPhone", data.applyPhone);
+
+    setChecked("fulltime", data.fulltime);
+    setChecked("parttime", data.parttime);
+    setChecked("freelance", data.freelance);
+    setChecked("remote", data.remote);
+    setChecked("presential", data.presential);
+    setChecked("relocate", data.relocate);
+
+    if (data.categories && Array.isArray(data.categories)) {
+      data.categories.forEach((cat) => (window as any).control.addItem(cat));
+    }
+  }
+
+  function setValue(id: string, value: string) {
+    const elem = document.getElementById(id) as HTMLInputElement;
+    if (elem && value !== undefined) elem.value = value;
+  }
+
+  function setChecked(id: string, checked: boolean) {
+    const elem = document.getElementById(id) as HTMLInputElement;
+    if (elem && checked !== undefined) elem.checked = checked;
+  }
+
+  async function updateJob(e) {
+    e.preventDefault();
+    const data = createJobData();
+
+    if (!data.applyEmail && !data.applyUrl && !data.applyTelegramUser && !data.applyPhone) {
+      showToast("Debe ingresar al menos un método de contacto (Email, URL, Telegram o Teléfono).", true);
+      return;
+    }
+
+    disableBtn();
+    try {
+      const response = await fetch(`${backend_url}api/jobs/${jobId}`, {
+        method: "PUT",
+        body: JSON.stringify(data),
+        headers: { "Content-Type": "application/json" },
+      });
+      if (!response.ok) throw new Error("Update failed");
+      window.open(`${window.location.origin}/empleo-editado`, "_self");
+    } catch (e) {
+      enableBtn();
+      showToast("Error actualizando el empleo. Intente más tarde.", true);
+    }
+  }
+
+  async function deleteJob() {
+    if (!confirm("¿Estás seguro de que quieres eliminar este empleo? Esta acción no se puede deshacer.")) return;
+
+    try {
+      const response = await fetch(`${backend_url}api/jobs/${jobId}`, { method: "DELETE" });
+      if (!response.ok) throw new Error("Delete failed");
+      window.open(`${window.location.origin}/empleo-eliminado`, "_self");
+    } catch (e) {
+      showToast("Error eliminando el empleo. Intente más tarde.", true);
+    }
+  }
+
+  function getElem(id: string) {
+    return document.getElementById(id) as HTMLInputElement;
+  }
+
+  function createJobData() {
+    let data = {
+      title: getElem("title").value,
+      salary: getElem("salary").value,
+      description: getElem("description").value,
+      categories: [] as string[],
+      freelance: getElem("freelance").checked,
+      fulltime: getElem("fulltime").checked,
+      parttime: getElem("parttime").checked,
+      remote: getElem("remote").checked,
+      presential: getElem("presential").checked,
+      relocate: getElem("relocate").checked,
+      location: getElem("location").value,
+      applyEmail: getElem("applyEmail").value,
+      applyUrl: getElem("applyUrl").value,
+      applyTelegramUser: getElem("applyTelegramUser").value,
+      applyPhone: getElem("applyPhone").value,
+      organization: getElem("organization").value,
+      organizationWebsite: getElem("organizationWebsite").value,
+      slug: getElem("title").value.replace(/[^a-zA-Z0-9]+/g, "-"),
+    };
+
+    const categoriesElem = document.getElementById("categories") as HTMLSelectElement;
+    if (categoriesElem) {
+      for (let option of categoriesElem.options) {
+        if (option.selected) {
+          data.categories.push(option.value);
+        }
+      }
+    }
+    return data;
+  }
+
+  function disableBtn() {
+    const btn = document.getElementById("updateJobBtn") as HTMLButtonElement;
+    if (btn) {
+      btn.disabled = true;
+      btn.innerText = "Guardando...";
+    }
+  }
+
+  function enableBtn() {
+    const btn = document.getElementById("updateJobBtn") as HTMLButtonElement;
+    if (btn) {
+      btn.disabled = false;
+      btn.innerText = "Guardar Cambios";
+    }
+  }
+</script>

@@ -183,7 +183,11 @@ for (const key in categories) {
     try {
       const response = await fetch(backend_url + "api/jobs/new-job", { method: "POST", body: JSON.stringify(data) });
       const responseData = await response.json();
-      window.open(`${window.location.origin}/empleo-publicado`, "_self");
+      if (responseData.data && responseData.data.id) {
+        window.open(`${window.location.origin}/empleo-publicado?id=${responseData.data.id}`, "_self");
+      } else {
+        window.open(`${window.location.origin}/empleo-publicado`, "_self");
+      }
     } catch (e) {
       enableBtn();
       showToast("Algo salio mal. Por favor vuelva a intentarlo más tarde.", true);
