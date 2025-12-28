@@ -197,7 +197,7 @@ for (const key in categories) {
     if (elem && checked !== undefined) elem.checked = checked;
   }
 
-  async function updateJob(e) {
+  async function updateJob(e: SubmitEvent) {
     e.preventDefault();
     const data = createJobData();
 
@@ -208,9 +208,10 @@ for (const key in categories) {
 
     disableBtn();
     try {
-      const response = await fetch(`${backend_url}api/jobs/${jobId}`, {
+      const payload = { ...data, id: jobId };
+      const response = await fetch(`${backend_url}api/jobs/edit-job`, {
         method: "PUT",
-        body: JSON.stringify(data),
+        body: JSON.stringify(payload),
         headers: { "Content-Type": "application/json" },
       });
       if (!response.ok) throw new Error("Update failed");
@@ -225,7 +226,7 @@ for (const key in categories) {
     if (!confirm("¿Estás seguro de que quieres eliminar este empleo? Esta acción no se puede deshacer.")) return;
 
     try {
-      const response = await fetch(`${backend_url}api/jobs/${jobId}`, { method: "DELETE" });
+      const response = await fetch(`${backend_url}api/jobs/delete-job?id=${jobId}`, { method: "DELETE" });
       if (!response.ok) throw new Error("Delete failed");
       window.open(`${window.location.origin}/empleo-eliminado`, "_self");
     } catch (e) {
