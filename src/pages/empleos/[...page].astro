@@ -9,8 +9,6 @@ import BreadcrumbContainer from "../../components/ui/breadcrumbContainer.astro";
 export async function getStaticPaths({ paginate }) {
   const response = await fetch(backend_url + "api/jobs/get-all-jobs");
 
-console.log(response);
-
   const allJobs = await response.json();
 
   let filterJobs = allJobs.sort((a, b) => new Date(b.pubDate).valueOf() - new Date(a.pubDate).valueOf());
