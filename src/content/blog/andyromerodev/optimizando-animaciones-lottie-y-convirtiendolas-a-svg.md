@@ -1,7 +1,7 @@
 ---
 title: "Optimizando animaciones Lottie y convirtiéndolas a SVG"
 pubDate: "Tue Sep 23 2025"
-image: "https://framerusercontent.com/images/GNSzEovtdsVMPtzb9RaUL0QDlZM.svg?width=271&height=251"
+image: "https://cucoders.dev/assets/img/post-fixed-pics/lottie.webp"
 username: "andyromerodev"
 categories: ["software"]
 description: "Descubre cómo optimizar animaciones Lottie eliminando marcas de agua y reduciendo el tamaño de archivo, además de convertirlas a SVG para uso estático."
