@@ -1,6 +1,6 @@
 ---
 import appCategories from "../../data/appsCategories.json";
-import { Image } from "@astrojs/image/components";
+import { Image } from 'astro:assets';
 
 const {
   url,
@@ -21,6 +21,7 @@ const {
       format="webp"
       quality={85}
       width={48}
+      height={48}
       aspectRatio={1}
       fit="cover"
       position="center"

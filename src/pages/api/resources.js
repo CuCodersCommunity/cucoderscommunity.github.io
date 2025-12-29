@@ -7,8 +7,6 @@ for (const resources of resourcesResponse) {
   resourcesList.push(resources.data);
 }
 
-export async function get({ params, request }) {
-  return {
-    body: JSON.stringify(resourcesList),
-  };
+export async function GET({ params, request }) {
+  return new Response(JSON.stringify(resourcesList));
 }

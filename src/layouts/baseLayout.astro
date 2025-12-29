@@ -4,6 +4,7 @@ import NavBar from "../components/navbar/navBar.astro";
 import Footer from "../components/footer.astro";
 import MainDrawer from "../components/mainDrawer.astro";
 import { Schema } from "astro-seo-schema";
+import Search from "../components/ui/Search.svelte";
 
 const {
   title,
@@ -72,5 +73,7 @@ const {
       <slot />
     </div>
     <Footer />
+
+    <Search client:only="svelte"></Search>
   </body>
 </html>

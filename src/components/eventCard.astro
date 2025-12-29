@@ -1,7 +1,7 @@
 ---
 import dayjs from "dayjs";
 import "dayjs/locale/es";
-import { Image } from "@astrojs/image/components";
+import { Image } from 'astro:assets';
 
 dayjs.locale("es");
 
@@ -30,8 +30,8 @@ if (!event.data.image){
           alt={event.data.name + " logo"}
           format="webp"
           quality={85}
-          width={420}
-          aspectRatio={16 / 9}
+          width={380}
+          height={208}
           fit="cover"
           position="center"
         />

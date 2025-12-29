@@ -9,14 +9,14 @@ import sitemap from "@astrojs/sitemap";
 // https://astro.build/config
 import partytown from "@astrojs/partytown";
 
-// https://astro.build/config
-import image from "@astrojs/image";
+import svelte from '@astrojs/svelte';
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://cucoders.dev/",
   integrations: [
     tailwind(),
+    svelte(),
     sitemap({
       serialize(item) {
         if (/.*cucoders\.dev\/dev\/[\w-]+\/[\w-]/.test(item.url)) {
@@ -35,6 +35,5 @@ export default defineConfig({
         forward: ["dataLayer.push"],
       },
     }),
-    image(),
   ],
 });

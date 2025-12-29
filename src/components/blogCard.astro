@@ -5,7 +5,7 @@ dayjs.locale("es");
 import readingTime from "reading-time";
 import categories from "../data/categories.json";
 import { members_api_url } from "../data/conf.json";
-import { Image } from "@astrojs/image/components";
+import { Image } from 'astro:assets';
 import { convertASCIICharsToText, convertMarkdownToPlainText } from "markdown-to-text-renderer";
 
 const { post, index } = Astro.props;
@@ -32,6 +32,7 @@ let imgLoading = index === 0 || index === 1 ? "eager" : "lazy";
           format="webp"
           quality={85}
           width={908}
+          height={500}
           loading={imgLoading}
           aspectRatio={16 / 9}
           fit="cover"

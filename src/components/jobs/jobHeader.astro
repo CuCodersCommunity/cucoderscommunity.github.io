@@ -231,13 +231,13 @@ if (
     {
       job.applyEmail && (
         <li>
-          <a
-            href={`mailto:${job.applyEmail}`}
-            target="_blank"
-            class="block px-4 cursor-pointer py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+          <button
+            id="applyEmailBtn"
+            data-email={job.applyEmail}
+            class="block w-full text-left px-4 cursor-pointer py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
           >
             Enviar Correo Electrónico
-          </a>
+          </button>
         </li>
       )
     }
@@ -259,3 +259,37 @@ if (
 
 <ShareThisModal />
 <ReportModal />
+
+<script>
+  document.addEventListener('DOMContentLoaded', async () => {
+    const { showToast } = await import('../toast/toast.js');
+    const applyEmailBtn = document.getElementById('applyEmailBtn');
+
+    if (applyEmailBtn) {
+      applyEmailBtn.addEventListener('click', async () => {
+        const email = applyEmailBtn.dataset.email;
+
+        if (!email) {
+          console.error('Email address not found in data-email attribute.');
+          return;
+        }
+
+        const mailtoLink = `mailto:${email}`;
+
+        const mailtoWindow = window.open(mailtoLink, '_blank');
+
+        setTimeout(async () => {
+          if (!mailtoWindow || mailtoWindow.closed || mailtoWindow.outerHeight === 0) {
+            try {
+              await navigator.clipboard.writeText(email);
+              showToast('¡Email copiado!');
+            } catch (err) {
+              console.error('Failed to copy email: ', err);
+              showToast('Error al copiar el email.', true);
+            }
+          }
+        }, 100); 
+      });
+    }
+  });
+</script>

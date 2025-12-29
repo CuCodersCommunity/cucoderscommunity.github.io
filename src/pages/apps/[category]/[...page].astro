@@ -13,7 +13,7 @@ export async function getStaticPaths({ paginate }) {
   }
 
   const AllApps = await getCollection("apps");
-  return allCategories.map((categoryObj) => {
+  return allCategories.flatMap((categoryObj) => {
     let filteredApps = AllApps.filter((app) => app.data.categories.includes(categoryObj.key));
     filteredApps.sort((a, b) => (a.name > b.name ? 1 : b.name > a.name ? -1 : 0));
     const category = categoryObj.slug;

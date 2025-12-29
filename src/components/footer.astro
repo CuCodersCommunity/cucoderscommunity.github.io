@@ -1,6 +1,8 @@
 ---
 import SidebarItem from "./sidebarComponents/sidebarItem.astro";
 import CucodersLogo from "./ui/cucodersLogo.astro";
+
+import SearchBtnFooter from "./ui/searchBtnFooter.svelte";
 ---
 
 <footer
@@ -79,13 +81,7 @@ import CucodersLogo from "./ui/cucodersLogo.astro";
       alt="Nuevo"
     /></button
   >
-  <a href="/eventos">
-    <img
-      src="/assets/img/icons/event-available-outline.svg"
-      class="h-9 w-9 m-2 rounded-md p-1 dark:invert dark:contrast-200 dark:saturate-0"
-      alt="Eventos"
-    /></a
-  >
+
   <a href="/empleos">
     <img
       src="/assets/img/icons/briefcase-line.svg"
@@ -93,6 +89,8 @@ import CucodersLogo from "./ui/cucodersLogo.astro";
       alt="Empleos"
     /></a
   >
+
+  <SearchBtnFooter client:only="svelte" />
 </footer>
 
 <!-- drawer component -->

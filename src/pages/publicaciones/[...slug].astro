@@ -4,7 +4,7 @@ import PostLayout from "../../layouts/postLayout.astro";
 
 export async function getStaticPaths() {
   const postEntries = await getCollection("blog");
-  return postEntries.map((entry) => ({ params: { slug: entry.slug }, props: { entry } }));
+  return postEntries.flatMap((entry) => ({ params: { slug: entry.slug }, props: { entry } }));
 }
 
 interface Props {

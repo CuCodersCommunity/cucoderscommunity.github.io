@@ -19,7 +19,7 @@ export async function getStaticPaths({ paginate }) {
   }
 
   const allResources = await getCollection("resources");
-  return allCategories.map((categoryObj) => {
+  return allCategories.flatMap((categoryObj) => {
     let filteredResources = allResources.filter((resource) => resource.data.category == categoryObj.key);
     const category = categoryObj.slug;
     return paginate(filteredResources, {
