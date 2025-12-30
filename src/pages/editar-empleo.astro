@@ -149,7 +149,9 @@ for (const key in categories) {
       return;
     }
     try {
-      const response = await fetch(`${backend_url}api/jobs/get-job?id=${jobId}`);
+      const response = await fetch(`${backend_url}api/jobs/get-job?id=${jobId}`, {
+        headers: { "Content-Type": "application/json" },
+      });
       if (!response.ok) throw new Error("Failed to load job");
       const data = await response.json();
       populateForm(data);
@@ -226,7 +228,10 @@ for (const key in categories) {
     if (!confirm("¿Estás seguro de que quieres eliminar este empleo? Esta acción no se puede deshacer.")) return;
 
     try {
-      const response = await fetch(`${backend_url}api/jobs/delete-job?id=${jobId}`, { method: "DELETE" });
+      const response = await fetch(`${backend_url}api/jobs/delete-job?id=${jobId}`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+      });
       if (!response.ok) throw new Error("Delete failed");
       window.open(`${window.location.origin}/empleo-eliminado`, "_self");
     } catch (e) {

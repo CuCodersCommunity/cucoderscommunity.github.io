@@ -67,6 +67,7 @@ import Toast from "../toast/toast.astro";
     fetch(backend_url + "api/report/new-report", {
       method: "POST",
       body: JSON.stringify(report),
+      headers: { "Content-Type": "application/json" },
     })
       .then((response) => {
         const alert = `Reporte enviado satisfactoriamente. Gracias por contactarnos.`;
