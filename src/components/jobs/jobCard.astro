@@ -5,7 +5,7 @@ import JobCardCategory from "./jobCardCategory.astro";
 import dayjs from "dayjs";
 
 const { job } = Astro.props;
-const jobUrl = `/empleos/${dayjs(job.pubDate).format("YYYY--MM-DD")}/${job.slug}`;
+const jobUrl = `/empleos/${dayjs(job.pubDate).format("YYYY-MM-DD")}/${job.slug}`;
 
 const locationLabel = job.location ? job.location : "Presencial";
 const display_date = dayjs(job.pubDate).format("DD/MM/YY");

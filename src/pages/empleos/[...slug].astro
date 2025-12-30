@@ -12,7 +12,7 @@ export async function getStaticPaths() {
 
   return allJobs.map((job, index) => {
     let nextJobs = allJobs.slice(index + 1, index + 5);
-    return { params: { slug: `${dayjs(job.pubDate).format("YYYY--MM-DD")}/${job.slug}` }, props: { job, nextJobs } };
+    return { params: { slug: `${dayjs(job.pubDate).format("YYYY-MM-DD")}/${job.slug}` }, props: { job, nextJobs } };
   });
 }
 
