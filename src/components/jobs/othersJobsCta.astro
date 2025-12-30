@@ -11,7 +11,7 @@ import dayjs from "dayjs";
     {
       jobs.map((job) => (
         <li class="w-full py-3">
-          <a href={`/empleos/${dayjs(job.pubDate).format("DD-MM-YY")}/${job.slug}`}>
+          <a href={`/empleos/${dayjs(job.pubDate).format("YYYY--MM-DD")}/${job.slug}`}>
             <div class="font-medium text-base pb-1 text-gray-900 dark:text-gray-100">{job.title}</div>
             <div class="text-sm text-gray-600 dark:text-gray-300 line-clamp-1">{job.description.substring(0, 256)}</div>
           </a>
