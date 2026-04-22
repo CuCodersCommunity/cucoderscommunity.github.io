@@ -225,13 +225,15 @@ for (const key in categories) {
 
   function isBlacklisted(data: any) {
     const contactFields = [
-      data.applyEmail.toLowerCase(),
-      data.applyTelegramUser.toLowerCase(),
-      data.applyPhone.toLowerCase(),
+      data.applyEmail.toLowerCase().trim(),
+      data.applyTelegramUser.toLowerCase().trim(),
+      data.applyPhone.toLowerCase().trim(),
     ];
 
+    const lowerBlacklist = blacklist.map((item) => item.toLowerCase().trim());
+
     for (const field of contactFields) {
-      if (field && blacklist.includes(field.toLowerCase())) {
+      if (field && lowerBlacklist.includes(field)) {
         return true;
       }
     }
