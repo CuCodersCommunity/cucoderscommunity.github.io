@@ -2,91 +2,57 @@
 import dayjs from "dayjs";
 import "dayjs/locale/es";
 dayjs.locale("es");
-import readingTime from "reading-time";
-import categories from "../data/categories.json";
 import { members_api_url } from "../data/conf.json";
-import { Image } from 'astro:assets';
+import { Image, type ImgAttributes } from 'astro:assets';
 import { convertASCIICharsToText, convertMarkdownToPlainText } from "markdown-to-text-renderer";
 
-const { post, index } = Astro.props;
+interface Props {
+  post: any;
+  imgLoading: ImgAttributes['loading'];
+}
+
+const { post, imgLoading } = Astro.props;
 const response = await fetch(members_api_url + "/members/" + post.data.username);
 const user_data = await response.json();
-const stats = readingTime(post.body);
-const read_time = stats.text.replace("read", "");
 const description = post.data.description
   ? post.data.description
   : convertASCIICharsToText(convertMarkdownToPlainText(post.body.slice(0, 160))) + "...";
 
 const display_date = dayjs(post.data.pubDate).format("D MMM. YYYY");
-let imgLoading = index === 0 || index === 1 ? "eager" : "lazy";
 ---
 
-<div class="bg-white border border-gray-200 rounded-lg mb-5 dark:bg-gray-800 dark:border-gray-700 w-full">
-  <a href={"/publicaciones/" + post.slug}>
-    {
-      post.data.image && (
-        <Image
-          class="rounded-t-lg inline h-[13rem] md:h-[14rem] lg:h-[16rem] xl:h-[20rem] 2xl:h-[28rem] object-cover"
-          src={post.data.image}
-          alt={post.data.title + " logo"}
-          format="webp"
-          quality={85}
-          width={908}
-          height={500}
-          loading={imgLoading}
-          aspectRatio={16 / 9}
-          fit="cover"
-          position="center"
-        />
-      )
-    }
-  </a>
+ <a 
+  href={"/publicaciones/" + post.slug} 
+  class="w-full h-full flex flex-col space-y-6 md:px-8 first:pl-0 last:pr-0"
+>
+  {
+    post.data.image && (
+      <Image
+        src={post.data.image}
+        alt={post.data.title + " logo"}
+        class='aspect-[400/225] object-cover rounded border border-[#1b1c1e]'
+        format="webp"
+        quality={85}
+        width={800}
+        height={450}
+        loading={imgLoading}
+      />
+    )
+  }
 
-  <div class="p-5 pb-3">
-    <div class="mb-3 flex justify-between">
-      <a href={"/dev/" + user_data.username} class="flex items-center space-x-4">
-        <img
-          class="w-10 h-10 rounded-full"
-          src={user_data.avatar_url_small}
-          alt={user_data.name + " avatar"}
-          loading="lazy"
-          decoding="async"
-        />
-        <div class="font-medium dark:text-white">
-          <div>
-            {user_data.name}
-            <spam class="mx-2 text-gray-700 dark:text-gray-300">•</spam>
-            <spam class="text-gray-500 dark:text-gray-300 font-normal text-sm capitalize"> {display_date}</spam>
-          </div>
-          <div class="text-sm text-gray-500 dark:text-gray-300">{user_data.headline}</div>
-        </div>
-      </a>
-    </div>
-
-    <a href={"/publicaciones/" + post.slug}>
-      <h5 class="mb-2 text-lg md:text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-        {post.data.title}
-      </h5>
-    </a>
-    <a href={"/publicaciones/" + post.slug}>
-      <p class="mb-5 font-normal text-gray-700 dark:text-gray-300 line-clamp-3 md:line-clamp-3">
-        {description}
-      </p>
-    </a>
-    <div class="my-2 flex justify-between">
-      <div>
-        {
-          post.data.categories.map((category) => (
-            <a
-              href={"/categorias/" + categories[category].slug}
-              class="text-gray-600 bg-white my-1 border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-normal rounded md:text-base text-sm px-1 py-1.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
-            >
-              {"#" + categories[category].text}
-            </a>
-          ))
-        }
-      </div>
-      <div class="text-sm text-gray-500">{read_time + " lectura"}</div>
-    </div>
+  <div class="space-y-2">
+    <h3 class="mb-2 text-lg md:text-2xl line-clamp-2 font-semibold tracking-tight text-gray-900 dark:text-white">
+      {post.data.title}
+    </h3>
+    <p class="mb-5 font-normal text-[#8a8f98] line-clamp-3">
+      {description}
+    </p>
   </div>
-</div>
+
+  <span class="mt-auto text-sm text-[#62666d]">
+    {user_data.name}
+    <span class="inline-block [margin-inline:4px]">·</span>
+    {display_date}
+  </span>
+</a>
+
