@@ -8,7 +8,7 @@ website: "https://www.tiendly.lat"
 is_open_source: false
 dev_username: "rblez"
 pubDate: "Oct 4 2026"
-categories: ["ecommerce", "business"]
+categories: ["shopping", "business"]
 platforms: ["Web", "Android"]
 ---
 
