@@ -2,7 +2,7 @@
 name: "Carlito"
 id: "Carlito"
 description: "La central de utilidades para el día a día en Cuba: saldos ETECSA por USSD, banca y mensajes en un solo lugar calmado."
-logo: "https://placehold.co/512x512/2563eb/ffffff?text=C&font=oswald"
+logo: "https://hivepen.com/img/carlito-icon.webp"
 email: "hello@hivepen.com"
 website: "https://hivepen.com"
 is_open_source: false
@@ -16,4 +16,4 @@ platforms: ["Android"]
 
 # Carlito
 
-Carlito es la central de utilidades para el día a día en Cuba, hecha por @carlosepcc. Pizarra de saldos ETECSA (saldo, datos, voz, bono .CU, SMS con vigencias) vía USSD, resumen de transacciones parseadas de SMS bancarios (Transfermóvil/PAGOxMÓVIL), banca BPA y mensajes organizados por remitente. Actualmente en beta.
+Carlito es la central de utilidades para el día a día en Cuba, hecha por @carlosepcc. Pizarra de saldos ETECSA (saldo, datos, voz, bono .CU, SMS con vigencias) vía USSD, banca BPA y mensajes organizados por remitente. Actualmente en beta, disponible en Apklis y Zapstore.
