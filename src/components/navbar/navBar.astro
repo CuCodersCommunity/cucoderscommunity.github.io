@@ -7,7 +7,7 @@ import SearchBtn from "../ui/searchBtn.svelte";
 ---
 
 <nav
-  class="bg-white/70 backdrop-blur-md px-2 sm:px-4 py-1.5 dark:bg-gray-900/70 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600"
+  class="bg-white/70 backdrop-blur-md px-2 sm:px-4 py-1.5 dark:bg-[#0a0a0b] fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-[#1e1e1e]"
 >
   <div class="container flex flex-wrap items-center justify-between mx-auto px-4">
     {
@@ -17,7 +17,7 @@ import SearchBtn from "../ui/searchBtn.svelte";
           type="button"
           class="inline-flex items-center md:hidden p-2 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
         >
-          <img src="/assets/img/icons/arrow-back.svg" class="h-7 w-7 dark:invert dark:contrast-200 dark:saturate-0" />
+          <img src="/assets/img/icons/arrow-back.svg" alt="Ir atrás" class="h-7 w-7 dark:invert dark:contrast-200 dark:saturate-0" />
         </button>
       ) : (
         <button
@@ -29,12 +29,12 @@ import SearchBtn from "../ui/searchBtn.svelte";
           class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
         >
           <span class="sr-only">Open main menu</span>
-          <img src="/assets/img/icons/menu1.svg" class="h-7 w-7 dark:invert dark:contrast-200 dark:saturate-0" />
+          <img src="/assets/img/icons/menu1.svg" alt="Menú" class="h-7 w-7 dark:invert dark:contrast-200 dark:saturate-0" />
         </button>
       )
     }
 
-    <a href="/" class="flex items-center">
+    <a href="/" class="flex items-center" aria-label="Ir a página de inicio">
       <CucodersLogo />
     </a>
 
