@@ -9,7 +9,7 @@ const { breadcrumbItems, btnLabel, btnUrl, btnIcon } = Astro.props;
     btnUrl && (
       <a
         href={btnUrl}
-        class="text-gray-800 border hidden md:inline-flex border-gray-200 focus:outline-none hover:bg-gray-100 rounded-md text-sm font-normal px-3 py-1.5 text-center justify-center items-center dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+        class="text-gray-600 border bg-white hidden md:inline-flex border-gray-300 focus:outline-none hover:text-gray-800 font-semibold rounded-md text-sm font-normal px-3 py-1.5 text-center justify-center items-center dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
       >
         {btnIcon && <img src={btnIcon} class="w-5 h-5 mr-2 dark:invert dark:contrast-200 dark:saturate-0" alt={btnLabel} />}
         {btnLabel}

@@ -21,7 +21,7 @@ const display_date = dayjs(post.data.pubDate).format("D MMM. YYYY");
 let imgLoading = index === 0 || index === 1 ? "eager" : "lazy";
 ---
 
-<div class="bg-white border border-gray-200 rounded-lg mb-5 dark:bg-gray-800 dark:border-gray-700 w-full">
+<div class="bg-white border border-gray-300 rounded-lg mb-5 dark:bg-gray-800 dark:border-gray-700 w-full">
   <a href={"/publicaciones/" + post.slug}>
     {
       post.data.image && (
